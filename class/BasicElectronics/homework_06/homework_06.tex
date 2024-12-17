@@ -1,0 +1,22 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{电子学基础-第六次作业}
+
+\begin{document}
+    \maketitle
+    4-45 题图 4-45 所示电路中, $N$ 为无源线性电阻网络,当 $R_2=2\Omega$ , $U_{S}=6V$ 时,测得 $I_{1}=2A$ , $U_2=2V$ .如果当 $R_2=4\Omega$, $U_{S}=10V$ 时,又测得 $I_1 = 3A$ ,求此时的电压 $U_2$.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.6\linewidth]{./figures/homework_06_figure_01.png}
+    \end{figure}
+
+    解:由特勒根定理,电流和电压方向如图所示,有:
+    \begin{align}
+        -U_{S 1}I_{12}+U_{21}I_{22}+\Sigma_{3}^{b}U_{k 1}I_{k 2}=&0\nonumber\\
+        -U_{S 2}I_{11}+U_{22}I_{21}+\Sigma_{3}^{b}U_{k 2}I_{k 1}=&0\nonumber\\
+        U_{k 1}I_{k 2}=I_{k 1}R_{k}I_{k 2}=&U_{k 2}I_{k 1}\nonumber\\
+        I_{21}R_{21}=&U_{21}\nonumber\\
+        I_{22}R_{22}=&U_{22}\nonumber
+    \end{align}
+    由此解得 $I_{22}=1A,U_{22}=4V$ 即为所求.
+\end{document}

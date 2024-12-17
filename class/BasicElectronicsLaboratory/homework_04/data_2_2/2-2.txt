@@ -1,0 +1,4 @@
+U1 1V sin
+Ri 1k
+RL 5k
+R1 1k

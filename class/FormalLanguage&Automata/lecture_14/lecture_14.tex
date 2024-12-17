@@ -1,0 +1,131 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \subsection{Undecidability}
+        \subsubsection{Codes for TMs}
+        \label{Codes for TMs}
+        We can encode TMs as binary strings (or integers). Assume:
+        \begin{itemize}
+            \item States $q_1,q_2,\ldots,q_{r}$.
+            \item Tape symbols $X_1,X_2,\ldots,X_{s}$.
+            \item Directions $D_1,D_2$.
+        \end{itemize}
+        Encode $\delta\left( q_{i},X_{j} \right) =\left( q_{k},X_{l},D_{m} \right) $ as $C=0^{i}1 0^{j}1 0^{k}1 0^{l}1 0^{m}$. Then encode all transitions as $w=C_1 11 C_2 11 C_3 11\ldots C_{n-1} 11 C_{n}$. Then $\overline{1w}$ can be seen as an integer $i$ in binary, call $w$ the $i$th string $w_{i}$. In case a code is invalid we assign it to the TM that automatically rejects.
+        \begin{definition}
+            (Diagonalization Language) $L_{d}=\{w_{i}\ |\ w_{i}\notin L\left( M_{i} \right) \}$.
+        \end{definition}
+        \begin{theorem}
+            (Diagonalization Language) $L_{d}$ is not in RE.
+        \end{theorem}
+        \begin{proof}
+            (Diagonalization Language) Assume there is a TM $M=M_{i}$ such that $L\left( M_{i} \right) =L_{d}$:
+            \begin{itemize}
+                \item If $w_{i}\in L_{d},w_{i}\notin L\left( M_{i} \right) =L_{d}$.
+                \item If $w_{i}\notin L_{d}$, we have $w_{i}\notin L\left( M_{i} \right) \Rightarrow w_{i}\in L_{d}$.
+            \end{itemize}
+        \end{proof}
+        \begin{theorem}
+            (Recursive complement is close) If $L$ is recursive, so is $\overline{L}$.
+        \end{theorem}
+        \begin{theorem}
+            (Recursive complement to RE) If both $L$ and $\overline{L}$ are RE, then $L$ is in R.
+        \end{theorem}
+        \begin{proof}
+            (Recursive complement to RE) Let $L=L\left( M_{1} \right) ,\overline{L}=L\left( M_{2} \right) $. Construct a TM with two tapes for $M_1$ and $M_2$ that run spiltly. If $M_1$ accept, $M$ accept, if $M_2$ accept, $M$ reject. Then $M$ always halt. So $L$ is in R.
+        \end{proof}
+        \begin{definition}
+            (Universal Language) $L_{u}=\{\left( M,w \right) \ |\ M\text{ accepts }w\}$.
+        \end{definition}
+        \begin{theorem}
+            (Universal Language) There is a TM $U$ such that $L_{u}=L\left( U \right) $.
+        \end{theorem}
+        \begin{proof}
+            (Universal Language) Use a 4-tape TM for input, M's tape, M's state and something, then:
+            \begin{enumerate}
+                \item Examine the validity of $M$, if invalid, reject.
+                \item Initialize the string $w$ on the input tape.
+                \item Place $0$, the starting state of $M$ on the state tape.\mn{use \ref{Codes for TMs} codes for TMs}
+                \item Scan transition on the M's tape then do transition like M.
+                \item If M has no transition, U must reject.
+                \item If M accepts, U accept.
+            \end{enumerate}
+        \end{proof}
+        \begin{theorem}
+            (Universal Language) $L_{u}$ is in RE but not in R.
+        \end{theorem}
+        \begin{proof}
+            (Universal Language) $L_{u}$ in RE is proofed. Assume $L_{u}$ is in R, then $\overline{L}_{u}=\{\left( M,w \right) \ |\ M\text{ not accepts }w\}\in R$ Its TM can be built to accept $L_{d}$, which is impossible.
+        \end{proof}
+        \begin{definition}
+            (Reduction) For two problems\mn{a language's problem is whether string $w$ in the language} $P_1$ and $P_2$, $P_1$ reduces to $P_2$ means there exists an algorithm convert from instances of $P_1$ to instances of $P_2$.
+        \end{definition}
+        \begin{definition}
+            (Empty Language) $L_{e}=\{M\ |\ L\left( M \right) =\emptyset\}$.
+        \end{definition}
+        \begin{definition}
+            (Not Empty Language) $L_{ne}=\{M\ |\ L\left( M \right) \ne\emptyset\}$.
+        \end{definition}
+        \begin{theorem}
+            (Not Empty Language) $L_{ne}$ is in RE but not recusive.
+        \end{theorem}
+        \begin{proof}
+            (Not Empty Language) For RE, TM of $L_{ne}$ can keep input different string $w$ to $M$ until accepted, if it does not halt it also rejects. If $L\left( M \right) \ne \emptyset$ it must halt some time.
+
+            For R, we can reduce $L_{u}$ to $L_{ne}$, since $L_{u}$ is not in R, $L_{ne}$ is not in R.
+        \end{proof}
+        \begin{theorem}
+            (Rice) Every non-trival property of RE is undecidable.
+        \end{theorem}
+        \begin{proof}
+            (Rice) Let $P\subseteq RE$ be a non-trival property $L_{P}=\{M_{i}\ |\ L\left( M_{i} \right) \in P\}$\mn{called semantic property of TM}. Assume $\emptyset \notin P$. as $P$ is non-trival, there is a non-empty $L=L\left( M_{L} \right) \in P$, we can use $M_{L}$ to build a 2-tape $M'$ to reduce $L_{u}$ to $L_{P}$ by:
+            \begin{enumerate}
+                \item $M'$ simulate $M$ in input $w$ (may hot halt)
+                \item If $M$ rejects $w$, $M'$ ignore input in the second tape.
+                \item If $M$ accepts $w$, $M'$ simulaltes $M_{L}$ on second tape input $x$.
+            \end{enumerate}
+            Let $L'=L\left( M' \right) $, if we can determine whether $L'\in P$, or whether $L'=\emptyset$ which means $M$ does not halt or rejects. Then we can know $M$ accepts or rejects $w$ in determine steps. That reduce $L_{u}$ to $L_{P}$
+        \end{proof}
+        \begin{definition}
+            (Post's Corespondence Problem, PCP) Given two strings lists, determine a index list (may repeats) such that two lists join by index is the same string.
+        \end{definition}
+        \begin{theorem}
+            (Post's Corespondence Problem, PCP) PCP is undecidable.
+        \end{theorem}
+        \begin{proof}
+            (Post's Corespondence Problem, PCP) Define Modified PCP (MPCP) which requires the first index to be constant. We can reduce MPCP to PCP by adding a separator $*$ between every two letters in every strings. Then add prefix $*$ to keep the constant start string\mn{add prefix $*$ in the chosen string in the first list to make a copy and every string in the second list, also need a new suffix string $\$$ and $*\$$ separately in two lists to keep $*$ numbers equal}.
+
+            Also we can reduce $L_{u}$ to MPCP by construct TM ID changes in two string lists (the second list's first string stored the initial ID. Second is one ID ahead of the first to make ID transitions written in two lists, also need some separators).
+
+            Since $L_{u}$ is undecidable, MPCP is undecidable, PCP is also undecidable.
+        \end{proof}
+        \begin{theorem}
+            (CFG ambiguous) CFG ambiguous is undecidable.
+        \end{theorem}
+        \begin{proof}
+            (CFG ambiguous) Reduce PCP to CFG ambiguous problem. Let the two lists are $A=[w_1,w_2,\ldots,w_{k}],B=[x_1,x_2,\ldots,x_{k}]$, construct CFG:
+            \begin{align}
+                S\rightarrow & A\ |\ B\nonumber\\
+                A\rightarrow & w_1Aa_1\ |\ w_2Aa_2\ |\ \ldots\ |\ w_{k}Aa_{k}\ |\ w_1a_1\ |\ w_2a_2\ |\ \ldots\ |\ w_{k}a_{k}\nonumber\\
+                B\rightarrow & x_1Ba_1\ |\ x_2Ba_2\ |\ \ldots\ |\ x_{k}Ba_{k}\ |\ x_1a_1\ |\ x_2a_2\ |\ \ldots\ |\ x_{k}a_{k}\nonumber
+            \end{align}
+            Where $a_{i}$ is new terminal separator. The CFG is ambiguous if PCP has a solution.
+        \end{proof}
+        \begin{theorem}
+            (CFG features) Let $G_1,G_2$ be CFG, R be regular expression, all follow problems are undecidable:
+            \begin{itemize}
+                \item $L\left( G_1 \right) \cap L\left( G_2 \right) =\emptyset$ 
+                \item $L\left( G_1 \right) = L\left( G_2 \right) $ 
+                \item $L\left( G_1 \right) =L\left( R \right) $ 
+                \item $L\left( G_1 \right) =\Gamma^{*}$ 
+                \item $L\left( G_1 \right) \subseteq L\left( G_2 \right) $ 
+                \item $L\left( R \right) \subseteq L\left( G_1 \right) $
+            \end{itemize}
+        \end{theorem}
+        \begin{definition}
+            (Time complexity of a TM) For any input of length $n$, the number of steps the TM runs on all possible inputs.\mn{it is a model-dependent function of $n$ as worst-case approach}
+        \end{definition}
+        \begin{definition}
+            (Complexity class P) The set of languages $L=L\left( M \right) $. Time complexity of $M$ $T\left( M \right) $ is a polynomial of $n$.
+        \end{definition}
+\end{document}

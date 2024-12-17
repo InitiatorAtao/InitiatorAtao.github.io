@@ -1,0 +1,89 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{电子学基础实验四报告}
+
+\begin{document}
+    \maketitle
+    \section{实验内容}
+        \subsection{加法器}
+        使用如图所示的电路实现一个加法器,将 $u_1$ 设置为正弦波,频率 $100 \ \mathrm{Hz}$,幅值为 $5 \ \mathrm{V}$. $u_2$ 设置为 $5 \ \mathrm{V}$ 直流源, $R_{f},R_1,R_2$ 的值在 $\ \mathrm{k\Omega}$ 级别,根据需要设置.用示波器同时显示 $u_1$ 和 $u_0$ 的波形并记录.使用两组不同的电阻值,观察结果的变化.
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.7\linewidth]{./figures/homework_04_figure_01.pdf}
+        \end{figure}
+        \subsection{电流源}
+        使用如图所示的电路实现一个压控电流源,其中 $u_1$ 为正弦波,频率 $100 \ \mathrm{Hz}$.根据输入电压 $u_{i}$ 和电阻 $R_1$,理论计算使输出呈现电流源特性的电阻 $R_{L}$ 的变化范围.分别调节并记录输入电压 $u_{i}$ 及 $R_{L}$ 变化时,对输出电流的影响.调节 $R_{L}$ 使运放进入饱和区,记录输出电流的变化.
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.5\linewidth]{./figures/homework_04_figure_02.pdf}
+        \end{figure}
+    \section{原始数据}
+        \subsection{加法器}
+        固定 $u_{1}$ 为 $100 \ \mathrm{Hz}$ 的 $5 \ \mathrm{V}$ 正弦波, $u_2$ 为 $5 \ \mathrm{V}$ 直流,选取两组不同的 $R_{f},R_1,R_2$ 值绘图如下:
+        \begin{itemize}
+            \item $R_{f}=1 \ \mathrm{k\Omega},R_1=1 \ \mathrm{k\Omega},R_2=5 \ \mathrm{k\Omega}$,绘制波形如下:
+                \begin{figure}[htbp]
+                    \centering
+                    \inkfig[0.7\columnwidth]{homework_04_figure_03}
+                \end{figure}
+            \item $R_{f}=1 \ \mathrm{k\Omega},R_1=5 \ \mathrm{k\Omega},R_2=1 \ \mathrm{k\Omega}$,绘制波形如下:
+                \begin{figure}[htbp]
+                    \centering
+                    \inkfig[0.7\columnwidth]{homework_04_figure_04}
+                \end{figure}
+
+        \end{itemize}
+        \subsection{电流源}
+        测量基准数据,取 $u_{i}$ 为 $1 \ \mathrm{V},100 \ \mathrm{Hz}$ 正弦波, $R_{i}=1 \ \mathrm{k\Omega},R_{L}=5 \ \mathrm{k\Omega},R_{1}=1 \ \mathrm{k\Omega}$,测量并计算得到输出电流 $i$ 与输入电压 $u_{i}$ 的波形:
+        \begin{figure}[htbp]
+            \centering
+            \inkfig[0.7\columnwidth]{homework_04_figure_05}
+        \end{figure}
+
+        调整 $u_{i}$ 并分析变化.将 $u_{i}$ 重设为 $2 \ \mathrm{V}$,频率不变,电阻阻值不变 $R_{i}=1 \ \mathrm{k\Omega},R_{L}=5 \ \mathrm{k\Omega},R_{1}=1 \ \mathrm{k\Omega}$,测量并计算得到输出电流 $i$ 与输入电压 $u_{i}$ 的波形:
+        \newpage
+        \begin{figure}[htbp]
+            \centering
+            \inkfig[0.7\columnwidth]{homework_04_figure_06}
+        \end{figure}
+
+        继续调整 $R_{L}=1 \ \mathrm{k\Omega}$,其他参数不变 $u_{i}=2 \ \mathrm{V},R_{i}=1 \ \mathrm{k\Omega},R_1=1 \ \mathrm{k\Omega}$,同理绘制电压-电流波形如下:
+        \begin{figure}[htbp]
+            \centering
+            \inkfig[0.7\columnwidth]{homework_04_figure_07}
+        \end{figure}
+    \section{数据分析}
+        \subsection{加法器}
+        对于第一次测量, $R_{f}=1 \ \mathrm{k\Omega},R_1=1 \ \mathrm{k\Omega},R_2=5 \ \mathrm{k\Omega}$,观察波形可见 $u_0$ 接近于 $u_1$ 的反相,但还有约 $-1 \ \mathrm{V}$ 的直流偏移,由于电源中只有 $u_2$ 为直流源,可推测该偏移即为 $u_2$ 产生,但相对于 $u_2$ 的 $5 \ \mathrm{V}$ 电压减小到原来的 $\frac{1}{5}$.
+
+        对于第二次测量, $R_{f}=1 \ \mathrm{k\Omega},R_1=5 \ \mathrm{k\Omega},R_2=1 \ \mathrm{k\Omega}$, $u_0$ 的振幅相对于 $u_1$ 减小到约 $\frac{1}{5}$ ,而直流偏移量约为 $-5 \ \mathrm{V}$ 与 $u_2$ 基本相同.
+
+        由此可以推测, $u_0$ 为关于 $u_1,u_2,R_1,R_2$ 的函数,且由电路接线结构以及初步实验数据可推测, $u_1,R_2$ 之间, $u_2,R_1$ 之间互不影响,可得到初步关系式 $u_0=-\left( \frac{c_1}{R_1}u_1+\frac{c_2}{R_2}u_2 \right) $.实际上,由量纲关系可猜测常数 $c_1,c_2$ 也应当与某一电阻有关,改变 $R_{f}$ 进一步实验可知 $c_1=c_2=R_{f}$,于是可以得到加法器的电压关系 $u_0=-\left( \frac{R_{f}}{R_1}u_1+\frac{R_{f}}{R_2}u_2 \right) $.
+
+        理论分析方面,使用运放的 "虚短" 即正负输入端间电压为 $0$,以及 "虚断" 即正负输入端电流为 $0$,可得到负输入端上的 KCL 方程 $\frac{u_1}{R_1}+\frac{u_2}{R_2}+\frac{u_0}{R_{f}}=0$. 此即实验所得关系式的变形形式,符合实验结果.
+        \subsection{电流源}
+        对基准数据 $u_{i}=1 \ \mathrm{V},R_i=1 \ \mathrm{k\Omega},R_{L}=5 \ \mathrm{k\Omega}, R_1=1 \ \mathrm{k\Omega}$,波形图上以伏特为单位的 $u_{i}$ 与以毫安为单位的 $i$ 几乎重合,故等效电路为 $u_{i}$ 激励的一个 $R=1 \ \mathrm{k\Omega}$ 的电阻,观察此时使用的电阻数值,等效电阻阻值可能与 $R_{i}$ 或 $R_{1}$ 有较大关系.
+
+        将 $u_{i}$ 重设为 $2 \ \mathrm{V}$ 后,电压-电流波形图大部分仍然重合,但在峰值附近, $i$ 未能达到 $u_{i}$ 峰值对应的电流,而是出现了与 $x$ 轴平行的极值线段.计算此时输出端上的电压约为 $1.8 \ \mathrm{mA}\times 6 \ \mathrm{k\Omega}=10.8 \ \mathrm{V}$ 接近于运放的驱动电压单侧峰值 $12 \ \mathrm{V}$,因此推测运放到达饱和.从未饱和的部分可知,电流响应与激励 $u_{i}$ 成正比,由基准数据 (设为 $u_{i_0}$ 和 $i_0$) 可推测此时的理想电流响应应当为 $i=\frac{u_{i}}{u_{i_0}}i_{0}=2 \ \mathrm{mA}$,对应的输出电压 $u=12 \ \mathrm{V}$ 是运放的理想最大输出电压,但实际运放出现饱和,即实际运放在驱动电压的利用上存在损耗.
+
+        在上述基础上,将 $R_{L}$ 重设为 $1 \ \mathrm{k\Omega}$,得到的波形相比于上述波形未见明显变化,但运放饱和现象消失,电流响应达到预定理想值,因此可推测在运放未饱和时,响应电流与 $R_{L}$ 无关,运放在 $R_{L}$ 支路上起到了等效电流源的效果.由电路接线的支路关系,可推测响应 $i=\frac{u_{i}}{R_1}$ (未饱和时),进一步实验也证实了该推测,该关系式与 $R_{L}$ 亦即输出端电压无关,该电路结构成功实现了电流源.
+
+        理论分析方面,使用 "虚短" 与 "虚断" 条件,可以得到负输入端的电压等于 $u_{i}$ 且电流为 $0$,于是 $R_1$ 支路的电流 $i_1=\frac{u_{i}}{R_1}$ 也等于 $R_{L}$ 支路的电流,此即实验得出的响应电流 $i$ 的关系式,符合实验结果.
+    \section{思考题}
+        \begin{enumerate}
+            \item 如果要实现一个将输入信号放大 $10000$ 倍的电路,设计电路时应该考虑哪些因素?
+
+                放大信号倍数极大,首先要考虑输入信号的干扰问题,因为干扰可能随信号一同放大,微弱的稳恒干扰可能被放大到能够覆盖信号变化的程度,因此需要使用差分输入等手段消除此类干扰.
+
+                同时,较强的输出信号产生的电磁效应可能会影响到输入信号,因此需要做好输入输出信号间的隔离,这也可以有效防止放大器出现故障时强电流流入输入端导致的元器件损坏.
+
+                在实现方面,单个放大器难以达到如此大倍数的增益,输入输出端的信号强度差异会引起一系列的问题,使用多个放大器逐级放大可以减小出现这些问题的可能性,在多级放大过程中还可以插入一些滤波和抗干扰手段以提升放大质量.
+            \item 电流源的接线中电阻 $R_{i}$ 的作用是什么,其选值受什么因素制约.
+
+                $R_{i}$ 并不直接参与电路响应,其主要作用可能是保护电路,因为其支路上单个电源 $u_{i}$ 在电路故障时有短路的风险,串联一个电阻可以控制短路发生时电源不致烧坏.由此 $R_{i}$ 应足够大使得其单独串联 $u_{i}$ 时电流在合理区间 ($\ \mathrm{mA}$级别) ,同时 $R_{i}$ 不能过大以免在正常使用时分压破坏实际运放的近似 "虚断" 性质.
+        \end{enumerate}
+    \section{结论}
+        本实验通过使用运放构建加法器和模拟电流源,计算和分析了运放的基本电路性质,同时介绍了对运放分析的 "虚短" 和 "虚断" 性质,得出了运放在实际电路中的作用和基本使用方法,还强调了一些运放使用过程中的注意事项及其原因.
+
+        完整数据及图表可从\href{https://cloud.tsinghua.edu.cn/d/14cb134a3c584fa28f73/}{此处}下载.
+\end{document}

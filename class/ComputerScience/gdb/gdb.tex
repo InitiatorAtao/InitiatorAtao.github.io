@@ -1,0 +1,46 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{GDB 的使用}
+    \subsection{常用指令}
+    \begin{enumerate}
+        \item 回车快速重复执行指令
+        \item \texttt{break,b} 设置断点,常用参数:
+            \begin{itemize}
+                \item \texttt{*fun} 在进入函数 \texttt{fun} 时中断
+            \end{itemize}
+        \item \texttt{disassemble,disas} 查看当前断点处的汇编代码
+        \item \texttt{layout} 控制 TUI 布局,常用参数:
+            \begin{itemize}
+                \item \texttt{src} 显示源代码窗口
+                \item \texttt{asm} 显示汇编代码窗口,结合 \texttt{disassemble} 使用
+                \item \texttt{reg} 显示寄存器窗口
+            \end{itemize}
+        \item \texttt{next,n/nexti,ni} 单步运行,不进入函数\sn{\texttt{i}后缀表示以汇编指令为单位运行}
+        \item \texttt{step,s/stepi,si} 如果当前为函数调用,则进入
+        \item \texttt{finish} 如果当前在函数内,则执行直到返回到调用处
+        \item \texttt{continue,c} 继续执行直到遇到下一个断点
+        \item \texttt{info} 查看信息,可用参数:
+            \begin{itemize}
+                \item \texttt{break} 查看断点信息
+            \end{itemize}
+        \item \texttt{print,p} 打印表达式的值
+        \item \texttt{examine,x} 查看指定内存的内容,后接 \texttt{/(s,d,u,f)} 等指定指向的数据类型,特别的,\texttt{t}代表二进制整数,\texttt{i}汇编指令.
+        \item \texttt{backtrace,bt} 查看当前调用栈以及每层栈中的返回地址.
+        \item \texttt{ptype} 查看参数的完整类型信息.
+        \item \texttt{set var \$name=...} 设定 GDB 变量,变量以 \texttt{\$} 开头,支持以 C++ 风格语句进行运算和操作,但赋值时要加 \texttt{set} 前缀,还有一些内部变量:
+            \begin{enumerate}
+                \item \texttt{\$} 最后一次使用的表达式或命令的值
+                \item \texttt{\$pc} 当前程序计数器的值
+                \item \texttt{\$sp} 当前栈指针 (stack pointer) 的值
+                \item \texttt{\$fp} 当前帧指针 (frame pointer) 的值
+                \item \texttt{\$eax} 等 CPU 寄存器的值
+                \item \texttt{\$bp} 断点地址
+                \item \texttt{\$var} 程序内的局部变量
+                \item \texttt{\$args} 程序参数,\texttt{info args} 从栈帧列出当前函数所有的参数及其类型
+                \item \texttt{\$frame} 栈帧编号
+                \item \texttt{\$depth} 栈帧深度
+            \end{enumerate}
+    \end{enumerate}
+\end{document}

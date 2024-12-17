@@ -1,0 +1,104 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{o1 Replication Journey (o1 复制之旅)}
+    \subsection{初始评估}
+    \begin{itemize}
+        \item o1 的思想
+            \begin{itemize}
+                \item  检查 OpenAI 提供的 o1 思考示例.
+
+                    回答长度 (包括标记和行数) 随难度成比例增长,难度越高的问题涉及的推理步骤越多.
+
+                \item 进行关键词频率分析.
+
+                    推理过程中的分支,反思和自我修正.
+
+                \item 提取 o1 处理复杂方程并进行推理的基本思维链.
+
+                    结论:长思维数据需要具有 "迭代解决问题","标记关键思维"\sn{即使用明确的标记词突出推理阶段,如在结论中使用"因此",在探索不同路径中使用"或者",在过渡到计算中使用"让我来计算"等},"递归和反思方法","探索假设","结论与验证" 的特征.
+            \end{itemize}
+        \item "长思" 如何工作
+
+            目前尚未有足够的经验证据验证假设的准确性.
+            \begin{itemize}
+                \item 旅程学习 (Journey Learning)
+
+                    探索整个决策轨迹,考虑多种解决路径,从错误中学习,并理解完整的问题解决过程.
+                    
+                    不仅仅是知道正确答案,还能理解为什么以及如何得出正确答案.
+            \end{itemize}
+        \item 如何构建长思
+            \begin{itemize}
+                \item 使用 LLM 和奖励的树状搜索
+                    
+                    构建推理树,根节点代表问题,其他节点代表推理步骤,路径代表推理过程.回溯和反思基于不正确的推理步骤\sn{需要过程级精细度的奖励模型来指示树中每个节点的正确性}.
+                \item 建议-批判循环
+
+                    允许模型选择当前行动\sn{基于预定义的可能操作,如继续,回溯,反思,终止}来构建推理树.
+                \item 多智能体 (Agent) 方法
+
+                    一个智能体作为策略模型,不断进行推理,另一个智能体作为批评模型,指出应当继续还是回溯.
+                \item 标注完整的人类思维过程
+
+                    记录人类解决推理任务的过程作为长思.
+            \end{itemize}
+        \item 如何构建奖励模型
+
+            使用数据集 PRM800K 和 MR-GSM8K 对几个模型进行测试,o1-mini 的表现最好.
+        \item 如何构建策略推理树
+            \begin{itemize}
+                \item 策略模型和步骤分割
+
+                    使用 Abel 中提出的格式,将答案分为多行,每行以行号开头,包括行内的推理
+
+                    使用 Abel 的数据集对 DeepSeekMath-7B-Base 进行了微调,得到了 Abel-DSMath 作为策略模型.
+                \item 奖励模型和剪枝
+
+                    使用 o1-mini 直接显示每个推理步骤的正确与否,每次选择最多 $K$ 个正确的推理步骤.
+            \end{itemize}
+        \item 如何从推理树中推导出长思想
+
+            \begin{itemize}
+                \item 从推理树中构建捷径
+
+                    即一条通向正确答案叶节点的路径,如果有多个则建立多条路径
+                \item 推理树的遍历路径
+
+                    深搜,引入特定的约束来限制搜索的复杂性,即在正确路径上可以进行最多 $K$ 次正确或错误的探索,在错误路径上随机选择下一步且回溯之后不再继续探索.
+                \item 从遍历路径得出长思
+
+                    串联遍历路径中的所有步骤来构建一个长思草稿,并使用 GPT-4o 修改草稿.
+            \end{itemize}
+        \item 如何评估实验
+
+            使用 Streamlit 搭建可视化数据分析平台,可视化推理树和长思以及模型输出.
+        \item 如何训练模型
+
+            使用 DeepSeekMath-7B-Base 作为预训练模型,先后进行监督微调 (Supervised Fine-Tuning,SFT) 和直接偏好学习 (Direct Preference Optimization,DPO).
+            \begin{itemize}
+                \item 监督微调
+
+                    先后进行捷径学习 (Abel 数据集和筛选后的 PRM800K 数据集) 和旅程学习 (327 个示例,同时使用对应的捷径训练进行对比)
+                \item 直接偏好学习
+
+                    使用从 PRM800K 中重新划分的 MATH Train 数据集生成每个问题的 20 个回答,按照正确性分类,抽取 5 个正误偏好对训练模型.
+            \end{itemize}
+        \item 人类与人工智能合作的有效注释策略
+
+            需要记录"完整的思维过程"与"常识的补充解释",数据扩增的方法如下:
+            \begin{itemize}
+                \item 增强数据粒度
+                \item 渐进式推理
+                \item 学生-探索者的视角
+            \end{itemize}
+    \end{itemize}
+    \subsection{工具一览}
+    \begin{itemize}
+        \item PRM800K:在 \href{https://openreview.net/forum?id=v8L0pN6EOi}{Let's Verify Step by Step} 发布的 800,000 个步骤级人类反馈标签的完整数据集. 在文中用于测试奖励模型的性能.
+        \item GSM8K: OpenAI 在 \href{https://arxiv.org/abs/2110.14168}{Training Verifiers to Solve Math Word Problems} 发布的 8.5K 语言多样化的小学数学单词问题的数据集.在文中用于测试奖励模型的性能.
+        \item Abel: 在 \href{https://github.com/GAIR-NLP/abel}{Generative AI for Math: Abel} 发布的仅使用 SFT 构建的模型.在文中使用了其提出的数据格式和数据集.
+        \item DeepSeekMath:在 \href{https://arxiv.org/abs/2402.03300}{DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models} 发布的对 DeepSeek 模型进行预训练产生的模型.文中使用了其 7B-Base 版本作为策略模型基座.
+    \end{itemize}
+\end{document}

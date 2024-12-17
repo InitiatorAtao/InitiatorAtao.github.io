@@ -1,0 +1,108 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \begin{lemma}
+        \label{lemma:Pumping}
+        (Pumping) \mn{Myhill Nerode theorem is more complex but powerful}Let L be a regular language. Then there consist a consistant $n$ such that for every $w\in L$ such that $|w| >n$, we can break $w$ into three strings $x,y,z$ as $w=xyz$ such that:
+        \begin{align}
+            y\ne&\epsilon\nonumber\\
+            |xy|\le&n\nonumber\\
+            xy^{k}z\in&L,\forall k\ge 0\nonumber
+        \end{align}
+    \end{lemma}
+    \begin{proof}
+        \label{proof:Pumping}
+        (Pumping) $n$ is the state of the FA of the language, when $|w| >n$ there is at least one re-reached state when the FA runs $w$. So we can repeat $y$ which refers to a circle in the FA.
+    \end{proof}
+    \begin{example}
+        \label{example:Pumping}
+        (Pumping) To proof $L_{EQ}=\{0^{n}1^{n}|n\ge 0\}$ is not a RL. Assume that is regular, $n_0$ be the constant in PL. Take $w=0^{n_0}1^{n_0}$, then $y=0^{n_1},n_1\le n_0,xy^{k}z=0^{n_0+kn_1}1^{n_0}$ should be in $L_{EQ}$ but appearently not, that is a contrary.
+    \end{example}
+    \begin{theorem}
+        \label{theorem:Closure}
+        (Closure) Here $L,M$ are RL expressed by some RE:
+
+        If $L$ and $M$ are regular, so is $L+M,LM,L^{*}$.
+
+        If $L$ is regular, so is $\overline{L}$ 
+        \mn{
+            Take DFA of $L$: 
+            \begin{align}
+                A=&(Q,\Sigma,\delta,q_0,F)\nonumber\\
+                L(A)=&L\nonumber
+            \end{align}
+            then construct
+            \begin{align}
+                B=&(Q,\Sigma,\delta,q_0,Q\backslash F)\nonumber\\
+                L(B)=&\overline{L}\nonumber
+            \end{align}
+        }
+    \end{theorem}
+    \begin{definition}
+        \label{definition:Reversal}
+        (Reversal) Given $L$, $L^{R}=\{w|w^{R}\in L\}$ is called the reversal of $L$.
+    \end{definition}
+    \begin{theorem}
+        \label{theorem:Reversal}
+        (Reversal) If $L$ is regualar, so is $L^{R}$.
+    \end{theorem}
+    \begin{proof}
+        \label{proof:Reversal}
+        (Reversal) Structral induction. For RE $E,F$:
+        \begin{align}
+            L^{R}(E+F)=&L^{R}(E)+L^{R}(F)\nonumber\\
+            L^{R}(EF)=&L^{R}(F)L^{R}(E)\nonumber\\
+            L^{R}(E^{*})=&(L^{R}(E))^{*}\nonumber
+        \end{align}
+    \end{proof}
+    \begin{definition}
+        \label{definition:Homomorphism}
+        (Homomorphism) Mapping among strings\mn{strings may not be in the same alphabet}: $h:\Sigma \rightarrow \Gamma^{*}$ or $h: \Sigma^{*}\rightarrow \Gamma^{*}$, $h(a_1a_2\ldots a_n)=h(a_1)h(a_2)\ldots h(a_n)$. Homomorphism of a language is $h(L)=\{w\in \Sigma^{*}|\exists x\in L,h(x)=w\}$.
+    \end{definition}
+    \begin{theorem}
+        \label{theorem:Homomorphism}
+        (Homomorphism) If $L$ is regular, so is $h(L)$.\mn{proofed by normal structral induction}
+    \end{theorem}
+    \begin{definition}
+        \label{definition:Inverse Homomorphism}
+        (Inverse Homomorphism) $h^{-1}(L)=\{w\in \Sigma^{*}|h(w)\in L\}$.
+    \end{definition}
+    \begin{example}
+        \label{example:Inverse Homomorphism}
+        (Inverse Homomorphism) $L=(00+1)^{*},h(a)=01,h(b)=10,h^{-1}(L)=(ba)^{*}$. Since the string must have an image in $L$, so there is no $a$ prefix or $b$ suffix or $aa,bb$ etc.
+    \end{example}
+    \begin{theorem}
+        \label{theorem:Inverse Homomorphism}
+        (Inverse Homomorphism) If $L$ is regular, so is $h^{-1}(L)$.
+    \end{theorem}
+    \begin{proof}
+        \label{proof:Inverse Homomorphism}
+        (Inverse Homomorphism) Build new DFA, run new $\delta$ as multi steps on origin DFA $A$ in $L$: $\delta(q,a)=\hat{\delta}(q,h(a))$.
+    \end{proof}
+    \begin{example}
+        \label{example:Inverse Homomorphism:02}
+        (Inverse Homomorphism) To proof $\{a^{i}b_{j}c^{k}|i=1\Rightarrow j=k\}$ is not regular, choose a subset $\{ab^{j}c^{j}\}$, do homorphism $h(a)=\epsilon,h(b)=0,h(c)=1$, then the language turns to $\{0^{n}1^{n}\}$ which is not regular.
+    \end{example}
+    \section{Calculate complexity}
+    \begin{itemize}
+        \item Conversion among expressions: Most have exp complexity. DO NOT converse twice!
+        \item Emptiness: Most are cheap, attention that $E^{*}$ will not be empty.
+        \item Membership: DFAs are cheap, ($\epsilon$-)NFA are also acceptable. RE can be turn to $\epsilon$-NFA.
+        \item State Equalence\mn{p,q are equal if start in them accepts the same strings, otherwise p,q are distinguishable}:Table-filling algorithm, about $O(|Q| |\Sigma|^2)$. A bit slow but acceptable, use it carefully.
+        \item Minimization: Remove unreachable parts, union the states by the equalence.
+    \end{itemize}
+    \begin{definition}
+        (Table-filling algorithm) 
+        Base: if $p$ accepted, $q$ is not, they are distinguishable.
+
+        Induction: $\delta(p,a),\delta(q,a)$ are distinguishable $\Rightarrow p,q$ are distinguishable.
+        Usage: Write a table of $\frac{1}{2}Q\times Q$. Sign the two distinguishable states. Recursive until no more distinguishable state are detected.
+    \end{definition}
+    \begin{theorem}
+        (Table-filling algorithm) If two states are not distinguishable by the table-filling algorithm, then they are equivalent.
+    \end{theorem}
+    \begin{proof}
+        (Table-filling algorithm) Just simulate how the algorithm work on string and states.
+    \end{proof}
+\end{document}

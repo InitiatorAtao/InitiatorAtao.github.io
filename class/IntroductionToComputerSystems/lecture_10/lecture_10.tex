@@ -1,0 +1,43 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{计算机内存结构}
+    \subsection{虚存}
+    使用内存管理单元 (Memory Management Unit, MMU) 和虚拟地址, MMU 将虚拟地址映射到物理地址\sn{虚拟地址空间一般大于物理地址空间,仅有有限部分可以访问}.
+
+    \begin{definition}
+        (页表) 将虚拟页映射到物理页的页表项 (Page Table Entries, PTE) 数组,起到了映射虚拟地址到物理地址的作用\mn{进程拥有独立页表,存储于物理内存中}
+    \end{definition}
+    页表项中的数据实际存储位置可能为物理内存或磁盘,需要读写磁盘数据时触发页缺失 (Page Fault) 中断,操作系统将磁盘数据页读入物理内存进行替换.
+
+    为实现进程间代码与数据共享,可以将不同进程的虚拟页映射到相同的物理页上,为此需要扩展页表项,增加使用权限位,控制进程能否读写对应的页\sn{违反时触发 SIGGEV}.
+    \begin{definition}
+        (抖动效应, Thrashing) 连续地在硬盘与内存间交换页面,导致性能崩溃.\mn{出现在程序活跃访问的虚拟页 (称工作集) 的大小超过物理内存时}
+    \end{definition}
+    \subsection{虚实地址翻译}
+    \begin{definition}
+        (基本参数) 以字节为单位:
+        \begin{itemize}
+            \item $N=2^{n}$: 虚拟地址长度
+            \item $M=2^{m}$: 物理地址长度
+            \item $P=2^{p}$: 页面大小
+        \end{itemize}
+    \end{definition}
+    \begin{definition}
+        (快表, Translation Lookaside Buffer, TLB) MMU 中的小规模硬件缓存,包含少量页面的 PPN\mn{用于比访问物理内存中的页表更快速的地址翻译,命中时直接获得 PPN}.
+    \end{definition}
+    \begin{definition}
+        (虚拟地址, Virtual Address, VA) 由如下部分组成 (从高位到低位):
+        \begin{itemize}
+            \item VPN: Virtual Page Number, 虚页号,如果存在快表,其又对应两部分\mn{快表附加的额外意义}:
+            \begin{itemize}
+                \item TLBT: TLB Tag, 快表标签
+                \item TLBI: TLB Index, 快表索引
+
+                    快表索引对应快表存储"数组"的行,对应的列数称为路数\mn{一般为2,4,8,...但小于快表标签的数量}
+            \end{itemize}
+            \item VPO: Virtual Page Offset, 页内偏移地址
+        \end{itemize}
+    \end{definition}
+\end{document}

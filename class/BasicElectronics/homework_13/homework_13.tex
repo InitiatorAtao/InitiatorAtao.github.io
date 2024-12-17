@@ -1,0 +1,40 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{电子学基础-第十三次作业}
+
+\begin{document}
+    \maketitle
+    \section{8.19} 如图所示的积分器接受输入信号 $V_{\texttt{in}}=V_0\sin\omega t$,确定 $A_0=\infty$ 时的输出信号.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\linewidth]{./figures/homework_13_figure_01.png}
+    \end{figure}
+
+    解:由理想积分器方程 $V_{\texttt{out}}=-\int_{}^{}\frac{1}{R_1C_1}V_{\texttt{in}}\mathrm{d}t=\frac{V_0}{R_1C_1\omega}\cos\left( \omega t \right) $.
+    \section{8.24} 如图所示的微分器用于将频率为 $1 \ \mathrm{MHz}$ 的正弦波输入放大系数 $5$,如果 $A_0=\infty$,确定 $R_1C_1$ 的值.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\linewidth]{./figures/homework_13_figure_02.png}
+    \end{figure}
+    \newpage
+    解:由理想微分器方程, $V_{\texttt{out}}=-R_1C_1 \frac{\mathrm{d}V_{\texttt{in}}}{\mathrm{d}t}$,令输入 $V_{\texttt{in}}=V_0\sin 2\pi f t$,有放大系数 $2\pi f R_1C_1=5$,计算得到 $R_1C_1=\frac{5}{2\pi f}\approx 7.96\times 10^{-7} \ \mathrm{\Omega\cdot F}$.
+    \section{8.34} 考虑如图所示的电压加法器,其中 $R_{P}$ 是寄生电阻,运放的输入阻抗有限,确定 $V_{\texttt{out}}$ 与 $V_1$ 和 $V_2$ 的关系.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\linewidth]{./figures/homework_13_figure_03.png}
+    \end{figure}
+    
+    解:设输入阻抗为 $R_{\texttt{in}}$, $X$ 处的电位为 $V_{X}$,运放两端的电位差为 $\Delta V$,由 KCL:
+    \begin{align}
+        \frac{V_1-V_{X}}{R_1}+\frac{V_2-V_{X}}{R_2}=&\frac{V_{X}+A_0\Delta V}{R_{F}}+\frac{V_{X}}{R_{\texttt{in}}+R_{P}}\nonumber
+    \end{align}
+    由分压关系:
+    \begin{align}
+        \Delta V=&V_{X} \frac{R_{\texttt{in}}}{R_{\texttt{in}}+R_{P}}\nonumber
+    \end{align}
+    代入 KCL 方程可得:
+    \begin{align}
+        V_{\texttt{out}}=&-A_0V_{X}\nonumber\\
+        =&-A_0\left( \frac{V_1}{R_1}+\frac{V_2}{R_2} \right) \left[\left( \frac{R_{\texttt{in}}+R_{P}}{R_{P}} \right) \left( \frac{1}{R_{F}}+\frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_{\texttt{in}}+R_{P}}+\frac{A_0}{R_{P}} \right) \right]^{-1}\nonumber
+    \end{align}
+\end{document}

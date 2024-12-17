@@ -1,0 +1,58 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \subsection{Extension of TMs}
+        \subsubsection{Multiple tapes TMs}
+        TMs with multiple tapes and heads.
+        \begin{theorem}
+            (Multitape TM) Every language accepted by multitape TM is RE.
+        \end{theorem}
+        \begin{proof}
+            (Multitape TM) Use multi track, for each head add a track with only blank or star ($*$) to record where the head is. Tape symbols are easy to be recorded on tracks. For each transition:
+            \begin{enumerate}
+                \item Scan from left to right, store current head symbols in state.
+                \item For each track express a tape, run from left to right, rewrite the symbol and change the head track.
+                \item Change the state.
+            \end{enumerate}
+        \end{proof}
+        \subsubsection{Non-deterministic TMs, NTM}
+        In an NTM, $\delta\left( q,x \right) $ is a set of possible moves. NTM accepts if there exists at least one acception branch.
+        \begin{theorem}
+            (Non-deterministic TMs, NTM) Every language accepted by NTM is RE.
+        \end{theorem}
+        \begin{proof}
+            (Non-deterministic TMs, NTM) Use 2-tape TM to do BFS on ID graphs\mn{use BFS because DFS may dive into a branch that does not halt}, accept whenever the current ID is accepting.
+        \end{proof}
+    \subsection{Restrictions of TMs}
+    \begin{itemize}
+        \item Semi-infinite TMs: TMs which tape is only infinite in one direction.
+
+            Can use 2-track with end-flag (to warn about tape edge) to simulate normal TMs.
+        \item Multi stack TMs: TMs with no tape but at least 2 stacks.
+
+            Can use 2 stacks to simulate tape.
+        \item Counter Machines, CMs: TMs with no tape but counters (non-negative integer that can be increase or decrease), where transition is determined by the state, input symbol and which counters are zero. 2-counter machines accepts all language in RE by:
+            \begin{enumerate}
+                \item Begin with 2-stack machine.
+                \item Identify the stack symbols as $1,2,\ldots,r-1$.
+                \item Encode stack $X_1,\ldots,X_{n}$ as $\sum_{i=1}^{n}X_{i}r^{i-1}$.
+                \item Stack pop equals to counter $i\rightarrow \left\lfloor \frac{i}{r}\right\rfloor$. Stack push $X$ equals to counter $i\rightarrow ir+X$.
+            \end{enumerate}
+    \end{itemize}
+    \subsection{Simulate computers by TMs}
+    Computers have things like:
+    \begin{enumerate}
+        \item Memory.
+        \item The program of the computer is stored in the memory.
+        \item Each instruction involves a limited number of words.
+        \item A typical computer has registers, which are memory words with fast access.
+    \end{enumerate}
+    To simulate computers by TMs, use a multitape TM with tapes refers to Memory, Instruction Counter, Memory Address, etc. Then simulate operations step by step on each tapes.
+
+    For $n$ computer operations, TMs can simulate them in about $O\left( n^3 \right) $ time.
+    \subsection{The busy beaver TMs}
+    Define $n$-normal-state TM with a halt state over binary alphabet and tape symbols $\{0,1\}$ where $0$ is the blank symbol. Define $\operatorname{BB}\left( n \right) $ as the maximum number of steps of an $n$-normal-state TM if it eventually halt with all $0$ input tape.
+
+    $\operatorname{BB}\left( 1 \right) $ is trivally $1$ which halt at the first state. Then $6,21,107,47176870$. $\operatorname{BB}\left( 6 \right) $ is not less than $10 ^{10 ^{\cdots ^{10}}}$ with $15$ of $10$s.
+\end{document}

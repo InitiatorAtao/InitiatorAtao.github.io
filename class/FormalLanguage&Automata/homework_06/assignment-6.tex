@@ -1,0 +1,263 @@
+\documentclass[10pt]{homework}
+\usepackage{transparent,pdfpages,xifthen,import,hyperref}
+\newcommand{\inkfig}[2][0.7\columnwidth]{%
+    \def\svgwidth{#1}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\name{Tao Wenhua} % Replace (Student Name) with your name.
+
+\id{2023010782}
+\term{2024 Autumn}
+\course{Formal Languages and Automata}
+\hwnum{6}
+
+%\hwname{(Name)}          % Uncomment and replace (Name) with the type of the
+                          % homework (e.g, Assignment, Problem Set, etc.) if you
+                          % don't want the document to be labeled as "Homework."
+%\problemname{(Name)}     % Uncomment and replace (Name) with the desired label
+                          % for problems created with the problem environment.
+%\solutionname{(Name)}    % Uncomment and replace (Name) with the desired label
+                          % for solutions created with the solution environment.
+
+% Load any other packages you need here.
+
+\begin{document}
+
+\begin{problem}
+  Design context-free grammars for the following languages:
+  \begin{parts}
+    \part\label{1.a} (Exercise 5.1.1 (b)) The set $\{a^{i}b^{j}c^{k} \mid i \ne j \text{
+      or } j \ne k\}$, that is, the set of strings of a's followed by b's
+    followed by c's, such that there are either a different number of a's and
+    b's or a different number of b's and c's, or both.
+    \part\label{1.b} (Exercise 5.1.1 (c)) The set of all strings of a's and b's that are
+    not of the form $ww$, that is, not equal to any string repeated.
+    \part\label{1.c} $\{a^{n}b^{m} \mid n, m \ge 0 \land 3n \ge m \ge 2n \}$.
+    % \part\ $\{a^{n}b^{n+m}c^{m} \mid n, m\ge 0\}$.
+    \part\label{1.d} $\{a^{m}b^{n}c^{p}d^{q} \mid n, m, p, q \ge 0, m+n = p+q\}$.
+    \part\label{1.e} $\{a^{n}b^{i}c^{j}d^{m} \mid n, m, i, j \ge 0, n+m=i+j\}$.
+    % \part\label{1.f} $\bigl\{ w_{1}cw_{2}c \cdots cw_{k}ccw_{j}^{R} \mid 1 \le j \le k,
+    % w_{} \in {\{a, b\}}^{+} \text{ for all } 1 \le i \le k \bigr\}$.
+    % \part\ $\{uawb \mid u,w \in {\{a,b\}}^{*}, \abs{u} = \abs{w}\}$.
+    % \part\ $\{a^{i}b^{j}c^{k}\mid i,j,k\ge 0, i=k \text{ if } j=1\}$.
+    % \part\ The set of all strings of a's and b's in which the number of $a$'s is
+    % no less than the number of $b$'s.
+  \end{parts}
+\end{problem}
+
+\begin{solution}
+    \begin{parts}
+        \part Here $P,Q$ separatly refer to $i\ne j$ and $j\ne k$:
+        \begin{align}
+            G=(\{S,P_0,P_1,P_{a},P_{b},Q_0,Q_1,Q_{b},Q_{c}\},\{a,b,c\},A,S)\nonumber
+        \end{align}
+        \begin{align}
+            A:\{&S\rightarrow P_0\ |\ Q_0,\nonumber\\
+                &P_0\rightarrow P_0c\ |\ P_1,\nonumber\\
+                &P_1\rightarrow aP_1b\ |\ P_{a}\ |\ P_{b},\nonumber\\
+                &P_{a}\rightarrow a\ |\ aP_{a},\nonumber\\
+                &P_{b}\rightarrow b\ |\ bP_{b},\nonumber\\
+                &Q_0\rightarrow aQ_0\ |\ Q_1,\nonumber\\
+                &Q_1\rightarrow b Q_1c\ |\ Q_{b}\ |\ Q_{c},\nonumber\\
+                &Q_{b}\rightarrow b \ |\ b Q_{b},\nonumber\\
+                &Q_{c}\rightarrow c\ |\ cQ_{c}\}\nonumber
+        \end{align}
+        \part 
+        \begin{align}
+            G=&(\{S,P_{a},P_{b}\},\{a,b\},S)\nonumber
+        \end{align}
+        \begin{align}
+            A:\{&S\rightarrow P_{a}P_{b}\ |\ P_{b}P_{a}\ |\ P_{a}\ |\ P_{b},\nonumber\\
+                &P_{a}\rightarrow a\ |\ aP_{a}a\ |\ aP_{a}b\ |\ bP_{a}a\ |\ bP_{a}b,\nonumber\\
+                &P_{b}\rightarrow b\ |\ aP_{b}a\ |\ aP_{b}b\ |\ bP_{b}a\ |\ bP_{b}b\}\nonumber
+        \end{align}
+        \part 
+        \begin{align}
+            G=&(\{P\},\{a,b\},A,P)\nonumber
+        \end{align}
+        \begin{align}
+            A:\{P\rightarrow \epsilon\ |\ aPbb\ |\ aPbbb\}\nonumber
+        \end{align}
+        \part 
+        \begin{align}
+            G=&(\{AD,AC,BD,BC\},\{a,b,c,d\},A,AD)\nonumber
+        \end{align}
+        \begin{align}
+            A:\{&AD\rightarrow aADd\ |\ AC\ |\ BD\ |\ BC,\nonumber\\
+                &AC\rightarrow aACc\ |\ BC,\nonumber\\
+                &BD\rightarrow bBDd\ |\ BC,\nonumber\\
+                &BC\rightarrow bBCc\ |\ \epsilon\}\nonumber
+        \end{align}
+        \part 
+        \begin{align}
+            G=&(\{P_{ABCD},P_{ABC},P_{AB},P_{BCD},P_{CD}\},\{a,b,c,d\},A,P_{ABCD})\nonumber
+        \end{align}
+        \begin{align}
+            A:\{&P_{ABCD}\rightarrow P_{ABC}P_{CD}\ |\ P_{AB}P_{BCD}\ |\ P_{AB}P_{CD},\nonumber\\
+                &P_{ABC}\rightarrow P_{AB}\ |\ aP_{ABC}c,\nonumber\\
+                &P_{AB}\rightarrow \epsilon\ |\ aP_{AB}b,\nonumber\\
+                &P_{BCD}\rightarrow P_{CD}\ |\ bP_{BCD}d,\nonumber\\
+                &P_{CD}\rightarrow \epsilon\ |\ cP_{CD}d\}\nonumber
+        \end{align}
+        
+    \end{parts}
+\end{solution}
+
+% \begin{problem} (Exercise 5.1.2 (c)) The following grammar generates the
+%   language of regular expression $0^{*}1 {(0 + 1)}^{*}$:
+%   \begin{align*}
+%     S & \rightarrow A 1 B\\
+%     A & \rightarrow 0A \;|\; \epsilon\\
+%     B & \rightarrow 0B \;|\; 1B \;|\; \epsilon.
+%   \end{align*}
+%   Give leftmost and rightmost derivations of string $00011$.
+% \end{problem}
+
+% \begin{problem}
+%   Consider the CFG G defined by productions:
+%   \begin{equation*}
+%     S \rightarrow aS \;|\; Sb \;|\; a \;|\; b.
+%   \end{equation*}
+%   \begin{parts}
+%     \part\ (Exercise 5.1.7 (a)) Prove by induction on the string length that no
+%     string in $L(G)$ has $ba$ as a substring.
+%     \part\ (Exercise 5.1.7 (b)) Describe $L(G)$ informally.
+%     Justify your answer using part (a).
+%   \end{parts}
+% \end{problem}
+
+\begin{problem} (Exercise 5.1.8)
+  Consider the CFG $G$ defined by productions:
+  \begin{equation*}
+    S \rightarrow aSbS \;|\; bSaS \;|\; \epsilon
+  \end{equation*}
+  Prove that $L(G)$ is the set of all strings with an equal number of a's and
+  b's.
+\end{problem}
+
+\begin{solution}
+    Use structural induction to proof all $S$ derivated string have the same a's and b's:
+
+    Base: $S\rightarrow \epsilon$ has the equal number (zero) of a's and b's.
+
+    Induction: If $S_0,S_1$ has the equal number of a's and b's (let the numbers are $a_0=b_0,a_1=b_1$), then $S\rightarrow aS_0bS_1$ has $a_0+a_1+1$ of a's and $b_0+b_1+1$ of b's, and $a_0+a_1+1=b_0+b_1+1$ for $S$. For $S\rightarrow bSaS$ that is the same.
+
+    Then proof all string $s$ with the same a's and b's can be derivated by $S$ :
+
+    Base: If $s=\epsilon$, use $S\rightarrow \epsilon$ to derivate $s$.
+
+    Induction: Else there is at lease a pair of a and b in $s$. If the first letter of $s$ is a, choose the shortest prefix of $s$ with the same a's and b's, the prefix must end with b (because $s$ starts with a, if the prefix ends with a then there must be enough b for a shorter correct prefix). Choose the prefix as $aS_0b$ then use $S\rightarrow aS_0bS_1$ can derivate the string. Using the same method,strings begin with b can be derivated by $S\rightarrow bS_0aS_1$.
+
+    So, $L(G)$ is the set of all strings with equal a's and b's.
+\end{solution}
+
+% \begin{problem} (Exercise 5.2.2)
+%   Suppose that $G$ is a CFG without any productions that have $\epsilon$ as the
+%   right side.
+%   If $w$ is in $L(G)$, the length of $w$ is $n$, and $w$ has a derivation of $m$
+%   steps, show that $w$ has a parse tree with $n+m$ nodes.
+% \end{problem}
+
+\begin{problem} (Exercise 5.4.7) The following grammar generates prefix
+  expressions with operands $x$ and $y$ and binary operators ${+}, {-}$ and $*$:
+  \begin{equation*}
+    E \rightarrow {+}EE \;|\; {*}EE \;|\; {-}EE \;|\; x \;|\; y.
+  \end{equation*}
+  \begin{parts}
+    \part\ Find leftmost and rightmost derivations, and a derivation tree for
+    the string ${+}{*}{-}xyxy$.
+    \part\ Prove that this grammar is unambiguous.
+  \end{parts}
+\end{problem}
+
+\begin{solution}
+    \begin{parts}
+        \part The leftmost derivation:
+        \begin{align}
+            E\Rightarrow &+EE\Rightarrow +*EEE\nonumber\\
+            \Rightarrow &+*-EEEE\nonumber\\
+            \Rightarrow &+*-xEEE\nonumber\\
+            \Rightarrow &+*-xEEE\nonumber\\
+            \Rightarrow &+*-xyEE\nonumber\\
+            \Rightarrow &+*-xyxE\nonumber\\
+            \Rightarrow &+*-xyxy\nonumber
+        \end{align}
+        The rightmost derivation:
+        \begin{align}
+            E\Rightarrow &+EE\Rightarrow +Ey\Rightarrow +*EEy\nonumber\\
+            \Rightarrow &+*Exy\nonumber\\
+            \Rightarrow &+*-EExy\nonumber\\
+            \Rightarrow &+*-Eyxy\nonumber\\
+            \Rightarrow &+*-xyxy\nonumber
+        \end{align}
+        The derivation tree is:
+        \begin{figure}[htbp]
+            \centering
+            \inkfig[0.4\columnwidth]{homework_06_figure_01}
+        \end{figure}
+        \part Use structural Induction:
+
+            Base:For $E\rightarrow x\ |\ y$, the derivation tree has only one root $E$ with one leaf $x$ or $y$, which is unique.
+
+            Induction: For $E\rightarrow +EE\ |\ *EE\ |\ -EE$, there must be an operator $+,*,-$ as the first letter, if the subtree is unique, the derivation tree also has unique shape of one root $E$ with the first son $+,*,-$ and the second and third sons of $E$'s in order.
+
+            So, there is the unique derivation tree, which means the grammar is unambiguous.
+    \end{parts}
+\end{solution}
+
+\begin{problem}
+  Give both an ambiguous and unambiguous CFG for
+  $\{a^{m}b^{n} \mid m \ge 2n \ge 0\}$.
+\end{problem}
+
+\begin{solution}
+    \begin{parts}
+        \part Ambiguous CFG:
+        \begin{align}
+            G=&(\{P\},\{a,b\},A,P)\nonumber
+        \end{align}
+        \begin{align}
+            A:\{&P\rightarrow \epsilon\ |\ aP\ |\ aaPb\}\nonumber
+        \end{align}
+        \part Unambiguous CFG:
+        \begin{align}
+            G=&(\{P,Q\},\{a,b\},A,P)\nonumber
+        \end{align}
+        \begin{align}
+            A:\{&P\rightarrow aaPb\ |\ Q,\nonumber\\
+                &Q\rightarrow \epsilon\ |\ aQ\}\nonumber
+        \end{align}
+    \end{parts}
+\end{solution}
+
+% \begin{problem}
+%   Find an equivalent unambiguous grammar for the following CFG\@:
+%   \begin{equation*}
+%     S \rightarrow SaS \;|\; SbS \;|\; ScS \;|\; d.
+%   \end{equation*}
+% \end{problem}
+
+% \begin{problem}
+%   Let G be a context-free grammar with terminals $\{0,1\}$, and production
+%   rules:
+%   \begin{align*}
+%     S & \rightarrow \epsilon \;|\; 0T1\\
+%     T & \rightarrow \epsilon \;|\; 1S0.
+%   \end{align*}
+%   Prove that if $S \Rightarrow^{*} w$, then
+%   $w \in L= \{ {(01)}^{k} \mid k \ge 0\}$.
+% \end{problem}
+
+% \begin{problem}
+%   Let $G$ be a CFG whose terminal set is $\{a, b, c\}$, starting symbol is $S$
+%   and production rules are
+%   \begin{align*}
+%     S & \rightarrow A \;|\; aSc\\
+%     A & \rightarrow B \;|\; bAc\\
+%     B & \rightarrow \epsilon \;|\; Bc.
+%   \end{align*}
+%   Prove that $L(G) = \{a^{i}b^{j}c^{k} \mid i+j \le k\}$.
+% \end{problem}
+
+\end{document}

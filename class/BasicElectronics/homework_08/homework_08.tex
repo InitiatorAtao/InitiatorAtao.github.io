@@ -1,0 +1,46 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{电子学基础-第八次作业}
+
+\begin{document}
+    \maketitle
+    \section{11-8} 求题图 11-8 所示各电路的入端阻抗 $Z_{ab}$.
+    \begin{figure}[htbp]
+        \includegraphics[width=\linewidth]{./figures/homework_08_figure_01.png}
+    \end{figure}
+    \begin{enumerate}
+        \item[(a)] 由串并联电路的阻抗关系,最右侧支路的阻抗 $Z_1=R+jX_{C}$,其与 $jX_{C}$ 并联后阻抗 $Z_2=\frac{jRX_{C}-X_{C}^2}{R+2jX_{C}}$.同理可知进一步串联后 $Z_3=\frac{R^2+3jRX_{C}-X_{C}^2}{R+2jX_{C}}$,最终阻抗 $Z_{ab}=R + \frac{X_{C} \left(j R^{2} - 3 R X_{C} - j X_{C}^{2}\right)}{R^{2} + 4 j R X_{C} - 3 X_{C}^{2}}$
+        \item [(b)] 右侧支路的阻抗 $Z_1=1-j0.25 \ \mathrm{\Omega}$,若 a,b 之间电压为 $\dot{U}_{ab}$,则 $\dot{U}_{1}=\frac{\dot{U}_{ab}}{1-j0.25}$,左侧支路电阻上的电压 $\dot{U}_{2}=U_{ab}+0.5\dot{U}_{1}=(1.47 + j0.11)U_{ab}$,电流 $\dot{I}=\frac{\dot{U}_{2}}{R}\approx (1.47 + j0.11)U_{ab}$. 故总电流 $\dot{I}\approx (2.41 + j0.35)\dot{U}_{ab}$,由此计算阻抗 $Z_{ab}=\frac{\dot{U}_{ab}}{\dot{I}_{ab}}\approx 0.406 - j0.0594 \ \mathrm{\Omega}$.
+        \item [(c)] 右上方两电阻并联阻抗 $0.5 \ \mathrm{\Omega}$ 且电流相等,求和为 $0.5\dot{I}_1$,故各自电流为 $0.25 \dot{I}_1$.故流过电感的电流 $\dot{I}_2=0.75 \dot{I}_1$,总电流 $\dot{I}=1.25I_1$.总电压即右侧支路电压 $\dot{U}_1=j 3 \dot{I}_{1}$ 和串联电阻上的电压 $\dot{U}_{2}=1.25 \dot{I}_{1}$ 之和 $\dot{U}=(1.25+j 3)\dot{I}_{1}$.由此计算阻抗 $Z_{ab}=\frac{\dot{U}}{\dot{I}}=1+j 2.4 \ \mathrm{\Omega}$.
+    \end{enumerate}
+    \section{11-23} 题图 11.23 所示电路为一种移相电路.用相量分析说明改变电阻可电压 $\dot{U}_{ab}$ 相位变化而大小不变.若 $U=2 \ \mathrm{V},f=200 \ \mathrm{Hz},R_1=4 \ \mathrm{\Omega}, C=0.01 \ \mathrm{\mu F}$,$R_2$ 由 $30 \ \mathrm{k\Omega}$ 变至 $140 \ \mathrm{k \Omega}$,求 $\dot{U}_{ab}$ 的相位变化.
+    \begin{figure}[htbp]
+        \includegraphics[width=0.5\linewidth]{./figures/homework_08_figure_02.png}
+    \end{figure}
+
+    相量分析如下图所示,其中 $\dot{U}_{1}=\dot{U}_{2}$ 为左侧支路上两电阻 $R_1$ 上的电压,$\dot{U}_{R}\perp \dot{U}_{C}$ 分别为 $R_2$ 上的电压和电容上的电压,$\dot{I}_{C}=\dot{I}_{2}$,由串并联电路的阻抗关系可知 $\dot{U}_{1}+\dot{U}_{2}=\dot{U}_{R}+\dot{U}_{C}=\dot{U}$.于是 $\dot{U}_{R},\dot{U}_{C}$ 在图中的交点在以 $\dot{U}$ 为直径的圆上运动,又由 $\dot{U}_{1}+\dot{U}_{ab}=\dot{U}_{R}$,于是 $U_{ab}$ 等于圆的半径长,保持不变.
+    \begin{figure}[htbp]
+        \includegraphics[width=0.45\linewidth]{./figures/homework_08_figure_03.pdf}
+    \end{figure}
+
+    电容 $X_{C}=-j\frac{1}{\omega C}=-j\frac{1}{2\pi f C}\approx -j7.958\times 10^{4} \ \mathrm{\Omega}$.$\dot{U}_{ab}$ 的相位 $\theta=\arctan{(\frac{U_{R}}{U_{C}})}=\arctan{(\frac{R_2}{|X_{C}|}})$.因此,$R_2=30 \ \mathrm{k\Omega}$ 时 $\theta\approx -0.36\approx -41.3^{\circ}$,$R_2=140 \ \mathrm{k\Omega}$ 时 $\theta\approx -1.05\approx -120.8^{\circ}$.
+    \section{11-28} 分别用回路法和节点法列写题图 11-28 所示电路的相量方程.
+    \begin{figure}[htbp]
+        \inkfig[0.5\columnwidth]{homework_08_figure_04}
+    \end{figure}
+
+    回路法:
+    \begin{align}
+        \dot{I}_{1}=&\dot{I}_{S}\nonumber\\
+        -\dot{U}_{S 1}+\dot{U}_{S 2}=&\dot{I}_{2}(R_1+R_2+R_5+jX_1+jX_2+jX_5)+\dot{I}_{1}(R_5+jX_5)-\dot{I}_{2}(R_2+jX_2)\nonumber\\
+        -\dot{U}_{S 2}+\dot{U}_{S 3}=&\dot{I}_{3}(R_2+R_3+R_6+jX_2+jX_3)+\dot{I}_{1}R_6-\dot{I}_{2}(R_2+jX_2)\nonumber
+    \end{align}
+    节点法:
+    \begin{align}
+        \frac{\dot{U}_1-\dot{U}_{S 1}-\dot{U}_0}{R_1+jX_1}+\frac{\dot{U}_{3}-\dot{U}_{S 2}-U_{0}}{R_2+jX_2}+\frac{\dot{U}_{2}-\dot{U}_{S 3}-U_0}{R_3+jX_3}=&0\nonumber\\
+        \frac{\dot{U}_1-\dot{U}_{S 1}-\dot{U}_0}{R_1+jX_1}+\dot{I}_{S}+\frac{\dot{U}_{1}-\dot{U}_{3}}{R_5+jX_5}=&0\nonumber\\
+        \frac{\dot{U}_{3}-\dot{U}_{S 2}-U_{0}}{R_2+jX_2}+\frac{\dot{U}_{3}-\dot{U}_{1}}{R_5+jX_5}+\frac{\dot{U}_{3}-\dot{U}_{2}}{R_6}=&0\nonumber\\
+        \frac{\dot{U}_{2}-\dot{U}_{S 3}-U_0}{R_3+jX_3}-\dot{I}_{S}-\frac{\dot{U}_{3}-\dot{U}_{2}}{R_6}=&0\nonumber
+    \end{align}
+    
+\end{document}

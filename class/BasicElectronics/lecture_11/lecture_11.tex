@@ -1,0 +1,50 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \subsection{一阶电路求解}
+    \begin{align}
+        f\left( t \right) =&f\left( \infty \right) +Ae^{-\frac{t}{\tau}}\nonumber
+    \end{align}
+    求稳态值 $f\left( \infty \right) $,初始值 $f\left( 0^{+} \right) $,则 $A=f\left( 0^{+} \right) -f\left( \infty \right) \big|_{0^{+}}$,从 $L$ 或 $C$ 两端求入端等效电阻 $R_{\texttt{eq}},\tau=R_{\texttt{eq}}C$ 或 $\frac{L}{R_{\texttt{eq}}}$.
+    \subsection{一阶电路的全响应}
+    \begin{definition}
+        (全响应) 非零初始状态的电路受到激励时电路中产生的响应.
+    \end{definition}
+    \begin{theorem}
+        (全响应及其两种分解方式) 
+        \begin{itemize}
+            \item 全解=强制分量(稳态解)+自由分量(暂态解)
+                \begin{align}
+                    f\left( t \right) =&f\left( \infty \right) +\left( f\left( 0^{+} \right) -f\left( \infty \right) \right) e^{-\frac{t}{\tau}}\nonumber
+                \end{align}
+            \item 全响应=零状态响应 (zero-state response,ZSR)+零输入响应 (zero-input response,ZIR)
+                \begin{align}
+                    f\left( t \right) =&f\left( \infty \right) \left( 1-e^{-\frac{t}{\tau}} \right)+f\left( 0^{+} \right) e^{-\frac{t}{\tau}}\nonumber
+                \end{align}
+                
+                零输入响应:独立源激励为零,由初始储能激励产生响应.线性电路中和初值成正比.
+
+                零状态响应:储能元件无初始储能,由电源激励产生响应.线性电路中和激励成正比.
+        \end{itemize}
+    \end{theorem}
+    \section{模拟电子电路基础}
+    \subsection{CMOS 模拟电路的基本元器件}
+    \begin{itemize}
+        \item Diode (二极管)
+
+            单向导通,正向电流随电压指数增长 $I=I_{S}\exp \frac{V_{D}}{V_{T}}$\mn{$V_{T}=\frac{k_{B}T}{q}=0.026 \ \mathrm{V}$ 与温度有关,称热电压, $I_{S}$ 在 $1 \ \mathrm{pA}=10 ^{-12} \ \mathrm{A}$ 左右,实际上导通电压在 $0.7 \ \mathrm{V}$ 左右},可视作导线,反向电流 $I\rightarrow -I_{S}$ 极小,可视作开路.
+        \item MetaI-Oxide-Semiconductor Field EffectTransistor (MOSFET)
+            \begin{itemize}
+                \item NMOS (电子/Negative 负载流子)
+                \item PMOS (空穴/Positive 正载流子)
+            \end{itemize}
+            分为 Source (源)、 Drain (漏)、 Gate (栅)、 Body (体)\mn{NMOS 体端接地,PMOS 体端接源}.
+
+            阈值电压 $V_{\texttt{th}}$ 为开启所需施加在 $GS$ 上的电压.
+        \item Resistor (电阻)
+        \item Capacitor (电容)
+        \item lnductor (电感)
+        \item Varactor (变容管)
+    \end{itemize}
+\end{document}

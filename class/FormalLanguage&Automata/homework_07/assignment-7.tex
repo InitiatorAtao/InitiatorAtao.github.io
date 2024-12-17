@@ -1,0 +1,110 @@
+\documentclass[10pt]{homework}
+\name{Tao Wenhua} % Replace (Student Name) with your name.
+\id{2023010782}
+\term{2024 Autumn}
+\course{Formal Languages and Automata}
+\hwnum{7}
+\usepackage{transparent,pdfpages,xifthen,import,hyperref}
+\newcommand{\inkfig}[2][0.7\columnwidth]{%
+    \def\svgwidth{#1}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+%\hwname{(Name)}          % Uncomment and replace (Name) with the type of the
+                          % homework (e.g, Assignment, Problem Set, etc.) if you
+                          % don't want the document to be labeled as "Homework."
+%\problemname{(Name)}     % Uncomment and replace (Name) with the desired label
+                          % for problems created with the problem environment.
+%\solutionname{(Name)}    % Uncomment and replace (Name) with the desired label
+                          % for solutions created with the solution environment.
+
+% Load any other packages you need here.
+
+\begin{document}
+
+\begin{problem}
+  Design a PDA to accept each of the following languages.
+  You may accept either by final state or by empty stack, whichever is more
+  convenient.
+  \begin{parts}
+    \part\ (Exercise 6.2.1 (b)) The set of all strings of 0's and 1's such that no
+    prefix has more 1's than 0's.
+    \part\ (Exercise 6.2.2 (b)) The set of all strings with twice as many 0's as
+    1's.
+    \part\ Strings $w$ over $\{a, b, c\}$ where the numbers of $a$'s and $b$'s are
+    the same and there are no consecutive $c$'s.
+    % \part\ $L = \{a^{n}b^{m}c^{k} \mid n, m, k \ge 0 \land n + 2m = k \}$.
+    % \part\ (Exercise 6.2.1 (c)) The set of all strings of 0's and 1's with an
+    % equal number of 0's and 1's.
+  \end{parts}
+\end{problem}
+
+\begin{solution}
+\begin{parts}
+    \part Answer like $P=(\{q,p\},\{0,1\},\{Z_0,X\},\delta,q,Z_0,\{p\})$ where:
+    \begin{align}
+        \delta(q,0,Z_0)=&\{(q,XZ_0\}\nonumber\\
+        \delta(q,0,X)=&\{(q,XX\}\nonumber\\
+        \delta(q,1,X)=&\{(q,\epsilon)\}\nonumber\\
+        \delta(q,\epsilon,X)=&\{(p,X)\}\nonumber\\
+        \delta(q,\epsilon,Z_0)=&\{(p,Z_0)\}\nonumber
+    \end{align}
+    \part Answer like $P=(\{q,m,p\},\{0,1\},\{Z_0,X,Y\},\delta,q,Z_0,\{p\})$ where:
+    \begin{align}
+        \delta(q,0,Z_0)=&\{(m,XZ_0)\}\nonumber\\
+        \delta(q,0,X)=&\{(m,XX)\}\nonumber\\
+        \delta(q,0,Y)=&\{(m,\epsilon)\}\nonumber\\
+        \delta(q,1,Z_0)=&\{(q,YZ_0)\}\nonumber\\
+        \delta(q,1,X)=&\{(q,\epsilon)\}\nonumber\\
+        \delta(q,1,Y)=&\{(q,YY)\}\nonumber\\
+        \delta(m,\epsilon,Z_0)=&\{(q,XZ_0)\}\nonumber\\
+        \delta(m,\epsilon,X)=&\{(q,XX)\}\nonumber\\
+        \delta(m,\epsilon,Y)=&\{(q,\epsilon)\}\nonumber\\
+        \delta(q,\epsilon,Z_0)=&\{(p,Z_0)\}\nonumber
+    \end{align}
+    \part Answer like $P=(\{q,m,p\},\{a,b,c\},\{Z_0,X,Y\},\delta,q,Z_0,\{p\}$ where $*$ refers to $Z_0,X$ or $Y$:
+    \begin{align}
+        \delta(q,a,Z_0)=\delta(m,a,Z_0)=&\{(q,XZ_0)\}\nonumber\\
+        \delta(q,a,X)=\delta(m,a,X)=&\{(q,XX)\}\nonumber\\
+        \delta(q,a,Y)=\delta(m,a,Y)=&\{(q,\epsilon)\}\nonumber\\
+        \delta(q,b,Z_0)=\delta(m,b,Z_0)=&\{(q,YZ_0)\}\nonumber\\
+        \delta(q,b,X)=\delta(m,b,X)=&\{(q,\epsilon)\}\nonumber\\
+        \delta(q,b,Y)=\delta(m,b,Y)=&\{(q,YY)\}\nonumber\\
+        \delta(q,c,*)=&\{(m,*)\}\nonumber\\
+    \delta(q,\epsilon,Z_0)=\delta(m,\epsilon,Z_0)=&\{(p,Z_0)\}\nonumber
+    \end{align}
+    
+\end{parts}
+\end{solution}
+
+\begin{problem}\label{pro:conv} (Exercise 6.2.6)
+  Consider the PDA
+  \begin{equation*}
+    P = \bigl( \{q, p\}, \{0, 1\}, \{Z_{0}, X\}, \delta, q, Z_{0}, \{p\} \bigr)
+  \end{equation*}
+  having the following transition function:
+  \begin{enumerate}
+    \item $\delta(q, 0, Z_{0}) = \{(q, XZ_{0})\}$.
+    \item $\delta(q, 0, X) = \{(q, XX)\}$.
+    \item $\delta(q, 1, X) = \{(q, X)\}$.
+    \item $\delta(q, \epsilon, X) = \{(p, \epsilon)\}$.
+    \item $\delta(p, \epsilon, X) = \{(p, \epsilon)\}$.
+    \item $\delta(p, 1, X) = \{(p, XX)\}$.
+    \item $\delta(p, 1, Z_{0}) = \{(p, \epsilon)\}$.
+  \end{enumerate}
+  \begin{parts}
+    \part\ Convert $P$ to another PDA $P_{1}$ that accepts by empty stack the same
+    language that $P$ accepts by final state; i.e., $N(P_{1}) = L(P)$.
+    \part\ Find a PDA $P_{2}$ such that $L(P_{2}) = N(P)$; i.e., $P_{2}$ accepts
+    by final state what $P$ accepts by empty stack.
+  \end{parts}
+\end{problem}
+
+\begin{solution}
+    \begin{parts}
+        \part Just let state $p$ no more final, and add $\delta(p,\epsilon,*)=\{(p,\epsilon)\}$ where $*$ refers to $X$ or $Z_0$.
+        \part Just set $p$ no more final, and add a final state $r$ and change transition $\delta(p,1,Z_0)=\{r,Z_0\}$.
+    \end{parts}
+\end{solution}
+
+\end{document}

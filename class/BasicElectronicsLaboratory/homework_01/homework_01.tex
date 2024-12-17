@@ -1,0 +1,70 @@
+\input{"../homeworks_preamble.tex"}
+\title{电子学基础实验一报告}
+
+\begin{document}
+    \pagestyle{empty}
+    \maketitle
+    \section{实验内容}
+    \begin{center}
+        \includegraphics[width=0.7\linewidth]{./figures/homework_01_figure_01.pdf}
+    \end{center}
+    \begin{enumerate}
+        \item 使用便携式实验设备,按图 1.1 接线,电位器 $R_0=5k\Omega$.
+        \begin{enumerate}[label=(\arabic*)]
+            \item $U_s$ 使用便携式实验设备上的直流电源,使 $V_1=5V$,调节电位器,使 $V_2=2V$,用手持式万用表测量 $R_2$ 的值,填写表 1.1 第二行.
+
+            \item $U_s$ 使用便携式实验设备上的交流源,试用版便携式实验设备上的示波器测量数据,使 $V_1$ 峰值 $=5V$,调节电位器,使 $V_2$ 峰值 $=2V$,测量 $R_2$ 的值,填写表 1.1 第三行.
+        \end{enumerate}
+        \item 实验方法
+        \begin{enumerate}[label=(\arabic*)]
+            \item 调节电源(直流源或信号源),使电压表 $V_1$ 的测量值为 $5V$ (交流时指峰值).
+            \item 调节电位器,使电压表 $V_2$ 的测量值为 $2V$.
+            \item 观察电压表 $V_1$ 是否仍为 $5V$,如不是,重复 (1)(2) 步.
+            \item 断电,从电路中取出电位器,测量 $R_2$ 部分的电阻.
+        \end{enumerate}
+    \end{enumerate}
+    \section{原始数据}
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{c||c|c|c}
+            \diagbox[dir=SE]{实验场景}{$R_2$}{$R_{fz}$} & $1k\Omega$ & $5k\Omega$ & $10k\Omega$\\\hline\hline
+            便携式实验设备直流源 & $4.03k\Omega$ & $2.623k\Omega$ & $2.348k\Omega$\\\hline
+            便携式实验设备信号源 & $4.06k\Omega$ & $2.662k\Omega$ & $2.377k\Omega$\\
+        \end{tabular}
+        \caption{电阻 $R_2$ 测量结果}
+        \label{table:origin-data}
+    \end{table}
+    \section{数据分析}
+    由图 1.1 接线构成的是一个分压电路,在理想状态下,$V_1$ 的测量值 $U_1=U_s$ 为电源电压,负载部分由 $R_2$ 和 $R_{fz}$ 并联后与 $R_1$ 串联,$V_2$ 的测量值 $U_2$ 为并联部分的电压.由于并联部分与 $R_1$ 串联,由串并联电阻和电压分配方式有:
+        \begin{align}
+            \frac{U_2}{U_1}=&\frac{R_{2fz}}{R_{2fz}+R_1}=\frac{\frac{R_2R_{fz}}{R_2+R_{fz}}}{\frac{R_2R_{fz}}{R_2+R_{fz}}+R_1}=\frac{R_2R_{fz}}{R_2R_{fz}+R_1(R_2+R_{fz})}
+        \end{align}
+        每次调整 $R_1,R_2$ 使得 $U_1,U_2$ (或交流电的峰值)为定值,又由在电位器中 $R_1+R_2=R_0$ 为定值,对于每一个确定的 $R_{fz}$,可以由上式解出其对应的唯一正值
+        \begin{align}
+            R_2=&-1.25R_{fz}+2.5\times 10^{3}\sqrt{2.5\times 10^{-7}R_{fz}^2-2\times 10^{-4}R_{fz}+1}+2.5\times 10^{3}\label{definition:r2}
+        \end{align}
+        代入上述数据进行计算,得到 $R_2$ 与 $R_{fz}$ 的理想对应关系如下:
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{c||c|c|c}
+                $R_{fz}$ & $1k\Omega$ &  $5k\Omega$ & $10k\Omega$\\\hline\hline
+                $R_2$ & $3.81k\Omega$ &  $2.500k\Omega$ & $2.247k\Omega$
+            \end{tabular}
+            \caption{电阻 $R_2$ 理论值}
+        \end{table}
+        
+        对比实验结果与理论计算结果,根据 $R_{fz}$ 的不同,实验结果在理论计算结果附近上下浮动,相对误差在 $5\%$ 左右,推测为实验电源与示波器非理想情况导致.
+    \section{思考题}
+    \begin{enumerate}
+        \item 当负载电阻 $R_{fz}$ 变化时,同样为了获得 $2V$ 输出电压,所需调节的 $R_2$ 值是否相同,为什么?
+
+            不相同,由上述 (\ref{definition:r2}) 式可知 $R_2$ 关于 $R_{fz}$ 非线性关系,事实上该函数的图像为双曲线的一部分,随着 $R_{fz}$ 增大,需要调节的 $R_2$ 值逐渐减小趋向于 0,令 $R_{fz}\rightarrow +\infty$ 即开路, $R_2$ 趋向于 $2k\Omega$,此时电路变为简单的串联分压.$U_2,R_2$ 的关系与理论计算结果相符.对此进行了简单的实验,操作为断开 $R_{fz}$ 支路并重新调节和测量 $R_2$,得到的结果与与理论计算结果相符.
+        \item 电位器的同一位置对直流源和信号源的分压结果是否有区别?(表 \ref{table:origin-data} 中第 2 行和第 3 行对比)
+
+            几乎没有区别,由表 \ref{table:origin-data} 可见在直流源和信号源下 $R_2$ 的测量值相对误差在 $1\%$ 左右,推测为实际电路中形成的微弱电容与电感导致.在理论计算中,由于电路中没有电容与电感元件,电路导通关系与电压分配对于直流和交流一致,故分压结果没有区别.
+    \end{enumerate}
+    \section{结论}
+        本实验对分压电路在直流和交流电压下,电阻与分压的关系进行了探究,通过理论计算与实验测量,得出了电位器位置与分压的非线性关系,计算了其理论值并与实验进行对比,取得了较好的对应关系.同时对直流和交流电压的分压结果进行对比,结论为直流和交流不影响该分压电路的分压结果.
+
+        在数据分析过程中,对理论计算在外接电阻趋于无穷大(即开路)的情况进行了分析,得出的结论是此时的电路变为简单的串联分压电路,同时进行了简单的实验,实验结果与理论计算结果相符.
+\end{document}

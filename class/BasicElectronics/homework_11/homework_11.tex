@@ -1,0 +1,34 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{电子学基础-第十一次作业}
+
+\begin{document}
+    \maketitle
+    \section{7.23} 题图 7.23 所示电路 $t=0$ 时闭合开关 $S$ 求 $i_{C}$ 的零状态响应,零输入响应和全响应.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\linewidth]{./figures/homework_11_figure_01.png}
+    \end{figure}
+
+    解:开关闭合前稳态,电容相当于开路,三电阻串联,电容两端电压 $u_{C_0}=\frac{R_2+R_3}{R_1+R_2+R_3}u=27 \ \mathrm{V}$, $i_{C_0}=0$ 电容上的电量 $Q=u_{C_0}C$,开关闭合后稳态,一电阻短路,两电阻串联, $u_{C_1}=\frac{R_2}{R_1+R_2}u=24 \ \mathrm{V}$,$i_{C_1}=0,Q=u_{C_1}C$,又时间常量 $\tau=RC=0.2$ 三个响应均为时间的指数函数,且积分等于电量变化,由此可求得零状态响应 $i_{C}=-13.5e^{-5t} \ \mathrm{mA}$,零输入响应  $i_{C}=12e^{-5t} \ \mathrm{mA}$,全响应 $i_{C}=-1.5e^{-5t} \ \mathrm{mA}$.
+    \section{3.1} 绘制图 3.63 所示电路的 I/V 特性
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.5\linewidth]{./figures/homework_11_figure_02.png}
+    \end{figure}
+
+    解:电压源,二极管与电阻串联,二极管限制电流 $I_{X}$ 方向为负, $I_{X},V_{X}$ 相关联,故图像为第三象限内斜率为 $\frac{1}{R_1}$ 的正比例射线:
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\linewidth]{./figures/homework_11_figure_03.pdf}
+    \end{figure}
+    
+    \section{3.2} 如果图 3.63 中的输入电压表示为 $V_{X}=V_0\cos\omega t$,绘制电流关于时间的函数图像.
+
+    解:不考虑二极管时 $I_{X}=\frac{V_{X}}{R_1}=\frac{\cos\omega t}{R_1}$,加入二极管后 $I_{X}>0$ 的部分被控制为 $0$,故图像为部分余弦曲线和 $I_{X}=0$ 的组合:
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\linewidth]{./figures/homework_11_figure_04.pdf}
+    \end{figure}
+    
+\end{document}

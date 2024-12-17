@@ -1,0 +1,108 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{Context-free Grammars (CFG's)}
+        \begin{definition}
+            (Context-free Grammars,CFG's) A CFG is a $G=(V,T,P,S)$:
+            \begin{enumerate}
+                \item A finite set of variables $V$.
+                \item A finite set of symbols $T$ (Terminals).
+                \item A finite set of production rules $P$.
+                \item Start variables $S\in V$.
+            \end{enumerate}
+            Each production rule consists of:
+            \begin{enumerate}
+                \item A variable called the head.
+                \item A production symbol $\rightarrow $.
+                \item A string in $(V\cup T)^{*}$ called the body.
+            \end{enumerate}
+        \end{definition}
+        
+        \begin{example}
+            (Context-free Grammars,CFG)\mn{other examples like expressions in normal programming languages} To define a palindrome:
+
+            Basis: $\epsilon,0,1$ are pal.
+
+            Induction: If $w$ is a pal, so are $0w 0,1w 1$.
+            \begin{align}
+                G_{pal}=&(\{p\},\{0,1\},A,p)\nonumber\\
+                A:\{&p\rightarrow \epsilon,p\rightarrow 0p0\nonumber\\
+                  &p\rightarrow 0,p\rightarrow 1p1\nonumber\\
+                  &p\rightarrow 1\}\nonumber
+            \end{align}\mn{for faster expression, $p\rightarrow \epsilon | 0|1|0p0|1p1$ are accepted}
+        \end{example}
+        \subsection{Derivations of CFG}
+        \begin{definition}
+            (Derivations of CFG) Use derivation $\Rightarrow $ to build a concrete string of a CFG:
+
+            Let $A\rightarrow \gamma$ be a rule, then we can build $\alpha A\beta \Rightarrow \alpha \gamma \beta$.
+
+            $\Rightarrow ^{*}$ means zero or more steps of derivation.
+
+            The languge of a CFG $G$ $L(G)=\{w\in T^{*}|S\Rightarrow ^{*}w\}$.
+        \end{definition}
+        
+        \begin{example}
+            \label{example:Derivatons of CFG}
+            (Derivatons of CFG) To build an expression:
+            \begin{align}
+                E\Rightarrow&E*E\Rightarrow I*E\Rightarrow a*E\nonumber\\
+                \Rightarrow &a*(E)\Rightarrow a*(E+E)\nonumber\\
+                \Rightarrow &a*(I*E)\Rightarrow ^{*}a*(a+b 0)\nonumber\\
+                E\Rightarrow ^{*}&a*(a+b 0)\nonumber
+            \end{align}
+        \end{example}
+        \subsection{Leftmost/Rightmost derivations}
+        \begin{definition}
+            (Leftmost/Rightmost derivations) In each step of leftmost/rightmost derivation, we replace the leftmost/rightmost variable.
+        \end{definition}
+        Leftmost/Rightmost derivation expressed by $\Rightarrow ^{*}_{\mathrm{lm}},\Rightarrow ^{*}_{\mathrm{r m}}$.\mn{$A\Rightarrow ^{*}w$ iff $A\Rightarrow ^{*}_{\mathrm{ lm}}w$ iff $A\Rightarrow ^{*}_{\mathrm{ r m}}w$.Proof is in Theorem \ref{theorem:Context-free Grammars,CFG's}}
+        \begin{example}
+            (Leftmost/Rightmost derivations) in Example \ref{example:Derivatons of CFG} there is a leftmost derivation $E\Rightarrow ^{*}_{\mathrm{lm}}a*(a+b0)$
+        \end{example}
+        \subsection{Parse tree}
+        \begin{definition}
+            (Parse tree) Given a CFG $G=(V,T,P,S)$. The parse tree for $G$ are trees with the following corditions:
+            \begin{enumerate}
+                \item Each interior node is labeled by a variable in $V$.
+                \item Each leaf is labeled by either a variable or a terminal, or $\epsilon$. If lebeled $\epsilon$ it's the only child.
+                \item If an interior node is labeled by $A$ and its children are labeled $X_1,\ldots,X_{k}$, then $A\rightarrow X_1,\ldots,X_{k}$ is a rule.
+            \end{enumerate}
+        \end{definition}
+        \begin{definition}
+            (Yield) The yield of a parse tree is the string of leaves contents from left to right, which is what can be derived from the root. If the root is labeled by $S$ and leaves are all labeled by termials, then yield $\in T^{*}$ is a string in $L(G)$.
+        \end{definition}
+        
+        \begin{theorem}
+            \label{theorem:Context-free Grammars,CFG's}
+            (Context-free Grammars,CFG's) The following are equalvant for CFG $G=(V,T,P,S)$:
+            \begin{enumerate}
+                \item $w\in L(G)$
+                \item $S\Rightarrow ^{*}w$ 
+                \item $S\Rightarrow ^{*}_{\mathrm{lm}}w$ 
+                \item $S\Rightarrow ^{*}_{\mathrm{r m}}w$ 
+                \item There is a parse tree with root $S$ and yield $w$.
+            \end{enumerate}\mn{proofed in sequence $5\rightarrow 3 / 4 \rightarrow 2\rightarrow 1\rightarrow 5$}
+        \end{theorem}
+        \subsection{Ambiguity}
+        \begin{definition}
+            (Ambiguity) A CFG is ambiguous if there is a $w\in T^{*}$ which has two different parse trees, each with root $S$ and yield $w$. Otherwise it's unambiguous.
+        \end{definition}
+        \begin{remark}
+            (Remove Ambiguity) There is no algorithm to tell if a grammar is ambiguous or not.
+
+            To remove ambiguity by hand, try define calculate priority like which in expressions to declare the parse tree building sequence.
+        \end{remark}
+    \section{Chomsky classification method}
+        \begin{definition}
+            (Chomsky classification method) For CFG like four tuple $G=(V,T,P,S)$, classify them by items in $P$:
+            \begin{itemize}
+                \item Type 0 grammar: items like $\alpha\rightarrow \beta,\alpha,\beta\in (V\cup T)^{*}$ where $\alpha$ contains at least one variable. The grammar has abilitiy like turing mathine.
+                \item Type 1 grammar: items like $\alpha\rightarrow \beta,|\alpha|\le |\beta|$ except $S\rightarrow \epsilon$, and $S$ can not in $\beta$. The grammar called context sensitive grammars (CSGs). The automata relative to the grammar is linear bounded automata (LBA).
+                \item Type 2 grammar: CFG with PDA.
+                \item Type 3 grammar: items like $A\rightarrow aB$ or $A\rightarrow a$ where $A,B\in V,a\in T\cup \{\epsilon\}$. The grammar also called regular grammar with RE and DFA.
+            \end{itemize}
+        \end{definition}
+        
+\end{document}

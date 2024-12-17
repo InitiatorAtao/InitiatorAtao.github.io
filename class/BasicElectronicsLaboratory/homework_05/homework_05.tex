@@ -1,0 +1,83 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{电子学基础实验五}
+
+\begin{document}
+    \maketitle
+    \section{实验内容} 使用如下电路求解微分方程 $\ddot{y}+0.2\dot{y}+0.25y=0.25E$ 的解.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\linewidth]{./figures/homework_05_figure_01.pdf}
+    \end{figure}
+
+    使用示波器测量 $A_2$ 输出端的对地电压,初始状态两个开关闭合, $t=0$ 时同时断开两个开关,记录电压变化直到其趋于稳定.绘制电压波形图如下:
+    \begin{figure}[htbp]
+        \centering
+        \inkfig[0.7\columnwidth]{homework_05_figure_02}
+    \end{figure}
+    \newpage
+    填写各电压特征点对应的时间表格如下:
+    \begin{figure}[htbp]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline$y\left( t \right) /\ \mathrm{V}$ & $0$ & $1.5$ & $y_{\texttt{max1}}\left( 2.25 \right) $ & $1.5$ & $y_{\texttt{min2}}\left( 1.16 \right) $ & $1.5$ & $y_{\texttt{max3}}\left( 1.69 \right) $ & $1.5$ \\\hline
+            $t_1\left( s \right) $ & $0$ & $3.4$ & $6.3$ & $9.9$ & $12.7$ & $16.1$ & $18.8$ & $22.4$\\\hline
+        \end{tabular}
+    \end{figure}
+    \section{数据分析}
+    为求解所给出的微分方程,电路中使用了两个积分求和 ($A_1,A_2$) 和一个比例运算电路 ($A_3$).若用 $u_1,u_2,u_3$ 分别代表 $A_1,A_2,A_3$ 的输出电压,并令电源电压 $E=1.5 \ \mathrm{V}$,由运放运算电路的性质可得以下等式:
+    \begin{align}
+        u_1=&-\int_{}^{}\left( \frac{1}{R_1C}E+\frac{1}{R_1C}u_3+\frac{1}{R_3C}u_1 \right)\mathrm{d}t\nonumber\\
+        u_2=&-\int_{}^{}\frac{1}{R_2C}u_1 \mathrm{d}t\nonumber\\
+        u_3=&-u_2\nonumber
+    \end{align}
+    其中 $R_1=4 \ \mathrm{M\Omega},R_2=1 \ \mathrm{M \Omega},R_3=5 \ \mathrm{M\Omega},C=1 \ \mathrm{\mu F}$.代入数据计算可得:
+    \begin{align}
+        u_1=&-\int_{}^{}\left( 0.25E-0.25u_2+0.2u_1 \right) \mathrm{d}t\nonumber\\
+        u_2=&-\int_{}^{}u_1\mathrm{d}t\nonumber
+    \end{align}
+    两侧对时间求微分得到:
+    \begin{align}
+        \dot{u_1}=&0.25u_2-0.25E-0.2u_1\nonumber\\
+        \dot{u_2}=&-u_1\nonumber
+    \end{align}
+    继续对第二个式子时间微分得到:
+    \begin{align}
+        \ddot{u_2}=&-\dot{u_1}\nonumber
+    \end{align}
+    代入 $\dot{u_1}$ 的表达式,即:
+    \begin{align}
+        \ddot{u_2}=&0.2u_1+0.25E-0.25u_2\nonumber
+    \end{align}
+    代入 $\dot{u_2}=-u_1$,即:
+    \begin{align}
+        \ddot{u_2}+0.2 \dot{u_2}+0.25u_2=&0.25E\nonumber
+    \end{align}
+    此即所要求的微分方程 $\ddot{y}+0.2 \dot{y}+0.25y=0.25E$ 的模拟形式,故测量的 $u_2$ 曲线即为所求微分方程的模拟解.要求初值 $y\left( 0 \right) =u_2\left( 0 \right) =0,\dot{y}\left( 0 \right) =u_1\left( 0 \right) =0$,由于运放线性工作时的的虚短性质, $A_1,A_2$ 的负输入端电位等于其正输入端电位 (即接地电位),故只需将两个电容短路即可使 $u_1=u_2=0$ 符合初值条件,此时电路为 $A_3$ 构成的比例运算电路,仍正常工作.故只需在 $t=0$ 时刻将两开关断开, $u_2$ 的测量结果即为所求初值微分方程的模拟解.
+
+    对于理论计算,求出所给微分方程的近似解析解为:
+    \begin{align}
+        y\left( t \right) =&1.5-\left( 0.306\sin\left( 0.490t \right) +1.5\cos\left( 0.490t \right)  \right)e^{-0.1t}\nonumber
+    \end{align}
+    将解析解作为参考线绘制在 $u_2$ 的测量值图上,观察可知实验值与理论值的误差在接受范围内,模拟解相对于解析解略有滞后和衰减,应为非理想电路和运放造成的误差.计算得到三个极值点的相对误差 $\beta_1=\frac{2.29004-2.25477}{2.25477}\approx 1.56\%,\beta_2=\frac{1.16352-1.08390}{1.08390}\approx 7.35\%,\beta_3=\frac{1.71916-1.68144}{1.68144}\approx 2.24\%$.
+    \begin{figure}[htbp]
+        \centering
+        \inkfig[0.7\columnwidth]{homework_05_figure_03}
+    \end{figure}
+    \newpage
+    \section{思考题}
+    \begin{enumerate}
+        \item 在模拟计算机中,如何设置初始条件 $x\left( 0 \right) =1.5 \ \mathrm{V},x\left( 0 \right) =0 \ \mathrm{V}$ (1.5V 由稳压电源供给)
+
+            对于 $x\left( 0 \right) =0 \ \mathrm{V}$ 即为实验操作中的情况,由于积分(求和)运算的运放正负输入端均为接地电位,只需要将其电容短路即可获得零电压输出.启动时断开开关开始模拟.
+
+            对于 $x\left( 0 \right) =1.5 \ \mathrm{V}$,可以考虑将开关设置在运放的输出端和电源的正极(假设电源负极接地)之间,初始时闭合开关将输出端电压设置为电源电压,启动时断开开关开始模拟.
+        \item 为测响应 $y$,示波器应接在电路中什么地方?
+
+            在本实验中,示波器应负极接地,正极接在 $A_2$ 的输出端.对于一般的求解微分方程实验,示波器应负极接地,正极接在按输入到输出的顺序下最后一个积分运算电路的输出端,因为求解器的电路模型下其即对应原函数值.
+    \end{enumerate}
+    \section{结论}
+    本实验通过基于运放的比例(求和)电路,积分(求和)电路求解了基本的微分方程,并计算了模拟解与解析解之间的相对误差,误差在允许范围内.由此熟悉了运放的基本应用电路以及使用其构造复杂模拟计算电路的方法.
+
+    本实验的所有数据可以从\href{https://cloud.tsinghua.edu.cn/d/52923f32fd6542eca8ac/}{此处}下载
+\end{document}

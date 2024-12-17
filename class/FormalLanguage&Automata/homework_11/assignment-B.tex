@@ -1,0 +1,68 @@
+\documentclass[10pt]{homework}
+
+\name{Tao Wenhua} % Replace (Student Name) with your name.
+\id{2023010782}
+\term{2024 Autumn}
+\course{Formal Languages and Automata}
+\hwnum{11}
+
+%\hwname{(Name)}          % Uncomment and replace (Name) with the type of the
+                          % homework (e.g, Assignment, Problem Set, etc.) if you
+                          % don't want the document to be labeled as "Homework."
+%\problemname{(Name)}     % Uncomment and replace (Name) with the desired label
+                          % for problems created with the problem environment.
+%\solutionname{(Name)}    % Uncomment and replace (Name) with the desired label
+                          % for solutions created with the solution environment.
+
+% Load any other packages you need here.
+
+\begin{document}
+
+\begin{problem} (Exercise 8.4.4) Consider the nondeterministic Turing machine
+  \(M = (\{q_0, q_1, q_2, q_f\}, \{0, 1\}, \{0, 1, B\}, \delta, q_0, B, \{q_f\})\).
+  Informally but clearly describe the language \(L(M)\) if \(M\) consists of the
+  following sets of rules:
+  \begin{align*}
+    & \delta(q_{0}, 0) = \{(q_{0}, 1, R), (q_{1}, 1, R)\}\\
+    & \delta(q_{1}, 1) = \{(q_{2}, 0, L)\},\\
+    & \delta(q_{2}, 1) = \{(q_{0}, 1, R)\},\\
+    & \delta(q_{1}, B) = \{(q_{f}, B, R)\}.
+  \end{align*}
+\end{problem}
+
+\begin{solution}
+    $L\left( M \right) =L\left( 0\left( 0+1 \right)^{*} \right) $ expressed by regular expression. Because $q_0$ must read a $0$ at the beginning, then all $0$s and $1$s are turned to $1$s by the TM.
+\end{solution}
+
+\begin{problem}
+  A Turing machine with left-most move is similar to a semi-infinite-tape Turing
+  machine, but the transition function $\delta$ takes values in
+  $Q \times \Gamma \times \{\text{R}, \text{L-Most}\}$.
+  If $\delta(q, a) = (p, b, \text{L-Most})$, the machine's head moves to the
+  left-most cell of the tape after it writes $b$ on the tape and enters state
+  $p$.
+  Note that these machines do not have the usual ability to move the head one
+  symbol left.
+  Show that Turing machines with left-most moves recognize all languages in
+  \class{RE}.
+  (Hint: You may need to use the multi-track method and two markers.)
+\end{problem}
+
+\begin{solution}
+    For all languages in RE, we can build a TM with left-most move from their semi-infinite-tape TM ($L$ in RE must have a normal TM, then semi-infinite-tape TM can simulate that TM).
+
+    To simulate semi-infinite-tape TM $M$ from left-most move TM $M'$, use multi-track method (multi-track is only simulated by items in $\Gamma$, so the changes in $\delta$ does not influent it). One track records normal symbols in $M$, another record marks when head need a left-move. The head leave a mark (named $x$) in the second track then move to left-most. After that it use two different marks (named $y,z$) at the left-most and push it forward until $x$, that is, use extra state $q_0,q_1,q_2,q_3$ and start from left-most:
+    \begin{align}
+        \delta\left( q_0,\left( a,B \right)  \right) =&\left( q_1,\left( a,y \right) ,\text{L-Most} \right) \nonumber\\
+        \delta\left( q_1,\left( a,B \right)  \right) =&\left( q_1,\left( a,B \right) ,\text{R} \right) \nonumber\\
+        \delta\left( q_1,\left( a,z \right)  \right) =&\left( q_1,\left( a,B \right) ,\text{R} \right) \nonumber\\
+        \delta\left( q_1,\left( a,y \right)  \right) =&\left( q_2,\left( a,z \right) ,\text{R} \right) \nonumber\\
+        \delta\left( q_2,\left( a,B \right)  \right) =&\left( q_1,\left( a,y \right) ,\text{L-Most} \right) \nonumber\\
+        \delta\left( q_2,\left( a,x \right)  \right) =&\left( q_3,\left( a,B \right) ,\text{R} \right) \nonumber\\
+        \delta\left( q_3,\left( a,B \right)  \right) =&\left( q_3,\left( a,B \right) ,\text{R} \right) \nonumber\\
+        \delta\left( q_3,\left( a,z \right)  \right) =&\left( p,\left( a,B \right) ,\text{R} \right) \nonumber
+    \end{align}
+    Where $p$ is the next state in origin $M$. note that $q_0$ will reject mark $x$ which means you do a left move in the left-most.
+\end{solution}
+
+\end{document}

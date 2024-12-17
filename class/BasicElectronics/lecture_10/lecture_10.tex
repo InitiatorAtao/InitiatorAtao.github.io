@@ -1,0 +1,29 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \subsection{电路的初始条件}
+    令换路 (电路变化) 在 $t=0$ 时刻进行,称 $0^{-}$ 为 $t=0$ 的前一瞬间, $0^{+}$ 为 $t=0$ 的后一瞬间.
+
+    称初始条件 (Initial Condition) 为 $t=0^{+}$ 时 $u,i$ 及其各阶导数的值.
+
+    \begin{theorem}
+        (换路定律) 
+        \begin{itemize}
+            \item 若电容电流为有限值\mn{注意冲激函数在 $0$ 处并非有限值},则电容电压 (电荷) 在换路前后不变.
+            \item 若电感电压为有限值,则电感电流 (磁通) 在换路前后不变.
+        \end{itemize}
+    \end{theorem}
+    \subsection{一阶电路求解}
+    求解初始条件: 即维持电容电压和电感电流不变,按换路后的电路连接计算.
+
+    动态电路方程列写: 电感 $u_{L}=L \frac{\mathrm{d}i_{L}}{\mathrm{d}t}$ ,电容 $i_{C}=C \frac{\mathrm{d}u_{C}}{\mathrm{d}t}$.
+
+    由此求解齐次(非)线性常微分方程 $a \frac{\mathrm{d}x}{\mathrm{d}t}+bx+c=0$ 的特解 $x=-\frac{c}{b}$ ,通解 $x=Ae^{-\frac{b}{a}t}$.原方程的解即特解与通解之和.代入初始条件解出常数 $A$ 即可.
+
+    令 $\tau=\frac{b}{a}$ 称为一阶电路的时间常数\sn{其等于通解值衰减到原来 $\frac{1}{e}\approx 36.8\%$ 所需的时间,对于内阻电容, $\tau=RC$,对于内阻电感, $\tau=\frac{L}{R}$},其大小反映了电路过渡过程时间的长短.
+
+    工程上认为,经过 $3\tau\sim{}5\tau$ 的时间过渡过程结束.
+
+    一般一阶电路的解形如 $f(t)=f(\infty)+Ae^{-\frac{t}{\tau}}$,其中 $f(\infty)$ 为换路后的稳态值, $\tau$ 为时间常数, $A=f(0^{+})-f(\infty)\big|_{0^{+}}$ \sn{这里 $f(\infty)$ 在直流下为常数,正弦交流下为 $t$ 的函数}.适用于直流或正弦交流激励.
+\end{document}

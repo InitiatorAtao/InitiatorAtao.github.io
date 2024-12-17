@@ -1,0 +1,18 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{Tauri 的使用}
+    \subsection{配置和依赖处理}
+    \subsection{TypeScript 的使用}
+    \subsection{Rust 的使用}
+    \subsection{生成与导出}
+    支持生成 \texttt{.msi} 和 \texttt{.exe} 格式的 Windows 安装包,也可以生成 Android apk 包.
+
+    \begin{enumerate}
+        \item 构建发布版本: \texttt{cargo tauri build}
+        \item 构建 Android apk 包: \texttt{cargo tauri android build --apk}
+
+            构建的包是没有签名的版本,需要生成电子签名后才能安装.
+    \end{enumerate}
+\end{document}

@@ -1,0 +1,181 @@
+\documentclass[10pt]{homework}
+
+\name{Tao Wenhua} % Replace (Student Name) with your name.
+\id{2023010782}
+\term{2024 Autumn}
+\course{Formal Languages and Automata}
+\hwnum{9}
+
+%\hwname{(Name)}          % Uncomment and replace (Name) with the type of the
+                          % homework (e.g, Assignment, Problem Set, etc.) if you
+                          % don't want the document to be labeled as "Homework."
+%\problemname{(Name)}     % Uncomment and replace (Name) with the desired label
+                          % for problems created with the problem environment.
+%\solutionname{(Name)}    % Uncomment and replace (Name) with the desired label
+                          % for solutions created with the solution environment.
+
+% Load any other packages you need here.
+
+\begin{document}
+
+\begin{problem} (Exercise 7.1.2)
+  Begin with the grammar
+  \begin{align*}
+    S & \rightarrow ASB \,|\, \epsilon\\
+    A & \rightarrow aAS \,|\, a\\
+    B & \rightarrow SbS \,|\, A \,|\, bb
+  \end{align*}
+  \begin{parts}
+    \part\ Eliminate $\epsilon$-productions.
+    \part\ Eliminate any unit productions in the resulting grammar.
+    \part\ Eliminate any useless symbols in the resulting grammar.
+    \part\ Put the resulting grammar into Chomsky normal form.
+  \end{parts}
+\end{problem}
+
+\begin{solution}
+    \begin{parts}
+        \part Variables $S$ is nullable, so the grammar turns to:
+        \begin{align}
+            S\rightarrow& ASB\ |\ AB\nonumber\\
+            A\rightarrow& aAS\ |\ aA\ |\ a\nonumber\\
+            B\rightarrow& SbS\ |\ bS\ |\ Sb\ |\ b\ |\ A\ |\ bb\nonumber
+        \end{align}
+        \part $\left( B,A \right) $ is a unit pair, so the grammar turns to:
+        \begin{align}
+            S\rightarrow& ASB\ |\ AB\nonumber\\
+            A\rightarrow& aAS\ |\ aA\ |\ a\nonumber\\
+            B\rightarrow& SbS\ |\ bS\ |\ Sb\ |\ b\ |\ bb\ |\ aAS\ |\ aA\ |\ a\nonumber
+        \end{align}
+        \part All symbols are generating and reachable, so the grammar does not change.
+        \part The grammar turns to:
+        \begin{align}
+            S\rightarrow& A_{S}B\ |\ AB\nonumber\\
+            A_{S}\rightarrow &AS\nonumber\\
+            A\rightarrow &A_{A}S\ |\ AA\ |\ a\nonumber\\
+            A_{A}\rightarrow &AA\nonumber\\
+            B\rightarrow &S_{B}S\ |\ BS\ |\ BB\ |\ A_{A}S\ |\ AA\ |\ a\nonumber\\
+            S_{B}\rightarrow &SB\nonumber
+        \end{align}
+        
+    \end{parts}
+\end{solution}
+
+\begin{problem} (Exercise 7.1.9 (b)) Provide the inductive proof needed to
+  complete the proof of both directions of Theorem 7.6.
+  That is, the algorithm for finding reachable symbols of $G$ derived from the
+  following induction works correctly.
+
+  \begin{quote}
+    Basis: $S$ is surely reachable.
+
+    Induction: Suppose we have discovered that some variable $A$ is reachable.
+    Then for all productions with $A$ in the head, all the symbols of the bodies
+    of those productions are also reachable.
+  \end{quote}
+\end{problem}
+
+\begin{solution}
+    First proof all derived symbols are reachable:
+
+    Basis: $S$ is reachable because the production starts with $S$.
+
+    Induction: If derived $A$ is reachable, or $S\Rightarrow ^{*}\alpha A \beta$ ($\alpha,\beta$ may be $\epsilon$), then for all $A\rightarrow \gamma$, there is $S\Rightarrow ^{*}\alpha\gamma\beta$. So all variables in $\gamma$ are derived and reachable.
+
+    Then proof all reachable symbols can be derived:
+
+    Basis: Reachable $S$ is derived at first.
+
+    Induction: If $A$ is derived and reachable, $S\Rightarrow ^{*}\alpha A\beta$, so for all $A\rightarrow \gamma$, $S\Rightarrow ^{*}\alpha\gamma\beta$, so all variables in $\gamma$ are derived and reachable.
+\end{solution}
+
+% \begin{problem} (Exercise 7.1.10) Is it possible to find, for every context-free
+%   language without $\epsilon$, a grammar such that all its productions are
+%   either of the form $A \rightarrow BCD$ (i.e., a body consisting of three
+%   variables), or $A \rightarrow a$ (i.e., a body consisting of a single
+%   terminal)?
+%   Give either a proof or a counterexample.
+% \end{problem}
+
+\begin{problem}
+  Use the CFL pumping lemma to show each of these languages not to be context-free.
+  \begin{parts}
+    \part\ (Exercise 7.2.1 (b)) $\{ a^{n}b^{n}c^{i}\mid i\le n\}$.
+    \part\ (Exercise 7.2.1 (d)) $\{ 0^{i}1^{j} \mid j = i^{2} \}$.
+    \part\ (Exercise 7.2.1 (f)) $\bigl\{ww^{R}w \mid w \in {\{0,1\}}^{*} \bigr\}$
+  \end{parts}
+\end{problem}
+
+\begin{solution}
+    \begin{parts}
+        \part Let $n$ be the length limit in pumping lemma, or $w=uvwxy,|vwx|\le n$, then $vwx$ which is limited to have only 2 kinds of letter. So if $uvwxy=a^{n}b ^{n}c^{n}$, $uv^2wx^2y$ will not have no equal $a$ and $b$, or $c$ number over $n$, which is impossible to be in $L$.
+        \part Construct $uvwxy=0^{n}1^{n^2}$. Then consider $uv^2wx^2y$. First $u,x$ can only contain one kind of number, or it will construct $010$ or $101$. Then $u,x$ can only contain different kinds of number, or $j=i^2$ will be break easily. Finally if $v=0^{+}$ and $x=1^{+}$, $0^{n+1}$ will need at least $1^{\left( n+1 \right) ^2}=1^{n^2+2n+1}$, but $x$ is at most $1^{n-1}$, $x^2$ can not provide enough $1$, so the string cannot be in $L$.
+        \part Construct $uvwxy=0^{n}1^{n}1^{n}0^{n}0^{n}1^{n}$. $vwx$ length at most $n$ can only be like $1^{*}0^{*}$ or $0^{*}1^{*}$, then $uv^2wx^2y$ can only affect two of $0^{n},1^{n}$. Assume the string turns to $0^{n+i}1^{n+j}1^{n}0^{n}0^{n}1^{n}$, then from string suffix we can know $w=0^{n+ \frac{i+j}{3}}1^{n}$ which is not fit for string prefix. Other position can lead to conflict in the same way.
+    \end{parts}
+\end{solution}
+
+\begin{problem} (Exercise 7.3.1 (b)) Show that the CFL’s are closed under the
+  operation $L/a$ considered in Homework 4.
+  If $L$ is a language, and $a$ is a symbol, then $L/a$, the quotient of $L$ and
+  $a$, is the set of strings $w$ such that $wa$ is in $L$.
+\end{problem}
+
+\begin{solution}
+    To proof $L/a$ is closed, we need to proof forall CFG $L$, $L / a$ is also CFG. To proof that, construct a Chomsky Normal Form of $L-\{\epsilon\}$. Then construct $a$-ended variable by induction:
+
+    Basis: If $A\rightarrow a$, construct $A'\rightarrow \epsilon$ is $a$-ended.
+
+    Induction: If $B\rightarrow CA$, construct $B'\rightarrow CA'$ is $a$-ended.
+
+    Set $S'$ as the new start variable. Then proof the new grammar has language $L / a$.
+
+    If $wa\in L$, there is a variable $A\rightarrow a$ at the rightmost of generating. In the new grammar there is $A'\rightarrow \epsilon$, so $w\in L / a$ in new grammar.
+
+    If $w$ in new grammar, which means $S'\Rightarrow^{*} \alpha A'$ generating $w$, then in origin CFG we have $S\Rightarrow ^{*}A$ generating $wa$, so $wa\in L,w\in L / a$.
+
+    So $L / a$ is CFG.
+\end{solution}
+
+% \begin{problem} (Exercise 7.3.2) Consider the following two languages:
+%   \begin{align*}
+%     L_{1} & = \{ a^{n}b^{2n}c^{m} \mid n, m \ge 0\},\\
+%     L_{2} & = \{ a^{n}b^{m}c^{2m} \mid n, m \ge 0\}.
+%   \end{align*}
+%   \begin{parts}
+%     \part\ Show that these languages are context-free by giving grammars for them.
+%     \part\ Is $L_{1} \cap L_{2}$ a CFL\@? Justify your answer.
+%   \end{parts}
+% \end{problem}
+
+% \begin{problem} (Exercise 7.3.6)
+%   Give the formal proof of Theorem 7.25: that the CFL's are closed under
+%   reversal.
+% \end{problem}
+
+\begin{problem} (Exercise 7.4.3 (c)) Using the grammar $G$ of Example 7.34, use
+  the CYK algorithm to determine whether string $aabab$ is in $L(G)$.
+  \begin{align*}
+    S & \rightarrow AB \,|\, BC\\
+    A & \rightarrow BA \,|\, a\\
+    B & \rightarrow CC \,|\, b\\
+    C & \rightarrow AB \,|\, a
+  \end{align*}
+\end{problem}
+
+\begin{solution}
+    Answer like:
+
+    \begin{figure}[htbp]
+        \centering
+        \begin{tabular}{c|c|c|c|c}
+            $\{A,C\}$ & $\{A,C\}$ & $\{B\}$ & $\{A,C\}$ & $\{B\}$ \\\hline
+            $\{B\}$ & $\{S,C\}$ & $\{S,A\}$ & $\{S,C\}$\\\hline
+            $\{S,A,B\}$ & $\emptyset$ & $\{S\}$ \\\hline
+            $\{S,A\}$ & $\{B\}$ \\\hline
+            $\{S\}$
+        \end{tabular}
+    \end{figure}
+    So $aabab\in L\left( G \right) $.
+\end{solution}
+
+\end{document}

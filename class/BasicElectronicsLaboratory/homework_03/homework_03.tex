@@ -1,0 +1,96 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{电子学基础实验-实验三}
+
+\begin{document}
+    \maketitle
+    \section{实验内容}
+    \begin{enumerate}
+        \item 分别测量滑线电阻,电感线圈及电容器的参数.分别将滑线电阻,电感线圈及电容箱接入图 3.1 的实验电路。调节电流 $I$,使之分别为 $0.8 \ \mathrm{A}$ 和 $1.0 \ \mathrm{A}$,测量出相应的电压 $U$ 和功率 $P$ 值.
+            \begin{figure}[htbp]
+                \centering
+                \includegraphics[width=0.7\linewidth]{./figures/homework_03_figure_01.pdf}
+            \end{figure}
+        \item 将上述滑线电阻,电感线圈及电容箱组成图 3.2 电路,测量该电路在电流 $I$ 分别为 $0.8 \ \mathrm{A}$ 和 $1.0 \ \mathrm{A}$ 时的 $P,U,U_2$ 等量.
+    \end{enumerate}
+    \newpage
+    \section{原始数据}
+    \begin{enumerate}
+        \item 实验一:
+            \begin{itemize}
+                \item 电阻:
+                    \begin{figure}[htbp]
+                        \centering
+                        \begin{tabular}{c|c|c|c}
+                            $I\left( \mathrm{A} \right) $ & $U\left( \mathrm{V} \right) $ & $P\left( \mathrm{W} \right) $ & $R\left( \mathrm{\Omega} \right) $ \\\hline
+                            $0.8$ & $104.4$ & $83.50$ & $130.5$ \\\hline
+                            $1.0$ & $130.5$ & $130.5$ & $130.5$
+                        \end{tabular}
+                    \end{figure}
+
+                    平均电阻为 $130.5 \ \mathrm{\Omega}$.
+                \item 电感
+                    \begin{figure}[htbp]
+                        \centering
+                        \begin{tabular}{c|c|c|c|c|c}
+                            $I\left( \mathrm{A} \right) $ & $U\left( \mathrm{V} \right) $ & $P\left( \mathrm{W} \right) $ & $R_{L}\left( \mathrm{\Omega} \right) $ & $X_{L}\left( \mathrm{\Omega} \right) $ & $L\left( \mathrm{H} \right) $ \\\hline
+                            $0.8$ & $125.0$ & $10.30$ & $16.09$ & $155.5$ & $0.495$ \\\hline
+                            $1.0$ & $156.4$ & $16.15$ & $16.15$ & $155.2$ & $0.494$
+                        \end{tabular}
+                    \end{figure}
+
+                    平均电阻 $16.12 \ \mathrm{\Omega}$,阻抗 $155.4 \ \mathrm{\Omega}$, $|Z|\angle\phi=156.2\angle 84.08^{\circ}$.
+                \item 电容
+                    \begin{figure}[htbp]
+                        \centering
+                        \begin{tabular}{c|c|c|c|c|c}
+                            $I\left( \mathrm{A} \right) $ & $U\left( \mathrm{V} \right) $ & $P\left( \mathrm{W} \right) $ & $|Z|\left( \mathrm{\Omega} \right) $ & $X_{C}\left( \mathrm{\Omega} \right) $ & $C\left( \mathrm{\mu F} \right) $ \\\hline
+                            $0.8$ & $151.1$ & $0.000\sim{}0.250$ & $0.391$ & $-188.9$ & $16.85$ \\\hline
+                            $1.0$ & $189.6$ & $0.100\sim{}0.424$ & $0.424$ & $-189.6$ & $16.79$
+                        \end{tabular}
+                    \end{figure}
+
+                    平均阻抗 $-189.3 \ \mathrm{\Omega}$,电容 $16.82 \ \mathrm{\mu F}$.
+            \end{itemize}
+        \item 实验二:
+            \begin{figure}[h!]
+                \centering
+                \begin{tabular}{c|c|c|c|c|c}
+                            $I\left( \mathrm{A} \right) $ & $U\left( \mathrm{V} \right) $ & $U_2\left( \mathrm{V} \right) $ & $P\left( \mathrm{W} \right) $ & $|Z|\left( \mathrm{\Omega} \right) $ & $\phi\left( \mathrm{^{\circ}} \right) $ \\\hline
+                    $0.8$ & $116.7$ & $87.75$ & $69.35$ & $145.9$ & $42.03$ \\\hline
+                    $1.0$ & $146.0$ & $108.8$ & $107.5$ & $146.0$ & $42.58$
+                \end{tabular}
+            \end{figure}
+
+            平均阻抗 $146.0 \ \mathrm{\Omega}$,相位 $42.31^{\circ}$.
+    \end{enumerate}
+    \newpage
+    \section{数据分析}
+    各参数的计算及平均值计算并一同记录于原始数据表格中.
+    \begin{enumerate}
+        \item 对于任务二,使用任务一的参数代入下式计算阻抗:
+            \begin{align}
+                |Z|\angle\phi=&R_{L}+jX_{L}+\frac{R\left( jX_{C} \right) }{R+jX_{C}}\nonumber
+            \end{align}
+            得到 $Z\approx 104.6+ j 94.42 \ \mathrm{\Omega}=140.9\angle 47.92^{\circ}$.
+
+            $|Z|$ 的相对误差为 $3.49\%$, $\phi$ 的绝对误差为 $-5.61^{\circ}$.
+        \item 任务二的 $|\dot{U}|$ 实测为 $146.0 \ \mathrm{V}$, 计算得 $\dot{U}_{1}+\dot{U}_{2}=\dot{I}\left( R_{L}+jX_{L}+\frac{R\left( jX_{C} \right) }{R+jX_{C}} \right)$,以 $\dot{U}_{2}$ 为参考相量,可知 $\dot{I}=\frac{\dot{U}_2\left( R+jX_{C} \right) }{R\left( jX_{C} \right) }$,因此计算得到 $\dot{U}_{1}+\dot{U}_{2}=141.5+j18.60 \ \mathrm{V}$,其模长为 $142.7 \ \mathrm{V}\approx |\dot{U}|$ 的实测值.
+
+            同时有 $|\dot{I}|$ 实测值为 $1.0 \ \mathrm{A}$,计算有 $\dot{I}_{1}+\dot{I}_{2}=\frac{\dot{U}_{2}}{R}+\frac{\dot{U}_{2}}{R_{C}+jX_{C}}\approx 0.835-j0.575 \ \mathrm{A}$,其模长为 $1.013\approx |\dot{I}|$ 的实测值.
+        \item 向量图如图所示:
+            \begin{figure}[htbp]
+                \centering
+                \includegraphics[width=0.7\linewidth]{./figures/homework_03_figure_02.pdf}
+            \end{figure}
+    \end{enumerate}
+    \section{思考题}
+    \begin{enumerate}
+        \item 如果调压器的输入端,输出端接反,则由于互感线圈的特性,输入电压将被放大相应的倍数输出,由于调压器并非设计用于升压,这可能导致其内部结构损坏造成事故,同时过高的输出电压可能烧坏实验电路.
+        \item 对于电感线圈,可以使用焦耳定律计算等效电阻 $R=\frac{P}{I^2}$, $X=\sqrt{\left( \frac{U}{I} \right) ^2-\left( \frac{P}{I^2} \right) ^2}$ 计算等效电抗,进而使用 $L=\frac{X}{\omega}=\frac{X}{2\pi f}$ 计算电感.如果需要阻抗模长,可以直接使用 $|Z|=\frac{U}{I}$,相位 $\phi=\cos^{-1}\frac{P}{UI}$.
+        \item 如需判断阻抗容性或感性,可以直接在示波器上观察电压和电流相位差,电压领先于电流则为容性,电流领先于电压为感性.如果电源频率可变,也可以在多个频率下检测阻抗,频率升高时,阻抗减小的元件为容性,阻抗增大的元件为感性.
+        \item 对于纯电阻,电感和电容,只需测量对应的 $U,I$ 值即可计算出元件阻抗 $|Z|=\frac{U}{I}$,分别有系数 $1,j,-j$,功率等可以由上述量计算.纯电感和电容没有等效电阻也简化了一定的计算.
+    \end{enumerate}
+    \section{结论}
+    本实验通过测量交流强电元件的各基本参数,通过基本的计算实践了相量法在分析交流电路的应用,同时通过对比计算值和实测值证明了理论计算的正确性.
+\end{document}

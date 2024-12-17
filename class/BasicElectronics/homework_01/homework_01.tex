@@ -1,0 +1,54 @@
+\input{"../homeworks_preamble.tex"}
+\title{电子学基础-第五次作业}
+
+\begin{document}
+    \pagestyle{empty}
+    \maketitle
+    \section{3-29} 已知题图所示电路中 $R_1=R_3=2\Omega,R_2=R_4=1\Omega,U_{S1}=3V,I_{S2}=1A$,分别用回路电流法,节点电压法求解各支路电流.
+    \begin{figure}[ht]
+        \centering
+        \inkfig{homework_01_figure_01}
+        \label{figure:01}
+    \end{figure}
+
+        解:使用回路电流法,选取三个回路如图所示,对应的电流分别为 $I_1,I_2,I_3$,可得:
+        \begin{align}
+            I_1=&I_{S 2}\\
+            I_2R_4+(I_2+I_3)R_2+(I_1+I_2+I_3)R_1=&-U_{S 1}\\
+            I_3R_3+(I_2+I_3)R_2+(I_1+I_2+I_3)R_1=&-U_{S 1}+3(I_1+I_2+I_3)R_1
+        \end{align}
+        解得 $I_1=1A,I_2=0.4A,I_3=-2.2A$,此即 $I_{S 2},R_4,R_3$ 支路对应的电流, $R_1,R_2$ 支路的电流分别为 $I_1+I_2+I_3=-0.8A,I_2+I_3=-1.8A$.
+
+        使用节点电压法,选取节点电压如图所示,对应的电压分别为 $U_1,U_2,U_3$,可得:
+        \begin{align}
+            I_{S 2}+\frac{U_3-U_2}{R_2}+\frac{U_1+U_{S 1}-U_2}{R_1}=&0\\
+            \frac{U_1-U_3}{R_4}-\frac{U_3-U_2}{R_2}+\frac{U_1-3(U_1+U_{S 1}-U_2)-U_3}{R_3}=&0\\
+            -\frac{U_2+U_{S 1}-U_2}{R_1}-I_{S 2}-\frac{U_1-U_3}{R_4}-\frac{U_1-3(U_1+U_{S 1}-U_2)-U_3}{R_3}=&0
+        \end{align}
+        解得 $U_2=U_1+1.4V,U_3=U_1-0.4V$,由此推出各支路电流同上.
+        \section{4-9} 题图所示电路中,己知 $i_{S 1}=i_{S 2}=5A,i=0$,当 $i_{S 1}=8A,i_{S 2}=6A$ 时,$i=4A$,求当 $i_{S 1}=3A,i_{S 2}=4A$ 时电流 $i$ 的值.
+        \begin{figure}[ht]
+            \centering
+            \inkfig{homework_01_figure_02}
+            \label{figure:02}
+        \end{figure}
+
+        解:由叠加定理和齐性原理, $i$ 可被表为 $i=ai_{S 1}+bi_{S 2}$,由题目中给出的两个条件解出 $a=2,b=-2$,由此得到题给条件下 $i=2\times 3-2\times 4 A=-2A$.
+        \section{4-10} 题图所示电路中,己知电流源 $I_{S 1}=2A,I_{S 2}=3A$,当 $3A$ 的电流源断开时,$2A$ 的电流源输出功率为 $28W$,这时 $U_2=8V$.当 $2A$ 的电流源断开时, $3A$ 的电流源输出功率为 $54W$,这时 $U_1=12V$.试求两个电流源同时作用时,每个电流源输出的功率.
+        \begin{figure}[ht]
+            \centering
+            \inkfig{homework_01_figure_03}
+            \label{figure:03}
+        \end{figure}
+        
+        解:由叠加定理,两个电流源同时作用时, $U_1=U_1^{'}+\frac{W_1}{I_{S 1}}=26V,U_2=U_2^{'}+\frac{W_2}{I_{S_2}}=26V$,由此计算得到此时两电流源对应的输出功率 $W_{11}=U_1I_{S 1}=52W,W_{21}=U_2I_{S 2}=78W$.
+
+        \section{4-25} 求出题图所示的二端网络的戴维南等效电路和诺顿等效电路.
+        \begin{figure}[ht]
+            \centering
+            \inkfig{homework_01_figure_04}
+            \label{figure:04}
+        \end{figure}
+
+        解:题图所示电路在两端标注方向的电压为 $U$ 时,得到的标注方向的电流 $I=i_{S 1}-i_{S 2}+\frac{U}{R}-5\frac{U}{R}=-4 \frac{U}{R}+i_{S 1}-i_{S 2}$,因此其戴维南等效电路的电源电压即开路电压 $\frac{(i_{S 1}-i_{S 2})R}{4}$,内阻(等效串联电阻)即开路电压除以短路电流 $i_{S_1}-i_{S 2}$ 得到 $\frac{R}{4}$,其中电压源的电压方向与标注电压方向相关联.诺顿等效电路即戴维南等效电路的等效,电流源电流为开路电压除以内阻得到 $i_{S 1}-i_{S 2}$,并联电阻等于内阻即 $\frac{R}{4}$,其中电流源的电流方向与标注电流方向相关联.
+\end{document}

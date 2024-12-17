@@ -1,0 +1,47 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{计算机系统概论-第四次作业}
+
+\begin{document}
+    \maketitle
+    \section{虚拟内存映射}
+    \subsection{静态参数的设置}
+    \begin{enumerate}
+        \item 19 9 10
+        \item 9 23
+    \end{enumerate}
+    \subsection{地址翻译}
+    \begin{enumerate}
+        \item VPN 是 \texttt{0x6F56DF}
+        \item 物理地址是 \texttt{0x466EF}
+        \item C
+    \end{enumerate}
+    \subsection{快表}
+    \begin{enumerate}
+        \item 3 20
+        \item \texttt{0xDEADB} 7
+        \item E
+        \item B
+    \end{enumerate}
+    \subsection{懒惰文件映射}
+    2 3 2 1024
+    \subsection{硬件查询页表过程,及走向多级页表}
+    3 1 A 11MB (不考虑内存对齐)
+    \section{链接和重定位}
+    \subsection{请列出 \texttt{test\_call} 中的五个函数调用,在链接期间需要全局重定位参与的调用有哪些,并简短解释原因.}
+    \begin{itemize}
+        \item \texttt{test1},使用 \texttt{extern} 关键字显示引用外部函数指针
+        \item \texttt{test4},使用 \texttt{extern} 关键字显式引用外部函数
+    \end{itemize}
+    \subsection{请列出 \texttt{foo.o} 文件中 \texttt{.symtab} 中必须以全局符号存储的符号名,并简短解释原因}
+    \begin{itemize}
+        \item \texttt{test1},使用 \texttt{extern} 关键字显示引用外部函数指针
+        \item \texttt{test3},非静态全局函数参与全局链接
+        \item \texttt{test4},使用 \texttt{extern} 关键字显式引用外部函数
+        \item \texttt{test\_call},非静态全局函数参与全局链接
+    \end{itemize}
+    \subsection{最终可执行文件链接外部变量,函数所处的对象文件时,可以使用静态链接也可以使用动态链接.在运行时谁更有性能优势?请简要解释原因}
+    静态链接更有性能优势,因为其启动时不需要加载链接库,运行时不需要进行函数查找与符号解析,可以直接由编译期确定的符号地址进行引用.
+
+    相比于静态链接,动态链接程序在启动时需要加载链接库,运行时需要根据符号计算链接库的引用地址,可能造成一定的性能损耗.
+\end{document}

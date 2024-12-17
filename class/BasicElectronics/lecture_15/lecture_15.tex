@@ -1,0 +1,37 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{AD 转换}
+    转换过程:
+        采样,保持,量化,编码.
+    \begin{definition}
+        (信噪比, SNR) 信号最大功率与量化噪声平均功率的比值.
+    \end{definition}
+    \begin{theorem}
+        (信噪比, SNR) SNR $=6.02n+1.76 \ \mathrm{dB}$,其中 $n$ 为 AD 位数.
+    \end{theorem}
+    \begin{definition}
+        (信噪失真比, SNDR) 信号最大功率与量化噪声平均功率与谐波失真功率之和的比值.
+    \end{definition}
+    \begin{definition}
+        (有效位数, ENOB) SNDR $=6.02$ ENOB $+1.76 \ \mathrm{dB}$.
+    \end{definition}
+    AD 的失调, DNL, INL 等参数同 DA.
+    \begin{theorem}
+        (采样定理) 为从采样数据还原原始数据,采样频率 $f_{s}$ 应为信号最大频率 $f_{\texttt{max}}$ 的 2 倍以上\mn{一般取 $f_{s}=\left( 2.5\sim{}3 \right) f_{\texttt{max}}$}.
+    \end{theorem}
+    保持过程可以使用接地电容维持电压,使用运放输出电压.
+
+    常用 AD 电路:
+    \begin{itemize}
+        \item flash: 使用多个比较器并行比较,温度计码输出.
+
+            速度快 ($\mathrm{GHz}$ 量级),电路复杂,精度较低.
+        \item 逐次逼近型 (Successive Approximation Register, SAR): 
+
+            使用一个 DA ,比较器和逻辑控制,从高位到低位二分比较得到当前位值.
+
+            精度高,电路较简单,速度较慢 (一般为 $\mathrm{kHz}\sim{}\mathrm{MHz}$ 级别).
+    \end{itemize}
+\end{document}

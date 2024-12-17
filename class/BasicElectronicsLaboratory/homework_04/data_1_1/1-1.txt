@@ -1,0 +1,5 @@
+U1 5V sin
+U2 5V
+Rf 1k
+R1 1k
+R2 5K

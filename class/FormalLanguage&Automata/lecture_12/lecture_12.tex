@@ -1,0 +1,46 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{Turing machine}
+    \begin{definition}
+        (Turing Machine, TM) A Turing Machine is a $7$-tuple:
+        \begin{align}
+            M=&\left( Q,\Sigma,\Gamma,\delta,q_0,B,F \right) \nonumber
+        \end{align}
+        with:
+        \begin{enumerate}
+            \item A finite control.
+            \item 1-D tape divided into cells.
+            \item A head positioned at one cell.
+        \end{enumerate}
+        Where $\Gamma$ are syobols on tape and $B\in \Gamma$ is blank symbol. Transition function $\delta$ is a partial\mn{which means $\delta\left( q,x \right) $ can be undefinited which makes TM halt} function with $\delta\left( q,x \right) =\left( p,Y,D \right) $ means TM turn to state $p$, rewrite head cell $X\rightarrow Y$ and move the head left or right.
+    \end{definition}
+    \begin{definition}
+        (ID of TM) State, position of head and tape contant. Expressed by $X_1X_2\ldots X_{i-1}qX_{i}X_{i+1}\ldots X_{n}$ ignoring $B$ on the left and right with state $q$ and head points to $X_{i}$.
+    \end{definition}
+    \begin{example}
+        (ID of TM) When $\delta\left( q,X_{i} \right) =\left( p,Y,L \right) $, ID $S_1=\ldots X_{i-1}qX_{i}\ldots $ turns to $S_2=\ldots pX_{i-1}Y\ldots $. Expressed by $S_1\vdash S_2$, so like $\vdash^{*}$.
+    \end{example}
+    \begin{definition}
+        (Language of TM) $L\left( M \right) =\{w\ |\ q_0w\vdash^{*}\alpha p\beta,p\in F\}$. The set of $L\left( M \right) $ is called recursively enumerable languages (RE languages\mn{the name has NO direct relation with regular expression}).
+    \end{definition}
+    \begin{definition}
+        (Halt) A TM halts if it enters a state $q$ while scanning a tape symbol $X$ when $\delta\left( q,X \right) $ is undefinited or $q$ is accepted.
+    \end{definition}
+    \begin{definition}
+        (Recursive Language\mn{NO relation with regular language}) Languages with Turing machines that do halt eventually, regardless of whether or not they are accepted.
+    \end{definition}
+    Recursive language is a subset of RE language.
+
+    How to design a TM:
+    \begin{itemize}
+        \item Storage in the state.
+        \item Multiple Tracks:
+            
+            Storage multiple symbols in one cell, finally rebuild $\Gamma=\Gamma_0^{k}$ where $k$ is the number of symbols in one cell.
+        \item Subroutine:
+
+            Split out a "function" with a start state $q_1$ and end state $q_{n}$, transition to $q_1$ to start the function and transition from $q_{n}$ to "return".
+    \end{itemize}
+\end{document}

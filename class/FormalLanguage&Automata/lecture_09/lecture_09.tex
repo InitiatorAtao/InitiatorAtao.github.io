@@ -1,0 +1,76 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{Pushdown Automata}
+        Pushdown Automata can be seen as $\epsilon$-NFA plus a stack.
+        \begin{definition}
+            (Pushdown Automata) A pushdown automata is a seven tuple:
+            \begin{align}
+                P=&(Q,\Sigma,\Gamma,\delta,q_0,Z_0,F)\nonumber
+            \end{align}
+            with:
+            \begin{itemize}
+                \item $Q$ :state
+                \item $\Sigma$ :alphabet
+                \item $\Gamma$ :stack symbols
+                \item $\delta:Q\times (\Sigma\cup\{\epsilon\})\times \Gamma\rightarrow 2^{Q\times \Sigma^{*}}$ :transition function
+                \item $q_0\in Q$ :start state
+                \item $Z_0\in \Gamma$ :initial symbol in stack
+                \item $F\subseteq Q$ :accepting state
+            \end{itemize}
+            Where $\delta(q,a,x)$ receives a state $q$, a letter $a$ (may be $\epsilon$) and now stack top $x\in \Gamma$, outputs a set of pairs $(p,\gamma)$. $p$ is the new state, $\gamma\in \Gamma^{*}$ is the string replacing $x$ \mn{That is, if $\gamma=\epsilon$ that is a pop operation, if $\gamma=x$ that is no change. Notice that we can push multi symbols but only pop one symbol}.
+
+            To make transition, start in $q_0$ and consume letters and run according to $\delta$.
+        \end{definition}
+        \begin{example}
+            \label{example:Pushdown Automata}
+            (Pushdown Automata) To build PA for $L_{wwr}=\{ww^{R}\ |\ w\in \{0,1\}^{*}\}$. Just push all letters in the first state, do $\epsilon$ move to the second state and pop them all (only accept the poped letter now). Then if the stack is empty do $\epsilon$ move to the final state which is accepted.\mn{Notice that all undefined transition leads to $\emptyset$, which means if there is a incorrect letter or finally there are still symbols in the stack, PA will not accept that}
+        \end{example}
+        \begin{definition}
+            (Instantaneous description,ID of PDA) A three tuple $(q,w,\gamma)$ refers to current state, remaining input and stack symbols.(also called configuration) Suppose $\delta(q,a,x)$ contains $p,\alpha$. Then for all string $w\in \Sigma^{*}$ and $\beta\in \Gamma^{*}$, we write:
+            \begin{align}
+                (q,aw,x\beta)\vdash(p,w,\alpha\beta)\nonumber
+            \end{align}
+            Also $\vdash^{*}$ means multi steps of $\vdash$.
+        \end{definition}
+        \begin{theorem}
+            (Instantaneous description of PDA) Two important principles for a legal sequence ID's of a PDA $P$ like $(q_0,w_0,\gamma_0)\vdash^{*}(q_1,w_1,\gamma_1)$:
+            \begin{enumerate}
+                \item Adding or removing suffixes of input $w$ keep the sequence legal. Or:
+                    \begin{align}
+                        (q_0,w_0,\gamma_0)\vdash^{*}(q_1,w_1,\gamma_1)\Leftrightarrow(q_0,w_0w,\gamma_0)\vdash^{*}(q_1,w_1w,\gamma_1)\nonumber
+                    \end{align}
+                \item Adding\mn{Only adding because removing stack suffixes may break middle tuples with shorter stack suffixes} suffixes of stack $\gamma$ keep the sequence legal. Or:
+                    \begin{align}
+                        (q_0,w_0,\gamma_0)\vdash^{*}(q_1,w_1,\gamma_1)\Rightarrow(q_0,w_0,\gamma_0\gamma)\vdash^{*}(q_1,w_1w,\gamma_1\gamma)\nonumber
+                    \end{align}
+            \end{enumerate}
+        \end{theorem}
+        \begin{definition}
+            (The language of PDA) All strings can be accepted by the final state or the empty stack.
+
+            For final state:
+            \begin{align}
+                L(P)=&\{w\in \Sigma^{*}\ |\ (q_0,w,Z_0)\vdash^{*}(q,\epsilon,\alpha),q\in F\}\nonumber
+            \end{align}
+
+            For empty stack:
+            \begin{align}
+                N(P)=&\{w\in \Sigma^{*}\ |\ (q_0,w,Z_0)\vdash^{*}(q,\epsilon,\epsilon)\}\nonumber
+            \end{align}
+        \end{definition}
+        \begin{example}
+            (The language of PDA) In example \ref{example:Pushdown Automata}, if there is non-empty $Z_0$, the PDA has $L(P)=L_{wwr},N(P)=\emptyset$. If $Z_0=\emptyset$, then $L(P)=N(P)=L_{wwr}$.
+        \end{example}
+        \begin{theorem}
+            (The language of PDA) For all PDA $P$, exists PDAs $P',P''$, $N(P)=L(P'),L(P)=N(P'')$.
+        \end{theorem}
+        \begin{proof}
+            (The language of PDA) Main purpose is using $X_0$ to control whether the stack is empty:
+            \begin{itemize}
+                \item For from $N$ to $L$ PDA $P'$, just add a new stack suffix $X_0$ below $Z_0$. Then add $\epsilon$ move with stack top $X_0$ from origin states to a new final state $f$. (remove all origin final states)
+                \item For from $L$ to $N$ PDA $P''$, just add a new stack suffix $X_0$ below $Z_0$. Then add $\epsilon$ move poping stack top from all origin final state to a new state with a self $\epsilon$ loop removing stack top.
+            \end{itemize}
+        \end{proof}
+\end{document}

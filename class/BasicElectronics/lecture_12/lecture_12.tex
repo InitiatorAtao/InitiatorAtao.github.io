@@ -1,0 +1,72 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{运算放大器与应用电路}
+        \subsection{集成运放的基本特性}
+        两输入端 $V_{P},V_{N}$,线性放大 $V_{O}=A_{V}\left( V_{P}-V_{N} \right) $, $A_{V}$ 称增益,放大输出有上限 $V_{OH}$ 及下限 $V_{OL}$.
+            \subsubsection{输入失调指标}
+            \begin{itemize}
+                \item 输入失调电压 $V_{OS}$ :运放的两个输入端电压相等时输出电压的 $\frac{1}{A_{V}}$,表征电路的对称性,越小越好.\sn{正常使用时要求直流输入远大于 $V_{OS}$}
+                \item 输入电流 $I_{IB}$ :两输入端流入电流的平均值,表征正常工作时输入端所需电流,越小越好.
+                \item 温漂 $\frac{\mathrm{d}V_{OS}}{\mathrm{d}T}$ :反映输入失调电压随温度变化.
+            \end{itemize}
+            \subsubsection{特性指标}
+            \begin{itemize}
+                \item 电压增益 $A_{V}$.
+                \item 输入电阻 $R_{id}=\frac{v_{P}-v_{N}}{i_{P}-i_{N}}$.
+                \item 带宽 $f_{H}$ ( $3 \ \mathrm{dB}$ 带宽) 选学.
+                \item 单位增益带宽 GBW 选学.
+            \end{itemize}
+        \subsection{应用分类及输入方式}
+            \subsubsection{应用分类}
+            \begin{itemize}
+                \item 线性应用,可以使用虚短和虚断分析.
+                \item 非线性应用
+            \end{itemize}
+            \subsubsection{输入方式}
+            接入输入端的支路均带一定电阻.但输出电阻接近于 0 (理想).
+            \begin{itemize}
+                \item 反相输入:一输入端接地,另一输入端接输出端和输入电压.
+
+                    增益为 $-\frac{R_{O}}{R_{I}}$.
+                \item 同相输入:一输入端接输入电压,另一输入端接地和输出端.
+
+                    增益为 $1+\frac{R_{O}}{R_{I}}$.
+                \item 差分输入:两输入端接不同的输入电压,一输入端接输出端,一输入端接地.
+
+                    接输出端的增益为 $-\frac{R_{O}}{R_{I}}$,接地端的增益为 $1+\frac{R_{O}}{R_{I}}$ (相对于输入端的实际电压而言,接地会带来分压损耗)
+            \end{itemize}
+        \subsection{模拟运算电路}
+        需要运放工作在线性区.
+        \begin{itemize}
+            \item 加法运算电路:两输入电压和输出端接到同一个输入端,另一输入端接地.
+            \item 减法运算电路:直接使用差分输入.
+            \item 积分运算电路:单输入电压,输出端经电容接入同一输入端.
+                \begin{align}
+                    V_{O}\left( t \right) =&-\frac{1}{RC}\int_{0}^{t}V_{I}\left( t \right) \mathrm{d}t+V_{O}\left( 0 \right) \nonumber
+                \end{align}
+            \item 微分运算电路:单输入电压经电容接入,输出端接入同一输入端.
+                \begin{align}
+                    V_{O}=&-RC \frac{\mathrm{d}V_{I}}{\mathrm{d}t}\nonumber
+                \end{align}
+        \end{itemize}
+        \subsection{电压比较器}
+        一输入端接参考电压 $V_{\texttt{REF}}$,一输入端接比较电压 $V_{I}$:
+        \begin{align}
+            V_{O}=\begin{cases}
+                    V_{OH}&,V_{I}>V_{\texttt{REF}}\\
+                    V_{OL}&,V_{I}<V_{\texttt{REF}}\\
+                \end{cases}\nonumber
+        \end{align}
+        \subsubsection{电压比较器的应用电路}
+        \begin{itemize}
+            \item 过零比较器,用于方波整形等.
+            \item 施密特比较器:不接地的差分输入非线性运放,输出端和参考电压接同一端.
+
+                将输出端设为 $V_{OH},V_{OL}$,对应的参考输入端实际电压为阈值, $V_{I}$ 变化时遇到更远的阈值才翻转.
+
+                增加噪声容限以抗干扰.
+            \item 窗口比较器,由两个比较器并联而成,有两个参考电压,在其构成的区间内输出不同.
+        \end{itemize}
+\end{document}

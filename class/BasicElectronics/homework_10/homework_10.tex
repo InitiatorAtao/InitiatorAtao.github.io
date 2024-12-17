@@ -1,0 +1,23 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{电子学基础-第十次作业}
+
+\begin{document}
+    \maketitle
+    \section{7-10} 如題图 7-10 所示电路换路前己达稳态, $i=0$ 时开关 $S$ 打开.求电容电压 $u_{C}\left( t \right) $,并定性画出其变化曲线.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\linewidth]{./figures/homework_10_figure_01.png}
+    \end{figure}
+    
+    解:对换路前稳态,电容器相当于开路,令电压源上的相关电流为 $I$,有 $IR_1+\left( I-I_{S} \right) R_2=U_{S}$,解得 $I=5 \ \mathrm{mA}$,故电容电压初始值 $u_{C}\left( 0 \right) =-\left( I-I_{S} \right) R_2=-4 \ \mathrm{V}$.换路后,电容部分支路无源, $u_{C}\left( \infty \right) =0$,又时间常量 $\tau=RC=0.05 \ \mathrm{s}$,由此得到 $u_{C}\left( t \right) =u_{C}\left( 0 \right) e^{-\frac{t}{\tau}}=-4e^{-20t} \ \mathrm{V}$.
+
+    \section{7-11} 題图 7-11 所示电路换路前己处于稳态, $t=0$ 时开关 $S$ 闭合.求流过电感的电流 $i_{L}\left( t \right) $,并定性画出其变化曲线.
+
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\linewidth]{./figures/homework_10_figure_02.png}
+    \end{figure}
+    
+    解:对换路前稳态,电感相当于短路,同样设电压源上的相关电流为 $I$,有 $\left( I-I_{S} \right) R_1+IR_2+IR_3=U_{s}$,由此可解得 $I=10 \ \mathrm{mA}$,同时 $i_{L}\left( 0 \right) =I$.对换路后稳态,电感被短路 $i_{L}\left( \infty \right) =0$,又时间常量 $\tau=\frac{L}{R}=4\times 10^{-3} \ \mathrm{s}$,由此得到 $i_{L}\left( t \right) =i_{L}\left( 0 \right) e^{-\frac{t}{\tau}}=10e^{-250t} \ \mathrm{mA}$.
+\end{document}

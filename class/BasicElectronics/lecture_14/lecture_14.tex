@@ -1,0 +1,40 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{AD/DA}
+    \subsection{DA 转换}
+    \begin{definition}
+        (Least Significant Bit, LSB) 最小量化间隔,输出的最小变化单元.
+    \end{definition}
+    \begin{definition}
+        (DA 转换速度) 数字输入 $D$ 从全 0 到全 1,输出从 0 到基准电压 $V_{\texttt{REF}}\pm \frac{V_{\texttt{LSB}}}{2}$ 所用时间.即完成一次转换需要的时间.
+    \end{definition}
+    数字量的编码方式:
+    \begin{itemize}
+        \item 十进制码
+        \item 二进制码
+        \item 温度计码
+
+            从低位到高位置 1.
+        \item $\frac{1}{N}$ 码
+
+            从低位到高位置 1, 但只有一个 1 位置.
+    \end{itemize}
+    DA 的非理想特性参数:
+    \begin{itemize}
+        \item 失调 (Offset):传输起点与原点的偏移.
+        \item 差分非线性 (Differential Nonlinearity, DNL):最大变化单元与 LSB 之差.
+        \item 积分非线性 (Integral Nonlinearity): 实际传输量与理想值的最大偏移量.
+    \end{itemize}
+    DA 转换器电路:
+    \begin{itemize}
+        \item 电阻串联型 (Resistor Ladder)
+
+            基准电压源 $V_{REF}$ 连接一串电阻和并联支路开关,使用 $\frac{1}{N}$ 码输入,将对应的电压经运放电压缓冲或放大后输出.模拟开关电容对转换速度有影响.
+
+        \item 权电流型 (Current Steering)
+
+            使用多个 $2^{-k}$ 倍的电流,二进制码叠加经运放缓冲或放大为电压.
+    \end{itemize}
+\end{document}

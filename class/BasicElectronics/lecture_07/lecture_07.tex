@@ -1,0 +1,43 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{正弦量的基本概念}
+        \subsection{正弦量的三要素} $i(t)=I_m \sin(\omega t+\psi)$.
+            
+            幅值 $I_m$,角频率 $\omega$,初相位 $\psi$.(相位 $\omega t+\psi$,相位差 $\phi=\psi_{u}-\psi_{i}$,相位差为正称 $u$ 领先 $i$) 
+        \subsection{有效值} 
+            \begin{align}
+                I=&\sqrt{\frac{1}{T}\int_{0}^{T}i^{2}(t)\mathrm{d}t}\\
+                U=&\sqrt{\frac{1}{T}\int_{0}^{T}u^{2}(t)\mathrm{d}t}
+            \end{align}
+            有效值又称均方根值 (root-mean-square,rms). 对于正弦量: 
+            \begin{align}
+                I_m=&\sqrt{2}I\\
+                U_m=&\sqrt{2}U
+            \end{align}
+        \subsection{正弦量的相量表示} 
+        \begin{align}
+            A(t)=&\sqrt{2}Ie^{j(\omega t+\psi)}\nonumber\\
+            =&\sqrt{2}I\cos{(\omega t+\psi)}+j\sqrt{2}I\sin{(\omega t+\psi)}
+        \end{align}
+        取虚部 $\operatorname{Im}[A(t)]=\sqrt{2}I\sin{(\omega t+\psi)}\leftrightarrow A(t)=\sqrt{2}Ie^{j\psi}e^{j\omega t}=\sqrt{2}\dot{I}e^{j\omega t}$,称 $\dot{I}=Ie^{j\psi}=I\angle \psi$\sn{通常使用 $\angle$ 和角度制表示} 为正弦量 $i(t)$ 对应的相量.相量的模表示正弦量的有效值,辐角表示正弦量的初相位.
+
+        相量图,即绘制相量对应的向量.
+
+        相量运算,同频率加减直接做复数加减,微积分等于乘除 $j\omega$:
+        \begin{align}
+            \frac{\mathrm{d}i}{\mathrm{d}t}\leftrightarrow&j\omega\dot{I}\\\int i\mathrm{d}t\leftrightarrow&\frac{\dot{I}}{j\omega}
+        \end{align}
+
+        相量法只适用于激励为同频正弦量的非时变线性电路.
+        \subsection{ RLC 元件上电压电流的相量关系}
+            \subsubsection{电阻} 有效值 $U=IR$,相位相同.
+            \subsubsection{电感} 有效值 $U=\omega LI$,相位 $u$ 超前 $90^{\circ}$.感抗 $X_L=\omega L$,单位为 $\Omega$,由此可以计算 $\dot{U}=j X_L \dot{I}$.感纳 $B_L=-\frac{1}{\omega L},\dot{I}=jB_L \dot{U}$\sn{这里感纳定义中的负号是为了符合 $u$ 超前 $90^{\circ}$ 的定义,也就是乘上 $j$ 逆时针旋转后再取反,等于顺时针旋转},单位为 $S$.
+            \subsubsection{电容} 有效值 $I=\omega C U$,相位 $i$ 超前  $90^{\circ}$.容抗 $X_C=-\frac{1}{\omega C}$,单位为 $\Omega$,容纳 $B_C=\omega C$,单位为 $S$.其他计算同理.
+        \subsection{复阻抗与复导纳}
+
+            复阻抗:正弦激励下 $Z=\frac{\dot{U}}{\dot{I}}$,单位为 $\Omega$, 其模长和辐角分别称阻抗模和阻抗角.实部称电阻,虚部称电抗.
+
+            复导纳: $Z=\frac{\dot{I}}{\dot{U}}$,单位为 $S$,模长辐角称导纳模/角.实部称电导,虚部称电抗.
+\end{document}

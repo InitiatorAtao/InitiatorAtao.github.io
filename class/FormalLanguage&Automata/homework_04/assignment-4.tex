@@ -1,0 +1,137 @@
+\documentclass[10pt]{homework}
+
+\name{Tao Wenhua} % Replace (Student Name) with your name.
+\id{2023010782}
+\term{2024 Autumn}
+\course{Formal Languages and Automata}
+\hwnum{4}
+
+%\hwname{(Name)}          % Uncomment and replace (Name) with the type of the
+                          % homework (e.g, Assignment, Problem Set, etc.) if you
+                          % don't want the document to be labeled as "Homework."
+%\problemname{(Name)}     % Uncomment and replace (Name) with the desired label
+                          % for problems created with the problem environment.
+%\solutionname{(Name)}    % Uncomment and replace (Name) with the desired label
+                          % for solutions created with the solution environment.
+
+% Load any other packages you need here.
+
+\begin{document}
+
+\begin{problem}
+  Prove that the following are not regular languages.
+  \begin{parts}
+    \part\ (Exercise 4.1.1 (e)) $\{0^{n}1^{m} \mid n \le m\}$.
+    \part\ (Exercise 4.1.2 (c)) $\{0^{n}10^{n}\mid n \ge 1\}$.
+    \part\ (Exercise 4.1.2 (e)) The set of strings of $0$'s and $1$'s that are
+    of the form $ww$, that is, some string repeated.
+    \part\ (Exercise 4.1.2 (f)) The set of strings of $0$'s and $1$'s that are
+    of the form $ww^{R}$, that is, some string following by its reverse.
+  \end{parts}
+\end{problem}
+
+\begin{solution}
+    \begin{parts}
+        \part Use pumping lemma, let $n_0$ be the constant in the lemma and $n=n_0$, then $x\in0^{+},y\in0^{+}$. Repeat $y$ until $xy^{k}z$ has more 0's than 1's, the string $xy^{k}z$ should be still in the language.This derives a contradiction.
+        \part The same as (a), let $n=n_0,x\in0^{+},y=0^{m_y}\in0^{+}$, then $xy^2z=0^{n+m_y}10^{n}$ should be in the language, contradict.
+        \part Build the string $0^{n_0}10^{n_0}1$, then $x\in 0^{+},y\in 0^{+}$, repeat $y$ then the new string $xy^{2}z=0^{n_0+m_y}10^{n_0}1$ drop out of the language, contradict.
+        \part Build the string $0^{n_0}110^{n_0}$, then $x\in 0^{+},y\in 0^{+}$, repeat $y$ then the new string $xy^2z=0^{n_0+m_y}110^{n_0}$ drop out of the language, contradict.
+    \end{parts}
+\end{solution}
+
+\begin{problem}
+  \begin{parts}
+    \part\ (Exercise 4.2.2) If $L$ is a language, and $a$ is a symbol, then
+    $L/a$, the quotient of $L$ and $a$, is the set of strings $w$ such that $wa$
+    is in $L$.
+    For example, if $L = \{a, aab, baa\}$, then $L/a = \{\epsilon, ba\}$.
+    Prove that if $L$ is regular, so is $L/a$.
+    \part\ (Exercise 4.2.3) If $L$ is a language, and $a$ is a symbol, then
+    $a \backslash L$ is the set of strings $w$ such that $aw$ is in $L$.
+    For example, if $L = \{a, aab, baa\}$, then $a \backslash L = \{\epsilon, ab\}$.
+    Prove that if $L$ is regular, so is $a \backslash L$.
+  \end{parts}
+  \label{problem:02}
+\end{problem}
+
+\begin{solution}
+    \begin{parts}
+        \part\label{ref:00} Structral induction:
+
+            Basis: $\phi/a=\phi,\epsilon / a=\phi$ are RE refer to particular RL, so are $b / a=\phi, a / a=\epsilon$ ($b$ is the symbol not equat to a).
+            
+            Induction: for RL expressed by RE $E,F$:
+            \begin{parts}
+                \part $(E+F) / a= (E / a)+(F / a)$ is regular. Because for all string $s\in (E+F)\Leftrightarrow s\in E \vee s\in F$, let $s / a$ is the string removed suffix $a$ (if no that suffix it turns to $\phi$), then $s / a \in (E / a) \vee s / a \in (F / a)\Leftrightarrow s / a\in (E / a) + (F / a)$.
+
+                \part\label{ref:01} $EF / a= E(F / a)$ is regular. Because $\forall s\in EF\Leftrightarrow s=xy,x\in E,y\in F\Leftrightarrow y / a \in F / a, s=xy \in E(F / a)$.Specially, for $\epsilon \in F$, $EF / a$ turns to $E / a$, which is trivally regular.
+
+                \part $E^{0} / a=\epsilon / a=\phi,E^{+} / a=E^{*}(E / a)$ are regular. The first part is trival, second part can be proofed by \ref{ref:01}.
+            \end{parts}
+            Then, use Structral induction, $L$ is regular so is $L / a$.
+            \part Structral induction like \ref{ref:00}:
+
+            Basis: $\phi\backslash a=\phi,\epsilon \backslash a=\phi$ are RE refer to particular RL, so are $b \backslash a=\phi, a \backslash a=\epsilon$ ($b$ is the symbol not equat to a).
+            
+            Induction: for RL expressed by RE $E,F$:
+            \begin{parts}
+                \part\label{proof:01} $(E+F) \backslash a= (E \backslash a)+(F \backslash a)$ is regular. Because for all string $s\in (E+F)\Leftrightarrow s\in E \vee s\in F$, let $s \backslash a$ is the string removed prefix $a$ (if no that prefix it turns to $\phi$), then $s \backslash a \in (E \backslash a) \vee s \backslash a \in (F \backslash a)\Leftrightarrow s \backslash a\in (E \backslash a) + (F \backslash a)$.
+
+                \part\label{ref:02} $EF \backslash a= (E\backslash a)F$ is regular. Because $\forall s\in EF\Leftrightarrow s=xy,x\in E,y\in F\Leftrightarrow x \backslash a \in E \backslash a, s=xy \in (E \backslash a)F$. Specially, for $\epsilon \in E$, $EF \backslash a$ turns to $F \backslash  a$ which is trivally regular.
+
+                \part $E^{0} \backslash a=\epsilon \backslash a=\phi,E^{+} \backslash a=E^{*}(E \backslash a)$ are regular. The first part is trival, second part can be proofed by \ref{ref:02}.
+            \end{parts}
+            Then, use Structral induction, $L$ is regular so is $L \backslash a$.
+    \end{parts}
+\end{solution}
+
+\begin{problem} (Exercise 4.2.6) Show that the regular languages are closed
+  under the following operations:
+  \begin{parts}
+    \part\ $\min(L) = \{ w \mid w \in L, \text{ but no proper prefix of
+    } w \text{ is in } L\}$.
+    \part\ $\max(L) = \{ w \mid w \in L, \text{ and for no } x \text{ other
+      than } \epsilon \text{ is $wx$ in } L\}$.
+    \part\ $\mathrm{init}(L) = \{ w \mid \text{for some } x, wx \in L\}$.
+  \end{parts}
+\end{problem}
+
+\begin{solution}
+    \begin{parts}
+        \part RL are closed under $\min$ means forall $L$ is regular,so is $\min(L)$. To proof that, let RL $L$ with DFA $A$, we build another DFA $B$ accepts $\min(L)$. $B$ is build from A by \emph{removing all arcs go out of states in $F$ }(the accepted states in $A$). Then we proof $B$ accepts $\min(L)$: $B$ accepts $w$ only if $A$ accepts $w$.If $w\in L$ but no proper prefix of $w$ is in $L$, that means when we run $w$ in $L$ there is no middle state which is accepted, so in $B$ no relative arcs are removed, $B$ can still accept $w$. For those $w$ with accepted middle state, there must be an deleted arc in their paths, $B$ does not accept them. So $\min(L)$ has DFA $B$. It is regular.
+        \part Build DFA $B$ from DFA $A$ by setting all $s\in F$ with path to \emph{another} $s'\in F$ \emph{no more accepted}. Then do the same thing for $s\in F$ \emph{with self loop}.($B$ is unique, because $\forall s_0,s_1,s_2\in F$, has path $s_0\rightarrow s_1\rightarrow s_2$ means $s_0\rightarrow s_2$, so the order of operating $s$ takes no effect) $B$ accepts $w$ only if $A$ accepts $w$. By definition $B$ no more accepts $w$ with $wx\in L,x\ne \epsilon$ because that means the final state $w$ reached has path to other final state. If there is no such $x$, $w$ reaches a legal final state in $B$, $B$ accepts $w$. So $\max(L)$ has DFA $B$. It is regular.
+        \part (May $x\ne \epsilon$?) Build DFA $B$ from DFA $A$ by setting all $s\in F$ with no path to $s'\in F$ \emph{no more accepted} (May $s=s'$. Newly generated eligible states after the operation are no longer operated on). Also, $B$ accepts $w$ only if $A$ accepts $w$, and from definition we can proof $B$ is the DFA of $\mathrm{init}(L)$ like two problems above because that delete all the illegal accepted states (cannot reach another accepted states in $A$). So $\mathrm{init}(L)$ is regular.
+    \end{parts}
+\end{solution}
+
+\begin{problem} (Exercise 4.2.8)
+  Let $L$ be a language.
+  Define $\mathrm{half}(L)$ to be the set of first halves of strings in $L$,
+  that is,
+  \begin{equation*}
+    \mathrm{half}(L) = \bigl\{w \mid \text{for some } x \text{ such that}
+    \abs{x} = \abs{w}, \text{ we have } wx \in L \bigr\}.
+  \end{equation*}
+  For example, if $L = \{\epsilon, 0010, 011, 010110\}$ then
+  $\mathrm{half}(L) = \{\epsilon, 00, 010\}$.
+  Notice that odd-length strings do not contribute to $\mathrm{half}(L)$.
+  Prove that if $L$ is a regular language, so is $\mathrm{half}(L)$.
+  (Note: You need to come up with the construction and prove formally that
+  the construction works.)
+\end{problem}
+
+\begin{solution}
+    For any RL with DFA $A=(Q_A,\Sigma_A,q_{0A},\delta_A,F_A)$, we can build $\epsilon-$NFA $B=(Q,\Sigma,q_0,\delta,F)$ for $\mathrm{half}(L)$ by these steps:
+    \begin{align}
+        Q=&(Q_A\times Q_A)\cup q_0\\
+        \Sigma=&\Sigma_A\\
+        q_0=&q_0\\
+        \delta(q_0,\epsilon)=&\{(q_{0A},q_f)|q_f\in F_A\}\\
+        \delta((q_1,q_2),a)=&\{(\delta_A(q_1,a),q)|q\in \delta^{-1}(q_2,a)\}\\
+        \delta^{-1}(q_1,a)=&\{q|\exists x\in \Sigma,\delta_A(q,x)=q_1\}\\
+        F=&\{(q_1,q_1)|q_1\in Q\}
+    \end{align}
+    Where all undefined $\delta(q,a)=\emptyset$. $q_0$ is a newly add state to reach all final states in $A$. To proof $B$ is the $\epsilon$-NFA for $\mathrm{half}(L)$, for all string $s$ that $B$ accepts, there is a path of $s$ connecting to a path of $s'$ with the same length of $s$ on $A$, which means $s s'$ accepted by $A$, $s\in \mathrm{half}(L)$. In the same way, we can proof that for all even-length $s\in L$ there is a path in $B$ accepts the first half of $s$, which is in $\mathrm{half}(L)$. So $B$ is the automata of $\mathrm{half}(L)$, which is regular.
+\end{solution}
+
+\end{document}

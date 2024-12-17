@@ -1,0 +1,36 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{复变函数-第三章习题}
+
+\begin{document}
+    \maketitle
+    \section{3} 不成立,如 $f(z)=z$, $C:|z|=1$.
+    \section{9}
+        \subsection{1} 复合闭路定理,化为两个奇点周围圆的积分,内部没有奇点的项即解析,积分值为 0,否则代入公式即 $2k\pi i$.
+        \subsection{3} 区域解析,柯西-古萨基本定理知积分值为 0.
+        \subsection{5} 对 $|a|$ 分类,大于 1 时区域解析积分为 0,小于 1 时代入高阶导数公式 $\frac{2\pi i}{2!}(e^{z})^{''}\big|_{z=a}=\pi e^{a}i$.
+    \section{10} 由复合闭路定理转为原点圆周,圆周积分公式 $n=1$ 积分值为 0.
+    \section{16} 非必须,例如上题的 $f(z)=\frac{1}{z^2}$ 满足题目条件但在 0 处不解析.
+    \section{17} 由复合闭路定理,对于任意在 $C$ 中的 $z_0$,有 $f(z_0)=\frac{1}{2\pi i}\oint_{C}^{}\frac{f(z)}{z-z_0}\mathrm{d}z=\frac{1}{2\pi i}\oint_{C}^{}\frac{g(z)}{z-z_0}\mathrm{d}z=g(z_0)$.
+    \section{21} (提示:两边均等于 $2\pi i f'(z_0)$) 由高阶导数公式立即得到右侧等于 $2\pi if'(z_0)$.由复合闭路定理,左侧等于 $\oint_{|z-z_0|=r}^{}\frac{f'(z)}{z-z_0}\mathrm{d}z=2\pi i f'(z_0)$.
+    \section{27}
+        \subsection{1} $if(z)=-v+iu$ 满足柯西-黎曼条件 $\frac{\partial (-v)}{\partial x}=-\frac{\partial v}{\partial x}=\frac{\partial u}{\partial y}$, $\frac{\partial (-v)}{\partial y}=-\frac{\partial v}{\partial y}=-\frac{\partial v}{\partial x}$. 故解析.
+        \subsection{3}
+        \begin{align}
+            \frac{\partial^2 |f(z)|^2}{\partial x^2}+\frac{\partial ^2|f(z)|^2}{\partial y^2}=&2(u_{x}^2+v_{x}^2+u_{y}^2+v_{y}^2)+2u(u_{x x}+u_{y y})+2v(v_{x x}+v_{y y})\nonumber
+        \end{align}
+        由拉普拉斯方程 $u_{x x}+u_{y y}=0$, $v_{x x}+v _{y y}=0$ 以及 C-R 条件代入上式即等于 $4(u_{x}^2+v _{x}^2)$.又由于 $f'(z)=u_{x}+iv_{x}$,直接代入即得原式也等于 $4|f'(z)|^2$.
+    \section{31} 由调和函数的条件:
+    \begin{align}
+        \frac{\partial^2 v}{\partial x^2}+\frac{\partial ^22 v}{\partial y^2}=&0\nonumber\\
+        (p^2-1)e^{px}\sin y=&0\nonumber\\
+        p^2=&1\nonumber\\
+        p=&\pm 1\nonumber
+    \end{align}
+    又由解析函数的 C-R 条件:
+    \begin{align}
+        u_{x}=&v_{y}=e^{px}\cos y\nonumber\\
+        u_{y}=&-v _{x}=&pe^{px}\sin y\nonumber
+    \end{align}
+    可解得 $u=e^{x}\cos y+c,p=1$ 或 $u=-e^{-x}\cos y+c,p=-1$,代入可得 $f(z)=e^{z}+c,p=1$ 或 $f(z)=-e^{-z}+c,p=-1$.
+\end{document}

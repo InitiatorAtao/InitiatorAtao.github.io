@@ -1,0 +1,28 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{计算机系统概论-LAB1-BOMBLAB}
+
+\begin{document}
+    \maketitle
+    \begin{itemize}
+        \item \texttt{phase\_1} 使用 \texttt{b \*phase\_1} 设置断点,触发断点后观察 \texttt{layout asm} 和 \texttt{disas} 显示出的汇编代码,发现直接调用了 \texttt{strings\_not\_equal} 函数,使用 \texttt{ni} 单步运行到该函数调用处, \texttt{x/s \$rsi} 打印出第二个参数即为答案.
+        \item \texttt{phase\_2} 同理使用断点在函数起始停下,发现调用 \texttt{read\_six\_numbers} 读取了六个数字,猜测读取到栈中,输入 \texttt{1 2 3 4 5 6} 依次使用 \texttt{x/d \$rsp},\texttt{x/d \$rsp+4} 等等发现确实为 1 至 6,猜测成立.接下来调用 \texttt{cmpl \$0x0 (\$rsp)} 即比较第一个输入与 0,如果小于则跳转 (\texttt{js}) 到 \texttt{explode\_bomb},即第一个输入非负.接下来进入一个循环结构,设置一个指针 \texttt{\%rbp} 指向栈顶,一个累加器 \texttt{\%ebx} 初始为 1,每次判断指针指向的值加上累加器的值是否等于指针指向的下一个值,如果相等则继续循环,将累加器加上 1,指针指向下一个值,直到指针指向最后一个值则跳出循环.也就是说输入需要为一个首项非负的二阶等差数列.最后进行了一些校验,可能是为了防止栈溢出攻击.输入 \texttt{1 2 4 7 11 16} 后可以通过.
+        \item \texttt{phase\_3} 调用了 \texttt{sscanf} 从输入字符串中读取 \texttt{\%d \%d} 即两个整数,第一个整数不能大于 5,第二个整数等于 -590.输入 \texttt{1 -590} 后可以通过.
+        \item \texttt{phase\_4} 读入两个整数,限制第一个整数小于等于 14,使用(第一个输入,0,14)调用一个三参数的递归 \texttt{func4} 要求其返回值和第二个输入均等于 35. \texttt{func4} 的等价代码实现如下:
+
+            \begin{lstlisting}[language=C++]
+int func4(int a,int b,int c) {
+    int d=(c-b)/2+b;
+    if(d>a)
+        return d+func4(a,b,d-1);
+    else if(d<a)
+        return d+func4(a,d+1,c);
+    else return d;
+}
+            \end{lstlisting}
+
+            观察可知该函数在 $[0,14]$ 中二分查找第一个输入,并返回所有的探测值求和,由于需要返回值为 35,模拟可知探测值序列应为 $[7,11,9,8]$,第一个输入为 8,输入 \texttt{8 35} 后可以通过.
+        \item \texttt{phase\_5} 读入一个长度为 6 的字符串,对每个字符做某种变换后需要得到 \texttt{bruins}.变换为取其 ASCII 二进制表示的低 4 位作为下标访问字符数组 \texttt{maduiersnfotvbyl},对应下标 $[13,6,3,4,8,7]$,匹配得到 \texttt{mfcdhg} 是一个解. 
+        \item \texttt{phase\_6} 读入 $1\sim{}6$ 的一个排列,以这个顺序访问 6 个带初值链表节点 $[427,421,412,630,675,233]$ 要求访问的值顺序单调增,可得下标 $[6,3,2,1,4,5]$ 输入后可以通过.
+    \end{itemize}
+\end{document}

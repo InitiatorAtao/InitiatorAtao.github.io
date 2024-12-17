@@ -1,0 +1,85 @@
+\documentclass[10pt]{homework}
+
+\name{Tao Wenhua} % Replace (Student Name) with your name.
+\id{2023010782}
+\term{2024 Autumn}
+\course{Formal Languages and Automata}
+\hwnum{12}
+
+%\hwname{(Name)}          % Uncomment and replace (Name) with the type of the
+                          % homework (e.g, Assignment, Problem Set, etc.) if you
+                          % don't want the document to be labeled as "Homework."
+%\problemname{(Name)}     % Uncomment and replace (Name) with the desired label
+                          % for problems created with the problem environment.
+%\solutionname{(Name)}    % Uncomment and replace (Name) with the desired label
+                          % for solutions created with the solution environment.
+
+% Load any other packages you need here.
+
+\begin{document}
+
+\begin{problem} (Exercise 9.2.1) Show that the halting problem---the set of
+  \((M, w)\) pairs such that \(M\) halts (with or without accepting) when given
+  input \(w\)---is RE but not recursive.
+\end{problem}
+
+\begin{solution}
+    Use universal TM $U$ with input $\left( M,w \right) $. If $U$ halts, that equals to $M$ halts. So $U$ (with all states accepting) can determine halting problem. The problem is RE.
+
+    For recursive we can reduce universal language problem to halting problem by making all TMs reject by jumping into a infinity loop. Since $L_{u}$ is not recursive, halting problem is not recursive.
+\end{solution}
+
+\begin{problem}
+  (Exercise 9.2.5) Let \(L\) be recursively enumerable and let \(\overline{L}\)
+  be non-RE\@.
+  Consider the language
+  \begin{equation*}
+    L' = \{0w \mid w \text{ is in } L\} \cup \{1w \mid w \text{ is not in } L\}.
+  \end{equation*}
+  Can you say for certain whether \(L'\) or its complement are recursive, RE, or
+  non-RE\@?
+  Justify your answer.
+\end{problem}
+
+\begin{solution}
+    $L'$ is non-RE because non-RE problem $\overline{L}$ can be reduce to $L'$ by determine whether $1w$ in $L'$.
+
+    $\overline{L'}=\{w\ |\ w\text{ not begin with }0\text{ or }1\}\cup\{0w\ |\ w\notin L\}\cup\{1w\ |\ w\in L\}$ is non-RE because non-RE problem $\overline{L}$ can be reduce to $\overline{L'}$ by determine whether $0w$ in $\overline{L'}$.
+\end{solution}
+
+\begin{problem}
+  We know by Rice's theorem that none of the following problems are decidable.
+  However, are they recursively enumerable or non-RE\@?
+  \begin{parts}
+    \part\ (Exercise 9.3.4 (a)) Does \(L(M)\) contain at least two strings?
+    \part\ (Exercise 9.3.4 (b)) Is \(L(M)\) infinite?
+  \end{parts}
+\end{problem}
+
+\begin{solution}
+    \begin{parts}
+        \part The problem is RE. Because we can use a universal TM with all pairs $\left( M,w \right),w\in \Sigma^{*}$ input until it finds two accepted strings. If $L\left( M \right) $ contains at least two strings, the TM must halt and accept, otherwise it will not halt.
+        \part The problem is non-RE. Since halting problem (with arbitrary inputs) is non-RE, and we can reduce standard halting problem to the problem above, by building a TM $M_{i}$ accepts $\left( M,w \right)$'s ID sequence prefixes. If $M$ with input $w$ halts, ID sequence is limited, $L\left( M_{i} \right) $ is limited. So if we can determine whether $L\left( M_{i} \right) $ is infinite, we can determine whether $M$ with input $w$ halts.
+    \end{parts}
+\end{solution}
+
+\begin{problem}
+  (Exercise 9.3.6 (b)) Show that the following question is decidable: The set of codes for TMs that never make a move left on any input.
+\end{problem}
+
+\begin{solution}
+    When a TM cannot move left, the input on the tape is only read once from left to right just like DFA does. So after replacing the move left transitions by transitions to a rejected state, the TM can be reduced to a DFA. Then in DFA we can do searching like DFS or BFS to determine whether the new rejected state (reached by move left transitions) in $O\left( n+m \right) $ time, where $n$ is the state number and $m$ is the transition number. All things above can be done by a TM in limited steps, so the question is decidable.
+\end{solution}
+
+% \begin{problem}
+%   (Exercise 9.4.2) We showed that PCP was undecidable, but we assumed that the
+%   alphabet \(\Sigma\) could be arbitrary.
+%   Show that PCP is undecidable even if we limit the alphabet to
+%   \(\Sigma = \{0,1\}\) by reducing PCP to this special case of PCP\@.
+% \end{problem}
+
+% \begin{solution}
+
+% \end{solution}
+
+\end{document}

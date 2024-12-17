@@ -1,0 +1,155 @@
+\documentclass[10pt]{homework}
+
+\name{Tao Wenhua} % Replace (Student Name) with your name.
+\id{2023010782}
+\term{2024 Autumn}
+\course{Formal Languages and Automata}
+\hwnum{8}
+
+%\hwname{(Name)}          % Uncomment and replace (Name) with the type of the
+                          % homework (e.g, Assignment, Problem Set, etc.) if you
+                          % don't want the document to be labeled as "Homework."
+%\problemname{(Name)}     % Uncomment and replace (Name) with the desired label
+                          % for problems created with the problem environment.
+%\solutionname{(Name)}    % Uncomment and replace (Name) with the desired label
+                          % for solutions created with the solution environment.
+
+% Load any other packages you need here.
+
+\begin{document}
+
+\begin{problem} (Exercise 6.3.2)
+  Convert the grammar
+  \begin{align*}
+    S & \rightarrow aAA\\
+    A & \rightarrow aS \,|\, bS \,|\, a
+  \end{align*}
+  to a PDA that accepts the same language by empty stack.
+\end{problem}
+
+\begin{solution}
+    Answer PDA like:
+    \begin{align}
+        P=&\left( \{q\},\{a,b\},\{S,A\},\delta,q,S,\emptyset \right) \nonumber
+    \end{align}
+    where:
+    \begin{enumerate}
+        \item $\delta\left( q,a,S \right) =\{\left( q,AA \right) \}$ 
+        \item $\delta\left( q,a,A \right) =\{\left( q,S \right) ,\left( q,\epsilon \right) \}$ 
+        \item $\delta\left( q,b,A \right) =\{\left( q,S \right) \}$
+    \end{enumerate}
+\end{solution}
+
+\begin{problem} (Exercise 6.3.4)
+  Consider the PDA
+  \begin{equation*}
+    P = \bigl( \{q, p\}, \{0, 1\}, \{Z_{0}, X\}, \delta, q, Z_{0}, \{p\} \bigr)
+  \end{equation*}
+  having the following transition function:
+  \begin{enumerate}
+    \item $\delta(q, 0, Z_{0}) = \{(q, XZ_{0})\}$.
+    \item $\delta(q, 0, X) = \{(q, XX)\}$.
+    \item $\delta(q, 1, X) = \{(q, X)\}$.
+    \item $\delta(q, \epsilon, X) = \{(p, \epsilon)\}$.
+    \item $\delta(p, \epsilon, X) = \{(p, \epsilon)\}$.
+    \item $\delta(p, 1, X) = \{(p, XX)\}$.
+    \item $\delta(p, 1, Z_{0}) = \{(p, \epsilon)\}$.
+  \end{enumerate}
+  Convert the PDA to a context-free grammar.
+\end{problem}
+
+\begin{solution}
+    Answer CFG like:
+    \begin{align}
+        G=&\left( \{P,Q\},\{0,1\},A,P \right) \nonumber
+    \end{align}
+    where:
+    \begin{align}
+        A:\{P\rightarrow& 0Q\nonumber\\
+        Q\rightarrow &1Q\ |\ 0Q\ |\ \epsilon\}\nonumber
+    \end{align}
+\end{solution}
+
+\begin{problem} (Exercise 6.3.5 (c)) Devise a PDA that accepts the language
+  $\{0^{n}1^{m} \mid n \le m \le 2n \}$ by empty stack.
+  You may, if you wish, first construct a grammar for the language, and then
+  convert to a PDA\@.
+\end{problem}
+
+\begin{solution}
+    CFG have transition like $P\rightarrow 0P 1\ |\ 0P 11\ |\ \epsilon$. So the answer PDA like:
+    \begin{align}
+        P=&\left( \{q,p\},\{0,1\},\{Z_0,X\},\delta,q,Z_0,\emptyset \right) \nonumber
+    \end{align}
+    where:
+    \begin{enumerate}
+        \item $\delta\left( q,0,Z_0 \right) =\{\left( q,XZ_0 \right),\left( q,XXZ_0 \right)  \}$
+        \item $\delta\left( q,0,X \right) =\{\left( q,XX \right) ,\left( q,XXX \right) \}$ 
+        \item $\delta\left( q,\epsilon,X \right) =\{\left( p,X \right) \}$ 
+        \item $\delta\left( q,\epsilon,Z_0 \right) =\{\left( p,Z_0 \right) \}$
+        \item $\delta\left( p,1,X \right) =\{\left( p,\epsilon \right) \}$ 
+        \item $\delta\left( p,\epsilon,Z_0 \right) =\{\left( p,\epsilon \right) \}$
+    \end{enumerate}
+\end{solution}
+
+\begin{problem} (Exercise 6.4.2 (c))
+  Give a deterministic pushdown automaton to accept the following language
+  \begin{equation*}
+    \{0^{n}1^{m}0^{n} \mid n \text{ and } m \text{ are arbitrary}\}.
+  \end{equation*}
+\end{problem}
+
+\begin{solution}
+    Answer DPDA like:
+    \begin{align}
+        P=&\left( \{q,m,p,a\},\{0,1\},\{Z_0,X\},\delta,q,Z_0,\{a\} \right) \nonumber
+    \end{align}
+    where:
+    \begin{enumerate}
+        \item $\delta\left( q,0,Z_0 \right) =\left( q,XZ_0 \right) $ 
+        \item $\delta\left( q,0,X \right) =\left( q,XX \right) $ 
+        \item $\delta\left( q,1,Z_0 \right) =\left( a,Z_0 \right) $
+        \item $\delta\left( q,1,X \right) =\left( m,X \right) $
+        \item $\delta\left( m,1,X \right) =\left( m,X \right) $ 
+        \item $\delta\left( m,0,X \right)=\left( p,\epsilon \right)  $
+        \item $\delta\left( p,1,X \right) =\left( p,\epsilon \right) $
+        \item $\delta\left( p,\epsilon,Z_0 \right) =\left( a,\epsilon \right) $
+        \item $\delta\left( a,1,Z_0 \right) =\left( a,Z_0 \right) $
+    \end{enumerate}
+\end{solution}
+
+\begin{problem} (Exercise 6.4.3)
+  We can prove Theorem 6.19 in three parts:
+  \begin{parts}
+    \part\ Show that if $L = N(P)$ for some DPDA $P$, then $L$ has the prefix
+    property.
+    \part\ Show that if $L = N(P)$ for some DPDA $P$, then there exists a DPDA
+    $P'$ such that $L = L(P')$.
+    \part\ Show that if $L$ has the prefix property and is $L(P')$ for some DPDA
+    $P'$, then there exists a DPDA $P$ such that $L = N(P)$.
+  \end{parts}
+\end{problem}
+
+\begin{solution}
+    \begin{parts}
+        \part Since state with empty stack cannot move again, if $w\in L$, in other word, $w$ reach empty stack in $P$, all strings $s$ with real prefix $w$ reach empty stack in prefix $w$. Then no more moves are accepted, so $s\notin L$.
+        \part Construct $P'$ by making all origin final states no more accepted, then add new start state $s$, final state $e$ and initial stack symbol $S$. Then add transition $\delta\left( s,\epsilon,S \right)=\left( q,Z_0S \right)$ and $\delta\left( *,\epsilon,S \right) =\left( e,\epsilon \right) $. Where $Z_0$ is the origin initial stack symbol, $q$ is the origin start state, $*$ refers to any state in $P$.
+
+        Then we proof $L=L\left( P' \right) $, or $\forall w,w\in N\left( P \right) \Leftrightarrow w\in L\left( P' \right) $.
+        \begin{enumerate}
+            \item $\Rightarrow $ : In $P$ we have $\left( q,w,Z_0 \right) \vdash^{*} \left( a,\epsilon,\epsilon \right) $ for some middle state $a$. Then for the same transition in $P'$ we have $\left( q,w,Z_0S \right) \vdash^{*} \left( a,\epsilon,S \right) $ and $\left( a,\epsilon,S \right) \vdash \left( e,\epsilon,\epsilon \right) $ where $e$ is accepted. So $w\in L\left( P' \right) $.
+            \item $\Leftarrow$: In $P'$ we have $\left( s,w,S \right) \vdash \left( q,w,Z_0S \right) \vdash^{*} \left( a,\epsilon,S \right) \vdash \left( e,\epsilon,\epsilon \right) $ for some $a$. Since transitions in $P$ cannot remove bottom symbol $S$, we can savely remove $S$ to get $\left( q,w,Z_0 \right) \vdash^{*}\left( a,\epsilon,\epsilon \right) $ in $P$, or $w\in N\left( P \right) $.
+        \end{enumerate}
+        So the $P'$ above has $L=L\left( P' \right) $.
+        \part Prefix property ensures final states in $P'$ cannot transfer to other final states. So to construct $P$, we can remove all transitions out of final states. Then add new start state $s$ ,final state $e$ and initial stack symbol $S$. Then add transition $\delta\left( s,\epsilon,S \right) =\left( q,Z_0S \right) $ the same and $\delta\left( a,\epsilon,* \right) =\delta\left( e,\epsilon,* \right) =\left( e,\epsilon \right) $ where $a$ is the origin final state, $*$ refers to any stack symbols.
+
+        Then we proof $L=N\left( P \right) $, or $\forall w,w\in L\left( P' \right) \Leftrightarrow w\in N\left( P \right) $.
+        \begin{enumerate}
+            \item $\Rightarrow $: In $P'$ we have $\left( q,w,Z_0 \right) \vdash^{*}\left( a,\epsilon,* \right) $ where $a$ is final state. So in $P$ we have $\left( s,w,S \right) \vdash \left( q,w,Z_0S \right) \vdash^{*}\left( a,\epsilon,*S \right) \vdash \left( e,\epsilon,*S \right) \vdash^{*} \left( e,\epsilon,\epsilon \right) $, so $w\in N\left( P \right) $.
+            \item $\Leftarrow$: In $P$ we have $\left( s,w,S \right) \vdash\left( q,w,Z_0S \right) \vdash^{*}\left( a,\epsilon,*S \right) \vdash \left( e,\epsilon,*S \right) \vdash^{*}\left( e,\epsilon,\epsilon\right) $. Symbol $S$ is keeped because transition in $P'$ cannot remove it. So $\left( q,w,Z_0 \right) \vdash \left( a,\epsilon,* \right) $, $w\in L\left( P' \right) $.
+        \end{enumerate}
+        So the $P$ above has $L=N\left( P \right) $.
+    \end{parts}
+\end{solution}
+
+\end{document}

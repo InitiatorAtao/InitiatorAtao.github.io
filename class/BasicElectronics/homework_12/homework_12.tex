@@ -1,0 +1,22 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{电子学基础-第十二次作业}
+
+\begin{document}
+    \maketitle
+    \section{17} 假设运放的开环增益为正无穷,计算如图所示电路的闭环增益,并证明当 $R_1\rightarrow 0$ 或 $R_3\rightarrow 0$ 时结果收敛至期望值.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.5\linewidth]{./figures/homework_12_figure_01.png}
+    \end{figure}
+    
+    解:由运放的 "虚短" 可知其负输入端的电位等于接地电位, $R_2$ 上的电流为 $\frac{V_{\texttt{in}}}{R_2}$.由 "虚断" 可知负输入端的流入电流为零,故 $R_3$ 上的电流大小等于 $R_2$ 上的电流, $R_1,R_3,R_4$ 连接点的电位为 $-\frac{R_3}{R_2}V_{\texttt{in}}$, $R_4$ 上的电流为 $-\frac{R_3}{R_2}\frac{V_{\texttt{in}}}{R_4}$,对连接点使用 KCL 可得 $R_1$ 上的电流为 $\frac{R_3+R_4}{R_2R_4}V_{\texttt{in}}$.由此输出电压 $V_{\texttt{out}}=-\frac{R_3}{R_2}V_{\texttt{in}}-R_1 \frac{R_3+R_4}{R_2R_4}V_{\texttt{in}}$.闭环增益 $-\frac{R_3}{R_2}-R_1 \frac{R_3+R_4}{R_2R_4}$,当 $R_1\rightarrow 0$ 时增益趋于 $-\frac{R_3}{R_2}$, $R_3\rightarrow 0$ 时增益趋于 $-\frac{R_1}{R_2}$ 符合预期.
+
+    \section{8.46} 计算如图输入电压对应的输出电压:
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.5\linewidth]{./figures/homework_12_figure_02.png}
+    \end{figure}
+    
+    解:与上题同理可知 $M_1$ 上方支路电流为 $\frac{V_{\texttt{in}}}{R_1}$ 且为接地电位,故此时 MOSFET 导通,输出电压 $V_{\texttt{out}}=-\frac{R_{M_1}}{R_1}V_{\texttt{in}}$.
+\end{document}

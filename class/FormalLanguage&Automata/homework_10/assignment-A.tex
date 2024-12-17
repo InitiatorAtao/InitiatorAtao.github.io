@@ -1,0 +1,97 @@
+\documentclass[10pt]{homework}
+
+\name{Tao Wenhua} % Replace (Student Name) with your name.
+\id{2023010782}
+\term{2024 Autumn}
+\course{Formal Languages and Automata}
+\hwnum{10}
+
+%\hwname{(Name)}          % Uncomment and replace (Name) with the type of the
+                          % homework (e.g, Assignment, Problem Set, etc.) if you
+                          % don't want the document to be labeled as "Homework."
+%\problemname{(Name)}     % Uncomment and replace (Name) with the desired label
+                          % for problems created with the problem environment.
+%\solutionname{(Name)}    % Uncomment and replace (Name) with the desired label
+                          % for solutions created with the solution environment.
+
+% Load any other packages you need here.
+
+\begin{document}
+
+% \begin{problem} (Exercise 8.2.2 (c)) Design Turing machines for the language
+%   \begin{equation*}
+%     L = \{ ww^{R} \mid w \text{ is a string of 0's and 1's} \}.
+%   \end{equation*}
+% \end{problem}
+
+\begin{problem} (Exercise 8.2.3) Design a Turing machine that takes as input a
+  number $N$ and adds $1$ to it in binary.
+  To be precise, the tape initially contains a \$ followed by $N$ in binary.
+  The tape head is initially scanning the \$ in state $q_{0}$.
+  Your TM should halt with $N+1$, in binary, on its tape, scanning the leftmost
+  symbol of $N + 1$, in state $q_{f}$.
+  You may destroy the \$ in creating $N + 1$, if necessary.
+  For instance, $q_{0}\$10011 \vdash^{*} \$q_{f}10100$, and
+  $q_{0}\$11111 \vdash^{*} q_{f}100000$.
+  \begin{parts}
+    \part\ Give the transitions of your Turing machine, and explain the purpose of each state.
+    \part\ Show the sequence of ID's of your TM when given input $\$111$.
+  \end{parts}
+\end{problem}
+
+\begin{solution}
+\begin{parts}
+    \part Answer like:
+    \begin{align}
+        M=&\left( \{s,q_0,q_1,q_{f}\},\{0,1\},\{\$,0,1,B\},\delta,s,B,\{q_{f}\} \right) \nonumber
+    \end{align}
+    where:
+    \begin{align}
+        \delta\left( s,\$ \right) =&\left( s,\$,R \right) \nonumber\\
+        \delta\left( s,0 \right) =&\left( s,0,R \right) \nonumber\\
+        \delta\left( s,1 \right) =&\left( s,1,R \right) \nonumber\\
+        \delta\left( s,B \right) =&\left( q_1,B,L \right) \nonumber\\
+        \delta\left( q_1,0 \right) =&\left( q_0,1,L \right) \nonumber\\
+        \delta\left( q_1,1 \right) =&\left( q_1,0,L \right) \nonumber\\
+        \delta\left( q_1,\$ \right) =&\left( q_0,1,R \right) \nonumber\\
+        \delta\left( q_0,0 \right) =&\left( q_0,0,L \right) \nonumber\\
+        \delta\left( q_0,1 \right) =&\left( q_0,1,L \right) \nonumber\\
+        \delta\left( q_0,\$ \right) =&\left( q_f,\$,R \right) \nonumber\\
+        \delta\left( q_0,B \right) =&\left( q_f,B,R \right) \nonumber
+    \end{align}
+    Where:
+    \begin{itemize}
+        \item $s$ is moving head to the rightmost to start adding.
+        \item $q_1$ means there is a carry bit to add to some left position.
+        \item $q_0$ means there is no carry bit any more, just move the head to the leftmost of $N+1$.
+    \end{itemize}
+    \part Sequence like:
+    \begin{align}
+        &q_0\$111\vdash^{*}\$111q_0B\nonumber\\
+        \vdash&\$11q_1 1\vdash^{*}q_1\$000\nonumber\\
+        \vdash&1q_0 000\vdash^{*}q_0B 1000\nonumber\\
+        \vdash&q_{f}1000\nonumber
+    \end{align}
+\end{parts}
+\end{solution}
+
+\begin{problem} (Exercise 8.2.5 (b)) Consider the Turing machine
+  \begin{equation*}
+    M = \bigl( \{q_{0}, q_{1}, q_{f}\}, \{0,1\}, \{0,1,B\},
+    \delta, q_{0}, B, \{q_{f}\} \bigr).
+  \end{equation*}
+  Informally but clearly describe the language $L(M)$ if $\delta$ consists of
+  the following sets of rules:
+  \begin{alignat*}{2}
+    & \delta(q_{0}, 0) && = (q_{0}, B, R),\\
+    & \delta(q_{0}, 1) && = (q_{1}, B, R),\\
+    & \delta(q_{1}, 1) && = (q_{1}, B, R),\\
+    & \delta(q_{1}, B) && = (q_{f}, B, R).
+  \end{alignat*}
+\end{problem}
+
+\begin{solution}
+    $L\left( M \right)=L\left( 0^{*}11^{*} \right) $ where the language on the right is expressed by regular expression.
+\end{solution}
+
+\end{document}

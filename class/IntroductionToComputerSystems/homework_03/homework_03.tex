@@ -1,0 +1,67 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{计算机系统概论-作业3}
+
+\begin{document}
+    \maketitle
+    \section{猴子吃桃问题}
+    \begin{enumerate}
+        \item \texttt{\%edi}
+        \item \texttt{.L3}
+        \item \texttt{\%rax}
+        \item \texttt{.L2}
+        \item \texttt{ret}
+        \item \texttt{\$8}
+    \end{enumerate}
+    \section{栈变量位置}
+    \begin{figure}[htbp]
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            变量 & 十进制形式的 offset 或者说明\\\hline
+            \texttt{a} & \texttt{-24(\%rbp)}\\\hline
+            \texttt{a[2]} & \texttt{-16(\%rbp)}\\\hline
+            \texttt{x} & \texttt{\%edi},作为传递参数不进栈\\\hline
+            \texttt{buf} & \texttt{-32(\%rbp)}\\\hline
+            \texttt{buf[3]} & \texttt{-29(\%rbp)}\\\hline
+            \texttt{\%rbx} 的保存值 & \texttt{-8(\%rbp)}\\\hline
+        \end{tabular}
+    \end{figure}
+    \section{非常规过程调用}
+    \begin{enumerate}
+        \item 返回地址是 \texttt{GET} 调用处的下一条地址,返回值为 1.
+        \item
+        \begin{enumerate}
+            \item 存放 \texttt{GET} 的第一个参数.
+            \item 存放 \texttt{GET} 的返回地址.
+            \item 将 \texttt{GET} 的第一个参数放入 \texttt{\%ecx} 从而下一步将其存放到 \texttt{72(\%eax)}.
+            \item \texttt{60}.
+            \item 将存储的返回地址入栈,以便 \texttt{ret} 返回时能够返回到存储的返回地址.
+        \end{enumerate}
+    \end{enumerate}
+    \section{类函数调用}
+    \begin{enumerate}
+        \item 作为隐藏的第一个参数在 \texttt{\%rdi} 中传递,处于 \texttt{-32(\%rbp)} 处.
+        \item 使用隐藏的第一个参数 \texttt{this} 指针进行寻址.
+    \end{enumerate}
+    \section{补全 C 代码}
+    \begin{enumerate}
+        \item \texttt{f[1]}
+        \item \texttt{b.i->f[3]}
+        \item \texttt{h->b.j} 或 \texttt{i->e}
+        \item \texttt{i->g->d->a[1]}
+    \end{enumerate}
+    \section{内存布局分析}
+    \begin{enumerate}
+        \item \texttt{short}
+        \item \texttt{uint64\_t}
+        \item \texttt{int32\_t}
+        \item \texttt{double}
+        \item \texttt{5}
+    \end{enumerate}
+    内存布局:
+
+    \texttt{|a,2 bytes|pad,6 bytes|b, 8 bytes|\\
+        |c,4 bytes|pad, 4 bytes|d, 8 bytes|
+        \ldots (repeat 4 times)}
+\end{document}

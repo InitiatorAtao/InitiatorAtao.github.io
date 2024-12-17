@@ -1,0 +1,32 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{Taskwarrior 的使用}
+    \subsection{常用指令}
+    使用 \texttt{task} 调用 taskwarrior,默认执行 \texttt{next} 指令.
+    \begin{itemize}
+        \item \texttt{next} 按照计算出的优先级列出任务及其 ID.
+        \item \texttt{ID done} 完成 ID 对应的任务.
+        \item \texttt{ID delete} 删除 ID 对应的任务.
+        \item \texttt{add} 添加任务.\texttt{modify} 修改任务.尽可能使用 \texttt{feature:value} 语法提供详细的属性或使用 \texttt{+tagname} 语法添加标记,可用的属性列表如下:
+            \begin{itemize}
+                \item \texttt{project} 任务所属的项目.
+                \item \texttt{due} 任务的到期时间\sn{不要滥用以免过期造成的修改}
+                \item \texttt{priority} 任务的优先级, \texttt{L,M,H} 表示 low,mid,high.
+                \item \texttt{depends} 前置任务的 ID.
+            \end{itemize}
+        \item \texttt{config} 设置,可用的设置项如下:
+            \begin{itemize}
+                \item \texttt{urgency.user.(tag/project).name.coefficient value} 设置 tag,project 对任务重要程度的影响.
+            \end{itemize}
+    \end{itemize}
+    \subsection{常用筛选器}
+    可以使用筛选器指定要操作的任务范围.使用 \texttt{and} 连接多个筛选器.
+    \begin{itemize}
+        \item \texttt{/word/} 在描述和注释中出现 word.
+        \item \texttt{(entry/start/end)[.before/after]:time$\pm$(duration)} 添加/开始/结束时间,可以使用一般英文描述或 ISO 8601 标准表示法及其简化\sn{YYYY-MM-DD 以及可选的后缀 (THH:MM:SS)}.
+        \item \texttt{(project/tag):name} 项目和标签名称,可留空.
+        \item \texttt{status:status} 当前状态
+    \end{itemize}
+\end{document}

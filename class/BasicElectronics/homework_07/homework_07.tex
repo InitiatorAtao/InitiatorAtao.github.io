@@ -1,0 +1,41 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{电子学基础-第七次作业}
+
+\begin{document}
+    \maketitle
+    \section{11.2} 已知正弦电压 $u=220\sqrt{2}\sin{(1000t+\frac{\pi}{4})}\ \mathrm{V}$,正弦电流 $i=10\sin(1000t-\frac{\pi}{6})\ \mathrm{A}$.
+    \begin{enumerate}
+        \item 写出 $u,i$ 的相量表达式.
+            \begin{align}
+                \dot{U}=&220e^{\frac{\pi}{4}}=220\angle ^{\circ}45 \ \mathrm{V}\nonumber\\
+                \dot{I}=&5\sqrt{2}e^{-\frac{\pi}{6}}\approx 7.07\angle -30^{\circ} \ \mathrm{A}\nonumber
+            \end{align}
+
+        \item 计算 $u,i$ 的相位差.
+            \begin{align}
+                \phi=&\phi_{U}-\phi_{I}=75^{\circ}\nonumber
+            \end{align}
+
+        \item 画出 $u,i$ 的相量图.
+            
+            如下图:
+            \begin{figure}[htbp]
+                \centering
+                \inkfig[0.5\columnwidth]{homework_07_figure_02}
+            \end{figure}
+
+    \end{enumerate}
+    \section{11.32} 在同一相量图中,定性画出题图 11.32 所示电路中各元件电压,电流的相量关系.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\linewidth]{./figures/homework_07_figure_01.png}
+    \end{figure}
+
+        如下图:
+        \begin{figure}[htbp]
+            \inkfig{homework_07_figure_03}
+        \end{figure}
+        
+    
+\end{document}

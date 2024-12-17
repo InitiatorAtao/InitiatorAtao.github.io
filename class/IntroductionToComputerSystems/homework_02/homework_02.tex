@@ -1,0 +1,63 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{计算机系统概论-作业2}
+
+\begin{document}
+    \maketitle
+    \begin{enumerate}
+        \item 
+            \begin{verbatim}
+            add:
+                leaq    (%rsi,%rdi,4), %rdi
+                leaq    (%rcx,%rdx,4), %rax
+                leaq    (%rax,%rdi,8), %rax
+                ret
+            \end{verbatim}
+        \item 
+            \begin{verbatim}
+                1:i<n
+                2:x<val
+                3:x+1
+                4:2
+            \end{verbatim}
+        \item 
+            \begin{verbatim}
+                1:%rsi
+                2:%rdx
+                3:%rdi
+                4:%rdx
+            \end{verbatim}
+        \item 
+            \begin{verbatim}
+                1:%rsi
+                2:shrq
+                3:imulq
+                4:%rsi
+                5:%rdi
+                6:testq
+                7:$1
+                8:je
+            \end{verbatim}
+        \item 
+            \begin{verbatim}
+                foo1:choice3
+                foo2:choice5
+                foo3:choice6
+            \end{verbatim}
+        \item 用于有符号数比较,其中标志位 $SF$ 表示计算结果是否小于 0, $OF$ 表示补码计算结果是否产生溢出, $ZF$ 表示计算结果是否为 0.
+
+            在执行有符号数 $a,b$ 的比较时,先计算 $a-b$,根据得到的结果设置标志位,如果 $OF$ 被设置说明 $a=b$ 不满足条件,在不发生补码溢出的情况下, $SF$ 被设置说明 $a<b$,否则 $SF$ 不被设置才说明 $a<b$ (因为减法补码溢出为正数表明使用大负数 $a$ 减去了大正数 $b$,否则是用大正数 $a$ 减去了大负数 $b$),使用取反排除上述情况后,得到的就是 $a>b$ 的表达式.
+        \item 
+            \begin{itemize}
+                \item  \texttt{x==(int)(double)x} 成立,因为向 \texttt{double} 的转换保持 \texttt{int} 的精度.
+                \item  \texttt{ux==x} 成立,因为有符号数和无符号数比较会被统一转换为无符号数.
+                \item  \texttt{x+uy==y+ux} 成立,因为有符号数和无符号数进行运算时会被转换为无符号数.
+                \item  \texttt{(x>0) || (-x>=0)} 成立,对于 \texttt{x=-2147483648} ,编译器似乎会将 \texttt{-x>=0} 判断为 \texttt{true} ,原因未知.
+                \item  \texttt{(x>>4)==x/16} 不成立,例如  \texttt{x=-15} 在右移 4 位时会向下 (负无穷) 取整为 -1,除以 16 时会向 0 取整为 0.
+                \item  \texttt{(ux>>4)==ux/16} 成立,无符号数的位右移向下取整和除法向 0 取整的效果相同.
+                \item  \texttt{((x|\~{}x)>>31)==-1} 成立,按位取反与原数按位或得到二进制全 1 即有符号 -1,算数右移 31 位仍是二进制全 1 即 -1.
+                \item  \texttt{((x\&-x)!=0) || (x==0)} 成立, \texttt{x\&-x} 计算得到 $x$ 的最低位 1 所代表的数,如果为 0 说明 $x$ 全 0.
+                \item  \texttt{(d+f)-d==f} 不成立,例如 \texttt{d=1e100,f=1} 计算左侧为 0 ,大双精度浮点数的浮点误差将小浮点数直接忽略.
+            \end{itemize}
+    \end{enumerate}
+\end{document}

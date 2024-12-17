@@ -1,0 +1,248 @@
+\documentclass[10pt]{homework}
+
+\name{Tao Wenhua} % Replace (Student Name) with your name.
+\id{2023010782}
+\term{2024 Autumn}
+\course{Formal Languages and Automata}
+\hwnum{5}
+
+%\hwname{(Name)}          % Uncomment and replace (Name) with the type of the
+                          % homework (e.g, Assignment, Problem Set, etc.) if you
+                          % don't want the document to be labeled as "Homework."
+%\problemname{(Name)}     % Uncomment and replace (Name) with the desired label
+                          % for problems created with the problem environment.
+%\solutionname{(Name)}    % Uncomment and replace (Name) with the desired label
+                          % for solutions created with the solution environment.
+
+% Load any other packages you need here.
+
+\begin{document}
+
+% \begin{problem}
+%   Suppose $h$ is the homomorphism from the alphabet $\{0, 1, 2\}$ to the
+%   alphabet $\{a,b\}$ defined by: $h(0) = a$, $h(1) = ab$, and $h(2) = ba$.
+%   \begin{parts}
+%     \part\ (Exercise 4.2.1 (d)) If $L$ is the language $L(0+12)$, what is
+%     $h(L)$?
+%     \part\ (Exercise 4.2.1 (f)) If $L$ is the language $L(a{(ba)}^{*})$, what is
+%     $h^{-1}(L)$?
+%   \end{parts}
+% \end{problem}
+
+\begin{problem}
+  Lazy evaluation in subset state construction when converting an NFA to a DFA
+  can often be more efficient than using the straightforward subset state
+  conversion method.
+  One notable example is the keyword search problem discussed in textbooks,
+  where the resulting DFA has no more states than the original NFA\@.
+  Perform the lazy evaluation variant of the subset state method to convert the
+  following NFA for keyword \textit{fa} and \textit{dfa} to an equivalent DFA
+  with the same number of states.
+  In the diagram, $\Sigma = \{a,b,\ldots, z\}$ is the alphabet.
+
+  \begin{center}
+    \begin{tikzpicture}[node distance=1cm]
+      \node[state, initial] (q1) {$1$};
+      \node[state] (q2) [above right=.5cm and 1cm of q1] {$2$};
+      \node[state, accepting] (q3) [right=of q2] {$3$};
+      \node[state] (q4) [below right=.5cm and 1cm of q1] {$4$};
+      \node[state] (q5) [right=of q4] {$5$};
+      \node[state, accepting] (q6) [right=of q5] {$6$};
+      \path[->] (q1) edge[loop above] node[above] {$\Sigma$} ()
+                     edge node[above] {$f$} (q2)
+                     edge node[above] {$d$} (q4)
+                     (q2) edge node[above] {$a$} (q3)
+                     (q4) edge node[above] {$f$} (q5)
+                     (q5) edge node[above] {$a$} (q6);
+    \end{tikzpicture}
+  \end{center}
+\end{problem}
+
+\begin{solution}
+    The table below shows the subset founded in lazy evaluation in order:
+    \begin{figure}[htbp]
+        \centering
+        \begin{tabular}{c||c|c|c}
+             & $d$ & $f$ & $a$ \\\hline\hline
+             $\rightarrow \{1\}$ & $\{1,4\}$ & $\{1,2\}$ & $\{1\}$ \\
+             $\{1,4\}$ & $\{1,4\}$ & $\{1,2,5\}$ & $\{1\}$ \\
+             $\{1,2\}$ & $\{1,4\}$ & $\{1,2\}$ & $\{1,3\}$ \\
+             $\{1,2,5\}$ & $\{1,4\}$ & $\{1,2\}$ & $\{1,3,6\}$ \\
+             $*\{1,3\}$ & $\{1,4\}$ & $\{1,2\}$ & $\{1\}$ \\
+             $*\{1,3,6\}$ & $\{1,4\}$ & $\{1,2\}$ & $\{1\}$
+        \end{tabular}
+    \end{figure}
+\end{solution}
+
+\begin{problem}
+  We can use closure properties to help prove certain languages are not regular.
+  Starting with the fact that the language
+  \begin{equation*}
+    L_{0n1n} = \{ 0^{n}1^{n} \mid n \ge 0 \}
+  \end{equation*}
+  is not a regular set, prove the following languages are not regular by
+  transforming them, using operations known to preserve regularity:
+  \begin{parts}
+    \part\ (Exercise 4.2.13 (a)) $\{0^{i} 1^{j} \mid i \ne j\}$.
+    \part\ (Exercise 4.2.13 (b)) $\{ 0^{n}1^{m} 2^{n-m} \mid n \ge m \ge 0\}$.
+  \end{parts}
+\end{problem}
+
+\begin{solution}
+    \begin{parts}
+        \part The language is $\overline{L}_{0n1n}$. So if the language is regular, $L_{0 n 1 n}=\overline{\overline{L}}_{0 n 1 n}$ is regular, contradict.
+        \part Use homomorphism $h(0)=0,h(1)=h(2)=1$, then if the language $L$ is regualar, $L_{0 n 1 n}=h(L)$ is regular, contradict.
+    \end{parts}
+\end{solution}
+
+\begin{problem} (Exercise 4.3.2) Give an algorithm to tell whether a regular
+  language $L$ contains at least $100$ strings.
+\end{problem}
+
+\begin{solution}
+    Calculate by induction:
+
+    Basis: $\epsilon$ and all letters in $\Sigma$ contains only one string, $\phi$ contains no string.
+
+    Induction: if $E$ and $F$ are RE contain strings $a$ and $b$,then:
+    \begin{itemize}
+        \item $E+F$ contains $a+b$ strings.
+        \item $EF$ contains $a\times b$ strings.
+        \item $E^{*}$ contains infinity strings.
+    \end{itemize}
+    From algorithm above, we can directly calculate the number of strings from RE of the RL. Then just simply compare that with 100 we can get the answer.
+\end{solution}
+
+\begin{problem}
+  A finite automaton is given as the following transition table:
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{r||c|c} % chktex 44
+      & $0$ & $1$\\\hline\hline  % chktex 44
+      $\rightarrow A$ & $B$ & $E$\\
+      $B$ & $C$ & $F$\\
+      $*C$ & $D$ & $H$\\
+      $D$ & $E$ & $H$\\
+      $E$ & $F$ & $I$\\
+      $*F$ & $G$ & $B$\\
+      $G$ & $H$ & $B$\\
+      $H$ & $I$ & $C$\\
+      $*I$ & $A$ & $E$\\
+    \end{tabular}
+  \end{table}
+  \begin{parts}
+    \part\ Draw the table of distinguishable pairs for this automaton.
+    \part\ Construct the minimum-state equivalent DFA\@.
+  \end{parts}
+\end{problem}
+
+\begin{solution}
+    \begin{parts}
+        \part Answer like below, $\times ,\Delta$ in order of signment:
+        \begin{figure}[htbp]
+            \centering
+            \begin{tabular}{c||c|c|c|c|c|c|c|c|c}
+                 & $A$ & $B$ & $C$ & $D$ & $E$ & $F$ & $G$ & $H$ & $I$ \\\hline\hline
+                $A$ &  & $\Delta$ & $\times $ &  & $\Delta$ & $\times $ &  & $\Delta$ & $\times $ \\\hline
+                $B$ & $\Delta$ &  & $\times $ & $\Delta$ &  & $\times $ & $\Delta$ &  & $\times $ \\\hline
+                $C$ & $\times $ & $\times $ &  & $\times $ & $\times $ &  & $\times $ & $\times $ &  \\\hline
+                $D$ &  & $\Delta$ & $\times $ &  & $\Delta$ & $\times $ &  & $\Delta$ & $\times $ \\\hline
+                $E$ & $\Delta$ &  & $\times $ & $\Delta$ &  & $\times $ & $\Delta$ &  & $\times $ \\\hline
+                $F$ & $\times $ & $\times $ &  & $\times $ & $\times $ &  & $\times $ & $\times $ &  \\\hline
+                $G$ &  & $\Delta$ & $\times $ &  & $\Delta$ & $\times $ &  & $\Delta$ & $\times $ \\\hline
+                $H$ & $\Delta$ &  & $\times $ & $\Delta$ &  & $\times $ & $\Delta$ &  & $\times $ \\\hline
+                $I$ & $\times $ & $\times $ &  & $\times $ & $\times $ &  & $\times $ & $\times $ &  \\\hline
+            \end{tabular}
+        \end{figure}
+        \newpage
+        \part From solution above, we can union $A,D,G$ and $B,E,H$ and $C,F,I$. so the minimum-state DFA like:
+        \begin{figure}[htbp]
+            \centering
+            \begin{tabular}{c||c|c}
+                 & $0$ & $1$ \\\hline\hline
+                 $\rightarrow A$ & $B$ & $B$ \\
+                 $B$ & $C$ & $C$\\
+                 $*C$ & $A$ & $B$
+            \end{tabular}
+        \end{figure}
+    \end{parts}
+\end{solution}
+
+% \begin{problem}
+%   Define mapping $h: \{a, b\} \rightarrow {\{0,1\}}^*$ as $h(a) = \eps$ and
+%   $h(b)= 10$.
+%   Define regular expression $E = \eps + (a+b){(ba)}^*$.
+%   \begin{parts}
+%     \part\ Give a regular expression $E^R$ such that $L(E^R) = {(L(E))}^R$.
+%     \part\ Give a regular expression $h(E)$ such that $L(h(E)) = h(L(E))$.
+%     \part\ Construct a DFA $A$, such that $L(A)$ is the complement of $L(h(E))$.
+%    \end{parts}
+% \end{problem}
+
+\begin{problem}
+  Define map $h: \{0, 1\} \rightarrow {\{a, b\}}^*$ as $h(0) = ab$ and
+  $h(1) = ba$.
+  Given an automata $A$ as in the figure.
+  Construct DFA B over $\{0,1\}$, such that $L(B) = h^{-1}(L(A))$.
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+      \node[state, initial] (q1) {};
+      \node[state, accepting, above right of=q1] (q2) {};
+      \node[state, accepting, below right of=q1] (q3) {};
+
+      \draw (q1) edge[bend left, above] node{$a$} (q2)
+      (q2) edge[bend left, below] node{$b$} (q1)
+      (q1) edge[below] node{$b$} (q3)
+      (q3) edge[right] node{$a$} (q2)
+      (q2) edge[right, loop right, looseness=10] node{$a$} (q2)
+      (q3) edge[right, loop right, looseness=10] node{$b$} (q3);
+    \end{tikzpicture}
+  \end{figure}
+\end{problem}
+
+\begin{solution}
+    Use the definition $\delta_1(q_1,0)=\delta(\delta(q,a),b)$ and $\delta_1(q_1,1)=\delta(\delta(q,b),a)$ to shrink the DFA like:
+    \begin{figure}[htbp]
+        \centering
+        \begin{tabular}{c||c|c}
+             & $0$ & $1$ \\\hline\hline
+             $\rightarrow A$ & $A$ & $B$ \\
+             $*B$ & $A$ & $B$ \\
+        \end{tabular}
+    \end{figure}
+
+    Notice that the node in the right down side of problem graph is unreachable under $h$ so it does not appear.
+\end{solution}
+
+% \begin{problem}
+%   Minimize the following DFA using the table-filling algorithm.
+
+%   \begin{figure}[H]
+%     \centering
+%     \begin{tikzpicture}[node distance=1.3cm]
+%       \node[state, initial, accepting] (q1) {$1$};
+%       \node[state, above right=of q1] (q2) {$2$};
+%       \node[state, accepting, below right=of q1] (q3) {$3$};
+%       \node[state, node distance=2cm, right of=q2] (q4) {$4$};
+%       \node[state, node distance=2cm, right of=q3] (q5) {$5$};
+%       \node[state, accepting, below right=of q4] (q6) {$6$};
+
+%       \draw[->] (q1) edge[above] node{$a$} (q2)
+%       (q1) edge[below] node{$b$} (q3)
+%       (q2) edge[above] node{$a$} (q4)
+%       (q2) edge[above] node{$b$} (q5)
+%       (q3) edge[left] node{$a$} (q2)
+%       (q3) edge[loop right, right] node{$b$} (q3)
+%       (q4) edge[loop above, above] node{$a$} (q4)
+%       (q4) edge[bend left, above] node{$b$} (q6)
+%       (q5) edge[left] node{$a$} (q4)
+%       (q5) edge[below] node{$b$} (q6)
+%       (q6) edge[bend left, below] node{$a$} (q4)
+%       (q6) edge[loop right, right] node{$b$} (q6);
+%     \end{tikzpicture}
+%   \end{figure}
+% \end{problem}
+
+\end{document}

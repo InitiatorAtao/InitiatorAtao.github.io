@@ -1,0 +1,95 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{大学物理-第四次作业}
+
+\begin{document}
+    \maketitle
+    \begin{itemize}
+        \item 19.7 一铁制的螺绕环,其平均圆周长 $30cm$ ,截面积为 $1 \ \mathrm{cm^2}$ ,在环上均匀绕以 $300$ 匝导线。当绕组内的电流为 $0.032 \ \mathrm{A}$ 时，环内磁通量为 $2\times \times 10^{-6} \ \mathrm{Wb}$ .试计算:
+            \begin{enumerate}
+                \item 环内的磁通量密度 (即磁感应强度)
+
+                    即 $B=\frac{\Phi}{S}=2\times 10^{-2} \ \mathrm{T}$
+                \item 磁场强度
+
+                    即 $H=nI=\frac{NI}{l}=32 \ \mathrm{A / m}$
+                \item 磁化面电流 (即面束缚电流) 密度
+
+                    即 $j'=(\mu_{r}-1)nI=(\frac{B}{\mu_0H}-1)\frac{NI}{l}=(\frac{B}{\mu_0}-H)\approx 1.6\times 10^{4} \ \mathrm{A /m}$
+                \item 环内材料的磁导率和相对磁导率
+
+                    即 $\mu=\frac{B}{H}=6.25\times 10^{-4} \ \mathrm{H / m},\mu_{r}=\frac{\mu}{\mu_0}\approx 4.97\times 10^{2}$
+                \item 铁芯内的磁化强度
+
+                    即 $M=j'=\frac{B}{\mu_0}-H\approx 1.6\times 10^{4} \ \mathrm{A / m}$
+            \end{enumerate}
+        \item 19.8 在铁磁质磁化特性的测量实验中,设所用的环形螺线管上共有 $1000$ 匝线圈,平均半径为 $15.0 \ \mathrm{cm}$,当通有 $2.0 \ \mathrm{A}$ 电流时,测得环内磁感应强度 $B=1.0 \ \mathrm{T}$,求:
+            \begin{enumerate}
+                \item 螺绕环铁芯内的磁场强度 $H$
+
+                    $H=nI=\frac{NI}{l}\approx 2.122\times 10^{3} \ \mathrm{A /m}$
+                \item 该铁磁质的磁导率 $\mu$ 和相对磁导率 $\mu_{r}$
+
+                    $\mu=\frac{B}{H}=4.712\times 10^{-4} \ \mathrm{H / m},\mu_0=\frac{\mu}{\mu_0}=375$
+                \item 已磁化的环形铁芯的面束缚电流密度
+
+                    $j'=M=\frac{B}{\mu_0}-H\approx 8.0\times 10^{5} \ \mathrm{A / m}$
+            \end{enumerate}
+        \item 19.13 一个利用空气间隙获得强磁场的电磁铁如图 19.27 所示.铁芯中心线的长度 $l_1=500 \ \mathrm{mm}$.空气隙长度 $l_2=20 \ \mathrm{mm}$,铁芯是相对磁导率 $\mu_{r}=5000$ 的硅钢.要在空气隙中得到 $B=3T$ 的磁场,求绕在铁芯上的线圈的安匝数 $NI$.
+
+            选取铁芯和气隙中的磁感应强度积分 $\oint_{L}^{}H\mathrm{d}l=NI$,气隙中的磁感应强度积分 $\int_{L_2}^{}H\mathrm{d}l=\int_{L_2}^{}\frac{B}{\mu_0}\mathrm{d}l\approx 4.77\times 10^{4} \ \mathrm{A}$,同理铁芯中的磁感应强度积分 $\int_{L_1}^{}H\mathrm{d}l=\int_{L_1}^{}\frac{B}{\mu_0\mu_{r}}\mathrm{d}l=2.38\times 10^{2} \ \mathrm{A}$. 因此安匝数 $NI=i\int_{L_1}^{}H\mathrm{d}l+\int_{L_2}^{}H\mathrm{d}l=4.8\times 10^{4} \ \mathrm{A}$.
+        \item 20.1 在通有电流 $I=5 \ \mathrm{A}$ 的长直导线近旁有一导线段 $ab$,长 $l=20 \ \mathrm{cm}$,离长直导线距离 $d=10 \ \mathrm{cm}$ (图 20.22).当它沿平行于长直导线的方向以速度 $v=10 \ \mathrm{m / s}$ 平移时,导线段中的感应电动势多大? $a,b$ 哪端的电势高?
+
+            动生电动势 $E=\int_{L}^{}(v\times \bm{B})\cdot \mathrm{d}\bm{l}=\int_{L}^{}\frac{\mu_0Iv}{2\pi l}\mathrm{d}l=\frac{\mu_0Iv}{2\pi}\ln \frac{l+d}{d}=1.10\times 10^{-5} \ \mathrm{V}$,由叉积的方向可知 $a$ 端电势高.
+        \item 20.5 在半径为 $R$ 的圆柱形体积内,充满磁感应强度为 $\bm{B}$ 的均匀磁场.有一长为 $L$ 的金属棒放在磁场中,如图 20.24 所示.设磁场在增强,并且 $\frac{\mathrm{d}B}{\mathrm{d}t}$ 已知,求棒中的感生电动势,并指出哪端电势高.
+
+            由磁场的对称性,感生电场应为与圆柱中轴同心的环流,故从圆心向 $a,b$ 连接导线段,构成三角形 $Oab$, 其中 $Oa,Ob$ 垂直于感生电场,不产生感生电动势,故 $Oab$ 上电动势即为棒中的感生电动势 $E=-S \frac{\mathrm{d}B}{\mathrm{d}t}=\frac{L}{2}\sqrt{R^2-\left(\frac{L}{2}\right)^2}\frac{\mathrm{d}B}{\mathrm{d}t}$,由楞次定律可知 $b$ 端电势高.
+        \item 20.10 电磁阻尼.一金属圆盘,电阻率为 $\rho$ 厚度为 $b$,在转动过程中,在离转轴 $r$ 处面积为 $a^2$ 的小方块内加以垂直于圆盘的磁场 $\bm{B}$ (图 20.26).试导出当圆盘转速为 $\omega$ 时阻碍圆盘的电磁力矩的近似表达式.
+
+            小方块上的感应电动势 $E=Blv=Ba\omega r$,电阻 $R=\rho\frac{a}{ab}=\frac{\rho}{b}$,外电路电阻远小于该值忽略不计,故电流近似为 $I=\frac{E}{R}=\frac{Bab\omega r}{\rho}$,受磁力 $F=BIl=\frac{B^2a^2b\omega r}{\rho}$,力矩 $M=Fr=\frac{B^2a^2b\omega r^2}{\rho}$.
+        \item 20.11 在电子感应加速器中,要保持电子在半径一定的轨道环内运行,轨道环内的磁场 $B$ 应该等于环围绕的面积中 $B$ 的平均值 $\overline{B}$ 的一半,试证明之.
+
+            轨道环上的感生电场强度 $E=\frac{\mathrm{d}\overline{B}}{\mathrm{d}t}\frac{S}{C}=\frac{R}{2}\frac{\mathrm{d}\overline{B}}{\mathrm{d}t}$,又 $F_{E}=eE=m\frac{\mathrm{d}v}{\mathrm{d}t},F_{n}=evB=m \frac{v^2}{R}$,故 $v=\frac{eBR}{m},\frac{\mathrm{d}v}{\mathrm{d}t}=\frac{eR}{m}\frac{\mathrm{d}B}{\mathrm{d}t}$,代入 $F_{E}$ 可得 $eE=eR \frac{\mathrm{d}B}{\mathrm{d}t}$,即 $\frac{\mathrm{d}B}{\mathrm{d}t}=\frac{1}{2} \frac{\mathrm{d}\overline{B}}{\mathrm{d}t}$,两侧积分即可得到 $B=\frac{1}{2}\overline{B}$.
+        \item 20.15 半径为 $2.0 \ \mathrm{cm}$ 的螺线管,长 $30.0 \ \mathrm{cm}$,上面均匀密绕 $1200$ 匝线圈,线圈内为空气.
+            \begin{enumerate}
+                \item 求这螺线管中自感多大?
+
+                    即 $L=\frac{\Psi}{i}=2\pi \mu_0 Rn^2S=7.6\times 10^{-3} \ \mathrm{H}$.
+                \item 如果在螺线管中电流以 $3.0\times 10^{2} \ \mathrm{A / s}$ 的速率改变,在线圈中产生的自感电动势多大?
+
+                    即 $E_{L}=-\frac{\mathrm{d}\Psi}{\mathrm{d}t}=-L \frac{\mathrm{d}i}{\mathrm{d}t}=2.3 \ \mathrm{V}$.
+            \end{enumerate}
+        \item 20.17 如图 20.27 所示的截面为矩形的螺绕环,总匝数为 $N$.
+            \begin{enumerate}
+                \item 求此螺绕环的自感系数
+
+                    即 $L=\frac{\Psi}{I}=\frac{N\Phi}{I}=\frac{\mu_0 N^2 h}{2\pi} \ln \frac{R_2}{R_1}$.
+                \item 沿环的轴线拉一根直导线.求直导线与螺绕环的互感系数 $M_{12}$ 和 $M_{21}$ ,二者是否相等?
+
+                    将直导线视作在无穷远处闭合,当螺绕环通过电流 $I$ 时直导线围成的磁通即 $\frac{\mu_0 NIh}{2\pi }\ln \frac{R_2}{R_1}$,故 $M_{21}=\frac{\Psi}{I}=\frac{\mu_0 Nh}{2\pi }\ln \frac{R_2}{R_1}$.当直导线通过电流 $I$ 时螺绕环围成的磁通即 $\int_{R_1}^{R_2}\frac{\mu_0 Ih}{2\pi r}\mathrm{d}r$.计算得到的磁通和 $M_{12}$ 均与上述 $M_{21}$ 的情况相同.
+            \end{enumerate}
+        \item 21.11 题目略
+            \begin{enumerate}
+                \item 由坡印亭矢量的定义可知其垂直于 $\bm{E},\bm{B}$ 所在平面,而由对称性可知 $\bm{B}$ 为与导体轴同心的环绕磁场,方向符合右手螺旋定则, $\bm{E}$ 与电流方向相同,故叉积方向即垂直于表面且指向导体内部.
+                \item 由定义可知:
+                    \begin{align}
+                        \int_{}^{}\bm{S}\cdot \mathrm{d}\bm{A}=&\int_{}^{}\frac{1}{\mu_0}\bm{E}\times \bm{B}\cdot \mathrm{d}\bm{A}\nonumber\\
+                        =&-2\pi a l \frac{\mu_0 I}{2\pi a}\frac{\rho I}{\mu_0\pi a^2}\nonumber\\
+                        =&-\frac{I^2\rho l}{\pi a^2}\nonumber\\
+                        =&-I^2R\nonumber
+                    \end{align}
+            \end{enumerate}
+        \item 17.19 一平行板电容器的两板都是半径为 $5.0 \ \mathrm{cm}$ 的圆导体片,在充电时,其中电场强度的变化率为 $\frac{\mathrm{d}E}{\mathrm{d}t}=1.0\times 10^{12} \ \mathrm{V / (m\cdot s)}$.
+            \begin{enumerate}
+                \item 求两极板间的位移电流
+
+                    由全电流的连续性,位移电流大小等于充电电流 $I=\frac{\mathrm{d}Q}{\mathrm{d}t}=\epsilon_0 S \frac{\mathrm{d}E}{\mathrm{d}t}\approx 7.0\times 10^{-2} \ \mathrm{A}$.
+                \item 求极板边缘的磁感应强度 $B$
+
+                    $B=\frac{\mu_0I}{2\pi R}=2.8\times 10^{-7} \ \mathrm{T}$.
+            \end{enumerate}
+        \item 17.20 在一对平行圆形极板组成的电容器 (电容 $C=1\times 10^{-12} \ \mathrm{F}$) 上,加上频率为 $50  \ \mathrm{Hz}$ ,峰值为 $1.74\times 10^{5} \ \mathrm{V}$ 的交变电压,计算极板间的位移电流的最大值.
+
+            位移电流最大值即充放电电流的最大值,即 $C \frac{\mathrm{d}U}{\mathrm{d}t}=C\omega U_{\texttt{max}}=5.47\times 10^{-5} \ \mathrm{A}$.
+    \end{itemize}
+\end{document}

@@ -1,0 +1,132 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \subsection{Simplification of CFG}
+    \begin{definition}
+        (Chomsky Normal Form,CNF) The CFG only with rules like:
+        \begin{enumerate}
+            \item $A\rightarrow BC$, where $A,B,C$ are variables.
+            \item $A\rightarrow \alpha$, where $A$ is variable, $\alpha$ is terminal.
+        \end{enumerate}
+    \end{definition}
+    Simplification steps (order matter):
+    \begin{enumerate}
+        \item Eliminate useless symbols:
+            \begin{enumerate}
+                \item Eliminate symbols not generating:
+
+                    Base: All terminals are gen.
+
+                    Induction: If $A\rightarrow \alpha$ and all symbols in $\alpha$ are gen. So is $A$.
+                \item Eliminate symbols not reachable:\sn{Must do this after the first step}
+
+                    Base: Start variable is reachable.
+
+                    Induction: If $A\rightarrow \alpha$ and $A$ is reachable. So are all variables and terminals in $\alpha$.
+            \end{enumerate}
+        \item Eliminate $\epsilon$-productions. 
+
+            Calculate all nullable variables. $A$ is nullavle if $A\Rightarrow ^{*}\epsilon$.\sn{If $A$ is nullable, rule $B\rightarrow CAD$ will be turn to $B\rightarrow CD$}
+
+            Basis: If $A\rightarrow \epsilon$ is a rule, $A$ is nullable.
+
+            Induction: If $B\rightarrow C_1C_2\ldots C_{k}$ is a rule and each $C_{i}$ is null, so is $B$.
+            
+            Do: If $B\rightarrow \alpha A\beta$ where $A$ is nullable, then add a copy of $B\rightarrow \alpha\beta$. Then remove all single $\epsilon$-production like $A\rightarrow \epsilon$.
+        \item Eliminate unit productions.
+
+            Unit production: $A\rightarrow B$ where $B$ is a variable.
+
+            Unit pair: $\left( A,B \right) $ where $A\Rightarrow ^{*}B$ using unit productions only.
+
+            Basis: $\left( A,A \right) $ is unit pair for $\forall A\in V$.
+
+            Induction: If $\left( A,B \right) $ is a known unit pair and $B\rightarrow C$ is a production rule, then $\left( A,C \right) $ is unit pair.
+
+            \begin{enumerate}
+                \item Compute all unit pairs.
+                \item For all unit pair $\left( A,B \right) $. If $B\rightarrow \alpha$ is a non-unit rule, add $A\rightarrow \alpha$ to $G_1$.
+                \item Add all non-unit production rules to $G_1$.
+            \end{enumerate}
+            Then $G_1$ has all needed production rules.
+    \end{enumerate}
+    \subsection{Features of CFL}
+    \begin{lemma}
+        (pumping lemma for CFL) Let $L$ be a CFL. There is a constant $n$ such that $z\in L$ of length at least $n$, we can write $z=uvwxy$ s.t.:
+        \begin{enumerate}
+            \item $|vwx|\le n$
+            \item $vx\ne \epsilon$
+            \item For all $k\ge 0$, $uv^{k}wx^{k}y\in L$
+        \end{enumerate}
+    \end{lemma}
+    \begin{proof}
+        (pumping lemma for CFL) Suppose $L$ has CNF of $m$ variables. Choose $n=2^{m}$. Then in parse tree of $uvwxy$ there must be a variable with two node $A_{i},A_{j}$ separatly generate $vwx$ and $w$. Let $A_{j}$ generate $vwx$ and got $A_{k}$ in subtree $A_{j}$, repeat this and got $uv^{k}wx^{k}y$.
+    \end{proof}
+    \begin{example}
+        (pumping lemma for CFL) The following languages are not CF:
+        \begin{enumerate}
+            \item $\{0^{n}1^{n}2^{n}\ |\ n\ge 1\}$ 
+
+                Take this $n$ as $n$ in the lemma. So $vwx$ has at most two different letters, but $uv^{2}wx^{2}y$ cannot be in $L$, contract.
+            \item $\{0^{i}1^{j}2^{i}3^{j}\ |\ i,j\ge 1\}$
+            \item $\{ww\ |\ w\in \{0,1\}^{*}\}$
+        \end{enumerate}
+    \end{example}
+    \begin{definition}
+        (Substitution) $a\in \Sigma$, choose map $S$ and language $L_{a}$ such that $S\left( a \right) =L_{a}$. If $w=a_1a_2\ldots a_{n}$ is in $\Sigma^{*}$, $S\left( w \right) $ is the language concatnation $L_{a_1}L_{a_2}\ldots L_{a_{n}}$. $S\left( L \right) $ is the union of $S\left( w \right) $ for $w\in L$.
+    \end{definition}
+    \begin{theorem}
+        (Substitution) Substitution is close on CFLs. If $L$ is CFL and $S\left( a \right) $ is CFL for each $a\in \Sigma$. Then $S\left( L \right) $ is CFL.
+    \end{theorem}
+    \begin{proof}
+        (Substitution) Consider parse tree. Substitution is only replace leaf nodes like $a$ with subtrees like $w\in S\left( a \right) $.
+    \end{proof}
+    \begin{remark}
+        (Substitution) Substitution must use different variables for each languages. Or variable ambiguous may break the feature of substitution.
+    \end{remark}
+    \begin{example}
+        (Substitution) Homomorphism is a kind of Substitution with all $L_{a}$ only contains one string $h\left( a \right) $.\mn{That proofs homomorphism is close in CFL}
+    \end{example}
+    \begin{theorem}
+        (Closure Property of CFLs) 
+        \begin{enumerate}
+            \item CFLs are close for all close operation in RE like $+$, concat and $*$.
+            \item Homomorphism and inverse-homomorphism are close.
+            \item Substitution is close.
+            \item Intersection $L_1\cap L_2$, difference $L_1-L_2$, $\overline{L}$ are NOT close. But intersection,difference of CFL and RL is CFL.
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        (Closure Property of CFLs) 
+
+        The 1st is easy. 
+
+        Homomorphism is proofed below by Substitution. 
+
+        For inverse-homomorphism by adding "suffix" to $Q$ and construct $Q'=Q\times \Sigma^{*}$ where $q'=\left( q,x \right) $, $x$ is the suffix of $h\left( a \right) $. Then $\delta'\left( \left( q,\epsilon \right) ,a,x \right) =\{\left( \left( q,h\left( a \right) \right)  ,x \right) \}$ and if $\delta\left( q,b,x \right) $ contains $\left( p,\gamma \right) $, $\delta'\left( \left( q,bx \right) ,\epsilon,x \right) $ contains $\left( \left( p,x \right) ,\gamma \right) $.
+
+        For intersection we can construct $L_1=\{0^{n}1^{n}2^{i}\}$, $L_2=\{0^{i}1^{n}2^{n}\}$ are CFLs, but $L_1\cap L_2=\{0^{n}1^{n}2^{n}\}$ not CFL by pumping lemma.
+    \end{proof}
+    \subsection{Compute Complexity on CFL}   
+    Translate between expressions:
+    \begin{enumerate}
+        \item CFG to PDA is easy with $O\left( n \right) $.
+        \item Translate between PDA with final acceptance and PDA with empty stack is easy with $O\left( n \right) $.
+        \item Normal PDA to CFG is complex with $O\left( n^{n} \right) $ ! Modify the DFA first to get at most $O\left( n^3 \right) $.
+    \end{enumerate}
+    Decision proporties:
+    \begin{enumerate}
+        \item Emptiness is easy with $O\left( n^2 \right) $ or $O\left( n \right) $ with some data structure.
+        \item Testing if $w\in L\left( G \right) $. Use DP of CYK:
+
+            Let $w=a_1a_2\ldots a_{n}$. Let $X_{ij}$ is the set $\{A\ |\ A\Rightarrow ^{*}a_{i}\ldots a_{j}\}$.
+
+            Basis: For $i=j$, if $A\rightarrow a_{i}$ is a rule, then $A\in X_{ii}$.
+
+            Induction: $A\in X_{ij}$ iff there exists $k,i\le k<j$ and $B\in X_{ik},C\in X_{\left( k+1 \right) j}$, $A\rightarrow BC$ is a rule.
+
+            DP by length of $|i-j|$ from $0$ to $n$ to fill a triangle with $O\left( n^2 \right) $.
+        \item Ambiguousty,Emptiness of intersection,Equality are NOT computable, called undecidable.
+    \end{enumerate}
+\end{document}

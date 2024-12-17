@@ -1,0 +1,74 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \subsection{Equalence of PDA and CFG}
+        \begin{definition}
+            (Left sentential form) transition like $P\rightarrow xA\alpha$, $A\alpha$ called the tail.
+        \end{definition}
+        From CFG $G=(V,T,P,S)$ to PDA $P=(\{q\},T,V\cup T,\delta,q,S)$. Where $\delta$ is:
+        \begin{enumerate}
+            \item For each variable $A$, $\delta(q,\epsilon,A)=\{(q,\beta)|A\rightarrow \beta \text{ is a rule of } $G$\}$.
+            \item For each terminal $a \in T$, $\delta(q,a,a)=\{(q,\epsilon)\}$.
+        \end{enumerate}
+        \begin{theorem}
+            (CFG to PDA) CFG $G=(V,T,P,S)$ and PDA $P=(\{q\},T,V\cup T,\delta,q,S)$ above has $N(P)=L(G)$.
+        \end{theorem}
+        \begin{proof}
+            (CFG to PDA) Suppose $w\in L(G)$, $w$ has a leftmost domination $S\Rightarrow_{\mathrm{lm}} \gamma_1\Rightarrow_{\mathrm{lm}} \gamma_2\Rightarrow _{\mathrm{lm}}\cdots\Rightarrow _{\mathrm{lm}}\gamma_{n}=w$. We need $(q,w,s)\vdash ^{*}(q,y_1,\alpha_1)\vdash ^{*}(q,y_2,\alpha_2)\cdots$ where $\alpha_i$ is the tail of $\gamma_1$ ($\gamma_1=x_1\alpha_1$) and $w=x_{i}y_{i}$. Then do induction on $i$.
+
+            Suppose $w\in N(P)$ or $(q,w,S)\vdash (q,\epsilon,\epsilon)$. To proof $S\Rightarrow ^{*}w$, use induction on the number of moves on PDA to proof $(q,x,A)\vdash(q,\epsilon,\epsilon)\rightarrow (A\Rightarrow ^{*}x)$:
+            
+            Basis: for 1 moves or $(q,a,a)$, $a\Rightarrow a$ is trival.
+
+            Induction: Suppose $A\rightarrow Y_1Y_2\ldots Y_{n}$, for each $(q,x_{i},Y_{i})\vdash(q,\epsilon,\epsilon)$ can lead to $A\Rightarrow ^{*}w=x_1x_2\ldots x_{n}$.
+        \end{proof}
+        From PDA to CFG $G$. Construct variable $[pXq]$ in $G$ which refers to strings transfer PDA from state $p$ to $q$ and pop symbol $X\in \Gamma$.
+        \begin{theorem}
+            (PDA to CFG) For PDA $P=(Q,\Sigma,\Gamma,\delta,q_0,Z_0)$, there is a CFG $G$ s.t. $N(P)=L(G)$ where:
+
+            Variables:
+            \begin{enumerate}
+                \item S
+                \item All symbols of form $[pXq],p,q\in Q,X\in \Gamma$.
+            \end{enumerate}
+            Production:
+            \begin{enumerate}
+                \item $\forall p,S\rightarrow [q_0Z_0p]$ 
+                \item If $\delta(q,a,X)$ contains $(r,Y_1Y_2\ldots Y_{n})$, then construct states $[qXr]\rightarrow a[rY_1r_1][r_1Y_2r_2]\ldots[r_{k-1}Y_{k}r_{k}]$.
+            \end{enumerate}
+        \end{theorem}
+        \begin{proof}
+            \label{theorem:PDA to CFG}
+            (PDA to CFG) Induction to proof $(q,w,X)\vdash ^{*}(p,\epsilon,\epsilon)\Rightarrow ([qXp]\Rightarrow ^{*}w)$. and reverse.
+        \end{proof}
+        \subsection{Deterministic PDA}
+        \begin{definition}
+            (Deterministic PDA,DPDA) A PDA where:
+            \begin{enumerate}
+                \item All $\delta(q,a,x)$ is empty or singleton.
+                \item If $\delta(q,a,x)$ is not empty, $\delta(q,\epsilon,x)$ is empty.
+            \end{enumerate}
+        \end{definition}
+        \begin{theorem}
+            (Languages of DPDA) DPDAs accept languages which between RL and CFL.
+        \end{theorem}
+        \begin{proof}
+            (Languages of DPDA) 
+            \begin{enumerate}
+                \item For all RL, its DFA can be easily turned to DPDA by add default choices.
+                \item Exist non-regular language like $L=\{wcw^{R}|w\in \{a,b\}\}$ can be accepted by DPDA.
+                \item $L=\{ww^{R}|w\in  \{a,b\}^{*}\}$ do not have a DPDA.
+            \end{enumerate}
+        \end{proof}
+            DPDA with empty stack acceptance is weak, since any accepted string $x$'s prefix cannot be accepted because empty stack make no more moves. Languages like $0^{*}$ cannot be accepted.
+        \begin{theorem}
+            (DPDA to CFG) If $L=N(P)$ for some DPDA $P$, then $L$ has an unambiguous grammar.
+        \end{theorem}
+        \begin{proof}
+            (DPDA to CFG) Juse use Theorem \ref{theorem:PDA to CFG} (PDA to CFG) and deterministic feature.
+        \end{proof}
+        \begin{theorem}
+            (CFG to DPDA) TODO
+        \end{theorem}
+\end{document}
