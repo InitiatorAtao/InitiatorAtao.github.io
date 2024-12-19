@@ -1,0 +1,80 @@
+<h1 id="section">3-29</h1>
+<p>已知题图所示电路中 <span
+class="math inline">\(R_1=R_3=2\Omega,R_2=R_4=1\Omega,U_{S1}=3V,I_{S2}=1A\)</span>,分别用回路电流法,节点电压法求解各支路电流.</p>
+<figure id="figure:01">
+
+</figure>
+<p>解:使用回路电流法,选取三个回路如图所示,对应的电流分别为 <span
+class="math inline">\(I_1,I_2,I_3\)</span>,可得: <span
+class="math display">\[\begin{aligned}
+            I_1=&amp;I_{S 2}\\
+            I_2R_4+(I_2+I_3)R_2+(I_1+I_2+I_3)R_1=&amp;-U_{S 1}\\
+            I_3R_3+(I_2+I_3)R_2+(I_1+I_2+I_3)R_1=&amp;-U_{S
+1}+3(I_1+I_2+I_3)R_1
+        
+\end{aligned}\]</span> 解得 <span
+class="math inline">\(I_1=1A,I_2=0.4A,I_3=-2.2A\)</span>,此即 <span
+class="math inline">\(I_{S 2},R_4,R_3\)</span> 支路对应的电流, <span
+class="math inline">\(R_1,R_2\)</span> 支路的电流分别为 <span
+class="math inline">\(I_1+I_2+I_3=-0.8A,I_2+I_3=-1.8A\)</span>.</p>
+<p>使用节点电压法,选取节点电压如图所示,对应的电压分别为 <span
+class="math inline">\(U_1,U_2,U_3\)</span>,可得: <span
+class="math display">\[\begin{aligned}
+            I_{S 2}+\frac{U_3-U_2}{R_2}+\frac{U_1+U_{S
+1}-U_2}{R_1}=&amp;0\\
+            \frac{U_1-U_3}{R_4}-\frac{U_3-U_2}{R_2}+\frac{U_1-3(U_1+U_{S
+1}-U_2)-U_3}{R_3}=&amp;0\\
+            -\frac{U_2+U_{S 1}-U_2}{R_1}-I_{S
+2}-\frac{U_1-U_3}{R_4}-\frac{U_1-3(U_1+U_{S 1}-U_2)-U_3}{R_3}=&amp;0
+        
+\end{aligned}\]</span> 解得 <span
+class="math inline">\(U_2=U_1+1.4V,U_3=U_1-0.4V\)</span>,由此推出各支路电流同上.</p>
+<h1 id="section-1">4-9</h1>
+<p>题图所示电路中,己知 <span class="math inline">\(i_{S 1}=i_{S
+2}=5A,i=0\)</span>,当 <span class="math inline">\(i_{S 1}=8A,i_{S
+2}=6A\)</span> 时,<span class="math inline">\(i=4A\)</span>,求当 <span
+class="math inline">\(i_{S 1}=3A,i_{S 2}=4A\)</span> 时电流 <span
+class="math inline">\(i\)</span> 的值.</p>
+<figure id="figure:02">
+
+</figure>
+<p>解:由叠加定理和齐性原理, <span class="math inline">\(i\)</span>
+可被表为 <span class="math inline">\(i=ai_{S 1}+bi_{S
+2}\)</span>,由题目中给出的两个条件解出 <span
+class="math inline">\(a=2,b=-2\)</span>,由此得到题给条件下 <span
+class="math inline">\(i=2\times 3-2\times 4 A=-2A\)</span>.</p>
+<h1 id="section-2">4-10</h1>
+<p>题图所示电路中,己知电流源 <span class="math inline">\(I_{S 1}=2A,I_{S
+2}=3A\)</span>,当 <span class="math inline">\(3A\)</span>
+的电流源断开时,<span class="math inline">\(2A\)</span>
+的电流源输出功率为 <span class="math inline">\(28W\)</span>,这时 <span
+class="math inline">\(U_2=8V\)</span>.当 <span
+class="math inline">\(2A\)</span> 的电流源断开时, <span
+class="math inline">\(3A\)</span> 的电流源输出功率为 <span
+class="math inline">\(54W\)</span>,这时 <span
+class="math inline">\(U_1=12V\)</span>.试求两个电流源同时作用时,每个电流源输出的功率.</p>
+<figure id="figure:03">
+
+</figure>
+<p>解:由叠加定理,两个电流源同时作用时, <span
+class="math inline">\(U_1=U_1^{&#39;}+\frac{W_1}{I_{S
+1}}=26V,U_2=U_2^{&#39;}+\frac{W_2}{I_{S_2}}=26V\)</span>,由此计算得到此时两电流源对应的输出功率
+<span class="math inline">\(W_{11}=U_1I_{S 1}=52W,W_{21}=U_2I_{S
+2}=78W\)</span>.</p>
+<h1 id="section-3">4-25</h1>
+<p>求出题图所示的二端网络的戴维南等效电路和诺顿等效电路.</p>
+<figure id="figure:04">
+
+</figure>
+<p>解:题图所示电路在两端标注方向的电压为 <span
+class="math inline">\(U\)</span> 时,得到的标注方向的电流 <span
+class="math inline">\(I=i_{S 1}-i_{S 2}+\frac{U}{R}-5\frac{U}{R}=-4
+\frac{U}{R}+i_{S 1}-i_{S
+2}\)</span>,因此其戴维南等效电路的电源电压即开路电压 <span
+class="math inline">\(\frac{(i_{S 1}-i_{S
+2})R}{4}\)</span>,内阻(等效串联电阻)即开路电压除以短路电流 <span
+class="math inline">\(i_{S_1}-i_{S 2}\)</span> 得到 <span
+class="math inline">\(\frac{R}{4}\)</span>,其中电压源的电压方向与标注电压方向相关联.诺顿等效电路即戴维南等效电路的等效,电流源电流为开路电压除以内阻得到
+<span class="math inline">\(i_{S 1}-i_{S 2}\)</span>,并联电阻等于内阻即
+<span
+class="math inline">\(\frac{R}{4}\)</span>,其中电流源的电流方向与标注电流方向相关联.</p>

@@ -1,0 +1,79 @@
+<div class="problem">
+<p>(Exercise 8.4.4) Consider the nondeterministic Turing machine <span
+class="math inline">\(M = (\{q_0, q_1, q_2, q_f\}, \{0, 1\}, \{0, 1,
+B\}, \delta, q_0, B, \{q_f\})\)</span>. Informally but clearly describe
+the language <span class="math inline">\(L(M)\)</span> if <span
+class="math inline">\(M\)</span> consists of the following sets of
+rules: <span class="math display">\[\begin{aligned}
+    &amp; \delta(q_{0}, 0) = \{(q_{0}, 1, R), (q_{1}, 1, R)\}\\
+    &amp; \delta(q_{1}, 1) = \{(q_{2}, 0, L)\},\\
+    &amp; \delta(q_{2}, 1) = \{(q_{0}, 1, R)\},\\
+    &amp; \delta(q_{1}, B) = \{(q_{f}, B, R)\}.
+  
+\end{aligned}\]</span></p>
+</div>
+<div class="solution">
+<p><span class="math inline">\(L\left( M \right) =L\left( 0\left( 0+1
+\right)^{*} \right)\)</span> expressed by regular expression. Because
+<span class="math inline">\(q_0\)</span> must read a <span
+class="math inline">\(0\)</span> at the beginning, then all <span
+class="math inline">\(0\)</span>s and <span
+class="math inline">\(1\)</span>s are turned to <span
+class="math inline">\(1\)</span>s by the TM.</p>
+</div>
+<div class="problem">
+<p>A Turing machine with left-most move is similar to a
+semi-infinite-tape Turing machine, but the transition function <span
+class="math inline">\(\delta\)</span> takes values in <span
+class="math inline">\(Q \times \Gamma \times \{\text{R},
+\text{L-Most}\}\)</span>. If <span class="math inline">\(\delta(q, a) =
+(p, b, \text{L-Most})\)</span>, the machine’s head moves to the
+left-most cell of the tape after it writes <span
+class="math inline">\(b\)</span> on the tape and enters state <span
+class="math inline">\(p\)</span>. Note that these machines do not have
+the usual ability to move the head one symbol left. Show that Turing
+machines with left-most moves recognize all languages in . (Hint: You
+may need to use the multi-track method and two markers.)</p>
+</div>
+<div class="solution">
+<p>For all languages in RE, we can build a TM with left-most move from
+their semi-infinite-tape TM (<span class="math inline">\(L\)</span> in
+RE must have a normal TM, then semi-infinite-tape TM can simulate that
+TM).</p>
+<p>To simulate semi-infinite-tape TM <span
+class="math inline">\(M\)</span> from left-most move TM <span
+class="math inline">\(M&#39;\)</span>, use multi-track method
+(multi-track is only simulated by items in <span
+class="math inline">\(\Gamma\)</span>, so the changes in <span
+class="math inline">\(\delta\)</span> does not influent it). One track
+records normal symbols in <span class="math inline">\(M\)</span>,
+another record marks when head need a left-move. The head leave a mark
+(named <span class="math inline">\(x\)</span>) in the second track then
+move to left-most. After that it use two different marks (named <span
+class="math inline">\(y,z\)</span>) at the left-most and push it forward
+until <span class="math inline">\(x\)</span>, that is, use extra state
+<span class="math inline">\(q_0,q_1,q_2,q_3\)</span> and start from
+left-most: <span class="math display">\[\begin{aligned}
+        \delta\left( q_0,\left( a,B \right)  \right) =&amp;\left(
+q_1,\left( a,y \right) ,\text{L-Most} \right) \nonumber\\
+        \delta\left( q_1,\left( a,B \right)  \right) =&amp;\left(
+q_1,\left( a,B \right) ,\text{R} \right) \nonumber\\
+        \delta\left( q_1,\left( a,z \right)  \right) =&amp;\left(
+q_1,\left( a,B \right) ,\text{R} \right) \nonumber\\
+        \delta\left( q_1,\left( a,y \right)  \right) =&amp;\left(
+q_2,\left( a,z \right) ,\text{R} \right) \nonumber\\
+        \delta\left( q_2,\left( a,B \right)  \right) =&amp;\left(
+q_1,\left( a,y \right) ,\text{L-Most} \right) \nonumber\\
+        \delta\left( q_2,\left( a,x \right)  \right) =&amp;\left(
+q_3,\left( a,B \right) ,\text{R} \right) \nonumber\\
+        \delta\left( q_3,\left( a,B \right)  \right) =&amp;\left(
+q_3,\left( a,B \right) ,\text{R} \right) \nonumber\\
+        \delta\left( q_3,\left( a,z \right)  \right) =&amp;\left(
+p,\left( a,B \right) ,\text{R} \right) \nonumber
+    
+\end{aligned}\]</span> Where <span class="math inline">\(p\)</span> is
+the next state in origin <span class="math inline">\(M\)</span>. note
+that <span class="math inline">\(q_0\)</span> will reject mark <span
+class="math inline">\(x\)</span> which means you do a left move in the
+left-most.</p>
+</div>

@@ -1,0 +1,16 @@
+<h1 id="docker-的使用">docker 的使用</h1>
+<h2 id="常用命令">常用命令</h2>
+<ul>
+<li><p><code>docker images</code> 查看当前镜像</p></li>
+<li><p><code>docker run -it -v .:/mnt imagename</code>
+从镜像启动命令行并将当前目录挂载到镜像的 <code>/mnt</code>
+目录.</p></li>
+</ul>
+<h2 id="dockerfile-的编写及使用">Dockerfile 的编写及使用</h2>
+<p>Dockerfile 一般包含以下部分:</p>
+<ul>
+<li><p><code>FROM name:tag</code> 以给定镜像为基础创建,如
+<code>FROM ubuntu:latest</code> 或
+<code>FROM ubuntu:22.04</code>.</p></li>
+<li></li>
+</ul>

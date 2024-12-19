@@ -1,0 +1,38 @@
+<h2 id="电路的初始条件">电路的初始条件</h2>
+<p>令换路 (电路变化) 在 <span class="math inline">\(t=0\)</span>
+时刻进行,称 <span class="math inline">\(0^{-}\)</span> 为 <span
+class="math inline">\(t=0\)</span> 的前一瞬间, <span
+class="math inline">\(0^{+}\)</span> 为 <span
+class="math inline">\(t=0\)</span> 的后一瞬间.</p>
+<p>称初始条件 (Initial Condition) 为 <span
+class="math inline">\(t=0^{+}\)</span> 时 <span
+class="math inline">\(u,i\)</span> 及其各阶导数的值.</p>
+<div class="theorem">
+<p>(换路定律)</p>
+<ul>
+<li><p>若电容电流为有限值,则电容电压 (电荷) 在换路前后不变.</p></li>
+<li><p>若电感电压为有限值,则电感电流 (磁通) 在换路前后不变.</p></li>
+</ul>
+</div>
+<h2 id="一阶电路求解">一阶电路求解</h2>
+<p>求解初始条件:
+即维持电容电压和电感电流不变,按换路后的电路连接计算.</p>
+<p>动态电路方程列写: 电感 <span class="math inline">\(u_{L}=L
+\frac{\mathrm{d}i_{L}}{\mathrm{d}t}\)</span> ,电容 <span
+class="math inline">\(i_{C}=C
+\frac{\mathrm{d}u_{C}}{\mathrm{d}t}\)</span>.</p>
+<p>由此求解齐次(非)线性常微分方程 <span class="math inline">\(a
+\frac{\mathrm{d}x}{\mathrm{d}t}+bx+c=0\)</span> 的特解 <span
+class="math inline">\(x=-\frac{c}{b}\)</span> ,通解 <span
+class="math inline">\(x=Ae^{-\frac{b}{a}t}\)</span>.原方程的解即特解与通解之和.代入初始条件解出常数
+<span class="math inline">\(A\)</span> 即可.</p>
+<p>令 <span class="math inline">\(\tau=\frac{b}{a}\)</span>
+称为一阶电路的时间常数,其大小反映了电路过渡过程时间的长短.</p>
+<p>工程上认为,经过 <span class="math inline">\(3\tau\sim{}5\tau\)</span>
+的时间过渡过程结束.</p>
+<p>一般一阶电路的解形如 <span
+class="math inline">\(f(t)=f(\infty)+Ae^{-\frac{t}{\tau}}\)</span>,其中
+<span class="math inline">\(f(\infty)\)</span> 为换路后的稳态值, <span
+class="math inline">\(\tau\)</span> 为时间常数, <span
+class="math inline">\(A=f(0^{+})-f(\infty)\big|_{0^{+}}\)</span>
+.适用于直流或正弦交流激励.</p>

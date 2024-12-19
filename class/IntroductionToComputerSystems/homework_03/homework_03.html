@@ -1,0 +1,85 @@
+<h1 id="猴子吃桃问题">猴子吃桃问题</h1>
+<ol>
+<li><p><code>%edi</code></p></li>
+<li><p><code>.L3</code></p></li>
+<li><p><code>%rax</code></p></li>
+<li><p><code>.L2</code></p></li>
+<li><p><code>ret</code></p></li>
+<li><p><code>$8</code></p></li>
+</ol>
+<h1 id="栈变量位置">栈变量位置</h1>
+<figure>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">变量</th>
+<th style="text-align: center;">十进制形式的 offset 或者说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>a</code></td>
+<td style="text-align: center;"><code>-24(%rbp)</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>a[2]</code></td>
+<td style="text-align: center;"><code>-16(%rbp)</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x</code></td>
+<td
+style="text-align: center;"><code>%edi</code>,作为传递参数不进栈</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>buf</code></td>
+<td style="text-align: center;"><code>-32(%rbp)</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>buf[3]</code></td>
+<td style="text-align: center;"><code>-29(%rbp)</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>%rbx</code> 的保存值</td>
+<td style="text-align: center;"><code>-8(%rbp)</code></td>
+</tr>
+</tbody>
+</table>
+</figure>
+<h1 id="非常规过程调用">非常规过程调用</h1>
+<ol>
+<li><p>返回地址是 <code>GET</code> 调用处的下一条地址,返回值为
+1.</p></li>
+<li><ol>
+<li><p>存放 <code>GET</code> 的第一个参数.</p></li>
+<li><p>存放 <code>GET</code> 的返回地址.</p></li>
+<li><p>将 <code>GET</code> 的第一个参数放入 <code>%ecx</code>
+从而下一步将其存放到 <code>72(%eax)</code>.</p></li>
+<li><p><code>60</code>.</p></li>
+<li><p>将存储的返回地址入栈,以便 <code>ret</code>
+返回时能够返回到存储的返回地址.</p></li>
+</ol></li>
+</ol>
+<h1 id="类函数调用">类函数调用</h1>
+<ol>
+<li><p>作为隐藏的第一个参数在 <code>%rdi</code> 中传递,处于
+<code>-32(%rbp)</code> 处.</p></li>
+<li><p>使用隐藏的第一个参数 <code>this</code> 指针进行寻址.</p></li>
+</ol>
+<h1 id="补全-c-代码">补全 C 代码</h1>
+<ol>
+<li><p><code>f[1]</code></p></li>
+<li><p><code>b.i-&gt;f[3]</code></p></li>
+<li><p><code>h-&gt;b.j</code> 或 <code>i-&gt;e</code></p></li>
+<li><p><code>i-&gt;g-&gt;d-&gt;a[1]</code></p></li>
+</ol>
+<h1 id="内存布局分析">内存布局分析</h1>
+<ol>
+<li><p><code>short</code></p></li>
+<li><p><code>uint64_t</code></p></li>
+<li><p><code>int32_t</code></p></li>
+<li><p><code>double</code></p></li>
+<li><p><code>5</code></p></li>
+</ol>
+<p>内存布局:</p>
+<p><code>|a,2 bytes|pad,6 bytes|b, 8 bytes|</code><br />
+<code>|c,4 bytes|pad, 4 bytes|d, 8 bytes| …(repeat 4 times)</code></p>

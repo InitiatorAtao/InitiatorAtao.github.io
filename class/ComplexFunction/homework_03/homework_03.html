@@ -1,0 +1,73 @@
+<h1 id="section">3</h1>
+<p>不成立,如 <span class="math inline">\(f(z)=z\)</span>, <span
+class="math inline">\(C:|z|=1\)</span>.</p>
+<h1 id="section-1">9</h1>
+<h2 id="section-2">1</h2>
+<p>复合闭路定理,化为两个奇点周围圆的积分,内部没有奇点的项即解析,积分值为
+0,否则代入公式即 <span class="math inline">\(2k\pi i\)</span>.</p>
+<h2 id="section-3">3</h2>
+<p>区域解析,柯西-古萨基本定理知积分值为 0.</p>
+<h2 id="section-4">5</h2>
+<p>对 <span class="math inline">\(|a|\)</span> 分类,大于 1
+时区域解析积分为 0,小于 1 时代入高阶导数公式 <span
+class="math inline">\(\frac{2\pi
+i}{2!}(e^{z})^{&#39;&#39;}\big|_{z=a}=\pi e^{a}i\)</span>.</p>
+<h1 id="section-5">10</h1>
+<p>由复合闭路定理转为原点圆周,圆周积分公式 <span
+class="math inline">\(n=1\)</span> 积分值为 0.</p>
+<h1 id="section-6">16</h1>
+<p>非必须,例如上题的 <span
+class="math inline">\(f(z)=\frac{1}{z^2}\)</span> 满足题目条件但在 0
+处不解析.</p>
+<h1 id="section-7">17</h1>
+<p>由复合闭路定理,对于任意在 <span class="math inline">\(C\)</span> 中的
+<span class="math inline">\(z_0\)</span>,有 <span
+class="math inline">\(f(z_0)=\frac{1}{2\pi
+i}\oint_{C}^{}\frac{f(z)}{z-z_0}\mathrm{d}z=\frac{1}{2\pi
+i}\oint_{C}^{}\frac{g(z)}{z-z_0}\mathrm{d}z=g(z_0)\)</span>.</p>
+<h1 id="section-8">21</h1>
+<p>(提示:两边均等于 <span class="math inline">\(2\pi i
+f&#39;(z_0)\)</span>) 由高阶导数公式立即得到右侧等于 <span
+class="math inline">\(2\pi if&#39;(z_0)\)</span>.由复合闭路定理,左侧等于
+<span
+class="math inline">\(\oint_{|z-z_0|=r}^{}\frac{f&#39;(z)}{z-z_0}\mathrm{d}z=2\pi
+i f&#39;(z_0)\)</span>.</p>
+<h1 id="section-9">27</h1>
+<h2 id="section-10">1</h2>
+<p><span class="math inline">\(if(z)=-v+iu\)</span> 满足柯西-黎曼条件
+<span class="math inline">\(\frac{\partial (-v)}{\partial
+x}=-\frac{\partial v}{\partial x}=\frac{\partial u}{\partial
+y}\)</span>, <span class="math inline">\(\frac{\partial (-v)}{\partial
+y}=-\frac{\partial v}{\partial y}=-\frac{\partial v}{\partial
+x}\)</span>. 故解析.</p>
+<h2 id="section-11">3</h2>
+<p><span class="math display">\[\begin{aligned}
+            \frac{\partial^2 |f(z)|^2}{\partial x^2}+\frac{\partial
+^2|f(z)|^2}{\partial
+y^2}=&amp;2(u_{x}^2+v_{x}^2+u_{y}^2+v_{y}^2)+2u(u_{x x}+u_{y y})+2v(v_{x
+x}+v_{y y})\nonumber
+        
+\end{aligned}\]</span> 由拉普拉斯方程 <span class="math inline">\(u_{x
+x}+u_{y y}=0\)</span>, <span class="math inline">\(v_{x x}+v _{y
+y}=0\)</span> 以及 C-R 条件代入上式即等于 <span
+class="math inline">\(4(u_{x}^2+v _{x}^2)\)</span>.又由于 <span
+class="math inline">\(f&#39;(z)=u_{x}+iv_{x}\)</span>,直接代入即得原式也等于
+<span class="math inline">\(4|f&#39;(z)|^2\)</span>.</p>
+<h1 id="section-12">31</h1>
+<p>由调和函数的条件: <span class="math display">\[\begin{aligned}
+        \frac{\partial^2 v}{\partial x^2}+\frac{\partial ^22 v}{\partial
+y^2}=&amp;0\nonumber\\
+        (p^2-1)e^{px}\sin y=&amp;0\nonumber\\
+        p^2=&amp;1\nonumber\\
+        p=&amp;\pm 1\nonumber
+    
+\end{aligned}\]</span> 又由解析函数的 C-R 条件: <span
+class="math display">\[\begin{aligned}
+        u_{x}=&amp;v_{y}=e^{px}\cos y\nonumber\\
+        u_{y}=&amp;-v _{x}=&amp;pe^{px}\sin y\nonumber
+    
+\end{aligned}\]</span> 可解得 <span class="math inline">\(u=e^{x}\cos
+y+c,p=1\)</span> 或 <span class="math inline">\(u=-e^{-x}\cos
+y+c,p=-1\)</span>,代入可得 <span
+class="math inline">\(f(z)=e^{z}+c,p=1\)</span> 或 <span
+class="math inline">\(f(z)=-e^{-z}+c,p=-1\)</span>.</p>

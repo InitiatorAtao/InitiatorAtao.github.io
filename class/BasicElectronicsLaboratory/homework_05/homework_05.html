@@ -1,0 +1,155 @@
+<h1 id="实验内容">实验内容</h1>
+<p>使用如下电路求解微分方程 <span
+class="math inline">\(\ddot{y}+0.2\dot{y}+0.25y=0.25E\)</span> 的解.</p>
+<figure>
+<embed src="./figures/homework_05_figure_01.pdf" style="width:70.0%" />
+</figure>
+<p>使用示波器测量 <span class="math inline">\(A_2\)</span>
+输出端的对地电压,初始状态两个开关闭合, <span
+class="math inline">\(t=0\)</span>
+时同时断开两个开关,记录电压变化直到其趋于稳定.绘制电压波形图如下:</p>
+<figure>
+
+</figure>
+<p>填写各电压特征点对应的时间表格如下:</p>
+<figure>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="math inline">\(y\left( t
+\right) /\ \mathrm{V}\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(0\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(1.5\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(y_{\texttt{max1}}\left( 2.25 \right)\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(1.5\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(y_{\texttt{min2}}\left( 1.16 \right)\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(1.5\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(y_{\texttt{max3}}\left( 1.69 \right)\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(1.5\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(t_1\left( s
+\right)\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(3.4\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(6.3\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(9.9\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(12.7\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(16.1\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(18.8\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(22.4\)</span></td>
+</tr>
+</tbody>
+</table>
+</figure>
+<h1 id="数据分析">数据分析</h1>
+<p>为求解所给出的微分方程,电路中使用了两个积分求和 (<span
+class="math inline">\(A_1,A_2\)</span>) 和一个比例运算电路 (<span
+class="math inline">\(A_3\)</span>).若用 <span
+class="math inline">\(u_1,u_2,u_3\)</span> 分别代表 <span
+class="math inline">\(A_1,A_2,A_3\)</span> 的输出电压,并令电源电压 <span
+class="math inline">\(E=1.5 \
+\mathrm{V}\)</span>,由运放运算电路的性质可得以下等式: <span
+class="math display">\[\begin{aligned}
+        u_1=&amp;-\int_{}^{}\left(
+\frac{1}{R_1C}E+\frac{1}{R_1C}u_3+\frac{1}{R_3C}u_1
+\right)\mathrm{d}t\nonumber\\
+        u_2=&amp;-\int_{}^{}\frac{1}{R_2C}u_1 \mathrm{d}t\nonumber\\
+        u_3=&amp;-u_2\nonumber
+    
+\end{aligned}\]</span> 其中 <span class="math inline">\(R_1=4 \
+\mathrm{M\Omega},R_2=1 \ \mathrm{M \Omega},R_3=5 \ \mathrm{M\Omega},C=1
+\ \mathrm{\mu F}\)</span>.代入数据计算可得: <span
+class="math display">\[\begin{aligned}
+        u_1=&amp;-\int_{}^{}\left( 0.25E-0.25u_2+0.2u_1 \right)
+\mathrm{d}t\nonumber\\
+        u_2=&amp;-\int_{}^{}u_1\mathrm{d}t\nonumber
+    
+\end{aligned}\]</span> 两侧对时间求微分得到: <span
+class="math display">\[\begin{aligned}
+        \dot{u_1}=&amp;0.25u_2-0.25E-0.2u_1\nonumber\\
+        \dot{u_2}=&amp;-u_1\nonumber
+    
+\end{aligned}\]</span> 继续对第二个式子时间微分得到: <span
+class="math display">\[\begin{aligned}
+        \ddot{u_2}=&amp;-\dot{u_1}\nonumber
+    
+\end{aligned}\]</span> 代入 <span
+class="math inline">\(\dot{u_1}\)</span> 的表达式,即: <span
+class="math display">\[\begin{aligned}
+        \ddot{u_2}=&amp;0.2u_1+0.25E-0.25u_2\nonumber
+    
+\end{aligned}\]</span> 代入 <span
+class="math inline">\(\dot{u_2}=-u_1\)</span>,即: <span
+class="math display">\[\begin{aligned}
+        \ddot{u_2}+0.2 \dot{u_2}+0.25u_2=&amp;0.25E\nonumber
+    
+\end{aligned}\]</span> 此即所要求的微分方程 <span
+class="math inline">\(\ddot{y}+0.2 \dot{y}+0.25y=0.25E\)</span>
+的模拟形式,故测量的 <span class="math inline">\(u_2\)</span>
+曲线即为所求微分方程的模拟解.要求初值 <span
+class="math inline">\(y\left( 0 \right) =u_2\left( 0 \right)
+=0,\dot{y}\left( 0 \right) =u_1\left( 0 \right)
+=0\)</span>,由于运放线性工作时的的虚短性质, <span
+class="math inline">\(A_1,A_2\)</span> 的负输入端电位等于其正输入端电位
+(即接地电位),故只需将两个电容短路即可使 <span
+class="math inline">\(u_1=u_2=0\)</span> 符合初值条件,此时电路为 <span
+class="math inline">\(A_3\)</span>
+构成的比例运算电路,仍正常工作.故只需在 <span
+class="math inline">\(t=0\)</span> 时刻将两开关断开, <span
+class="math inline">\(u_2\)</span>
+的测量结果即为所求初值微分方程的模拟解.</p>
+<p>对于理论计算,求出所给微分方程的近似解析解为: <span
+class="math display">\[\begin{aligned}
+        y\left( t \right) =&amp;1.5-\left( 0.306\sin\left( 0.490t
+\right) +1.5\cos\left( 0.490t \right)  \right)e^{-0.1t}\nonumber
+    
+\end{aligned}\]</span> 将解析解作为参考线绘制在 <span
+class="math inline">\(u_2\)</span>
+的测量值图上,观察可知实验值与理论值的误差在接受范围内,模拟解相对于解析解略有滞后和衰减,应为非理想电路和运放造成的误差.计算得到三个极值点的相对误差
+<span
+class="math inline">\(\beta_1=\frac{2.29004-2.25477}{2.25477}\approx
+1.56\%,\beta_2=\frac{1.16352-1.08390}{1.08390}\approx
+7.35\%,\beta_3=\frac{1.71916-1.68144}{1.68144}\approx
+2.24\%\)</span>.</p>
+<figure>
+
+</figure>
+<h1 id="思考题">思考题</h1>
+<ol>
+<li><p>在模拟计算机中,如何设置初始条件 <span
+class="math inline">\(x\left( 0 \right) =1.5 \ \mathrm{V},x\left( 0
+\right) =0 \ \mathrm{V}\)</span> (1.5V 由稳压电源供给)</p>
+<p>对于 <span class="math inline">\(x\left( 0 \right) =0 \
+\mathrm{V}\)</span>
+即为实验操作中的情况,由于积分(求和)运算的运放正负输入端均为接地电位,只需要将其电容短路即可获得零电压输出.启动时断开开关开始模拟.</p>
+<p>对于 <span class="math inline">\(x\left( 0 \right) =1.5 \
+\mathrm{V}\)</span>,可以考虑将开关设置在运放的输出端和电源的正极(假设电源负极接地)之间,初始时闭合开关将输出端电压设置为电源电压,启动时断开开关开始模拟.</p></li>
+<li><p>为测响应 <span
+class="math inline">\(y\)</span>,示波器应接在电路中什么地方?</p>
+<p>在本实验中,示波器应负极接地,正极接在 <span
+class="math inline">\(A_2\)</span>
+的输出端.对于一般的求解微分方程实验,示波器应负极接地,正极接在按输入到输出的顺序下最后一个积分运算电路的输出端,因为求解器的电路模型下其即对应原函数值.</p></li>
+</ol>
+<h1 id="结论">结论</h1>
+<p>本实验通过基于运放的比例(求和)电路,积分(求和)电路求解了基本的微分方程,并计算了模拟解与解析解之间的相对误差,误差在允许范围内.由此熟悉了运放的基本应用电路以及使用其构造复杂模拟计算电路的方法.</p>
+<p>本实验的所有数据可以从<a
+href="https://cloud.tsinghua.edu.cn/d/52923f32fd6542eca8ac/">此处</a>下载</p>

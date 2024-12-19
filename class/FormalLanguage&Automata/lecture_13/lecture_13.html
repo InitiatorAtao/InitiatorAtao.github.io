@@ -1,0 +1,90 @@
+<h2 id="extension-of-tms">Extension of TMs</h2>
+<h3 id="multiple-tapes-tms">Multiple tapes TMs</h3>
+<p>TMs with multiple tapes and heads.</p>
+<div class="theorem">
+<p>(Multitape TM) Every language accepted by multitape TM is RE.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> (Multitape TM) Use multi track, for each head add a
+track with only blank or star (<span class="math inline">\(*\)</span>)
+to record where the head is. Tape symbols are easy to be recorded on
+tracks. For each transition:</p>
+<ol>
+<li><p>Scan from left to right, store current head symbols in
+state.</p></li>
+<li><p>For each track express a tape, run from left to right, rewrite
+the symbol and change the head track.</p></li>
+<li><p>Change the state.</p></li>
+</ol>
+<p> ◻</p>
+</div>
+<h3 id="non-deterministic-tms-ntm">Non-deterministic TMs, NTM</h3>
+<p>In an NTM, <span class="math inline">\(\delta\left( q,x
+\right)\)</span> is a set of possible moves. NTM accepts if there exists
+at least one acception branch.</p>
+<div class="theorem">
+<p>(Non-deterministic TMs, NTM) Every language accepted by NTM is
+RE.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> (Non-deterministic TMs, NTM) Use 2-tape TM to do BFS
+on ID graphs, accept whenever the current ID is accepting. ◻</p>
+</div>
+<h2 id="restrictions-of-tms">Restrictions of TMs</h2>
+<ul>
+<li><p>Semi-infinite TMs: TMs which tape is only infinite in one
+direction.</p>
+<p>Can use 2-track with end-flag (to warn about tape edge) to simulate
+normal TMs.</p></li>
+<li><p>Multi stack TMs: TMs with no tape but at least 2 stacks.</p>
+<p>Can use 2 stacks to simulate tape.</p></li>
+<li><p>Counter Machines, CMs: TMs with no tape but counters
+(non-negative integer that can be increase or decrease), where
+transition is determined by the state, input symbol and which counters
+are zero. 2-counter machines accepts all language in RE by:</p>
+<ol>
+<li><p>Begin with 2-stack machine.</p></li>
+<li><p>Identify the stack symbols as <span
+class="math inline">\(1,2,\ldots,r-1\)</span>.</p></li>
+<li><p>Encode stack <span
+class="math inline">\(X_1,\ldots,X_{n}\)</span> as <span
+class="math inline">\(\sum_{i=1}^{n}X_{i}r^{i-1}\)</span>.</p></li>
+<li><p>Stack pop equals to counter <span
+class="math inline">\(i\rightarrow \left\lfloor
+\frac{i}{r}\right\rfloor\)</span>. Stack push <span
+class="math inline">\(X\)</span> equals to counter <span
+class="math inline">\(i\rightarrow ir+X\)</span>.</p></li>
+</ol></li>
+</ul>
+<h2 id="simulate-computers-by-tms">Simulate computers by TMs</h2>
+<p>Computers have things like:</p>
+<ol>
+<li><p>Memory.</p></li>
+<li><p>The program of the computer is stored in the memory.</p></li>
+<li><p>Each instruction involves a limited number of words.</p></li>
+<li><p>A typical computer has registers, which are memory words with
+fast access.</p></li>
+</ol>
+<p>To simulate computers by TMs, use a multitape TM with tapes refers to
+Memory, Instruction Counter, Memory Address, etc. Then simulate
+operations step by step on each tapes.</p>
+<p>For <span class="math inline">\(n\)</span> computer operations, TMs
+can simulate them in about <span class="math inline">\(O\left( n^3
+\right)\)</span> time.</p>
+<h2 id="the-busy-beaver-tms">The busy beaver TMs</h2>
+<p>Define <span class="math inline">\(n\)</span>-normal-state TM with a
+halt state over binary alphabet and tape symbols <span
+class="math inline">\(\{0,1\}\)</span> where <span
+class="math inline">\(0\)</span> is the blank symbol. Define <span
+class="math inline">\(\operatorname{BB}\left( n \right)\)</span> as the
+maximum number of steps of an <span
+class="math inline">\(n\)</span>-normal-state TM if it eventually halt
+with all <span class="math inline">\(0\)</span> input tape.</p>
+<p><span class="math inline">\(\operatorname{BB}\left( 1
+\right)\)</span> is trivally <span class="math inline">\(1\)</span>
+which halt at the first state. Then <span
+class="math inline">\(6,21,107,47176870\)</span>. <span
+class="math inline">\(\operatorname{BB}\left( 6 \right)\)</span> is not
+less than <span class="math inline">\(10 ^{10 ^{\cdots ^{10}}}\)</span>
+with <span class="math inline">\(15\)</span> of <span
+class="math inline">\(10\)</span>s.</p>

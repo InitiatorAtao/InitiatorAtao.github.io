@@ -1,0 +1,61 @@
+<h2 id="一阶电路求解">一阶电路求解</h2>
+<p><span class="math display">\[\begin{aligned}
+        f\left( t \right) =&amp;f\left( \infty \right)
++Ae^{-\frac{t}{\tau}}\nonumber
+    
+\end{aligned}\]</span> 求稳态值 <span class="math inline">\(f\left(
+\infty \right)\)</span>,初始值 <span class="math inline">\(f\left( 0^{+}
+\right)\)</span>,则 <span class="math inline">\(A=f\left( 0^{+} \right)
+-f\left( \infty \right) \big|_{0^{+}}\)</span>,从 <span
+class="math inline">\(L\)</span> 或 <span
+class="math inline">\(C\)</span> 两端求入端等效电阻 <span
+class="math inline">\(R_{\texttt{eq}},\tau=R_{\texttt{eq}}C\)</span> 或
+<span class="math inline">\(\frac{L}{R_{\texttt{eq}}}\)</span>.</p>
+<h2 id="一阶电路的全响应">一阶电路的全响应</h2>
+<div class="definition">
+<p>(全响应) 非零初始状态的电路受到激励时电路中产生的响应.</p>
+</div>
+<div class="theorem">
+<p>(全响应及其两种分解方式)</p>
+<ul>
+<li><p>全解=强制分量(稳态解)+自由分量(暂态解) <span
+class="math display">\[\begin{aligned}
+                    f\left( t \right) =&amp;f\left( \infty \right)
++\left( f\left( 0^{+} \right) -f\left( \infty \right) \right)
+e^{-\frac{t}{\tau}}\nonumber
+                
+\end{aligned}\]</span></p></li>
+<li><p>全响应=零状态响应 (zero-state response,ZSR)+零输入响应
+(zero-input response,ZIR) <span class="math display">\[\begin{aligned}
+                    f\left( t \right) =&amp;f\left( \infty \right)
+\left( 1-e^{-\frac{t}{\tau}} \right)+f\left( 0^{+} \right)
+e^{-\frac{t}{\tau}}\nonumber
+                
+\end{aligned}\]</span></p>
+<p>零输入响应:独立源激励为零,由初始储能激励产生响应.线性电路中和初值成正比.</p>
+<p>零状态响应:储能元件无初始储能,由电源激励产生响应.线性电路中和激励成正比.</p></li>
+</ul>
+</div>
+<h1 id="模拟电子电路基础">模拟电子电路基础</h1>
+<h2 id="cmos-模拟电路的基本元器件">CMOS 模拟电路的基本元器件</h2>
+<ul>
+<li><p>Diode (二极管)</p>
+<p>单向导通,正向电流随电压指数增长 <span
+class="math inline">\(I=I_{S}\exp
+\frac{V_{D}}{V_{T}}\)</span>,可视作导线,反向电流 <span
+class="math inline">\(I\rightarrow -I_{S}\)</span>
+极小,可视作开路.</p></li>
+<li><p>MetaI-Oxide-Semiconductor Field EffectTransistor (MOSFET)</p>
+<ul>
+<li><p>NMOS (电子/Negative 负载流子)</p></li>
+<li><p>PMOS (空穴/Positive 正载流子)</p></li>
+</ul>
+<p>分为 Source (源)、 Drain (漏)、 Gate (栅)、 Body (体).</p>
+<p>阈值电压 <span class="math inline">\(V_{\texttt{th}}\)</span>
+为开启所需施加在 <span class="math inline">\(GS\)</span>
+上的电压.</p></li>
+<li><p>Resistor (电阻)</p></li>
+<li><p>Capacitor (电容)</p></li>
+<li><p>lnductor (电感)</p></li>
+<li><p>Varactor (变容管)</p></li>
+</ul>

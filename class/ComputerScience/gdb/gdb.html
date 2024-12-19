@@ -1,0 +1,49 @@
+<h1 id="gdb-的使用">GDB 的使用</h1>
+<h2 id="常用指令">常用指令</h2>
+<ol>
+<li><p>回车快速重复执行指令</p></li>
+<li><p><code>break,b</code> 设置断点,常用参数:</p>
+<ul>
+<li><p><code>*fun</code> 在进入函数 <code>fun</code> 时中断</p></li>
+</ul></li>
+<li><p><code>disassemble,disas</code> 查看当前断点处的汇编代码</p></li>
+<li><p><code>layout</code> 控制 TUI 布局,常用参数:</p>
+<ul>
+<li><p><code>src</code> 显示源代码窗口</p></li>
+<li><p><code>asm</code> 显示汇编代码窗口,结合 <code>disassemble</code>
+使用</p></li>
+<li><p><code>reg</code> 显示寄存器窗口</p></li>
+</ul></li>
+<li><p><code>next,n/nexti,ni</code> 单步运行,不进入函数</p></li>
+<li><p><code>step,s/stepi,si</code> 如果当前为函数调用,则进入</p></li>
+<li><p><code>finish</code>
+如果当前在函数内,则执行直到返回到调用处</p></li>
+<li><p><code>continue,c</code> 继续执行直到遇到下一个断点</p></li>
+<li><p><code>info</code> 查看信息,可用参数:</p>
+<ul>
+<li><p><code>break</code> 查看断点信息</p></li>
+</ul></li>
+<li><p><code>print,p</code> 打印表达式的值</p></li>
+<li><p><code>examine,x</code> 查看指定内存的内容,后接
+<code>/(s,d,u,f)</code>
+等指定指向的数据类型,特别的,<code>t</code>代表二进制整数,<code>i</code>汇编指令.</p></li>
+<li><p><code>backtrace,bt</code>
+查看当前调用栈以及每层栈中的返回地址.</p></li>
+<li><p><code>ptype</code> 查看参数的完整类型信息.</p></li>
+<li><p><code>set var $name=...</code> 设定 GDB 变量,变量以
+<code>$</code> 开头,支持以 C++ 风格语句进行运算和操作,但赋值时要加
+<code>set</code> 前缀,还有一些内部变量:</p>
+<ol>
+<li><p><code>$</code> 最后一次使用的表达式或命令的值</p></li>
+<li><p><code>$pc</code> 当前程序计数器的值</p></li>
+<li><p><code>$sp</code> 当前栈指针 (stack pointer) 的值</p></li>
+<li><p><code>$fp</code> 当前帧指针 (frame pointer) 的值</p></li>
+<li><p><code>$eax</code> 等 CPU 寄存器的值</p></li>
+<li><p><code>$bp</code> 断点地址</p></li>
+<li><p><code>$var</code> 程序内的局部变量</p></li>
+<li><p><code>$args</code> 程序参数,<code>info args</code>
+从栈帧列出当前函数所有的参数及其类型</p></li>
+<li><p><code>$frame</code> 栈帧编号</p></li>
+<li><p><code>$depth</code> 栈帧深度</p></li>
+</ol></li>
+</ol>

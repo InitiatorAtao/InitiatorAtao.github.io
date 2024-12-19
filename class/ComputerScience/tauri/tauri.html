@@ -1,0 +1,13 @@
+<h1 id="tauri-的使用">Tauri 的使用</h1>
+<h2 id="配置和依赖处理">配置和依赖处理</h2>
+<h2 id="typescript-的使用">TypeScript 的使用</h2>
+<h2 id="rust-的使用">Rust 的使用</h2>
+<h2 id="生成与导出">生成与导出</h2>
+<p>支持生成 <code>.msi</code> 和 <code>.exe</code> 格式的 Windows
+安装包,也可以生成 Android apk 包.</p>
+<ol>
+<li><p>构建发布版本: <code>cargo tauri build</code></p></li>
+<li><p>构建 Android apk 包:
+<code>cargo tauri android build –apk</code></p>
+<p>构建的包是没有签名的版本,需要生成电子签名后才能安装.</p></li>
+</ol>

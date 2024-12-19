@@ -1,0 +1,73 @@
+<div class="problem">
+<p>Prove that the following are not regular languages.</p>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p><span id="problem:02" data-label="problem:02"></span></p>
+</div>
+<div class="problem">
+<p>(Exercise 4.2.6) Show that the regular languages are closed under the
+following operations:</p>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>(Exercise 4.2.8) Let <span class="math inline">\(L\)</span> be a
+language. Define <span class="math inline">\(\mathrm{half}(L)\)</span>
+to be the set of first halves of strings in <span
+class="math inline">\(L\)</span>, that is, <span
+class="math display">\[\mathrm{half}(L) = \bigl\{w \mid \text{for some }
+x \text{ such that}
+    \abs{x} = \abs{w}, \text{ we have } wx \in L \bigr\}.\]</span> For
+example, if <span class="math inline">\(L = \{\epsilon, 0010, 011,
+010110\}\)</span> then <span class="math inline">\(\mathrm{half}(L) =
+\{\epsilon, 00, 010\}\)</span>. Notice that odd-length strings do not
+contribute to <span class="math inline">\(\mathrm{half}(L)\)</span>.
+Prove that if <span class="math inline">\(L\)</span> is a regular
+language, so is <span class="math inline">\(\mathrm{half}(L)\)</span>.
+(Note: You need to come up with the construction and prove formally that
+the construction works.)</p>
+</div>
+<div class="solution">
+<p>For any RL with DFA <span
+class="math inline">\(A=(Q_A,\Sigma_A,q_{0A},\delta_A,F_A)\)</span>, we
+can build <span class="math inline">\(\epsilon-\)</span>NFA <span
+class="math inline">\(B=(Q,\Sigma,q_0,\delta,F)\)</span> for <span
+class="math inline">\(\mathrm{half}(L)\)</span> by these steps: <span
+class="math display">\[\begin{aligned}
+        Q=&amp;(Q_A\times Q_A)\cup q_0\\
+        \Sigma=&amp;\Sigma_A\\
+        q_0=&amp;q_0\\
+        \delta(q_0,\epsilon)=&amp;\{(q_{0A},q_f)|q_f\in F_A\}\\
+        \delta((q_1,q_2),a)=&amp;\{(\delta_A(q_1,a),q)|q\in
+\delta^{-1}(q_2,a)\}\\
+        \delta^{-1}(q_1,a)=&amp;\{q|\exists x\in
+\Sigma,\delta_A(q,x)=q_1\}\\
+        F=&amp;\{(q_1,q_1)|q_1\in Q\}
+    
+\end{aligned}\]</span> Where all undefined <span
+class="math inline">\(\delta(q,a)=\emptyset\)</span>. <span
+class="math inline">\(q_0\)</span> is a newly add state to reach all
+final states in <span class="math inline">\(A\)</span>. To proof <span
+class="math inline">\(B\)</span> is the <span
+class="math inline">\(\epsilon\)</span>-NFA for <span
+class="math inline">\(\mathrm{half}(L)\)</span>, for all string <span
+class="math inline">\(s\)</span> that <span
+class="math inline">\(B\)</span> accepts, there is a path of <span
+class="math inline">\(s\)</span> connecting to a path of <span
+class="math inline">\(s&#39;\)</span> with the same length of <span
+class="math inline">\(s\)</span> on <span
+class="math inline">\(A\)</span>, which means <span
+class="math inline">\(s s&#39;\)</span> accepted by <span
+class="math inline">\(A\)</span>, <span class="math inline">\(s\in
+\mathrm{half}(L)\)</span>. In the same way, we can proof that for all
+even-length <span class="math inline">\(s\in L\)</span> there is a path
+in <span class="math inline">\(B\)</span> accepts the first half of
+<span class="math inline">\(s\)</span>, which is in <span
+class="math inline">\(\mathrm{half}(L)\)</span>. So <span
+class="math inline">\(B\)</span> is the automata of <span
+class="math inline">\(\mathrm{half}(L)\)</span>, which is regular.</p>
+</div>

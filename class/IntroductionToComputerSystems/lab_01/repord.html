@@ -1,0 +1,51 @@
+<ul>
+<li><p><code>phase_1</code> 使用 <code>b phase_1</code>
+设置断点,触发断点后观察 <code>layout asm</code> 和 <code>disas</code>
+显示出的汇编代码,发现直接调用了 <code>strings_not_equal</code> 函数,使用
+<code>ni</code> 单步运行到该函数调用处, <code>x/s $rsi</code>
+打印出第二个参数即为答案.</p></li>
+<li><p><code>phase_2</code> 同理使用断点在函数起始停下,发现调用
+<code>read_six_numbers</code> 读取了六个数字,猜测读取到栈中,输入
+<code>1 2 3 4 5 6</code> 依次使用
+<code>x/d $rsp</code>,<code>x/d $rsp+4</code> 等等发现确实为 1 至
+6,猜测成立.接下来调用 <code>cmpl $0x0 ($rsp)</code> 即比较第一个输入与
+0,如果小于则跳转 (<code>js</code>) 到
+<code>explode_bomb</code>,即第一个输入非负.接下来进入一个循环结构,设置一个指针
+<code>%rbp</code> 指向栈顶,一个累加器 <code>%ebx</code> 初始为
+1,每次判断指针指向的值加上累加器的值是否等于指针指向的下一个值,如果相等则继续循环,将累加器加上
+1,指针指向下一个值,直到指针指向最后一个值则跳出循环.也就是说输入需要为一个首项非负的二阶等差数列.最后进行了一些校验,可能是为了防止栈溢出攻击.输入
+<code>1 2 4 7 11 16</code> 后可以通过.</p></li>
+<li><p><code>phase_3</code> 调用了 <code>sscanf</code>
+从输入字符串中读取 <code>%d %d</code> 即两个整数,第一个整数不能大于
+5,第二个整数等于 -590.输入 <code>1 -590</code> 后可以通过.</p></li>
+<li><p><code>phase_4</code> 读入两个整数,限制第一个整数小于等于
+14,使用(第一个输入,0,14)调用一个三参数的递归 <code>func4</code>
+要求其返回值和第二个输入均等于 35. <code>func4</code>
+的等价代码实现如下:</p>
+<div class="sourceCode" id="cb1" data-language="C++"><pre
+class="sourceCode c++"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> func4<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span><span class="dt">int</span> b<span class="op">,</span><span class="dt">int</span> c<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> d<span class="op">=(</span>c<span class="op">-</span>b<span class="op">)/</span><span class="dv">2</span><span class="op">+</span>b<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>d<span class="op">&gt;</span>a<span class="op">)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> d<span class="op">+</span>func4<span class="op">(</span>a<span class="op">,</span>b<span class="op">,</span>d<span class="op">-</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span><span class="op">(</span>d<span class="op">&lt;</span>a<span class="op">)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> d<span class="op">+</span>func4<span class="op">(</span>a<span class="op">,</span>d<span class="op">+</span><span class="dv">1</span><span class="op">,</span>c<span class="op">);</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">return</span> d<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>观察可知该函数在 <span class="math inline">\([0,14]\)</span>
+中二分查找第一个输入,并返回所有的探测值求和,由于需要返回值为
+35,模拟可知探测值序列应为 <span
+class="math inline">\([7,11,9,8]\)</span>,第一个输入为 8,输入
+<code>8 35</code> 后可以通过.</p></li>
+<li><p><code>phase_5</code> 读入一个长度为 6
+的字符串,对每个字符做某种变换后需要得到 <code>bruins</code>.变换为取其
+ASCII 二进制表示的低 4 位作为下标访问字符数组
+<code>maduiersnfotvbyl</code>,对应下标 <span
+class="math inline">\([13,6,3,4,8,7]\)</span>,匹配得到
+<code>mfcdhg</code> 是一个解.</p></li>
+<li><p><code>phase_6</code> 读入 <span
+class="math inline">\(1\sim{}6\)</span> 的一个排列,以这个顺序访问 6
+个带初值链表节点 <span
+class="math inline">\([427,421,412,630,675,233]\)</span>
+要求访问的值顺序单调增,可得下标 <span
+class="math inline">\([6,3,2,1,4,5]\)</span> 输入后可以通过.</p></li>
+</ul>

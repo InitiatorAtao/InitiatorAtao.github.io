@@ -1,0 +1,333 @@
+<h1 id="寄存器一览">寄存器一览</h1>
+<h2 id="数据寄存器">数据寄存器</h2>
+<figure>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">名称</th>
+<th style="text-align: center;">64 位版本</th>
+<th style="text-align: center;">32 位版本</th>
+<th style="text-align: center;">16 位版本</th>
+<th style="text-align: center;">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>a</code></td>
+<td style="text-align: center;"><code>%rax</code></td>
+<td style="text-align: center;"><code>%eax</code></td>
+<td style="text-align: center;"><code>%ax(%ah|%al)</code></td>
+<td style="text-align: center;">返回值</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>b</code></td>
+<td style="text-align: center;"><code>%rbx</code></td>
+<td style="text-align: center;"><code>%ebx</code></td>
+<td style="text-align: center;"><code>%bx(%bh|%bl)</code></td>
+<td style="text-align: center;">加长返回值</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>c</code></td>
+<td style="text-align: center;"><code>%rcx</code></td>
+<td style="text-align: center;"><code>%ecx</code></td>
+<td style="text-align: center;"><code>%cx(%ch|%cl)</code></td>
+<td style="text-align: center;">第四个参数</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>d</code></td>
+<td style="text-align: center;"><code>%rdx</code></td>
+<td style="text-align: center;"><code>%edx</code></td>
+<td style="text-align: center;"><code>%dx(%dh|%dl)</code></td>
+<td style="text-align: center;">第三个参数</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>di</code></td>
+<td style="text-align: center;"><code>%rdi</code></td>
+<td style="text-align: center;"><code>%edi</code></td>
+<td style="text-align: center;"><code>%di(%dih|%dil)</code></td>
+<td style="text-align: center;">第一个参数</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>si</code></td>
+<td style="text-align: center;"><code>%rsi</code></td>
+<td style="text-align: center;"><code>%esi</code></td>
+<td style="text-align: center;"><code>%si(%sih|%sil)</code></td>
+<td style="text-align: center;">第二个参数</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>sp</code></td>
+<td style="text-align: center;"><code>%rsp</code></td>
+<td style="text-align: center;"><code>%esp</code></td>
+<td style="text-align: center;"><code>%sp(%sph|%spl)</code></td>
+<td style="text-align: center;">栈顶地址</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>bp</code></td>
+<td style="text-align: center;"><code>%rbp</code></td>
+<td style="text-align: center;"><code>%ebp</code></td>
+<td style="text-align: center;"><code>%bp(%bph|%bpl)</code></td>
+<td style="text-align: center;">栈帧起始</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>r8</code></td>
+<td style="text-align: center;"><code>%r8</code></td>
+<td style="text-align: center;"><code>%r8d</code></td>
+<td style="text-align: center;"><code>%r8w(|%r8b)</code></td>
+<td style="text-align: center;">第五个参数</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>r9</code></td>
+<td style="text-align: center;"><code>%r9</code></td>
+<td style="text-align: center;"><code>%r9d</code></td>
+<td style="text-align: center;"><code>%r8w(|%r9b)</code></td>
+<td style="text-align: center;">第六个参数</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>r10~15</code></td>
+<td style="text-align: center;"><code>%r10~15</code></td>
+<td style="text-align: center;"><code>%r10~15d</code></td>
+<td style="text-align: center;"><code>%r10~15w(|%r10~15b)</code></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>ip</code></td>
+<td style="text-align: center;"><code>%rip</code></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">当前指令地址</td>
+</tr>
+</tbody>
+</table>
+</figure>
+<p>函数调用时,<code>r10</code>,<code>r11</code> 以及返回值
+<code>a</code> 和所有的参数寄存器 <code>di,si,d,c,r8,r9</code>
+由调用者保存,其余无特殊用途的寄存器由被调用者保存.</p>
+<h2 id="条件码">条件码</h2>
+<p>条件码在执行运算指令时根据计算结果自动设置,在执行控制指令中包含运算的部分时也会被设置,但此时计算结果通常被丢弃.</p>
+<figure>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">名称</th>
+<th style="text-align: center;">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>CF</code></td>
+<td style="text-align: center;">进/借位标志</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>SF</code></td>
+<td style="text-align: center;">负标志</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>ZF</code></td>
+<td style="text-align: center;">零标志</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>OF</code></td>
+<td style="text-align: center;">溢出标志</td>
+</tr>
+</tbody>
+</table>
+</figure>
+<h1 id="指令一览">指令一览</h1>
+<p>指令需要加上后缀<code>B,W,L,Q</code>分别表示 1,2,4,8 字节,即 8 位到
+64 位的长度,称字节,字,双字,四字.</p>
+<p>地址表达式<code>(%a)</code>表示一个由一个或多个寄存器与常数值表达的内存地址,完整形式为<code>b(%x,%y,a)</code>,寻址位置为<code>x+a*y+b</code>,参数可从后向前省略,<code>b</code>的默认值为
+1, <code>a</code>的默认值为 0.也可以省略一个寄存器,此时形如
+<code>b(%x,a)</code> 寻址 <code>x*a+b</code>.</p>
+<h2 id="运算指令">运算指令</h2>
+<ul>
+<li><p><code>lea s,d</code> 地址计算</p>
+<p>计算地址表达式 s 并将结果存入 d</p></li>
+<li><p><code>add s,d</code> 加法</p>
+<p><code>d+=s</code></p></li>
+<li><p><code>sub s,d</code> 减法</p>
+<p><code>d-=s</code></p></li>
+<li><p><code>imul s,d</code> 乘法</p>
+<p><code>d*=s</code></p></li>
+<li><p><code>sal s,d</code> 位左移</p>
+<p><code>d&lt;&lt;=s</code></p></li>
+<li><p><code>sar s,d</code> 位右移</p>
+<p><code>d&gt;&gt;=s</code> ,算数右移</p></li>
+<li><p><code>shr s,d</code> 位右移</p>
+<p><code>d&gt;&gt;=s</code>,逻辑右移</p></li>
+<li><p><code>xor s,d</code> 位异或</p>
+<p><code>d^=s</code></p></li>
+<li><p><code>and s,d</code> 按位与</p>
+<p><code>d&amp;=s</code></p></li>
+<li><p><code>or s,d</code> 按位或</p>
+<p><code>d|=s</code></p></li>
+<li><p><code>inc d</code> 自增</p>
+<p><code>d+=1</code></p></li>
+<li><p><code>dec d</code> 自减</p>
+<p><code>d-=1</code></p></li>
+<li><p><code>neg d</code> 取负</p>
+<p><code>d=-d</code></p></li>
+<li><p><code>not d</code> 位取反</p>
+<p><code>d=~d</code></p></li>
+</ul>
+<h2 id="控制指令">控制指令</h2>
+<ul>
+<li><p><code>mov s,d</code> 赋值</p>
+<p>在内存,寄存器,立即数之间将数据 s 赋给 d</p></li>
+<li><p><code>cmp a,b</code> 比较</p>
+<p>计算 <code>b-a</code>
+并根据计算结果设置标志位,计算结果被丢弃.</p></li>
+<li><p><code>test a,b</code> 测试</p>
+<p>计算 <code>b&amp;a</code>
+并根据计算结果设置标志位,计算结果被丢弃.</p></li>
+<li><p><code>set(e,ne,s,ns,g,ge,l,le,a,b) d</code> 条件码读取</p>
+<p>读取当前条件码(组合),并存入目的 8 位寄存器 <code>d</code>
+.后缀意义如下:</p>
+<figure id="tabular:control suffix">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">后缀</th>
+<th style="text-align: center;">条件码组合</th>
+<th style="text-align: center;">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>e</code></td>
+<td style="text-align: center;"><code>ZF</code></td>
+<td style="text-align: center;">等于/为 0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>ne</code></td>
+<td style="text-align: center;"><code>~ZF</code></td>
+<td style="text-align: center;">不等于/不为 0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>s</code></td>
+<td style="text-align: center;"><code>SF</code></td>
+<td style="text-align: center;">为负</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>ns</code></td>
+<td style="text-align: center;"><code>~SF</code></td>
+<td style="text-align: center;">非负</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>g</code></td>
+<td style="text-align: center;"><code>~(SF^OF)&amp;~ZF</code></td>
+<td style="text-align: center;">有符号数大于</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>ge</code></td>
+<td style="text-align: center;"><code>~(SF^OF)</code></td>
+<td style="text-align: center;">有符号数大于等于</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>l</code></td>
+<td style="text-align: center;"><code>(SF^OF)|ZF</code></td>
+<td style="text-align: center;">有符号数小于</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>le</code></td>
+<td style="text-align: center;"><code>(SF^OF)</code></td>
+<td style="text-align: center;">有符号数小于等于</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>a</code></td>
+<td style="text-align: center;"><code>~CF&amp;~ZF</code></td>
+<td style="text-align: center;">无符号数大于</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>b</code></td>
+<td style="text-align: center;"><code>CF</code></td>
+<td style="text-align: center;">无符号数小于</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>ae</code></td>
+<td style="text-align: center;"><code>~CF</code></td>
+<td style="text-align: center;">无符号数大于等于</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>be</code></td>
+<td style="text-align: center;"><code>CF|ZF</code></td>
+<td style="text-align: center;">无符号数小于</td>
+</tr>
+</tbody>
+</table>
+</figure></li>
+<li><p><code>j(mp,e,ne,s,ns,g,ge,l,le,a,b,ae,be) d</code> 条件跳转</p>
+<p>读取当前条件码(组合),如果结果为真则跳转到标志 <code>d</code>.</p>
+<p><code>jmp</code> 为无条件跳转,其余后缀的含义同
+<code>set</code>.</p></li>
+<li><p><code>cmov(e,ne,s,ns,g,ge,l,le,a,b) s,d</code> 条件移动</p>
+<p>读取当前条件码(组合),如果结果为真则执行 <code>mov</code>.</p></li>
+<li><p><code>push s</code> 数据压栈</p>
+<p>从 <code>s</code> 读取数据,栈顶指针向下移动 <code>%rsp-=8</code>,
+数据写入栈顶地址 <code>%rsp</code>.</p></li>
+<li><p><code>pop d</code> 数据出栈</p>
+<p>从栈顶 <code>%rsp</code> 读取操作数,将其写入 <code>d</code>,
+栈顶指针向上移动 <code>%rsp+=8</code>.</p></li>
+<li><p><code>call label</code> 函数调用</p>
+<p>将返回地址(<code>call</code> 指令的下一条指令地址)压入栈,跳转至
+<code>label</code>.</p></li>
+<li><p><code>ret</code> 函数返回</p>
+<p>跳转至栈顶的返回地址,并将其弹出.</p></li>
+</ul>
+<h1 id="操作流程">操作流程</h1>
+<h2 id="函数调用">函数调用</h2>
+<h3 id="x86-64"><code>x86-64</code></h3>
+<ol>
+<li><p>调用者保存寄存器 (如果使用了 <code>%r10</code>,<code>%r11</code>)
+并准备参数 (到参数寄存器或入栈).</p></li>
+<li><p>调用
+<code>call fun</code>,返回地址入栈,被调用者开始运行.</p></li>
+<li><p>被调用者分配局部变量,可以直接使用栈顶指针 <code>%rsp</code>
+下方的 Red Zone.</p></li>
+<li><p>如被调用者需要使用由自己保存的寄存器,先将原值入栈,返回前将原值出栈到原寄存器.</p></li>
+</ol>
+<h3 id="x86-32"><code>x86-32</code></h3>
+<ol>
+<li><p>调用者保存寄存器并准备参数 (从右向左入栈).</p></li>
+<li><p>调用 <code>call</code>,返回地址入栈,被调用者开始运行.</p></li>
+<li><p>被调用者建立栈帧:</p>
+<p><code>push %ebp</code><br />
+<code>mov %esp,%ebp</code></p>
+<p>如果需要使用被调用者保存的寄存器 (如 <code>%ebx</code>):</p>
+<p><code>push %ebx</code></p></li>
+<li><p>被调用者退出,如果使用了被调用者保存的寄存器则恢复:</p>
+<p><code>movl -4(%ebp),%ebx</code></p>
+<p>释放栈帧:</p>
+<p><code>movl %ebp,%esp</code><br />
+<code>popl %ebp</code></p>
+<p>调用 <code>ret</code>,返回地址出栈,调用者继续运行.</p></li>
+</ol>
+<h2 id="全局变量寻址">全局变量寻址</h2>
+<h3 id="x86-64-1"><code>x86-64</code></h3>
+<ol>
+<li><p>使用基于 <code>%rip</code>
+的相对寻址直接访问全局变量地址.</p></li>
+</ol>
+<h3 id="x86-32-1"><code>x86-32</code></h3>
+<ol>
+<li><p>调用 <code>__x86.get_pc_thunk.ax</code> 将调用后的栈顶地址
+(即调用前下一条指令的位置) 放入 <code>%eax</code>.</p></li>
+<li><p>向 <code>%eax</code> 添加一个固定的偏移量,获取全局偏移表 (global
+offset table, GOT) 的起始地址</p></li>
+<li><p>向 GOT 起始地址继续添加偏移量获取全局变量的地址.</p></li>
+</ol>
+<h2 id="编译与链接">编译与链接</h2>
+<ol>
+<li><p>源文件编译生成可重定位对象文件 (<code>.o</code>)</p>
+<ol>
+<li><p>程序定义及引用一系列符号 (symbols, 包括变量和函数)</p>
+<p>非静态函数和全局变量可以被外部引用</p></li>
+<li><p>编译器将符号定义存储在符号表 (symbol table) 中</p></li>
+</ol></li>
+<li><p>完全链接后产生可执行对象文件</p>
+<ol>
+<li><p>将多个文件的数据和代码段集成</p></li>
+<li><p>链接器将每一个符号引用 (reference) 与符号定义联系起来</p></li>
+<li><p>将 <code>.o</code> 文件中的符号解析为绝对地址</p></li>
+<li><p>将符号引用更新为新地址</p></li>
+</ol></li>
+</ol>

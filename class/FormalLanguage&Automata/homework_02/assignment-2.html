@@ -1,0 +1,150 @@
+<div class="problem">
+<p>(Exercise 2.5.2) Consider the following <span
+class="math inline">\(\epsilon\)</span>-NFA.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"></th>
+<th style="text-align: center;"><span
+class="math inline">\(\epsilon\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(a\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(b\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(c\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><span class="math inline">\(\rightarrow
+p\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\{q,
+r\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{q\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{r\}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(q\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{p\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{r\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{p,q\}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(*r\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>(Exercise 2.5.3) Design <span
+class="math inline">\(\epsilon\)</span>-NFA’s for the following
+languages. Try to use <span
+class="math inline">\(\epsilon\)</span>-transitions to simplify your
+design.</p>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>Write regular expressions for the following languages:</p>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>Here is a transition table for a DFA:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"></th>
+<th style="text-align: center;"><span
+class="math inline">\(0\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><span class="math inline">\(\rightarrow
+q_{1}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(q_{2}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(q_{1}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(q_{2}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(q_{3}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(q_{1}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(*q_{3}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(q_{3}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(q_{2}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>(Optional) Suppose <span class="math inline">\(L_{1}\)</span> and
+<span class="math inline">\(L_{2}\)</span> are two languages accepted by
+finite automata <span class="math inline">\(M_{1}\)</span> and <span
+class="math inline">\(M_{2}\)</span>. Prove that <span
+class="math inline">\(L_{1} \cap L_{2}\)</span> is also accepted by a
+finite automaton.</p>
+</div>
+<div class="solution">
+<p>For <span
+class="math inline">\(M_1=\{Q_1,\Sigma_1,\delta_1,q_{01},F_1\},M_2=\{Q_2,\Sigma_2,\delta_2,q_{02},F_2\}\)</span>,
+define <span class="math inline">\(Q=Q_1\times
+Q_2,\Sigma=\Sigma_1\cap\Sigma_2,q_0=(q_{01},q_{02}),F=F_1\times
+F_2\)</span>, and <span
+class="math inline">\(\delta((q_1,q_2),a)=(\delta_1(q_1,a),\delta_2(q_2,a))\)</span>.
+Then <span class="math inline">\(M=\{Q,\Sigma,q_0,\delta,F\}\)</span>
+can accepted <span class="math inline">\(L_1\cap L_2\)</span>. To proof
+that, for any string just put it into <span
+class="math inline">\(M,M_1\)</span> and <span
+class="math inline">\(M_2\)</span>, state in <span
+class="math inline">\(M\)</span> like <span
+class="math inline">\((q_1,q_2)\)</span> just refers to states in <span
+class="math inline">\(M_1,M_2\)</span> separately <span
+class="math inline">\(q_1,q_2\)</span>. <span
+class="math inline">\(M\)</span> accepts the string if and only if <span
+class="math inline">\((q_1,q_2)\)</span> finally stay in <span
+class="math inline">\(F_1\times F_2\)</span>, which also means <span
+class="math inline">\(q_1\in F_1,q_2\in F_2,M_1,M_2\)</span> accepts the
+string, or, the string is in <span class="math inline">\(L_1\cap
+L_2\)</span>.</p>
+</div>

@@ -1,0 +1,79 @@
+<h2 id="复阻抗与复导纳">复阻抗与复导纳</h2>
+<ol>
+<li><p>纯电阻仅有电阻 <span class="math inline">\(Z=R\)</span> ,电导
+<span class="math inline">\(Y=\frac{1}{R}\)</span></p></li>
+<li><p>纯电容仅有电抗 <span class="math inline">\(Z=\frac{1}{j\omega
+C}=-\frac{j}{\omega C}\)</span> ,电纳 <span
+class="math inline">\(Y=j\omega C\)</span></p></li>
+<li><p>纯电感仅有电抗 <span class="math inline">\(Z=j\omega L\)</span>
+,电纳 <span class="math inline">\(Y=\frac{1}{j\omega L}=-\frac{j}{\omega
+L}\)</span></p></li>
+</ol>
+<p>对于电阻,电容,电感串联, <span class="math display">\[\begin{aligned}
+            Z=R+j(\omega L-\frac{1}{\omega C})\nonumber
+        
+\end{aligned}\]</span></p>
+<p>其复电压 <span
+class="math inline">\(U=\sqrt{U_{R}^2+U_{X}^2}\)</span>,选电流为参考相量,
+<span class="math inline">\(U,U_{R},U_{X}\)</span>
+形成一个直角三角形,称电压三角形. <span class="math inline">\(U\)</span>
+辐角为正, <span class="math inline">\(\omega L &gt; \frac{1}{\omega
+C}\)</span>,电压领先电流,称电路呈感性,反之称容性,同相时称电阻性.</p>
+<p>对于电阻,电容,电感并联: <span class="math display">\[\begin{aligned}
+            Y=\frac{1}{R}+j(\omega C -\frac{1}{\omega L})\nonumber
+        
+\end{aligned}\]</span></p>
+<p>同理可以绘制电流三角形.容性时 <span class="math inline">\(\omega
+C&gt; \frac{1}{\omega L}\)</span>,感性,电阻性同理.</p>
+<div class="remark">
+<p>(阻抗与导纳的互换)
+电路的阻抗和导纳在复数意义下互为倒数,一般情况下电阻和电导,电抗和电纳并非倒数关系.</p>
+</div>
+<div class="remark">
+<p>(相量与复数) 上附点 <span class="math inline">\(\dot\ \)</span>
+表示相量,用于 <span class="math inline">\(U,I\)</span>.阻抗 <span
+class="math inline">\(Z\)</span> 不加上附点,表示一个复数. <span
+class="math inline">\(U,I\)</span> 不加上附点时表示相量模长.</p>
+</div>
+<h2
+id="电路定律的相量形式与电路相量模型">电路定律的相量形式与电路相量模型</h2>
+<p>电路元件的相量关系: <span class="math display">\[\begin{aligned}
+                u=Ri \Leftrightarrow&amp; \dot{U}=R\dot{I}\nonumber\\
+                u=L \frac{\mathrm{d}i}{\mathrm{d}t} \Leftrightarrow&amp;
+\dot{U}=j\omega L\dot{I}\nonumber\\
+                u=\frac{1}{C} \int_{}^{}i\mathrm{d}t
+\Leftrightarrow&amp; \dot{U}=\frac{1}{j\omega C}\dot{I}\nonumber
+            
+\end{aligned}\]</span> 相量图的绘制:</p>
+<ul>
+<li><p>需要同频率正弦量</p></li>
+<li><p>以 <span class="math inline">\(\omega\)</span>
+角速度逆时针旋转</p></li>
+<li><p>选定一个参考相量,初相位为零</p></li>
+</ul>
+<p>求解交流电路的正弦稳态解:</p>
+<ul>
+<li><p>求解电流,电压关系等,给出相量形式时,与直流相同方法求解即可</p></li>
+<li><p>电流电压仅给出模长时,绘制相量图,求解角度和边长关系,以此推出相量解.</p></li>
+</ul>
+<div class="example">
+<p>(移相桥电路)
+将电桥电路一个支路上的一个电阻换成电容,另一个电阻可变,另一个支路上两电阻相等,电桥开路监测电压,求解可变电阻由
+<span class="math inline">\(0\rightarrow \infty\)</span>
+时电桥电压的变化. 绘制向量图,选取不变量总电压为参考相量 <span
+class="math inline">\(\dot{U}\)</span>,双电阻支路有: <span
+class="math display">\[\begin{aligned}
+                    \dot{U}_{1}=\dot{U}_{2}=\frac{\dot{U}}{2}\nonumber
+                
+\end{aligned}\]</span> .电阻-电容支路有: <span
+class="math display">\[\begin{aligned}
+                    \dot{U}_{R}\perp&amp; \dot{U}_{C}\nonumber\\
+                    \dot{U}_{R}+\dot{U}_{C}=&amp;\dot{U}\nonumber
+                
+\end{aligned}\]</span> <span
+class="math inline">\(\dot{U}_{R},\dot{U}_{C}\)</span> 的交点在以 <span
+class="math inline">\(\dot{U}\)</span> 为直径的半圆上运动,电桥电压 <span
+class="math inline">\(\dot{U}_{ab}\)</span> 由 <span
+class="math inline">\(\dot{U}_{1}\)</span> 指向 <span
+class="math inline">\(\dot{U}_{R}\)</span> 为圆半径保持不变.</p>
+</div>

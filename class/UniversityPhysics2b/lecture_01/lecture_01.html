@@ -1,0 +1,800 @@
+<h1 id="静电场">静电场</h1>
+<div class="definition">
+<p>(电荷) <span class="math inline">\(Q\)</span> 或 <span
+class="math inline">\(q\)</span>,单位为库仑 <span
+class="math inline">\(C\)</span>.最小单元是电子电量 <span
+class="math inline">\(e\approx 1.602\times 10^{-19} \
+\mathrm{C}\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(电荷) 电荷守恒,且在不同参考系下不变 (电荷的相对论不变性)</p>
+</div>
+<div class="theorem">
+<p>(库伦定律) <span class="math inline">\(\bm{F}_{21}=k
+\frac{q_1q_2}{r_{21}^2}\bm{e}_{r21}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(真空介电常量) <span class="math inline">\(\epsilon_0=\frac{1}{4\pi
+k}=8.85\times 10^{-12} \ \mathrm{C^2 / (N\cdot m^2)}\)</span></p>
+</div>
+<p>由真空介电常量书写库仑定律 <span
+class="math inline">\(\bm{F}_{21}=\frac{q_1q_2}{4\pi \epsilon_0
+r_{21}^2}\bm{e}_{r 21}\)</span>.</p>
+<div class="definition">
+<p>(电场强度) <span
+class="math inline">\(\bm{E}=\frac{\bm{F}}{q}=\frac{q}{4\pi\epsilon_0
+r^2}\bm{e}_{r}\)</span></p>
+</div>
+<div class="definition">
+<p>(电通量) <span class="math inline">\(\mathrm{d}\Phi_{e}=\bm{E}\cdot
+\mathrm{d}\bm{S}=E\mathrm{d}S\cos \theta\)</span></p>
+</div>
+<div class="theorem">
+<p>(高斯定律) <span class="math inline">\(\oint_{S}^{}\bm{E}\cdot
+\mathrm{d}\bm{S}=\frac{1}{\epsilon_0}\sum_{}^{}q_{\texttt{in}}\)</span></p>
+</div>
+<p>研究随时间变化的电场时,库仑定律不再有效,但高斯定律仍有效.</p>
+<h1 id="电势">电势</h1>
+<div class="theorem">
+<p>(静电场环路定理) <span class="math inline">\(\oint_{}^{}\bm{E}\cdot
+\mathrm{d}\bm{r}=0\)</span></p>
+</div>
+<div class="definition">
+<p>(电势差和电势) <span
+class="math inline">\(\phi_1-\phi_2=\int_{P_1}^{P_2}\bm{E}\cdot
+\mathrm{d}\bm{r}\)</span> 选定电势零点 <span
+class="math inline">\(P_0\)</span> 后, <span
+class="math inline">\(\phi=\int_{P}^{P_0}\bm{E}\cdot\mathrm{d}\bm{r}\)</span></p>
+</div>
+<p>当电荷只分布在有限区域时,电势零点通常选在无限远处.</p>
+<div class="theorem">
+<p>(电势梯度) <span class="math inline">\(\bm{E}=-\grad
+\phi\)</span></p>
+</div>
+<div class="definition">
+<p>(静电势能) <span
+class="math inline">\(W=q_0\phi\)</span>,为电荷在外电场中的势能.</p>
+</div>
+<p>标准单位为焦耳 <span class="math inline">\(\
+\mathrm{J}\)</span>,或者电子伏 <span class="math inline">\(1\
+\mathrm{eV}=1.60\times 10^{-19} \ \mathrm{J}\)</span> 表示一个电子经过
+<span class="math inline">\(1 \ \mathrm{V}\)</span>
+电势差获得的动能.</p>
+<div class="definition">
+<p>(电荷系的静电能) 将各电荷从现有位置分散到无限远时相互静电力做功,
+<span
+class="math inline">\(W=\frac{1}{2}\sum_{}^{}q_{i}\phi_{i}=\frac{1}{2}\int_{q}^{}\phi\mathrm{d}q\)</span>.</p>
+</div>
+<div class="definition">
+<p>(电场能量密度) <span
+class="math inline">\(w_{e}=\frac{\mathrm{d}W}{\mathrm{d}V}=\frac{\epsilon_0E^2}{2}\)</span>,这里的
+<span class="math inline">\(W\)</span> 指的是电荷系的静电能.</p>
+</div>
+<h1 id="静电场中的导体">静电场中的导体</h1>
+<div class="definition">
+<p>(导体的静电平衡) 导体内部和表面都没有电荷定向移动的状态.</p>
+</div>
+<p>静电平衡时导体表面紧邻处的电场强度必定和导体表面垂直,导体为等势体,其表面是等势面,内部净电荷为零,电荷只能分布在表面,且表面电荷密度与紧邻处电场强度大小成正比.</p>
+<div class="theorem">
+<p>(静电平衡导体表面的电场强度) <span
+class="math inline">\(\sigma=\epsilon_0E\)</span>.</p>
+</div>
+<p>导体静电平衡时,表面曲率越大的地方面电荷密度越大.</p>
+<div class="theorem">
+<p>(唯一性定理)
+有若干个导体存在时,如果对于任意导体都已知其上总电量或电势 (称为边界条件)
+,则空间的电场分布和导体表面的电荷分布唯一确定.</p>
+</div>
+<h1 id="静电场中的电介质">静电场中的电介质</h1>
+<div class="definition">
+<p>(相对介电常量) 又称相对电容率 <span
+class="math inline">\(\epsilon_{r}\)</span>,加入电介质后 <span
+class="math inline">\(E=\frac{E_0}{\epsilon_r}\)</span>.介电常量即 <span
+class="math inline">\(\epsilon=\epsilon_0\epsilon_{r}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(固有电矩) 内部电荷分布不对称的分子 (极性分子) 的电矩.</p>
+</div>
+<div class="definition">
+<p>(感生电矩) 内部电荷分布对称的分子 (非极性分子)
+在外电场中产生的电矩.</p>
+</div>
+<p>感生电矩的方向总与外加电场的方向相同.</p>
+<div class="definition">
+<p>(面束缚/极化电荷) 在外电场影响下出现在电介质表面的电荷.</p>
+</div>
+<div class="definition">
+<p>(电极化强度) <span
+class="math inline">\(\bm{P}=\frac{\sum_{}^{}\bm{p}_{i}}{\Delta
+V}\)</span>. 其中 <span class="math inline">\(\bm{p}_{i}\)</span>
+表示分子电矩, <span class="math inline">\(\Delta V\)</span>
+为宏观极小微观极大微元.</p>
+</div>
+<p>对于固定的固有电矩,令 <span class="math inline">\(n\)</span>
+为分子密度,则有 <span class="math inline">\(\bm{P}=n
+\bm{p}\)</span>.</p>
+<div class="theorem">
+<p>(电场与电极化强度之间的关系) 当 <span
+class="math inline">\(\bm{E}\)</span> 不太强时,各向同性电介质中有 <span
+class="math inline">\(\bm{P}=\epsilon_0(\epsilon_{r}-1)\bm{E}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(介电强度,击穿场强)
+一种电介质材料所能承受的不被击穿的最大电场强度,单位为 <span
+class="math inline">\(\ \mathrm{kV / mm}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(电位移) <span class="math inline">\(\bm{D}=\epsilon_0
+\bm{E}+\bm{P}=\epsilon_0\epsilon_r \bm{E}\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(<span class="math inline">\(D\)</span> 的高斯定理) <span
+class="math inline">\(\oint_{S}^{}\bm{D}\cdot
+\mathrm{d}\bm{S}=\sum_{}^{}q_{0\texttt{in}}\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(静电场的边界条件)
+电介质分界面上无自由电荷存在时,分界面两侧电场强度的切向分量相等,电位移矢量的法向分量相等.</p>
+</div>
+<div class="theorem">
+<p>(<span class="math inline">\(D\)</span> 线的折射定律) <span
+class="math inline">\(D\)</span> 线通过电介质分界面上的入射角 <span
+class="math inline">\(\theta_1\)</span> 和折射角 <span
+class="math inline">\(\theta_2\)</span> 满足 <span
+class="math inline">\(\frac{\tan
+\theta_1}{\tan\theta_2}=\frac{\epsilon_{r 1}}{\epsilon_{r
+2}}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(电容器的电容) <span
+class="math inline">\(C=\frac{Q}{U}\)</span>.单位为法拉 <span
+class="math inline">\(\ \mathrm{F}\)</span>.</p>
+</div>
+<p>常用单位为 <span class="math inline">\(1 \ \mathrm{\mu F}=10^{-6} \
+\mathrm{F}\)</span>, <span class="math inline">\(1 \ \mathrm{p F}=\times
+10^{-12} \ \mathrm{F}\)</span>.</p>
+<div class="theorem">
+<p>(电容器的串并联) 并联电容器的电容求和,串联电容器电容倒数求和.</p>
+</div>
+<div class="definition">
+<p>(电容器的能量) 能量密度 <span
+class="math inline">\(w_{e}=\frac{1}{2}\epsilon
+E^2=\frac{1}{2}DE=\frac{1}{2}\bm{D}\cdot \bm{E}\)</span>, 能量 <span
+class="math inline">\(W=\int_{}^{}w_{e}\mathrm{d}V=\int_{}^{}\frac{\epsilon
+E}{2}\mathrm{d}V\)</span>.或直接使用放电做功得 <span
+class="math inline">\(W=\frac{1}{2}CU^2=\frac{1}{2}QU\)</span>.</p>
+</div>
+<h1 id="恒定电流">恒定电流</h1>
+<div class="definition">
+<p>(电流) <span class="math inline">\(I=\frac{\Delta q}{\Delta
+t}\)</span>,单位为安培 <span class="math inline">\(\
+\mathrm{A}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(电流密度) <span class="math inline">\(\mathrm{d}I=\bm{J}\cdot
+\mathrm{d}\bm{S}\)</span>,称 <span class="math inline">\(\bm{J}\)</span>
+为小面积 <span class="math inline">\(\mathrm{d}\bm{S}\)</span>
+处的电流密度.</p>
+</div>
+<p>导体中 <span class="math inline">\(\bm{J}=ne
+\overline{\bm{v}}\)</span>,其中 <span class="math inline">\(n\)</span>
+为载流子密度, <span class="math inline">\(\overline{\bm{v}}\)</span>
+为平均速度.对于有限面积, <span
+class="math inline">\(I=\int_{S}^{}\mathrm{d}I=\int_{S}^{}\bm{J}\cdot
+\mathrm{d}\bm{S}\)</span>.</p>
+<div class="theorem">
+<p>(电流的连续性方程) <span
+class="math inline">\(\oint_{S}^{}\bm{J}\cdot
+\mathrm{d}\bm{S}=-\frac{\mathrm{d}q_{\texttt{in}}}{\mathrm{d}t}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(恒定电流) 导体内各处的电流密度都不随时间变化的电流.</p>
+</div>
+<div class="theorem">
+<p>(恒定电流) <span class="math inline">\(\oint_{S}^{}\bm{J}\cdot
+\mathrm{d}\bm{S}=0\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(恒定电场)
+恒定电流下导体内电荷分布不随时间改变,故电场不随时间改变,称恒定电场.</p>
+</div>
+<p>恒定电场的性质与静电场基本相同.</p>
+<div class="theorem">
+<p>(欧姆定律) <span class="math inline">\(U=IR\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(电阻定律) <span class="math inline">\(R=\rho
+\frac{l}{S}\)</span>.</p>
+</div>
+<p>有时也使用电导率 <span
+class="math inline">\(\sigma=\frac{1}{\rho}\)</span>,此时 <span
+class="math inline">\(R=\frac{1}{\sigma S}\)</span>.</p>
+<div class="theorem">
+<p>(欧姆定律的微分形式) <span class="math inline">\(\bm{J}=\sigma
+\bm{E}\)</span>.</p>
+</div>
+<p>注意欧姆定律及其微分形式仅对于一般的金属或电解液成立.</p>
+<div class="definition">
+<p>(电源的电动势) <span
+class="math inline">\(E=\frac{A_{\texttt{ne}}}{q}\)</span>,其中 <span
+class="math inline">\(A_{\texttt{ne}}\)</span> 表示非静电力做功.</p>
+</div>
+<p>有时将非静电力作用看作等效"非静电场"作用,有 <span
+class="math inline">\(E=\int_{}^{}\bm{E}_{\texttt{ne}}\cdot
+\mathrm{d}\bm{r}\)</span>.</p>
+<div class="theorem">
+<p>(电容器的充电与放电) 充电时 <span class="math inline">\(q=CE\left(
+1-e^{-\frac{t}{RC}} \right)\)</span>, <span
+class="math inline">\(i=\frac{\mathrm{d}q}{\mathrm{d}t}=\frac{E}{R}e^{-\frac{t}{RC}}\)</span>,放电时
+<span class="math inline">\(q=Qe^{-\frac{t}{RC}}\)</span>, <span
+class="math inline">\(i=\frac{Q}{RC}e^{-\frac{t}{RC}}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(时间常量) <span
+class="math inline">\(\tau=RC\)</span>,为变量变化倍率 <span
+class="math inline">\(\frac{1}{e}\)</span> 时的时间.</p>
+</div>
+<p>回路线度远小于 <span class="math inline">\(c\tau\)</span>
+时称为似稳电场,也可以应用基尔霍夫方程.</p>
+<div class="definition">
+<p>(电子的平均自由飞行时间) <span
+class="math inline">\(\tau=\frac{\sum_{}^{}t_{i}}{n}\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(金属的电导率的微观解释) <span
+class="math inline">\(\sigma=\frac{ne^2\tau}{m}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(热功率密度,焦耳定律的微分形式) <span class="math inline">\(p=\sigma
+E^2\)</span>.</p>
+</div>
+<h1 id="磁场和它的源">磁场和它的源</h1>
+<div class="definition">
+<p>(磁感应强度) <span class="math inline">\(\bm{F}=q\bm{v}\times
+\bm{B}\)</span>. <span class="math inline">\(\bm{B}\)</span>
+称磁感应强度,单位特斯拉 <span class="math inline">\(\
+\mathrm{T}\)</span> 或非标准的高斯 <span class="math inline">\(1 \
+\mathrm{G}=10^{-4} \ \mathrm{T}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(磁通量) <span class="math inline">\(\Phi=\int_{S}^{}\bm{B}\cdot
+\mathrm{d}\bm{S}\)</span>.单位韦伯 <span class="math inline">\(1\
+\mathrm{Wb}=1 \ \mathrm{T\cdot m^2}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(真空磁导率) <span
+class="math inline">\(\mu_0=\frac{1}{\epsilon_0c^2}=4\pi \times 10^{-7}
+\ \mathrm{N / A^2}\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(磁通连续定理) <span class="math inline">\(\oint_{S}^{}\bm{B}\cdot
+\mathrm{d}\bm{S}=0\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(毕奥-萨伐尔定律) <span
+class="math inline">\(\mathrm{d}B=\frac{\mu_0}{4\pi}\frac{I\mathrm{d}\bm{l}\times
+\bm{e}_{r}}{r^2}\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(匀速运动点电荷的磁场) <span
+class="math inline">\(\bm{B}=\frac{\mu_0}{4\pi}\frac{q \bm{v}\times
+\bm{e}_{r}}{r^2}\)</span>.</p>
+</div>
+<p>在运动速度较小时,近似的使用 <span
+class="math inline">\(E=\frac{q}{4\pi\epsilon_0r^2}\bm{e}_{r}\)</span>
+可得 <span class="math inline">\(B=\frac{1}{c^2}\bm{v}\times
+\bm{E}\)</span>.</p>
+<div class="theorem">
+<p>(安培环路定理) <span class="math inline">\(\oint_{C}^{}\bm{B}\cdot
+\mathrm{d}\bm{r}=\mu_0\sum_{}^{}I_{\texttt{in}}\)</span>.</p>
+</div>
+<p>电流 <span class="math inline">\(I_{\texttt{in}}\)</span>
+指的是闭合恒定电流
+(无限长直电流可视为在无穷远处闭合).用于求磁场分布时根据对称性等选取
+<span class="math inline">\(\bm{B}\)</span>
+大小恒定的路径,使得其能以标量形式从积分号内提取出来.</p>
+<div class="theorem">
+<p>(变化电场产生磁场) <span
+class="math inline">\(\oint_{C}^{}\bm{B}\cdot
+\mathrm{d}\bm{r}=\mu_0\epsilon_0
+\frac{\mathrm{d}}{\mathrm{d}t}\int_{S}^{}\bm{E}\cdot
+\mathrm{d}\bm{S}\)</span>,其中 <span class="math inline">\(S\)</span>
+是任意曲面使得 <span class="math inline">\(\partial S=C\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(推广/普遍安培环路定理) <span
+class="math inline">\(\oint_{C}^{}\bm{B}\cdot
+\mathrm{d}\bm{r}=\mu_0\left( I_{\texttt{c,in}}+\epsilon_0
+\frac{\mathrm{d}}{\mathrm{d}t}\int_{S}^{}\bm{E}\cdot \mathrm{d}\bm{S}
+\right) =\mu_0\int_{S}^{}\left( \bm{J}_{c}+\epsilon_0 \frac{\partial
+\bm{E}}{\partial t} \right) \cdot \mathrm{d}\bm{S}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(位移电流) <span class="math inline">\(I_{d}=\epsilon_0
+\frac{\mathrm{d}\Phi_{e}}{\mathrm{d}t}=\epsilon_0
+\frac{\mathrm{d}}{\mathrm{d}t}\int_{S}^{}\bm{E}\cdot
+\mathrm{d}S\)</span>.</p>
+</div>
+<div class="definition">
+<p>(位移电流密度) <span class="math inline">\(\bm{J}_{d}=\epsilon_0
+\frac{\partial \bm{E}}{\partial t}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(全电流) <span
+class="math inline">\(I=I_{c}+I_{d}=\int_{S}^{}\bm{J}_{c}\cdot\mathrm{d}\bm{S}+\int_{S}^{}\bm{J}_{d}\cdot
+\mathrm{d}\bm{S}=\int_{S}^{}\left( J_{c}+\epsilon_0 \frac{\partial
+\bm{E}}{\partial t} \right) \cdot \mathrm{d}\bm{S}\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(全电流的连续性) <span class="math inline">\(\oint_{S}^{}I\cdot
+\mathrm{d}\bm{S}=0\)</span>.</p>
+</div>
+<h1 id="磁力">磁力</h1>
+<div class="theorem">
+<p>(磁场中的匀速圆周运动) 半径 <span
+class="math inline">\(R=\frac{mv}{qB}=\frac{p}{qB}\)</span>,回旋周期
+<span class="math inline">\(T=\frac{2\pi m}{qB}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(螺距) 含有平行磁场和垂直磁场分速度的带电粒子运行的螺旋轨迹之间的间隔
+<span class="math inline">\(h=v_{\parallel}T=\frac{2\pi
+m}{qB}v_{\parallel}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(磁镜) 逐渐增强的磁场,能使粒子发生"反射".</p>
+</div>
+<div class="definition">
+<p>(磁瓶) 两个相对的磁镜构成的能约束带电粒子的磁场分布.</p>
+</div>
+<div class="definition">
+<p>(霍尔效应) 外磁场中的通电金属窄条边缘出现的电压 <span
+class="math inline">\(U_{\texttt{H}}=\frac{IB}{nqb}\)</span>,其中 <span
+class="math inline">\(n\)</span> 为载流子密度, <span
+class="math inline">\(b\)</span>
+为磁场穿透方向的厚度.方向由载流子电性以及左手定则确定.</p>
+</div>
+<div class="definition">
+<p>(安培力) <span
+class="math inline">\(\mathrm{d}\bm{F}=I\mathrm{d}\bm{l}\times
+\bm{B}\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(载流线圈在均匀磁场中受的磁力矩) <span
+class="math inline">\(\bm{M}=\bm{m}\times \bm{B}\)</span>,其中 <span
+class="math inline">\(\bm{m}\)</span> 为磁矩.</p>
+</div>
+<div class="definition">
+<p>(磁矩的势能) <span class="math inline">\(W_{m}=-\bm{m}\cdot
+\bm{B}\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(平行载流导线间的相互作用力) <span
+class="math inline">\(F=\frac{\mu_0I_1I_2}{2\pi d}\)</span>,其中 <span
+class="math inline">\(d\)</span> 为导线距离, <span
+class="math inline">\(F\)</span>
+为单位长度线段所受作用力,同向相吸,反向相斥.</p>
+</div>
+<h1 id="磁场中的磁介质">磁场中的磁介质</h1>
+<div class="definition">
+<p>(相对磁导率) <span class="math inline">\(B=\mu_{r}B_0\)</span>,<span
+class="math inline">\(\mu_{r}\)</span> 称相对磁导率.</p>
+</div>
+<div class="definition">
+<p>(抗磁质,顺磁质,铁磁质) 抗磁质 <span
+class="math inline">\(\mu_{r}\)</span> 略小于 1,顺磁质 <span
+class="math inline">\(\mu_{r}\)</span> 略大于 1,铁磁质 <span
+class="math inline">\(\mu_{r}\)</span> 远大于 1 且随 <span
+class="math inline">\(B_0\)</span> 的大小发生变换.</p>
+</div>
+<div class="definition">
+<p>(磁偶极矩) 简称磁矩 <span
+class="math inline">\(\bm{m}=IS\bm{e}_{n}\)</span>. <span
+class="math inline">\(I\)</span>
+为圆电流,磁矩方向与其满足右手螺旋关系.</p>
+</div>
+<div class="definition">
+<p>(玻尔磁子) <span
+class="math inline">\(m_{B}=\frac{e}{m_{e}}s=\frac{e}{2m_{e}}\hbar
+=9.27\times 10^{-24} \ \mathrm{J / T}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(固有磁矩)
+某些物质正常情况下磁矩矢量和具有的一定值,这些物质称作顺磁质.</p>
+</div>
+<div class="definition">
+<p>(感生磁矩) 外磁场作用下电子轨道发生变化产生的附加磁矩.</p>
+</div>
+<p>感生磁矩的方向与外加磁场方向相反.</p>
+<div class="definition">
+<p>(束缚/磁化电流) 磁介质在外磁场中磁矩变化在磁介质表面产生的电流.</p>
+</div>
+<div class="definition">
+<p>(磁化) 磁介质表面上出现束缚电流的现象.</p>
+</div>
+<div class="definition">
+<p>(磁化强度) <span
+class="math inline">\(\bm{M}=\frac{\sum_{}^{}\bm{m}_{i}}{\Delta
+V}\)</span>,单位为安每米 <span class="math inline">\(\ \mathrm{A /
+m}\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(磁化强度与外磁场的关系) <span
+class="math inline">\(\bm{M}=\frac{\mu_{r}-1}{\mu_0\mu_{r}}\bm{B}\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(面束缚电流密度) <span class="math inline">\(j&#39;=\bm{M}\times
+\bm{e}_{n}\)</span>,其中 <span class="math inline">\(\bm{e}_{n}\)</span>
+是磁介质表面的外正法线方向的单位矢量.</p>
+</div>
+<div class="theorem">
+<p>(总束缚电流) <span
+class="math inline">\(I&#39;=\oint_{L}^{}\mathrm{d}I&#39;=\oint_{L}^{}\bm{M}\cdot
+\mathrm{d}\bm{r}\)</span> 代表 <span class="math inline">\(L\)</span>
+包围的总束缚电流.</p>
+</div>
+<p>总束缚电流表示的是与所求环路铰链的电流.</p>
+<div class="definition">
+<p>(磁导率) <span class="math inline">\(\mu=\mu_0\mu_{r}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(磁场强度) <span
+class="math inline">\(\bm{H}=\frac{\bm{B}}{\mu_0}-\bm{M}=\frac{\bm{B}}{\mu_0\mu_{r}}=\frac{\bm{B}}{\mu}\)</span>.辅助物理量.单位为安每米
+<span class="math inline">\(\ \mathrm{A / m}\)</span>.</p>
+</div>
+<p>磁场强度不受磁介质影响,可以直接由环路定理求解,而 <span
+class="math inline">\(\bm{B}\)</span> 由磁导率从 <span
+class="math inline">\(\bm{H}\)</span>
+间接求解,在铁磁质等磁导率发生变化的情况下不能直接求解.</p>
+<div class="theorem">
+<p>(<span class="math inline">\(\bm{H}\)</span> 的环路定理) <span
+class="math inline">\(\oint_{L}^{}\left( \frac{\bm{B}}{\mu_0}-\bm{M}
+\right) \cdot \mathrm{d}\bm{r}=\oint_{L}^{}\bm{H}\cdot
+\mathrm{d}\bm{r}=\sum_{}^{}I_{0\texttt{in}}\)</span>.</p>
+</div>
+<p>在无磁介质的情况下 <span class="math inline">\(\bm{M}=0\)</span>
+还原为 <span class="math inline">\(\bm{B}\)</span> 的环路定理.</p>
+<div class="definition">
+<p>(磁化曲线) 关于磁介质的 <span class="math inline">\(H-B\)</span> 或
+<span class="math inline">\(H-M\)</span>
+曲线,从未磁化开始的曲线叫起始磁化曲线.</p>
+</div>
+<div class="definition">
+<p>(铁磁质的性质) <span class="math inline">\(B\)</span> 随 <span
+class="math inline">\(H\)</span> 增大逐渐饱和,称磁饱和状态,在饱和后减小
+<span class="math inline">\(H\)</span>, <span
+class="math inline">\(B\)</span> 减小得比增加时慢,称磁滞效应, <span
+class="math inline">\(H\)</span> 恢复到零时仍保留的磁化状态称剩磁 <span
+class="math inline">\(B_{r}\)</span>,将剩磁完全消失的反向磁场强度称矫顽力
+<span
+class="math inline">\(H_{c}\)</span>.正反向磁化曲线形成的闭合曲线称磁滞回线.矫顽力小的材料磁滞回线较瘦,称软磁材料.矫顽力大的材料磁滞回线较胖,称硬磁材料.高温使铁磁质变为顺磁质的温度称居里点.铁磁体内磁矩相同的小区域称磁畴.铁磁质反复磁化发热引起的能量损失称磁滞损耗或"铁损".</p>
+</div>
+<div class="theorem">
+<p>(磁场的边界条件)
+在磁介质的边界上无自由电流存在时,分界面两侧磁场强度的切向分量相等,磁感应强度的法向分量相等.</p>
+</div>
+<div class="theorem">
+<p>(<span class="math inline">\(B\)</span> 线的折射定律) <span
+class="math inline">\(B\)</span> 线通过磁介质分界面上的入射角 <span
+class="math inline">\(\theta_1\)</span> 和折射角 <span
+class="math inline">\(\theta_2\)</span> 满足 <span
+class="math inline">\(\frac{\tan\theta_1}{\tan\theta_2}=\frac{\mu_{r
+1}}{\mu _{r 2}}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(永磁体) 仍保留一定磁化状态的铁磁体.</p>
+</div>
+<div class="definition">
+<p>(漏磁通) 铁芯外部相对很弱的磁场.</p>
+</div>
+<div class="definition">
+<p>(磁路) 由铁芯或一定的间隙构成的磁感线集中的通路.</p>
+</div>
+<div class="definition">
+<p>(磁阻) <span
+class="math inline">\(\frac{l}{\mu_0\mu_{r}S}\)</span>.</p>
+</div>
+<p>在绕线气隙铁环磁导公式 <span class="math inline">\(\Phi\left(
+\frac{l}{\mu_0\mu_{r}S}+\frac{\delta}{\mu_0S} \right) =NI\)</span> 中,
+<span class="math inline">\(\Phi\)</span> 对应电流, <span
+class="math inline">\(NI\)</span>
+称磁动势.磁通,磁阻和磁动势形式上服从串并联规律.</p>
+<h1 id="电磁感应">电磁感应</h1>
+<div class="theorem">
+<p>(法拉第电磁感应定律) <span
+class="math inline">\(E=-\frac{\mathrm{d}\Phi}{\mathrm{d}t}\)</span>,方向遵循楞次定律.</p>
+</div>
+<div class="definition">
+<p>(全磁通) <span class="math inline">\(\Psi=\sum_{}^{}\Phi\)</span>
+为穿过各匝线圈的磁通量总和,各匝线圈磁通量相等时 <span
+class="math inline">\(\Psi=N\Phi\)</span> 称磁链.</p>
+</div>
+<div class="definition">
+<p>(动生电动势) 导体在恒定磁场中运动产生的感应电动势 <span
+class="math inline">\(E=\int_{}^{}\left( \bm{v}\times \bm{B} \right)
+\mathrm{d}\bm{l}=Blv\)</span>,遵循右手定则.</p>
+</div>
+<div class="definition">
+<p>(感生电场) 磁场变化产生的电场 <span
+class="math inline">\(\bm{E}_{i}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(感生电动势) 磁场发生变化导致导体回路中产生的电动势 <span
+class="math inline">\(E=\oint_{L}^{}\bm{E}_{i}\cdot
+\mathrm{d}\bm{l}=-\frac{\mathrm{d}\Phi}{\mathrm{d}t}=-\frac{\mathrm{d}}{\mathrm{d}t}\int_{S}^{}\bm{B}\cdot
+\mathrm{d}\bm{S}=-\int_{S}^{}\frac{\partial \bm{B}}{\partial t}\cdot
+\mathrm{d}\bm{S}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(互感)
+闭合导体回路中电流随时间变化时引起周围磁场变化在附近的导体回路中产生感生电动势,称互感电动势.</p>
+</div>
+<div class="definition">
+<p>(互感系数) <span class="math inline">\(E_{12}=-M
+\frac{\mathrm{d}i_2}{\mathrm{d}t},E_{21}=-M
+\frac{\mathrm{d}i_1}{\mathrm{d}t}\)</span>,其中 <span
+class="math inline">\(M\)</span> 称互感系数,单位为亨利 <span
+class="math inline">\(1\ \mathrm{H}=1 \ \mathrm{\Omega \cdot
+s}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(自感)
+电流回路的电流发生变化时自身产生感生电动势,称自感电动势,方向总是阻碍本身电流变化.</p>
+</div>
+<div class="definition">
+<p>(自感系数) <span
+class="math inline">\(E=-\frac{\mathrm{d}\Phi}{\mathrm{d}t}=-L
+\frac{\mathrm{d}i}{\mathrm{d}t}\)</span>,其中 <span
+class="math inline">\(L\)</span> 称自感系数,单位也为亨利.</p>
+</div>
+<div class="theorem">
+<p>(电感的通电与断电) 通电时 <span class="math inline">\(E=L
+\frac{\mathrm{d}i}{\mathrm{d}t}+iR,i=\frac{E}{R}\left(
+1-e^{-\frac{R}{L}t} \right)\)</span>,断电时 <span
+class="math inline">\(L
+\frac{\mathrm{d}i}{\mathrm{d}t}+iR=0,i=\frac{E}{R}e^{-\frac{R}{L}t}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(时间常数) <span class="math inline">\(\tau=\frac{L}{R}\)</span>
+为变量变化倍率 <span class="math inline">\(\frac{1}{e}\)</span>
+的时间.</p>
+</div>
+<div class="definition">
+<p>(磁能) <span
+class="math inline">\(W_{m}=\frac{1}{2}\int_{}^{}\bm{H}\cdot
+\bm{B}\mathrm{d}V\)</span>,积分应遍及整个磁场分布的空间, <span
+class="math inline">\(w_{m}=\frac{1}{2}\bm{B}\cdot \bm{H}\)</span>
+称磁场能量密度.</p>
+</div>
+<h1 id="麦克斯韦方程组和电磁辐射">麦克斯韦方程组和电磁辐射</h1>
+<div class="theorem">
+<p>(麦克斯韦方程组) <span class="math display">\[\begin{aligned}
+            \oint_{S}^{}\bm{D}\cdot
+\mathrm{d}\bm{S}=&amp;\frac{q}{\epsilon_0}=\frac{1}{\epsilon_0}\int_{}^{}\rho\mathrm{d}V\nonumber\\
+            \oint_{S}^{}\bm{B}\cdot \mathrm{d}\bm{S}=&amp;0\nonumber\\
+            \oint_{L}^{}\bm{E}\cdot\mathrm{d}\bm{r}=&amp;-\frac{\mathrm{d}\Phi}{\mathrm{d}t}=-\int_{S}^{}\frac{\partial
+\bm{B}}{\partial t}\cdot\mathrm{d}\bm{S}\nonumber\\
+            \oint_{L}^{}\bm{H}\cdot\mathrm{d}\bm{r}=&amp;\mu_0I+\frac{1}{c^2}\frac{\mathrm{d}\Phi_{e}}{\mathrm{d}t}=\mu_0\int_{S}^{}\left(
+\bm{J}+\epsilon_0 \frac{\partial \bm{D}}{\partial t} \right)
+\cdot\mathrm{d}\bm{S}\nonumber
+        
+\end{aligned}\]</span></p>
+<p>微分形式: <span class="math display">\[\begin{aligned}
+            \nabla\cdot \bm{D}=&amp;\rho\nonumber\\
+            \nabla\cdot \bm{B}=&amp;0\nonumber\\
+            \nabla\times \bm{E}=&amp;-\frac{\partial \bm{B}}{\partial
+t}\nonumber\\
+            \nabla\times \bm{H}=&amp;\bm{J}+\frac{\partial
+\bm{D}}{\partial t}\nonumber
+        
+\end{aligned}\]</span> 对于各向同性的线性介质: <span
+class="math display">\[\begin{aligned}
+            D=&amp;\epsilon_0\epsilon_{r}E\nonumber\\
+            B=&amp;\mu_0\mu_{r}\bm{H}\nonumber\\
+            J=&amp;\sigma \bm{E}\nonumber
+        
+\end{aligned}\]</span></p>
+</div>
+<div class="theorem">
+<p>(电磁波) <span class="math inline">\(\bm{B}=\frac{\bm{c}\times
+\bm{E}}{c^2}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(能流密度) <span
+class="math inline">\(\bm{S}=\frac{1}{\mu_0}\bm{E}\times
+\bm{B}\)</span>,又称坡印亭矢量,其时间平均值称电磁波的强度.</p>
+</div>
+<p>对于简谐电磁波,可由振幅计算强度 <span
+class="math inline">\(I=\frac{1}{2}c\epsilon_0
+E^2_{m}=c\epsilon_0E_{rms}^2\)</span>.</p>
+<div class="theorem">
+<p>(震荡电偶极子的辐射功率) <span
+class="math inline">\(P=\frac{p_0^2\omega^{4}}{12\pi\epsilon_0c^3}\)</span>,其中
+<span class="math inline">\(p_0=ql\)</span> 为振幅, <span
+class="math inline">\(\omega\)</span> 为频率.</p>
+</div>
+<div class="definition">
+<p>(电磁波的动量密度) <span
+class="math inline">\(p=\frac{w}{c}\)</span>,其中 <span
+class="math inline">\(w\)</span> 为单位体积电磁波具有的能量,也可写成
+<span class="math inline">\(\bm{p}=\frac{w}{c^2}\bm{c}\)</span> 或 <span
+class="math inline">\(p=\frac{\epsilon_0 E^2}{c}\)</span>.</p>
+</div>
+<p>对绝对黑面的辐射压强 <span
+class="math inline">\(p_{r}=cp=\epsilon_0E^2=w\)</span>,对于全反射面压强加倍.</p>
+<h1 id="常用二级结论">常用二级结论</h1>
+<ul>
+<li><p>电偶极子中垂线上的电场强度: <span
+class="math inline">\(\bm{E}=\frac{-q
+\bm{l}}{4\pi\epsilon_0r^3}=\frac{-\bm{p}}{4\pi\epsilon_0r^3}\)</span>,
+其中 <span class="math inline">\(\bm{p}=q\bm{l}\)</span>
+称电矩,等于单极电量绝对值乘上负电荷指向正电荷的矢量 <span
+class="math inline">\(\bm{l}\)</span>.</p></li>
+<li><p>线电荷密度为 <span class="math inline">\(\lambda\)</span>
+的带电直线中垂线上的电场强度 <span class="math inline">\(E=\frac{\lambda
+L}{4\pi\epsilon_0 x(x^2+\frac{L^2}{4})^{\frac{1}{2}}}\)</span>.
+当无限长或距离 <span class="math inline">\(x\)</span> 足够近时 <span
+class="math inline">\(E\approx \frac{\lambda}{2\pi\epsilon_0
+x}\)</span>,当足够远离时退化为点电荷.</p></li>
+<li><p>均匀带电细圆环轴线上的电场 <span
+class="math inline">\(E=\frac{qx}{4\pi\epsilon_0(R^2+x^2)^{\frac{3}{2}}}\)</span>.</p></li>
+<li><p>面电荷密度为 <span class="math inline">\(\sigma\)</span>
+的均匀带电圆面轴线上的电场 <span
+class="math inline">\(E=\frac{\sigma}{2\epsilon_0}\left[1-\frac{x}{\sqrt{R^2+x^2}}\right]\)</span>,在
+<span class="math inline">\(R\)</span> 无穷大时即 <span
+class="math inline">\(\frac{\sigma}{2\epsilon_0}\)</span>.</p></li>
+<li><p>电偶极子在均匀电场中受力矩 <span
+class="math inline">\(\bm{M}=\bm{p}\times \bm{E}\)</span>,其中 <span
+class="math inline">\(\bm{p}=q \bm{l}\)</span> 为电矩.</p></li>
+<li><p>均匀带电球面内部场强处处为零,外部场强与处在球心的等量点电荷相同.</p></li>
+<li><p>体电荷密度为 <span class="math inline">\(\rho\)</span>
+的均匀带电球体内部场强为 <span
+class="math inline">\(\bm{E}=\frac{\rho}{3\epsilon_0}\bm{r}\)</span> 或
+<span class="math inline">\(\bm{E}=\frac{q}{4\pi\epsilon_0
+R^3}\bm{r}\)</span>,外部同点电荷.</p></li>
+<li><p>静止点电荷电势 <span class="math inline">\(\phi=\frac{q}{4\pi
+\epsilon_0r}\)</span>.</p></li>
+<li><p>均匀带电球面内部电势 <span
+class="math inline">\(\phi=\frac{q}{4\pi\epsilon_0R}\)</span>,外部电势同点电荷.</p></li>
+<li><p>无限长均匀带电直线,选取无穷远为电势零点会导致电势无穷大,选 <span
+class="math inline">\(r_0\)</span> 处为电势零点,则电势为 <span
+class="math inline">\(\phi=\frac{\lambda}{2\pi\epsilon_0}\ln
+\frac{r_0}{r}\)</span>.或者 <span
+class="math inline">\(\phi=-\frac{\lambda}{2\pi\epsilon_0}\ln
+r+C\)</span>.</p></li>
+<li><p>电偶极子远处的电势 <span
+class="math inline">\(\phi=\frac{\bm{p}\cdot
+\bm{r}}{4\pi\epsilon_0r^3}\)</span> 或 <span
+class="math inline">\(\frac{p\cos
+\theta}{4\pi\epsilon_0r^2}\)</span>,其中 <span
+class="math inline">\(\bm{p}\)</span> 为电矩, <span
+class="math inline">\(\bm{r}\)</span>
+为从电偶极子中心到目标点的矢量.</p></li>
+<li><p>电偶极子远处的电场 <span
+class="math inline">\(\bm{E}=\frac{1}{4\pi\epsilon_0}\left[-\frac{\bm{p}}{r^3}+\frac{3\bm{p}\cdot
+\bm{r}}{r^{5}}\bm{r}\right]\)</span>.</p></li>
+<li><p>均匀带电细圆环的电势 <span
+class="math inline">\(\phi=\frac{q}{4\pi\epsilon_0(R^2+x^2)^{\frac{1}{2}}}\)</span>.在中心处
+<span
+class="math inline">\(\phi=\frac{q}{4\pi\epsilon_0R}\)</span>.</p></li>
+<li><p>均匀带电球体内部的电势 <span
+class="math inline">\(\phi=\frac{q}{8\pi\epsilon_0R^3}(3R^2-r^2)\)</span>.</p></li>
+<li><p>电偶极子在均匀外电场中的电势能 <span
+class="math inline">\(W=-\bm{p}\cdot \bm{E}\)</span>.</p></li>
+<li><p>电介质中的带电金属球外 <span
+class="math inline">\(\bm{D}=\frac{q}{4\pi r^2}\bm{e}_{r}\)</span>,
+<span
+class="math inline">\(\bm{E}=\frac{\bm{D}}{\epsilon_0\epsilon_{r}}=\frac{q}{4\pi\epsilon_0\epsilon_{r}r^2}\bm{e}_{r}\)</span>.
+表面束缚电荷 <span
+class="math inline">\(q&#39;=(\frac{1}{\epsilon_{r}}-1)q\)</span>.</p></li>
+<li><p>电介质中的平板 <span
+class="math inline">\(\bm{D}=\sigma\)</span>.</p></li>
+<li><p>圆柱形电容器的电容 <span class="math inline">\(C=\frac{2\pi
+\epsilon_0\epsilon_{r}L}{\ln (\frac{R_2}{R_1})}\)</span>,其中 <span
+class="math inline">\(L\)</span> 为圆柱长度, <span
+class="math inline">\(R_2\)</span> 为外径, <span
+class="math inline">\(R_1\)</span> 为内径.</p></li>
+<li><p>球形电容器的电容 <span class="math inline">\(C=\frac{4\pi
+\epsilon_0\epsilon_{r}R_1R_2}{R_2-R_1}\)</span>.</p></li>
+<li><p>球形电容器的能量 <span class="math inline">\(W=\frac{Q^2}{8\pi
+\epsilon_0\epsilon_{r}}(\frac{1}{R_1}-\frac{1}{R_2})\)</span>.</p></li>
+<li><p>中间充满电阻材料的同轴金属圆筒间的电阻 <span
+class="math inline">\(R=\frac{\rho}{2\pi l}\ln \frac{R_2}{R_1}\)</span>,
+其中 <span class="math inline">\(R_2\)</span> 为外径, <span
+class="math inline">\(R_1\)</span> 为内径.</p></li>
+<li><p>直线电流的磁感应强度 <span
+class="math inline">\(B=\frac{\mu_0I}{4\pi r}\left( \cos \theta_1 -\cos
+\theta_2 \right)\)</span>,方向由右手螺旋定则确定.其中 <span
+class="math inline">\(r\)</span> 为到直线的距离, <span
+class="math inline">\(\theta_1,\theta_2\)</span>
+分别是电流起点和终点到目标点的矢量与电流矢量之间的夹角.对于无限长直电流,
+<span class="math inline">\(B=\frac{\mu_0I}{2\pi r}\)</span>.</p></li>
+<li><p>圆形导线轴线上的磁感应强度 <span
+class="math inline">\(\bm{B}=\frac{\mu_0 \bm{m}}{2\pi r^3}=\frac{\mu_0
+\bm{m}}{2\pi \left( R^2+x^2 \right) ^{\frac{3}{2}}}\)</span>,在中心处有
+<span
+class="math inline">\(B=\frac{\mu_0I}{2R}\)</span>,方向由右手螺旋定则.其中磁矩
+<span class="math inline">\(\bm{m}=IS \bm{e}_{n}\)</span>.</p></li>
+<li><p>磁矩为 <span class="math inline">\(\bm{m}\)</span>
+的小线圈在较远距离 <span class="math inline">\(\bm{r}\)</span>
+处产生的磁场为 <span
+class="math inline">\(\bm{B}=\frac{\mu_0}{4\pi}\left(
+-\frac{\bm{m}}{r^3}+\frac{3 \bm{m}\cdot \bm{r}}{r^{5}}\bm{r}
+\right)\)</span>.</p></li>
+<li><p>螺线管轴线上的磁感应强度 <span
+class="math inline">\(B=\frac{\mu_0nI}{2}\left(
+\cos\theta_2-\cos\theta_1 \right)\)</span>,其中 <span
+class="math inline">\(\theta_1,\theta_2\)</span>
+为到螺线管开口边缘的矢量与轴线的夹角,正负号由右手螺旋定则确定.对于无限长直螺线管内轴线,
+<span class="math inline">\(B=\mu_0nI\)</span>,对于其一段开口中心, <span
+class="math inline">\(B=\frac{1}{2}\mu_0nI\)</span>.</p></li>
+<li><p>无限长圆柱面的磁感应强度 <span
+class="math inline">\(B=\frac{\mu_0I}{2\pi r}\)</span>
+与直线电流相同,内部磁场为零.</p></li>
+<li><p>螺绕环内部的磁感应强度 <span
+class="math inline">\(B=\frac{\mu_0NI}{2\pi r}=\mu_0nI\)</span>,其中
+<span class="math inline">\(N\)</span> 为匝数, <span
+class="math inline">\(n\)</span>
+为单位长度的匝数,在环管半径比环半径小得多时可取 <span
+class="math inline">\(r=R\)</span> 为环半径.管外的磁场为零.</p></li>
+<li><p>在无限大均匀平面电流两侧磁场大小相等,方向相反且平行于平面,垂直于电流方向,遵循右手螺旋定则,
+<span class="math inline">\(B=\frac{1}{2}\mu_0j\)</span>,其中 <span
+class="math inline">\(j\)</span> 为面电流密度.</p></li>
+<li><p>充电的圆平行板电容器间的磁场环绕分布,方向遵循右手螺旋定则,大小在圆内为
+<span class="math inline">\(B=\frac{\mu_0 rI_{c}}{2\pi
+R^2}\)</span>,圆外等于线电流 <span
+class="math inline">\(B=\frac{\mu_0I_{c}}{2\pi r}\)</span>.</p></li>
+<li><p>均匀磁场中载流导线受力等于连接其两端的直导线段受力 <span
+class="math inline">\(F=I \bm{l}\times \bm{B}\)</span>.</p></li>
+<li><p>充满磁介质的无限长直螺线管内的磁场强度 <span
+class="math inline">\(H=nI\)</span>,磁感应强度 <span
+class="math inline">\(B=\mu
+\bm{H}=\mu_0\mu_{r}nI\)</span>,磁介质表面的束缚电流密度 <span
+class="math inline">\(j&#39;=\bm{M}\times \bm{e}_{n}=M=\left( \mu_{r}-1
+\right) \bm{H}=\left( \mu_{r}-1 \right) nI\)</span>.</p></li>
+<li><p>磁介质中的圆柱形长直载流导体周围 <span
+class="math inline">\(H=\frac{I}{2\pi r},B=\frac{\mu_0\mu_{r}}{2\pi
+r}I\)</span>,内表面束缚电流密度 <span
+class="math inline">\(j&#39;=\frac{\mu_{r}-1}{2\pi
+R}I\)</span>,总束缚电流 <span class="math inline">\(I&#39;=j&#39;\cdot
+2\pi R=\left( \mu_{r}-1 \right) I\)</span>.</p></li>
+<li><p>绕线气隙铁环中有 <span
+class="math inline">\(\frac{Bl}{\mu_0\mu_{r}}+\frac{B\delta}{\mu_0}=NI\)</span>,其中
+<span class="math inline">\(l\)</span> 为铁环长度, <span
+class="math inline">\(\delta\)</span> 为气隙长度, <span
+class="math inline">\(N\)</span> 为绕线匝数.</p></li>
+<li><p>圆形磁场变化时感生电场 <span
+class="math inline">\(E_{i}=-\frac{r}{2}\frac{\mathrm{d}\overline{B}}{\mathrm{d}t}\)</span>,其中
+<span class="math inline">\(\overline{B}\)</span>
+为围绕面积上的平均磁感应强度.</p></li>
+<li><p>长直螺线管内圆环与其的互感系数为 <span
+class="math inline">\(M=\pi r^2 \mu_0n\)</span>, <span
+class="math inline">\(r\)</span> 为圆环半径.</p></li>
+<li><p>充满磁介质的螺绕环的自感为 <span
+class="math inline">\(L=\mu_0\mu_{r}n^2V\)</span>,其中 <span
+class="math inline">\(n\)</span> 为单位长度上的匝数, <span
+class="math inline">\(V\)</span> 为螺绕环内部体积 <span
+class="math inline">\(2\pi RS\)</span> (即 <span
+class="math inline">\(L=2\pi\mu_0\mu_{r}Rn^2S\)</span>).</p></li>
+<li><p>两同轴薄壁金属管构成的电流回路的自感为 <span
+class="math inline">\(L=\frac{\mu_0}{2\pi}\ln
+\frac{R_2}{R_1}\)</span>.</p></li>
+<li><p>电感的磁能 <span
+class="math inline">\(W=\frac{1}{2}LI^2\)</span>.</p></li>
+<li><p>互感线圈的额外磁能 <span
+class="math inline">\(W=MI_1I_2\)</span>.</p></li>
+<li><p>充电平行板电容器边缘坡印亭矢量 <span
+class="math inline">\(\bm{S}\)</span>
+指向电容器内部,且按坡印亭矢量计算进入电容器内部的总能量等于电容器内静电能量增加率.</p></li>
+</ul>
+<h1 id="例题题型">例题题型</h1>
+<ul>
+<li><p>求电场强度,由电荷微元积分,由电势求梯度,高斯定理</p></li>
+<li><p>求电势,由电场强度积分</p></li>
+<li><p>求静电势能,由电势和电荷分布求积分</p></li>
+<li><p>有导体时求电势,电荷,电场分布,由高斯定理,面电荷密度与电场强度的关系联立求解方程.注意利用导体内部电场为零的条件.必要时使用镜像法,唯一性定理结合边界条件求解.</p></li>
+<li><p>求解有磁介质存在时的磁场,根据自由电流的分布和 <span
+class="math inline">\(\bm{H}\)</span> 的环路定理求出 <span
+class="math inline">\(\bm{H}\)</span> 的分布,再利用 <span
+class="math inline">\(\bm{H}=\frac{\bm{B}}{\mu}\)</span> 求出 <span
+class="math inline">\(\bm{B}\)</span> 的分布.</p></li>
+</ul>

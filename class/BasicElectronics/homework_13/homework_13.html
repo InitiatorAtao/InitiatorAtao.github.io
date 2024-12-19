@@ -1,0 +1,58 @@
+<h1 id="section">8.19</h1>
+<p>如图所示的积分器接受输入信号 <span
+class="math inline">\(V_{\texttt{in}}=V_0\sin\omega t\)</span>,确定
+<span class="math inline">\(A_0=\infty\)</span> 时的输出信号.</p>
+<figure>
+<img src="./figures/homework_13_figure_01.png" style="width:70.0%" />
+</figure>
+<p>解:由理想积分器方程 <span
+class="math inline">\(V_{\texttt{out}}=-\int_{}^{}\frac{1}{R_1C_1}V_{\texttt{in}}\mathrm{d}t=\frac{V_0}{R_1C_1\omega}\cos\left(
+\omega t \right)\)</span>.</p>
+<h1 id="section-1">8.24</h1>
+<p>如图所示的微分器用于将频率为 <span class="math inline">\(1 \
+\mathrm{MHz}\)</span> 的正弦波输入放大系数 <span
+class="math inline">\(5\)</span>,如果 <span
+class="math inline">\(A_0=\infty\)</span>,确定 <span
+class="math inline">\(R_1C_1\)</span> 的值.</p>
+<figure>
+<img src="./figures/homework_13_figure_02.png" style="width:70.0%" />
+</figure>
+<p>解:由理想微分器方程, <span
+class="math inline">\(V_{\texttt{out}}=-R_1C_1
+\frac{\mathrm{d}V_{\texttt{in}}}{\mathrm{d}t}\)</span>,令输入 <span
+class="math inline">\(V_{\texttt{in}}=V_0\sin 2\pi f
+t\)</span>,有放大系数 <span class="math inline">\(2\pi f
+R_1C_1=5\)</span>,计算得到 <span
+class="math inline">\(R_1C_1=\frac{5}{2\pi f}\approx 7.96\times 10^{-7}
+\ \mathrm{\Omega\cdot F}\)</span>.</p>
+<h1 id="section-2">8.34</h1>
+<p>考虑如图所示的电压加法器,其中 <span
+class="math inline">\(R_{P}\)</span> 是寄生电阻,运放的输入阻抗有限,确定
+<span class="math inline">\(V_{\texttt{out}}\)</span> 与 <span
+class="math inline">\(V_1\)</span> 和 <span
+class="math inline">\(V_2\)</span> 的关系.</p>
+<figure>
+<img src="./figures/homework_13_figure_03.png" style="width:70.0%" />
+</figure>
+<p>解:设输入阻抗为 <span class="math inline">\(R_{\texttt{in}}\)</span>,
+<span class="math inline">\(X\)</span> 处的电位为 <span
+class="math inline">\(V_{X}\)</span>,运放两端的电位差为 <span
+class="math inline">\(\Delta V\)</span>,由 KCL: <span
+class="math display">\[\begin{aligned}
+        \frac{V_1-V_{X}}{R_1}+\frac{V_2-V_{X}}{R_2}=&amp;\frac{V_{X}+A_0\Delta
+V}{R_{F}}+\frac{V_{X}}{R_{\texttt{in}}+R_{P}}\nonumber
+    
+\end{aligned}\]</span> 由分压关系: <span
+class="math display">\[\begin{aligned}
+        \Delta V=&amp;V_{X}
+\frac{R_{\texttt{in}}}{R_{\texttt{in}}+R_{P}}\nonumber
+    
+\end{aligned}\]</span> 代入 KCL 方程可得: <span
+class="math display">\[\begin{aligned}
+        V_{\texttt{out}}=&amp;-A_0V_{X}\nonumber\\
+        =&amp;-A_0\left( \frac{V_1}{R_1}+\frac{V_2}{R_2} \right)
+\left[\left( \frac{R_{\texttt{in}}+R_{P}}{R_{P}} \right) \left(
+\frac{1}{R_{F}}+\frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_{\texttt{in}}+R_{P}}+\frac{A_0}{R_{P}}
+\right) \right]^{-1}\nonumber
+    
+\end{aligned}\]</span></p>

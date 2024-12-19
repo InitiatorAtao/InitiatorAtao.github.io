@@ -1,0 +1,228 @@
+<h2 id="simplification-of-cfg">Simplification of CFG</h2>
+<div class="definition">
+<p>(Chomsky Normal Form,CNF) The CFG only with rules like:</p>
+<ol>
+<li><p><span class="math inline">\(A\rightarrow BC\)</span>, where <span
+class="math inline">\(A,B,C\)</span> are variables.</p></li>
+<li><p><span class="math inline">\(A\rightarrow \alpha\)</span>, where
+<span class="math inline">\(A\)</span> is variable, <span
+class="math inline">\(\alpha\)</span> is terminal.</p></li>
+</ol>
+</div>
+<p>Simplification steps (order matter):</p>
+<ol>
+<li><p>Eliminate useless symbols:</p>
+<ol>
+<li><p>Eliminate symbols not generating:</p>
+<p>Base: All terminals are gen.</p>
+<p>Induction: If <span class="math inline">\(A\rightarrow
+\alpha\)</span> and all symbols in <span
+class="math inline">\(\alpha\)</span> are gen. So is <span
+class="math inline">\(A\)</span>.</p></li>
+<li><p>Eliminate symbols not reachable:</p>
+<p>Base: Start variable is reachable.</p>
+<p>Induction: If <span class="math inline">\(A\rightarrow
+\alpha\)</span> and <span class="math inline">\(A\)</span> is reachable.
+So are all variables and terminals in <span
+class="math inline">\(\alpha\)</span>.</p></li>
+</ol></li>
+<li><p>Eliminate <span
+class="math inline">\(\epsilon\)</span>-productions.</p>
+<p>Calculate all nullable variables. <span
+class="math inline">\(A\)</span> is nullavle if <span
+class="math inline">\(A\Rightarrow ^{*}\epsilon\)</span>.</p>
+<p>Basis: If <span class="math inline">\(A\rightarrow \epsilon\)</span>
+is a rule, <span class="math inline">\(A\)</span> is nullable.</p>
+<p>Induction: If <span class="math inline">\(B\rightarrow C_1C_2\ldots
+C_{k}\)</span> is a rule and each <span
+class="math inline">\(C_{i}\)</span> is null, so is <span
+class="math inline">\(B\)</span>.</p>
+<p>Do: If <span class="math inline">\(B\rightarrow \alpha
+A\beta\)</span> where <span class="math inline">\(A\)</span> is
+nullable, then add a copy of <span class="math inline">\(B\rightarrow
+\alpha\beta\)</span>. Then remove all single <span
+class="math inline">\(\epsilon\)</span>-production like <span
+class="math inline">\(A\rightarrow \epsilon\)</span>.</p></li>
+<li><p>Eliminate unit productions.</p>
+<p>Unit production: <span class="math inline">\(A\rightarrow B\)</span>
+where <span class="math inline">\(B\)</span> is a variable.</p>
+<p>Unit pair: <span class="math inline">\(\left( A,B \right)\)</span>
+where <span class="math inline">\(A\Rightarrow ^{*}B\)</span> using unit
+productions only.</p>
+<p>Basis: <span class="math inline">\(\left( A,A \right)\)</span> is
+unit pair for <span class="math inline">\(\forall A\in V\)</span>.</p>
+<p>Induction: If <span class="math inline">\(\left( A,B \right)\)</span>
+is a known unit pair and <span class="math inline">\(B\rightarrow
+C\)</span> is a production rule, then <span class="math inline">\(\left(
+A,C \right)\)</span> is unit pair.</p>
+<ol>
+<li><p>Compute all unit pairs.</p></li>
+<li><p>For all unit pair <span class="math inline">\(\left( A,B
+\right)\)</span>. If <span class="math inline">\(B\rightarrow
+\alpha\)</span> is a non-unit rule, add <span
+class="math inline">\(A\rightarrow \alpha\)</span> to <span
+class="math inline">\(G_1\)</span>.</p></li>
+<li><p>Add all non-unit production rules to <span
+class="math inline">\(G_1\)</span>.</p></li>
+</ol>
+<p>Then <span class="math inline">\(G_1\)</span> has all needed
+production rules.</p></li>
+</ol>
+<h2 id="features-of-cfl">Features of CFL</h2>
+<div class="lemma">
+<p>(pumping lemma for CFL) Let <span class="math inline">\(L\)</span> be
+a CFL. There is a constant <span class="math inline">\(n\)</span> such
+that <span class="math inline">\(z\in L\)</span> of length at least
+<span class="math inline">\(n\)</span>, we can write <span
+class="math inline">\(z=uvwxy\)</span> s.t.:</p>
+<ol>
+<li><p><span class="math inline">\(|vwx|\le n\)</span></p></li>
+<li><p><span class="math inline">\(vx\ne \epsilon\)</span></p></li>
+<li><p>For all <span class="math inline">\(k\ge 0\)</span>, <span
+class="math inline">\(uv^{k}wx^{k}y\in L\)</span></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><em>Proof.</em> (pumping lemma for CFL) Suppose <span
+class="math inline">\(L\)</span> has CNF of <span
+class="math inline">\(m\)</span> variables. Choose <span
+class="math inline">\(n=2^{m}\)</span>. Then in parse tree of <span
+class="math inline">\(uvwxy\)</span> there must be a variable with two
+node <span class="math inline">\(A_{i},A_{j}\)</span> separatly generate
+<span class="math inline">\(vwx\)</span> and <span
+class="math inline">\(w\)</span>. Let <span
+class="math inline">\(A_{j}\)</span> generate <span
+class="math inline">\(vwx\)</span> and got <span
+class="math inline">\(A_{k}\)</span> in subtree <span
+class="math inline">\(A_{j}\)</span>, repeat this and got <span
+class="math inline">\(uv^{k}wx^{k}y\)</span>. ◻</p>
+</div>
+<div class="example">
+<p>(pumping lemma for CFL) The following languages are not CF:</p>
+<ol>
+<li><p><span class="math inline">\(\{0^{n}1^{n}2^{n}\ |\ n\ge
+1\}\)</span></p>
+<p>Take this <span class="math inline">\(n\)</span> as <span
+class="math inline">\(n\)</span> in the lemma. So <span
+class="math inline">\(vwx\)</span> has at most two different letters,
+but <span class="math inline">\(uv^{2}wx^{2}y\)</span> cannot be in
+<span class="math inline">\(L\)</span>, contract.</p></li>
+<li><p><span class="math inline">\(\{0^{i}1^{j}2^{i}3^{j}\ |\ i,j\ge
+1\}\)</span></p></li>
+<li><p><span class="math inline">\(\{ww\ |\ w\in
+\{0,1\}^{*}\}\)</span></p></li>
+</ol>
+</div>
+<div class="definition">
+<p>(Substitution) <span class="math inline">\(a\in \Sigma\)</span>,
+choose map <span class="math inline">\(S\)</span> and language <span
+class="math inline">\(L_{a}\)</span> such that <span
+class="math inline">\(S\left( a \right) =L_{a}\)</span>. If <span
+class="math inline">\(w=a_1a_2\ldots a_{n}\)</span> is in <span
+class="math inline">\(\Sigma^{*}\)</span>, <span
+class="math inline">\(S\left( w \right)\)</span> is the language
+concatnation <span class="math inline">\(L_{a_1}L_{a_2}\ldots
+L_{a_{n}}\)</span>. <span class="math inline">\(S\left( L
+\right)\)</span> is the union of <span class="math inline">\(S\left( w
+\right)\)</span> for <span class="math inline">\(w\in L\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(Substitution) Substitution is close on CFLs. If <span
+class="math inline">\(L\)</span> is CFL and <span
+class="math inline">\(S\left( a \right)\)</span> is CFL for each <span
+class="math inline">\(a\in \Sigma\)</span>. Then <span
+class="math inline">\(S\left( L \right)\)</span> is CFL.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> (Substitution) Consider parse tree. Substitution is
+only replace leaf nodes like <span class="math inline">\(a\)</span> with
+subtrees like <span class="math inline">\(w\in S\left( a
+\right)\)</span>. ◻</p>
+</div>
+<div class="remark">
+<p>(Substitution) Substitution must use different variables for each
+languages. Or variable ambiguous may break the feature of
+substitution.</p>
+</div>
+<div class="example">
+<p>(Substitution) Homomorphism is a kind of Substitution with all <span
+class="math inline">\(L_{a}\)</span> only contains one string <span
+class="math inline">\(h\left( a \right)\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(Closure Property of CFLs)</p>
+<ol>
+<li><p>CFLs are close for all close operation in RE like <span
+class="math inline">\(+\)</span>, concat and <span
+class="math inline">\(*\)</span>.</p></li>
+<li><p>Homomorphism and inverse-homomorphism are close.</p></li>
+<li><p>Substitution is close.</p></li>
+<li><p>Intersection <span class="math inline">\(L_1\cap L_2\)</span>,
+difference <span class="math inline">\(L_1-L_2\)</span>, <span
+class="math inline">\(\overline{L}\)</span> are NOT close. But
+intersection,difference of CFL and RL is CFL.</p></li>
+</ol>
+</div>
+<div class="proof">
+<p><em>Proof.</em> (Closure Property of CFLs)</p>
+<p>The 1st is easy.</p>
+<p>Homomorphism is proofed below by Substitution.</p>
+<p>For inverse-homomorphism by adding "suffix" to <span
+class="math inline">\(Q\)</span> and construct <span
+class="math inline">\(Q&#39;=Q\times \Sigma^{*}\)</span> where <span
+class="math inline">\(q&#39;=\left( q,x \right)\)</span>, <span
+class="math inline">\(x\)</span> is the suffix of <span
+class="math inline">\(h\left( a \right)\)</span>. Then <span
+class="math inline">\(\delta&#39;\left( \left( q,\epsilon \right) ,a,x
+\right) =\{\left( \left( q,h\left( a \right) \right)  ,x \right)
+\}\)</span> and if <span class="math inline">\(\delta\left( q,b,x
+\right)\)</span> contains <span class="math inline">\(\left( p,\gamma
+\right)\)</span>, <span class="math inline">\(\delta&#39;\left( \left(
+q,bx \right) ,\epsilon,x \right)\)</span> contains <span
+class="math inline">\(\left( \left( p,x \right) ,\gamma
+\right)\)</span>.</p>
+<p>For intersection we can construct <span
+class="math inline">\(L_1=\{0^{n}1^{n}2^{i}\}\)</span>, <span
+class="math inline">\(L_2=\{0^{i}1^{n}2^{n}\}\)</span> are CFLs, but
+<span class="math inline">\(L_1\cap L_2=\{0^{n}1^{n}2^{n}\}\)</span> not
+CFL by pumping lemma. ◻</p>
+</div>
+<h2 id="compute-complexity-on-cfl">Compute Complexity on CFL</h2>
+<p>Translate between expressions:</p>
+<ol>
+<li><p>CFG to PDA is easy with <span class="math inline">\(O\left( n
+\right)\)</span>.</p></li>
+<li><p>Translate between PDA with final acceptance and PDA with empty
+stack is easy with <span class="math inline">\(O\left( n
+\right)\)</span>.</p></li>
+<li><p>Normal PDA to CFG is complex with <span
+class="math inline">\(O\left( n^{n} \right)\)</span> ! Modify the DFA
+first to get at most <span class="math inline">\(O\left( n^3
+\right)\)</span>.</p></li>
+</ol>
+<p>Decision proporties:</p>
+<ol>
+<li><p>Emptiness is easy with <span class="math inline">\(O\left( n^2
+\right)\)</span> or <span class="math inline">\(O\left( n
+\right)\)</span> with some data structure.</p></li>
+<li><p>Testing if <span class="math inline">\(w\in L\left( G
+\right)\)</span>. Use DP of CYK:</p>
+<p>Let <span class="math inline">\(w=a_1a_2\ldots a_{n}\)</span>. Let
+<span class="math inline">\(X_{ij}\)</span> is the set <span
+class="math inline">\(\{A\ |\ A\Rightarrow ^{*}a_{i}\ldots
+a_{j}\}\)</span>.</p>
+<p>Basis: For <span class="math inline">\(i=j\)</span>, if <span
+class="math inline">\(A\rightarrow a_{i}\)</span> is a rule, then <span
+class="math inline">\(A\in X_{ii}\)</span>.</p>
+<p>Induction: <span class="math inline">\(A\in X_{ij}\)</span> iff there
+exists <span class="math inline">\(k,i\le k&lt;j\)</span> and <span
+class="math inline">\(B\in X_{ik},C\in X_{\left( k+1 \right)
+j}\)</span>, <span class="math inline">\(A\rightarrow BC\)</span> is a
+rule.</p>
+<p>DP by length of <span class="math inline">\(|i-j|\)</span> from <span
+class="math inline">\(0\)</span> to <span
+class="math inline">\(n\)</span> to fill a triangle with <span
+class="math inline">\(O\left( n^2 \right)\)</span>.</p></li>
+<li><p>Ambiguousty,Emptiness of intersection,Equality are NOT
+computable, called undecidable.</p></li>
+</ol>

@@ -1,0 +1,65 @@
+<div class="problem">
+<p>(Exercise 9.2.1) Show that the halting problem—the set of <span
+class="math inline">\((M, w)\)</span> pairs such that <span
+class="math inline">\(M\)</span> halts (with or without accepting) when
+given input <span class="math inline">\(w\)</span>—is RE but not
+recursive.</p>
+</div>
+<div class="solution">
+<p>Use universal TM <span class="math inline">\(U\)</span> with input
+<span class="math inline">\(\left( M,w \right)\)</span>. If <span
+class="math inline">\(U\)</span> halts, that equals to <span
+class="math inline">\(M\)</span> halts. So <span
+class="math inline">\(U\)</span> (with all states accepting) can
+determine halting problem. The problem is RE.</p>
+<p>For recursive we can reduce universal language problem to halting
+problem by making all TMs reject by jumping into a infinity loop. Since
+<span class="math inline">\(L_{u}\)</span> is not recursive, halting
+problem is not recursive.</p>
+</div>
+<div class="problem">
+<p>(Exercise 9.2.5) Let <span class="math inline">\(L\)</span> be
+recursively enumerable and let <span
+class="math inline">\(\overline{L}\)</span> be non-RE. Consider the
+language <span class="math display">\[L&#39; = \{0w \mid w \text{ is in
+} L\} \cup \{1w \mid w \text{ is not in } L\}.\]</span> Can you say for
+certain whether <span class="math inline">\(L&#39;\)</span> or its
+complement are recursive, RE, or non-RE? Justify your answer.</p>
+</div>
+<div class="solution">
+<p><span class="math inline">\(L&#39;\)</span> is non-RE because non-RE
+problem <span class="math inline">\(\overline{L}\)</span> can be reduce
+to <span class="math inline">\(L&#39;\)</span> by determine whether
+<span class="math inline">\(1w\)</span> in <span
+class="math inline">\(L&#39;\)</span>.</p>
+<p><span class="math inline">\(\overline{L&#39;}=\{w\ |\ w\text{ not
+begin with }0\text{ or }1\}\cup\{0w\ |\ w\notin L\}\cup\{1w\ |\ w\in
+L\}\)</span> is non-RE because non-RE problem <span
+class="math inline">\(\overline{L}\)</span> can be reduce to <span
+class="math inline">\(\overline{L&#39;}\)</span> by determine whether
+<span class="math inline">\(0w\)</span> in <span
+class="math inline">\(\overline{L&#39;}\)</span>.</p>
+</div>
+<div class="problem">
+<p>We know by Rice’s theorem that none of the following problems are
+decidable. However, are they recursively enumerable or non-RE?</p>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>(Exercise 9.3.6 (b)) Show that the following question is decidable:
+The set of codes for TMs that never make a move left on any input.</p>
+</div>
+<div class="solution">
+<p>When a TM cannot move left, the input on the tape is only read once
+from left to right just like DFA does. So after replacing the move left
+transitions by transitions to a rejected state, the TM can be reduced to
+a DFA. Then in DFA we can do searching like DFS or BFS to determine
+whether the new rejected state (reached by move left transitions) in
+<span class="math inline">\(O\left( n+m \right)\)</span> time, where
+<span class="math inline">\(n\)</span> is the state number and <span
+class="math inline">\(m\)</span> is the transition number. All things
+above can be done by a TM in limited steps, so the question is
+decidable.</p>
+</div>

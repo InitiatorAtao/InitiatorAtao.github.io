@@ -1,0 +1,49 @@
+<h1 id="section">7.23</h1>
+<p>题图 7.23 所示电路 <span class="math inline">\(t=0\)</span>
+时闭合开关 <span class="math inline">\(S\)</span> 求 <span
+class="math inline">\(i_{C}\)</span>
+的零状态响应,零输入响应和全响应.</p>
+<figure>
+<img src="./figures/homework_11_figure_01.png" style="width:70.0%" />
+</figure>
+<p>解:开关闭合前稳态,电容相当于开路,三电阻串联,电容两端电压 <span
+class="math inline">\(u_{C_0}=\frac{R_2+R_3}{R_1+R_2+R_3}u=27 \
+\mathrm{V}\)</span>, <span class="math inline">\(i_{C_0}=0\)</span>
+电容上的电量 <span
+class="math inline">\(Q=u_{C_0}C\)</span>,开关闭合后稳态,一电阻短路,两电阻串联,
+<span class="math inline">\(u_{C_1}=\frac{R_2}{R_1+R_2}u=24 \
+\mathrm{V}\)</span>,<span
+class="math inline">\(i_{C_1}=0,Q=u_{C_1}C\)</span>,又时间常量 <span
+class="math inline">\(\tau=RC=0.2\)</span>
+三个响应均为时间的指数函数,且积分等于电量变化,由此可求得零状态响应 <span
+class="math inline">\(i_{C}=-13.5e^{-5t} \
+\mathrm{mA}\)</span>,零输入响应 <span
+class="math inline">\(i_{C}=12e^{-5t} \ \mathrm{mA}\)</span>,全响应
+<span class="math inline">\(i_{C}=-1.5e^{-5t} \
+\mathrm{mA}\)</span>.</p>
+<h1 id="section-1">3.1</h1>
+<p>绘制图 3.63 所示电路的 I/V 特性</p>
+<figure>
+<img src="./figures/homework_11_figure_02.png" style="width:50.0%" />
+</figure>
+<p>解:电压源,二极管与电阻串联,二极管限制电流 <span
+class="math inline">\(I_{X}\)</span> 方向为负, <span
+class="math inline">\(I_{X},V_{X}\)</span>
+相关联,故图像为第三象限内斜率为 <span
+class="math inline">\(\frac{1}{R_1}\)</span> 的正比例射线:</p>
+<figure>
+<embed src="./figures/homework_11_figure_03.pdf" style="width:70.0%" />
+</figure>
+<h1 id="section-2">3.2</h1>
+<p>如果图 3.63 中的输入电压表示为 <span
+class="math inline">\(V_{X}=V_0\cos\omega
+t\)</span>,绘制电流关于时间的函数图像.</p>
+<p>解:不考虑二极管时 <span
+class="math inline">\(I_{X}=\frac{V_{X}}{R_1}=\frac{\cos\omega
+t}{R_1}\)</span>,加入二极管后 <span
+class="math inline">\(I_{X}&gt;0\)</span> 的部分被控制为 <span
+class="math inline">\(0\)</span>,故图像为部分余弦曲线和 <span
+class="math inline">\(I_{X}=0\)</span> 的组合:</p>
+<figure>
+<embed src="./figures/homework_11_figure_04.pdf" style="width:70.0%" />
+</figure>

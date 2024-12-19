@@ -1,0 +1,40 @@
+<div class="problem">
+<p>(Exercise 8.2.3) Design a Turing machine that takes as input a number
+<span class="math inline">\(N\)</span> and adds <span
+class="math inline">\(1\)</span> to it in binary. To be precise, the
+tape initially contains a $ followed by <span
+class="math inline">\(N\)</span> in binary. The tape head is initially
+scanning the $ in state <span class="math inline">\(q_{0}\)</span>. Your
+TM should halt with <span class="math inline">\(N+1\)</span>, in binary,
+on its tape, scanning the leftmost symbol of <span
+class="math inline">\(N + 1\)</span>, in state <span
+class="math inline">\(q_{f}\)</span>. You may destroy the $ in creating
+<span class="math inline">\(N + 1\)</span>, if necessary. For instance,
+<span class="math inline">\(q_{0}\$10011 \vdash^{*}
+\$q_{f}10100\)</span>, and <span class="math inline">\(q_{0}\$11111
+\vdash^{*} q_{f}100000\)</span>.</p>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>(Exercise 8.2.5 (b)) Consider the Turing machine <span
+class="math display">\[M = \bigl( \{q_{0}, q_{1}, q_{f}\}, \{0,1\},
+\{0,1,B\},
+    \delta, q_{0}, B, \{q_{f}\} \bigr).\]</span> Informally but clearly
+describe the language <span class="math inline">\(L(M)\)</span> if <span
+class="math inline">\(\delta\)</span> consists of the following sets of
+rules: <span class="math display">\[\begin{aligned}
+{2}
+    &amp; \delta(q_{0}, 0) &amp;&amp; = (q_{0}, B, R),\\
+    &amp; \delta(q_{0}, 1) &amp;&amp; = (q_{1}, B, R),\\
+    &amp; \delta(q_{1}, 1) &amp;&amp; = (q_{1}, B, R),\\
+    &amp; \delta(q_{1}, B) &amp;&amp; = (q_{f}, B, R).
+  
+\end{aligned}\]</span></p>
+</div>
+<div class="solution">
+<p><span class="math inline">\(L\left( M \right)=L\left( 0^{*}11^{*}
+\right)\)</span> where the language on the right is expressed by regular
+expression.</p>
+</div>

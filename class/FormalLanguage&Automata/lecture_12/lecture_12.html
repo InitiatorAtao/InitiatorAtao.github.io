@@ -1,0 +1,71 @@
+<h1 id="turing-machine">Turing machine</h1>
+<div class="definition">
+<p>(Turing Machine, TM) A Turing Machine is a <span
+class="math inline">\(7\)</span>-tuple: <span
+class="math display">\[\begin{aligned}
+            M=&amp;\left( Q,\Sigma,\Gamma,\delta,q_0,B,F \right)
+\nonumber
+        
+\end{aligned}\]</span> with:</p>
+<ol>
+<li><p>A finite control.</p></li>
+<li><p>1-D tape divided into cells.</p></li>
+<li><p>A head positioned at one cell.</p></li>
+</ol>
+<p>Where <span class="math inline">\(\Gamma\)</span> are syobols on tape
+and <span class="math inline">\(B\in \Gamma\)</span> is blank symbol.
+Transition function <span class="math inline">\(\delta\)</span> is a
+partial function with <span class="math inline">\(\delta\left( q,x
+\right) =\left( p,Y,D \right)\)</span> means TM turn to state <span
+class="math inline">\(p\)</span>, rewrite head cell <span
+class="math inline">\(X\rightarrow Y\)</span> and move the head left or
+right.</p>
+</div>
+<div class="definition">
+<p>(ID of TM) State, position of head and tape contant. Expressed by
+<span class="math inline">\(X_1X_2\ldots X_{i-1}qX_{i}X_{i+1}\ldots
+X_{n}\)</span> ignoring <span class="math inline">\(B\)</span> on the
+left and right with state <span class="math inline">\(q\)</span> and
+head points to <span class="math inline">\(X_{i}\)</span>.</p>
+</div>
+<div class="example">
+<p>(ID of TM) When <span class="math inline">\(\delta\left( q,X_{i}
+\right) =\left( p,Y,L \right)\)</span>, ID <span
+class="math inline">\(S_1=\ldots X_{i-1}qX_{i}\ldots\)</span> turns to
+<span class="math inline">\(S_2=\ldots pX_{i-1}Y\ldots\)</span>.
+Expressed by <span class="math inline">\(S_1\vdash S_2\)</span>, so like
+<span class="math inline">\(\vdash^{*}\)</span>.</p>
+</div>
+<div class="definition">
+<p>(Language of TM) <span class="math inline">\(L\left( M \right) =\{w\
+|\ q_0w\vdash^{*}\alpha p\beta,p\in F\}\)</span>. The set of <span
+class="math inline">\(L\left( M \right)\)</span> is called recursively
+enumerable languages (RE languages).</p>
+</div>
+<div class="definition">
+<p>(Halt) A TM halts if it enters a state <span
+class="math inline">\(q\)</span> while scanning a tape symbol <span
+class="math inline">\(X\)</span> when <span
+class="math inline">\(\delta\left( q,X \right)\)</span> is undefinited
+or <span class="math inline">\(q\)</span> is accepted.</p>
+</div>
+<div class="definition">
+<p>(Recursive Language) Languages with Turing machines that do halt
+eventually, regardless of whether or not they are accepted.</p>
+</div>
+<p>Recursive language is a subset of RE language.</p>
+<p>How to design a TM:</p>
+<ul>
+<li><p>Storage in the state.</p></li>
+<li><p>Multiple Tracks:</p>
+<p>Storage multiple symbols in one cell, finally rebuild <span
+class="math inline">\(\Gamma=\Gamma_0^{k}\)</span> where <span
+class="math inline">\(k\)</span> is the number of symbols in one
+cell.</p></li>
+<li><p>Subroutine:</p>
+<p>Split out a "function" with a start state <span
+class="math inline">\(q_1\)</span> and end state <span
+class="math inline">\(q_{n}\)</span>, transition to <span
+class="math inline">\(q_1\)</span> to start the function and transition
+from <span class="math inline">\(q_{n}\)</span> to "return".</p></li>
+</ul>

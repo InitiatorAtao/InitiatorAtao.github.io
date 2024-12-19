@@ -1,0 +1,111 @@
+<h2 id="正弦电路中的功率">正弦电路中的功率</h2>
+<div class="definition">
+<p>(平均功率) <span class="math display">\[\begin{aligned}
+            P=&amp;\frac{1}{T}\int_{0}^{T}p\mathrm{d}t\nonumber\\
+            =&amp;\frac{1}{T}\int_{0}^{T}[UI\cos \phi -UI\cos{(2\omega
+t-\phi)}]\mathrm{d}t\nonumber\\
+            =&amp;UI\cos \phi\nonumber\\
+            =&amp;|Z|I I\cos \phi\nonumber\\
+            =&amp;I^2|Z|\cos\phi\nonumber\\
+            =&amp;I^2R\nonumber
+        
+\end{aligned}\]</span></p>
+</div>
+<div class="definition">
+<p>(视在功率,表观功率) <span class="math inline">\(S=UI\)</span>,单位为
+<span class="math inline">\(\ \mathrm{VA}\)</span>
+(伏安),反映电气设备的容量.</p>
+</div>
+<h2 id="复功率">复功率</h2>
+<p><span class="math display">\[\begin{aligned}
+            \dot{U}=&amp;U\angle \psi_{u}\nonumber\\
+            \dot{I}=&amp;I\angle\psi_{i}\nonumber\\
+            P=&amp;UI\cos{(\psi_{u}-\psi_{i})}\nonumber\\
+            =&amp;UI\Re[e^{j(\psi_{u}-\psi_{i})}]\nonumber\\
+            =&amp;\Re[Ue^{j\psi_{u}}Ie^{-j\psi_{i}}]\nonumber\\
+            =&amp;\Re[\dot{U}\dot{I}^{*}]\nonumber
+        
+\end{aligned}\]</span></p>
+<div class="definition">
+<p>(复功率) 记 <span
+class="math inline">\(\overline{S}=\dot{U}\dot{I}^{*}\)</span>
+为复功率,单位 <span class="math inline">\(\ \mathrm{VA}\)</span>,有:</p>
+<p><span class="math display">\[\begin{aligned}
+            \overline{S}=&amp;\dot{U}\dot{I}\angle(\psi_{u}-\psi_{i})\nonumber\\
+            =&amp;UI\angle\phi\nonumber\\
+            =&amp;UI\cos\phi+jUI\sin\phi\nonumber\\
+            =&amp;P+jQ\nonumber
+        
+\end{aligned}\]</span></p>
+<p>其中 <span class="math inline">\(Q=UI\sin\phi\)</span>
+称无功功率,单位为乏 (var),反映电源与负载之间交换能量的速率.</p>
+</div>
+<div class="remark">
+<p>(有功,无功,视在功率的关系) <span
+class="math display">\[\begin{aligned}
+                \overline{S}=&amp;\dot{U}\dot{I}=UI\angle\phi=S\angle\phi=P+jQ\nonumber
+            
+\end{aligned}\]</span> 视在功率 <span class="math inline">\(S\)</span>
+是复功率 <span class="math inline">\(\overline{S}\)</span> 的模长,可表为
+<span class="math inline">\(S=\sqrt{P^2+Q^2}\)</span>.</p>
+</div>
+<p>复功率守恒 <span
+class="math inline">\(\sum_{k=1}^{b}\overline{S}_{k}=0\)</span>.
+可拆成实部和虚部即有/无功功率守恒进行计算.</p>
+<p>最大功率传输:对于有复内阻 <span class="math inline">\(Z_{i}\)</span>
+的非理想交流电压源,外电路阻抗 <span
+class="math inline">\(Z_{L}=\overline{Z}_{i}\)</span>
+时外电路有功功率达到最大值,条件 <span
+class="math inline">\(Z_{L}=\overline{Z}_{i}\)</span>
+称阻抗匹配,此时最大功率 <span
+class="math inline">\(P_{\mathrm{max}}=\frac{U_{s}^2}{4R_{i}}\)</span>
+与直流结论相同.</p>
+<h1 id="动态电路时域分析">动态电路时域分析</h1>
+<h2 id="动态电路概述">动态电路概述</h2>
+<div class="definition">
+<p>(动态电路,dynamic circuit)
+即含有电容电感等动态元件的电路,对其的分析集中于其由一个稳态过渡到另一个稳态需要经历的过程,也称过渡过程或瞬态
+(transient state),用微分方程描述.</p>
+</div>
+<p>过渡过程产生的原因:</p>
+<ul>
+<li><p>电路内部含有储能元件 <span class="math inline">\(L,C\)</span>
+:能量储存和释放需要时间.</p></li>
+<li><p>电路结构发生变化:支路接入或断开或电路参数变化,统称换路.</p></li>
+</ul>
+<div class="definition">
+<p>(一阶电路)
+由一个独立储能元件组成的电路,描述电路的方程是一阶分方程.</p>
+</div>
+<div class="definition">
+<p>(单位阶跃函数) <span class="math display">\[\begin{aligned}
+                \epsilon(t)=&amp;
+                \begin{cases}
+                    0 &amp; (t&lt;0)\\
+                    1 &amp; (t&gt;0)
+                \end{cases}\nonumber
+            
+\end{aligned}\]</span></p>
+</div>
+<p>通常使用其延迟形式 <span class="math inline">\(\epsilon(t-t_0)=
+        \begin{cases}
+            0 &amp; (t&lt;t_0)\\
+            1 &amp; (t&gt;t_0)
+        \end{cases}\)</span></p>
+<div class="definition">
+<p>(单位冲激函数) <span class="math display">\[\begin{aligned}
+                \delta(t)=&amp;
+                \begin{cases}
+                    0 &amp; (t&lt;0)\\
+                    1 &amp; (t&gt;0)
+                \end{cases}\nonumber
+            
+\end{aligned}\]</span> 且 <span
+class="math inline">\(\int_{-\infty}^{\infty}\delta(t)\mathrm{d}t=1\)</span>.</p>
+</div>
+<p>延迟 <span class="math inline">\(\delta(t-t_0)=0\ (t\ne t_0)\)</span>
+且 <span class="math inline">\((-\infty,\infty)\)</span> 上积分为 <span
+class="math inline">\(1\)</span>.</p>
+<p>其筛分性为 <span
+class="math inline">\(\int_{-\infty}^{\infty}f(t)\delta(t-t_0)\mathrm{d}t=f(t_0)\)</span>.</p>
+<p>单位阶跃函数是单位冲激函数的原函数.</p>

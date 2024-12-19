@@ -1,0 +1,131 @@
+<h2 id="equalence-of-pda-and-cfg">Equalence of PDA and CFG</h2>
+<div class="definition">
+<p>(Left sentential form) transition like <span
+class="math inline">\(P\rightarrow xA\alpha\)</span>, <span
+class="math inline">\(A\alpha\)</span> called the tail.</p>
+</div>
+<p>From CFG <span class="math inline">\(G=(V,T,P,S)\)</span> to PDA
+<span class="math inline">\(P=(\{q\},T,V\cup T,\delta,q,S)\)</span>.
+Where <span class="math inline">\(\delta\)</span> is:</p>
+<ol>
+<li><p>For each variable <span class="math inline">\(A\)</span>, <span
+class="math inline">\(\delta(q,\epsilon,A)=\{(q,\beta)|A\rightarrow
+\beta \text{ is a rule of }\)</span>G<span
+class="math inline">\(\}\)</span>.</p></li>
+<li><p>For each terminal <span class="math inline">\(a \in T\)</span>,
+<span
+class="math inline">\(\delta(q,a,a)=\{(q,\epsilon)\}\)</span>.</p></li>
+</ol>
+<div class="theorem">
+<p>(CFG to PDA) CFG <span class="math inline">\(G=(V,T,P,S)\)</span> and
+PDA <span class="math inline">\(P=(\{q\},T,V\cup T,\delta,q,S)\)</span>
+above has <span class="math inline">\(N(P)=L(G)\)</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> (CFG to PDA) Suppose <span class="math inline">\(w\in
+L(G)\)</span>, <span class="math inline">\(w\)</span> has a leftmost
+domination <span class="math inline">\(S\Rightarrow_{\mathrm{lm}}
+\gamma_1\Rightarrow_{\mathrm{lm}} \gamma_2\Rightarrow
+_{\mathrm{lm}}\cdots\Rightarrow _{\mathrm{lm}}\gamma_{n}=w\)</span>. We
+need <span class="math inline">\((q,w,s)\vdash
+^{*}(q,y_1,\alpha_1)\vdash ^{*}(q,y_2,\alpha_2)\cdots\)</span> where
+<span class="math inline">\(\alpha_i\)</span> is the tail of <span
+class="math inline">\(\gamma_1\)</span> (<span
+class="math inline">\(\gamma_1=x_1\alpha_1\)</span>) and <span
+class="math inline">\(w=x_{i}y_{i}\)</span>. Then do induction on <span
+class="math inline">\(i\)</span>.</p>
+<p>Suppose <span class="math inline">\(w\in N(P)\)</span> or <span
+class="math inline">\((q,w,S)\vdash (q,\epsilon,\epsilon)\)</span>. To
+proof <span class="math inline">\(S\Rightarrow ^{*}w\)</span>, use
+induction on the number of moves on PDA to proof <span
+class="math inline">\((q,x,A)\vdash(q,\epsilon,\epsilon)\rightarrow
+(A\Rightarrow ^{*}x)\)</span>:</p>
+<p>Basis: for 1 moves or <span class="math inline">\((q,a,a)\)</span>,
+<span class="math inline">\(a\Rightarrow a\)</span> is trival.</p>
+<p>Induction: Suppose <span class="math inline">\(A\rightarrow
+Y_1Y_2\ldots Y_{n}\)</span>, for each <span
+class="math inline">\((q,x_{i},Y_{i})\vdash(q,\epsilon,\epsilon)\)</span>
+can lead to <span class="math inline">\(A\Rightarrow ^{*}w=x_1x_2\ldots
+x_{n}\)</span>. ◻</p>
+</div>
+<p>From PDA to CFG <span class="math inline">\(G\)</span>. Construct
+variable <span class="math inline">\([pXq]\)</span> in <span
+class="math inline">\(G\)</span> which refers to strings transfer PDA
+from state <span class="math inline">\(p\)</span> to <span
+class="math inline">\(q\)</span> and pop symbol <span
+class="math inline">\(X\in \Gamma\)</span>.</p>
+<div class="theorem">
+<p>(PDA to CFG) For PDA <span
+class="math inline">\(P=(Q,\Sigma,\Gamma,\delta,q_0,Z_0)\)</span>, there
+is a CFG <span class="math inline">\(G\)</span> s.t. <span
+class="math inline">\(N(P)=L(G)\)</span> where:</p>
+<p>Variables:</p>
+<ol>
+<li><p>S</p></li>
+<li><p>All symbols of form <span class="math inline">\([pXq],p,q\in
+Q,X\in \Gamma\)</span>.</p></li>
+</ol>
+<p>Production:</p>
+<ol>
+<li><p><span class="math inline">\(\forall p,S\rightarrow
+[q_0Z_0p]\)</span></p></li>
+<li><p>If <span class="math inline">\(\delta(q,a,X)\)</span> contains
+<span class="math inline">\((r,Y_1Y_2\ldots Y_{n})\)</span>, then
+construct states <span class="math inline">\([qXr]\rightarrow
+a[rY_1r_1][r_1Y_2r_2]\ldots[r_{k-1}Y_{k}r_{k}]\)</span>.</p></li>
+</ol>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span id="theorem:PDA to CFG"
+data-label="theorem:PDA to CFG"></span> (PDA to CFG) Induction to proof
+<span class="math inline">\((q,w,X)\vdash
+^{*}(p,\epsilon,\epsilon)\Rightarrow ([qXp]\Rightarrow ^{*}w)\)</span>.
+and reverse. ◻</p>
+</div>
+<h2 id="deterministic-pda">Deterministic PDA</h2>
+<div class="definition">
+<p>(Deterministic PDA,DPDA) A PDA where:</p>
+<ol>
+<li><p>All <span class="math inline">\(\delta(q,a,x)\)</span> is empty
+or singleton.</p></li>
+<li><p>If <span class="math inline">\(\delta(q,a,x)\)</span> is not
+empty, <span class="math inline">\(\delta(q,\epsilon,x)\)</span> is
+empty.</p></li>
+</ol>
+</div>
+<div class="theorem">
+<p>(Languages of DPDA) DPDAs accept languages which between RL and
+CFL.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> (Languages of DPDA)</p>
+<ol>
+<li><p>For all RL, its DFA can be easily turned to DPDA by add default
+choices.</p></li>
+<li><p>Exist non-regular language like <span
+class="math inline">\(L=\{wcw^{R}|w\in \{a,b\}\}\)</span> can be
+accepted by DPDA.</p></li>
+<li><p><span
+class="math inline">\(L=\{ww^{R}|w\in  \{a,b\}^{*}\}\)</span> do not
+have a DPDA.</p></li>
+</ol>
+<p> ◻</p>
+</div>
+<p>DPDA with empty stack acceptance is weak, since any accepted string
+<span class="math inline">\(x\)</span>’s prefix cannot be accepted
+because empty stack make no more moves. Languages like <span
+class="math inline">\(0^{*}\)</span> cannot be accepted.</p>
+<div class="theorem">
+<p>(DPDA to CFG) If <span class="math inline">\(L=N(P)\)</span> for some
+DPDA <span class="math inline">\(P\)</span>, then <span
+class="math inline">\(L\)</span> has an unambiguous grammar.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> (DPDA to CFG) Juse use Theorem <a
+href="#theorem:PDA to CFG" data-reference-type="ref"
+data-reference="theorem:PDA to CFG">[theorem:PDA to CFG]</a> (PDA to
+CFG) and deterministic feature. ◻</p>
+</div>
+<div class="theorem">
+<p>(CFG to DPDA) TODO</p>
+</div>

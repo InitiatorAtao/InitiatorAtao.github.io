@@ -1,0 +1,164 @@
+<div class="lemma">
+<p><span id="lemma:Pumping" data-label="lemma:Pumping"></span> (Pumping)
+Let L be a regular language. Then there consist a consistant <span
+class="math inline">\(n\)</span> such that for every <span
+class="math inline">\(w\in L\)</span> such that <span
+class="math inline">\(|w| &gt;n\)</span>, we can break <span
+class="math inline">\(w\)</span> into three strings <span
+class="math inline">\(x,y,z\)</span> as <span
+class="math inline">\(w=xyz\)</span> such that: <span
+class="math display">\[\begin{aligned}
+            y\ne&amp;\epsilon\nonumber\\
+            |xy|\le&amp;n\nonumber\\
+            xy^{k}z\in&amp;L,\forall k\ge 0\nonumber
+        
+\end{aligned}\]</span></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span id="proof:Pumping"
+data-label="proof:Pumping"></span> (Pumping) <span
+class="math inline">\(n\)</span> is the state of the FA of the language,
+when <span class="math inline">\(|w| &gt;n\)</span> there is at least
+one re-reached state when the FA runs <span
+class="math inline">\(w\)</span>. So we can repeat <span
+class="math inline">\(y\)</span> which refers to a circle in the
+FA. ◻</p>
+</div>
+<div class="example">
+<p><span id="example:Pumping" data-label="example:Pumping"></span>
+(Pumping) To proof <span class="math inline">\(L_{EQ}=\{0^{n}1^{n}|n\ge
+0\}\)</span> is not a RL. Assume that is regular, <span
+class="math inline">\(n_0\)</span> be the constant in PL. Take <span
+class="math inline">\(w=0^{n_0}1^{n_0}\)</span>, then <span
+class="math inline">\(y=0^{n_1},n_1\le
+n_0,xy^{k}z=0^{n_0+kn_1}1^{n_0}\)</span> should be in <span
+class="math inline">\(L_{EQ}\)</span> but appearently not, that is a
+contrary.</p>
+</div>
+<div class="theorem">
+<p><span id="theorem:Closure" data-label="theorem:Closure"></span>
+(Closure) Here <span class="math inline">\(L,M\)</span> are RL expressed
+by some RE:</p>
+<p>If <span class="math inline">\(L\)</span> and <span
+class="math inline">\(M\)</span> are regular, so is <span
+class="math inline">\(L+M,LM,L^{*}\)</span>.</p>
+<p>If <span class="math inline">\(L\)</span> is regular, so is <span
+class="math inline">\(\overline{L}\)</span></p>
+</div>
+<div class="definition">
+<p><span id="definition:Reversal"
+data-label="definition:Reversal"></span> (Reversal) Given <span
+class="math inline">\(L\)</span>, <span
+class="math inline">\(L^{R}=\{w|w^{R}\in L\}\)</span> is called the
+reversal of <span class="math inline">\(L\)</span>.</p>
+</div>
+<div class="theorem">
+<p><span id="theorem:Reversal" data-label="theorem:Reversal"></span>
+(Reversal) If <span class="math inline">\(L\)</span> is regualar, so is
+<span class="math inline">\(L^{R}\)</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span id="proof:Reversal"
+data-label="proof:Reversal"></span> (Reversal) Structral induction. For
+RE <span class="math inline">\(E,F\)</span>: <span
+class="math display">\[\begin{aligned}
+            L^{R}(E+F)=&amp;L^{R}(E)+L^{R}(F)\nonumber\\
+            L^{R}(EF)=&amp;L^{R}(F)L^{R}(E)\nonumber\\
+            L^{R}(E^{*})=&amp;(L^{R}(E))^{*}\nonumber
+        
+\end{aligned}\]</span> ◻</p>
+</div>
+<div class="definition">
+<p><span id="definition:Homomorphism"
+data-label="definition:Homomorphism"></span> (Homomorphism) Mapping
+among strings: <span class="math inline">\(h:\Sigma \rightarrow
+\Gamma^{*}\)</span> or <span class="math inline">\(h:
+\Sigma^{*}\rightarrow \Gamma^{*}\)</span>, <span
+class="math inline">\(h(a_1a_2\ldots a_n)=h(a_1)h(a_2)\ldots
+h(a_n)\)</span>. Homomorphism of a language is <span
+class="math inline">\(h(L)=\{w\in \Sigma^{*}|\exists x\in
+L,h(x)=w\}\)</span>.</p>
+</div>
+<div class="theorem">
+<p><span id="theorem:Homomorphism"
+data-label="theorem:Homomorphism"></span> (Homomorphism) If <span
+class="math inline">\(L\)</span> is regular, so is <span
+class="math inline">\(h(L)\)</span>.</p>
+</div>
+<div class="definition">
+<p><span id="definition:Inverse Homomorphism"
+data-label="definition:Inverse Homomorphism"></span> (Inverse
+Homomorphism) <span class="math inline">\(h^{-1}(L)=\{w\in
+\Sigma^{*}|h(w)\in L\}\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="example:Inverse Homomorphism"
+data-label="example:Inverse Homomorphism"></span> (Inverse Homomorphism)
+<span
+class="math inline">\(L=(00+1)^{*},h(a)=01,h(b)=10,h^{-1}(L)=(ba)^{*}\)</span>.
+Since the string must have an image in <span
+class="math inline">\(L\)</span>, so there is no <span
+class="math inline">\(a\)</span> prefix or <span
+class="math inline">\(b\)</span> suffix or <span
+class="math inline">\(aa,bb\)</span> etc.</p>
+</div>
+<div class="theorem">
+<p><span id="theorem:Inverse Homomorphism"
+data-label="theorem:Inverse Homomorphism"></span> (Inverse Homomorphism)
+If <span class="math inline">\(L\)</span> is regular, so is <span
+class="math inline">\(h^{-1}(L)\)</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span id="proof:Inverse Homomorphism"
+data-label="proof:Inverse Homomorphism"></span> (Inverse Homomorphism)
+Build new DFA, run new <span class="math inline">\(\delta\)</span> as
+multi steps on origin DFA <span class="math inline">\(A\)</span> in
+<span class="math inline">\(L\)</span>: <span
+class="math inline">\(\delta(q,a)=\hat{\delta}(q,h(a))\)</span>. ◻</p>
+</div>
+<div class="example">
+<p><span id="example:Inverse Homomorphism:02"
+data-label="example:Inverse Homomorphism:02"></span> (Inverse
+Homomorphism) To proof <span
+class="math inline">\(\{a^{i}b_{j}c^{k}|i=1\Rightarrow j=k\}\)</span> is
+not regular, choose a subset <span
+class="math inline">\(\{ab^{j}c^{j}\}\)</span>, do homorphism <span
+class="math inline">\(h(a)=\epsilon,h(b)=0,h(c)=1\)</span>, then the
+language turns to <span class="math inline">\(\{0^{n}1^{n}\}\)</span>
+which is not regular.</p>
+</div>
+<h1 id="calculate-complexity">Calculate complexity</h1>
+<ul>
+<li><p>Conversion among expressions: Most have exp complexity. DO NOT
+converse twice!</p></li>
+<li><p>Emptiness: Most are cheap, attention that <span
+class="math inline">\(E^{*}\)</span> will not be empty.</p></li>
+<li><p>Membership: DFAs are cheap, (<span
+class="math inline">\(\epsilon\)</span>-)NFA are also acceptable. RE can
+be turn to <span class="math inline">\(\epsilon\)</span>-NFA.</p></li>
+<li><p>State Equalence:Table-filling algorithm, about <span
+class="math inline">\(O(|Q| |\Sigma|^2)\)</span>. A bit slow but
+acceptable, use it carefully.</p></li>
+<li><p>Minimization: Remove unreachable parts, union the states by the
+equalence.</p></li>
+</ul>
+<div class="definition">
+<p>(Table-filling algorithm) Base: if <span
+class="math inline">\(p\)</span> accepted, <span
+class="math inline">\(q\)</span> is not, they are distinguishable.</p>
+<p>Induction: <span
+class="math inline">\(\delta(p,a),\delta(q,a)\)</span> are
+distinguishable <span class="math inline">\(\Rightarrow p,q\)</span> are
+distinguishable. Usage: Write a table of <span
+class="math inline">\(\frac{1}{2}Q\times Q\)</span>. Sign the two
+distinguishable states. Recursive until no more distinguishable state
+are detected.</p>
+</div>
+<div class="theorem">
+<p>(Table-filling algorithm) If two states are not distinguishable by
+the table-filling algorithm, then they are equivalent.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> (Table-filling algorithm) Just simulate how the
+algorithm work on string and states. ◻</p>
+</div>

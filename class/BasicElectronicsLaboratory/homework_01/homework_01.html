@@ -1,0 +1,164 @@
+<h1 id="实验内容">实验内容</h1>
+<div class="center">
+<p><embed src="./figures/homework_01_figure_01.pdf"
+style="width:70.0%" /></p>
+</div>
+<ol>
+<li><p>使用便携式实验设备,按图 1.1 接线,电位器 <span
+class="math inline">\(R_0=5k\Omega\)</span>.</p>
+<ol>
+<li><p><span class="math inline">\(U_s\)</span>
+使用便携式实验设备上的直流电源,使 <span
+class="math inline">\(V_1=5V\)</span>,调节电位器,使 <span
+class="math inline">\(V_2=2V\)</span>,用手持式万用表测量 <span
+class="math inline">\(R_2\)</span> 的值,填写表 1.1 第二行.</p></li>
+<li><p><span class="math inline">\(U_s\)</span>
+使用便携式实验设备上的交流源,试用版便携式实验设备上的示波器测量数据,使
+<span class="math inline">\(V_1\)</span> 峰值 <span
+class="math inline">\(=5V\)</span>,调节电位器,使 <span
+class="math inline">\(V_2\)</span> 峰值 <span
+class="math inline">\(=2V\)</span>,测量 <span
+class="math inline">\(R_2\)</span> 的值,填写表 1.1 第三行.</p></li>
+</ol></li>
+<li><p>实验方法</p>
+<ol>
+<li><p>调节电源(直流源或信号源),使电压表 <span
+class="math inline">\(V_1\)</span> 的测量值为 <span
+class="math inline">\(5V\)</span> (交流时指峰值).</p></li>
+<li><p>调节电位器,使电压表 <span class="math inline">\(V_2\)</span>
+的测量值为 <span class="math inline">\(2V\)</span>.</p></li>
+<li><p>观察电压表 <span class="math inline">\(V_1\)</span> 是否仍为
+<span class="math inline">\(5V\)</span>,如不是,重复 (1)(2) 步.</p></li>
+<li><p>断电,从电路中取出电位器,测量 <span
+class="math inline">\(R_2\)</span> 部分的电阻.</p></li>
+</ol></li>
+</ol>
+<h1 id="原始数据">原始数据</h1>
+<div id="table:origin-data">
+<table>
+<caption>电阻 <span class="math inline">\(R_2\)</span>
+测量结果</caption>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span
+class="math inline">\(1k\Omega\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(5k\Omega\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(10k\Omega\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">便携式实验设备直流源</td>
+<td style="text-align: center;"><span
+class="math inline">\(4.03k\Omega\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(2.623k\Omega\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(2.348k\Omega\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">便携式实验设备信号源</td>
+<td style="text-align: center;"><span
+class="math inline">\(4.06k\Omega\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(2.662k\Omega\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(2.377k\Omega\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="数据分析">数据分析</h1>
+<p>由图 1.1 接线构成的是一个分压电路,在理想状态下,<span
+class="math inline">\(V_1\)</span> 的测量值 <span
+class="math inline">\(U_1=U_s\)</span> 为电源电压,负载部分由 <span
+class="math inline">\(R_2\)</span> 和 <span
+class="math inline">\(R_{fz}\)</span> 并联后与 <span
+class="math inline">\(R_1\)</span> 串联,<span
+class="math inline">\(V_2\)</span> 的测量值 <span
+class="math inline">\(U_2\)</span> 为并联部分的电压.由于并联部分与 <span
+class="math inline">\(R_1\)</span> 串联,由串并联电阻和电压分配方式有:
+<span class="math display">\[\begin{aligned}
+            \frac{U_2}{U_1}=&amp;\frac{R_{2fz}}{R_{2fz}+R_1}=\frac{\frac{R_2R_{fz}}{R_2+R_{fz}}}{\frac{R_2R_{fz}}{R_2+R_{fz}}+R_1}=\frac{R_2R_{fz}}{R_2R_{fz}+R_1(R_2+R_{fz})}
+        
+\end{aligned}\]</span> 每次调整 <span
+class="math inline">\(R_1,R_2\)</span> 使得 <span
+class="math inline">\(U_1,U_2\)</span>
+(或交流电的峰值)为定值,又由在电位器中 <span
+class="math inline">\(R_1+R_2=R_0\)</span> 为定值,对于每一个确定的 <span
+class="math inline">\(R_{fz}\)</span>,可以由上式解出其对应的唯一正值
+<span class="math display">\[\begin{aligned}
+            R_2=&amp;-1.25R_{fz}+2.5\times 10^{3}\sqrt{2.5\times
+10^{-7}R_{fz}^2-2\times 10^{-4}R_{fz}+1}+2.5\times
+10^{3}\label{definition:r2}
+        
+\end{aligned}\]</span> 代入上述数据进行计算,得到 <span
+class="math inline">\(R_2\)</span> 与 <span
+class="math inline">\(R_{fz}\)</span> 的理想对应关系如下:</p>
+<table>
+<caption>电阻 <span class="math inline">\(R_2\)</span> 理论值</caption>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(R_{fz}\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(1k\Omega\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(5k\Omega\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(10k\Omega\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(R_2\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(3.81k\Omega\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(2.500k\Omega\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(2.247k\Omega\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>对比实验结果与理论计算结果,根据 <span
+class="math inline">\(R_{fz}\)</span>
+的不同,实验结果在理论计算结果附近上下浮动,相对误差在 <span
+class="math inline">\(5\%\)</span>
+左右,推测为实验电源与示波器非理想情况导致.</p>
+<h1 id="思考题">思考题</h1>
+<ol>
+<li><p>当负载电阻 <span class="math inline">\(R_{fz}\)</span>
+变化时,同样为了获得 <span class="math inline">\(2V\)</span>
+输出电压,所需调节的 <span class="math inline">\(R_2\)</span>
+值是否相同,为什么?</p>
+<p>不相同,由上述 (<a href="#definition:r2" data-reference-type="ref"
+data-reference="definition:r2">[definition:r2]</a>) 式可知 <span
+class="math inline">\(R_2\)</span> 关于 <span
+class="math inline">\(R_{fz}\)</span>
+非线性关系,事实上该函数的图像为双曲线的一部分,随着 <span
+class="math inline">\(R_{fz}\)</span> 增大,需要调节的 <span
+class="math inline">\(R_2\)</span> 值逐渐减小趋向于 0,令 <span
+class="math inline">\(R_{fz}\rightarrow +\infty\)</span> 即开路, <span
+class="math inline">\(R_2\)</span> 趋向于 <span
+class="math inline">\(2k\Omega\)</span>,此时电路变为简单的串联分压.<span
+class="math inline">\(U_2,R_2\)</span>
+的关系与理论计算结果相符.对此进行了简单的实验,操作为断开 <span
+class="math inline">\(R_{fz}\)</span> 支路并重新调节和测量 <span
+class="math inline">\(R_2\)</span>,得到的结果与与理论计算结果相符.</p></li>
+<li><p>电位器的同一位置对直流源和信号源的分压结果是否有区别?(表 <a
+href="#table:origin-data" data-reference-type="ref"
+data-reference="table:origin-data">1</a> 中第 2 行和第 3 行对比)</p>
+<p>几乎没有区别,由表 <a href="#table:origin-data"
+data-reference-type="ref" data-reference="table:origin-data">1</a>
+可见在直流源和信号源下 <span class="math inline">\(R_2\)</span>
+的测量值相对误差在 <span class="math inline">\(1\%\)</span>
+左右,推测为实际电路中形成的微弱电容与电感导致.在理论计算中,由于电路中没有电容与电感元件,电路导通关系与电压分配对于直流和交流一致,故分压结果没有区别.</p></li>
+</ol>
+<h1 id="结论">结论</h1>
+<p>本实验对分压电路在直流和交流电压下,电阻与分压的关系进行了探究,通过理论计算与实验测量,得出了电位器位置与分压的非线性关系,计算了其理论值并与实验进行对比,取得了较好的对应关系.同时对直流和交流电压的分压结果进行对比,结论为直流和交流不影响该分压电路的分压结果.</p>
+<p>在数据分析过程中,对理论计算在外接电阻趋于无穷大(即开路)的情况进行了分析,得出的结论是此时的电路变为简单的串联分压电路,同时进行了简单的实验,实验结果与理论计算结果相符.</p>

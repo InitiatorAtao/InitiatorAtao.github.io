@@ -1,0 +1,165 @@
+<h1 id="context-free-grammars-cfgs">Context-free Grammars (CFG’s)</h1>
+<div class="definition">
+<p>(Context-free Grammars,CFG’s) A CFG is a <span
+class="math inline">\(G=(V,T,P,S)\)</span>:</p>
+<ol>
+<li><p>A finite set of variables <span
+class="math inline">\(V\)</span>.</p></li>
+<li><p>A finite set of symbols <span class="math inline">\(T\)</span>
+(Terminals).</p></li>
+<li><p>A finite set of production rules <span
+class="math inline">\(P\)</span>.</p></li>
+<li><p>Start variables <span class="math inline">\(S\in
+V\)</span>.</p></li>
+</ol>
+<p>Each production rule consists of:</p>
+<ol>
+<li><p>A variable called the head.</p></li>
+<li><p>A production symbol <span
+class="math inline">\(\rightarrow\)</span>.</p></li>
+<li><p>A string in <span class="math inline">\((V\cup T)^{*}\)</span>
+called the body.</p></li>
+</ol>
+</div>
+<div class="example">
+<p>(Context-free Grammars,CFG) To define a palindrome:</p>
+<p>Basis: <span class="math inline">\(\epsilon,0,1\)</span> are pal.</p>
+<p>Induction: If <span class="math inline">\(w\)</span> is a pal, so are
+<span class="math inline">\(0w 0,1w 1\)</span>. <span
+class="math display">\[\begin{aligned}
+                G_{pal}=&amp;(\{p\},\{0,1\},A,p)\nonumber\\
+                A:\{&amp;p\rightarrow \epsilon,p\rightarrow
+0p0\nonumber\\
+                  &amp;p\rightarrow 0,p\rightarrow 1p1\nonumber\\
+                  &amp;p\rightarrow 1\}\nonumber
+            
+\end{aligned}\]</span></p>
+</div>
+<h2 id="derivations-of-cfg">Derivations of CFG</h2>
+<div class="definition">
+<p>(Derivations of CFG) Use derivation <span
+class="math inline">\(\Rightarrow\)</span> to build a concrete string of
+a CFG:</p>
+<p>Let <span class="math inline">\(A\rightarrow \gamma\)</span> be a
+rule, then we can build <span class="math inline">\(\alpha A\beta
+\Rightarrow \alpha \gamma \beta\)</span>.</p>
+<p><span class="math inline">\(\Rightarrow ^{*}\)</span> means zero or
+more steps of derivation.</p>
+<p>The languge of a CFG <span class="math inline">\(G\)</span> <span
+class="math inline">\(L(G)=\{w\in T^{*}|S\Rightarrow
+^{*}w\}\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="example:Derivatons of CFG"
+data-label="example:Derivatons of CFG"></span> (Derivatons of CFG) To
+build an expression: <span class="math display">\[\begin{aligned}
+                E\Rightarrow&amp;E*E\Rightarrow I*E\Rightarrow
+a*E\nonumber\\
+                \Rightarrow &amp;a*(E)\Rightarrow a*(E+E)\nonumber\\
+                \Rightarrow &amp;a*(I*E)\Rightarrow ^{*}a*(a+b
+0)\nonumber\\
+                E\Rightarrow ^{*}&amp;a*(a+b 0)\nonumber
+            
+\end{aligned}\]</span></p>
+</div>
+<h2 id="leftmostrightmost-derivations">Leftmost/Rightmost
+derivations</h2>
+<div class="definition">
+<p>(Leftmost/Rightmost derivations) In each step of leftmost/rightmost
+derivation, we replace the leftmost/rightmost variable.</p>
+</div>
+<p>Leftmost/Rightmost derivation expressed by <span
+class="math inline">\(\Rightarrow ^{*}_{\mathrm{lm}},\Rightarrow
+^{*}_{\mathrm{r m}}\)</span>.</p>
+<div class="example">
+<p>(Leftmost/Rightmost derivations) in Example <a
+href="#example:Derivatons of CFG" data-reference-type="ref"
+data-reference="example:Derivatons of CFG">[example:Derivatons of
+CFG]</a> there is a leftmost derivation <span
+class="math inline">\(E\Rightarrow
+^{*}_{\mathrm{lm}}a*(a+b0)\)</span></p>
+</div>
+<h2 id="parse-tree">Parse tree</h2>
+<div class="definition">
+<p>(Parse tree) Given a CFG <span
+class="math inline">\(G=(V,T,P,S)\)</span>. The parse tree for <span
+class="math inline">\(G\)</span> are trees with the following
+corditions:</p>
+<ol>
+<li><p>Each interior node is labeled by a variable in <span
+class="math inline">\(V\)</span>.</p></li>
+<li><p>Each leaf is labeled by either a variable or a terminal, or <span
+class="math inline">\(\epsilon\)</span>. If lebeled <span
+class="math inline">\(\epsilon\)</span> it’s the only child.</p></li>
+<li><p>If an interior node is labeled by <span
+class="math inline">\(A\)</span> and its children are labeled <span
+class="math inline">\(X_1,\ldots,X_{k}\)</span>, then <span
+class="math inline">\(A\rightarrow X_1,\ldots,X_{k}\)</span> is a
+rule.</p></li>
+</ol>
+</div>
+<div class="definition">
+<p>(Yield) The yield of a parse tree is the string of leaves contents
+from left to right, which is what can be derived from the root. If the
+root is labeled by <span class="math inline">\(S\)</span> and leaves are
+all labeled by termials, then yield <span class="math inline">\(\in
+T^{*}\)</span> is a string in <span
+class="math inline">\(L(G)\)</span>.</p>
+</div>
+<div class="theorem">
+<p><span id="theorem:Context-free Grammars,CFG&#39;s"
+data-label="theorem:Context-free Grammars,CFG&#39;s"></span>
+(Context-free Grammars,CFG’s) The following are equalvant for CFG <span
+class="math inline">\(G=(V,T,P,S)\)</span>:</p>
+<ol>
+<li><p><span class="math inline">\(w\in L(G)\)</span></p></li>
+<li><p><span class="math inline">\(S\Rightarrow ^{*}w\)</span></p></li>
+<li><p><span class="math inline">\(S\Rightarrow
+^{*}_{\mathrm{lm}}w\)</span></p></li>
+<li><p><span class="math inline">\(S\Rightarrow ^{*}_{\mathrm{r
+m}}w\)</span></p></li>
+<li><p>There is a parse tree with root <span
+class="math inline">\(S\)</span> and yield <span
+class="math inline">\(w\)</span>.</p></li>
+</ol>
+</div>
+<h2 id="ambiguity">Ambiguity</h2>
+<div class="definition">
+<p>(Ambiguity) A CFG is ambiguous if there is a <span
+class="math inline">\(w\in T^{*}\)</span> which has two different parse
+trees, each with root <span class="math inline">\(S\)</span> and yield
+<span class="math inline">\(w\)</span>. Otherwise it’s unambiguous.</p>
+</div>
+<div class="remark">
+<p>(Remove Ambiguity) There is no algorithm to tell if a grammar is
+ambiguous or not.</p>
+<p>To remove ambiguity by hand, try define calculate priority like which
+in expressions to declare the parse tree building sequence.</p>
+</div>
+<h1 id="chomsky-classification-method">Chomsky classification
+method</h1>
+<div class="definition">
+<p>(Chomsky classification method) For CFG like four tuple <span
+class="math inline">\(G=(V,T,P,S)\)</span>, classify them by items in
+<span class="math inline">\(P\)</span>:</p>
+<ul>
+<li><p>Type 0 grammar: items like <span
+class="math inline">\(\alpha\rightarrow \beta,\alpha,\beta\in (V\cup
+T)^{*}\)</span> where <span class="math inline">\(\alpha\)</span>
+contains at least one variable. The grammar has abilitiy like turing
+mathine.</p></li>
+<li><p>Type 1 grammar: items like <span
+class="math inline">\(\alpha\rightarrow \beta,|\alpha|\le
+|\beta|\)</span> except <span class="math inline">\(S\rightarrow
+\epsilon\)</span>, and <span class="math inline">\(S\)</span> can not in
+<span class="math inline">\(\beta\)</span>. The grammar called context
+sensitive grammars (CSGs). The automata relative to the grammar is
+linear bounded automata (LBA).</p></li>
+<li><p>Type 2 grammar: CFG with PDA.</p></li>
+<li><p>Type 3 grammar: items like <span
+class="math inline">\(A\rightarrow aB\)</span> or <span
+class="math inline">\(A\rightarrow a\)</span> where <span
+class="math inline">\(A,B\in V,a\in T\cup \{\epsilon\}\)</span>. The
+grammar also called regular grammar with RE and DFA.</p></li>
+</ul>
+</div>

@@ -1,0 +1,36 @@
+<h1 id="taskwarrior-的使用">Taskwarrior 的使用</h1>
+<h2 id="常用指令">常用指令</h2>
+<p>使用 <code>task</code> 调用 taskwarrior,默认执行 <code>next</code>
+指令.</p>
+<ul>
+<li><p><code>next</code> 按照计算出的优先级列出任务及其 ID.</p></li>
+<li><p><code>ID done</code> 完成 ID 对应的任务.</p></li>
+<li><p><code>ID delete</code> 删除 ID 对应的任务.</p></li>
+<li><p><code>add</code> 添加任务.<code>modify</code> 修改任务.尽可能使用
+<code>feature:value</code> 语法提供详细的属性或使用
+<code>+tagname</code> 语法添加标记,可用的属性列表如下:</p>
+<ul>
+<li><p><code>project</code> 任务所属的项目.</p></li>
+<li><p><code>due</code> 任务的到期时间</p></li>
+<li><p><code>priority</code> 任务的优先级, <code>L,M,H</code> 表示
+low,mid,high.</p></li>
+<li><p><code>depends</code> 前置任务的 ID.</p></li>
+</ul></li>
+<li><p><code>config</code> 设置,可用的设置项如下:</p>
+<ul>
+<li><p><code>urgency.user.(tag/project).name.coefficient value</code>
+设置 tag,project 对任务重要程度的影响.</p></li>
+</ul></li>
+</ul>
+<h2 id="常用筛选器">常用筛选器</h2>
+<p>可以使用筛选器指定要操作的任务范围.使用 <code>and</code>
+连接多个筛选器.</p>
+<ul>
+<li><p><code>/word/</code> 在描述和注释中出现 word.</p></li>
+<li><p><code>(entry/start/end)[.before/after]:time</code><span
+class="math inline">\(\pm\)</span><code>(duration)</code>
+添加/开始/结束时间,可以使用一般英文描述或 ISO 8601
+标准表示法及其简化.</p></li>
+<li><p><code>(project/tag):name</code> 项目和标签名称,可留空.</p></li>
+<li><p><code>status:status</code> 当前状态</p></li>
+</ul>

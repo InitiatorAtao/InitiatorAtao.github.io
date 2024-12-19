@@ -1,0 +1,37 @@
+<h1 id="section">17</h1>
+<p>假设运放的开环增益为正无穷,计算如图所示电路的闭环增益,并证明当 <span
+class="math inline">\(R_1\rightarrow 0\)</span> 或 <span
+class="math inline">\(R_3\rightarrow 0\)</span> 时结果收敛至期望值.</p>
+<figure>
+<img src="./figures/homework_12_figure_01.png" style="width:50.0%" />
+</figure>
+<p>解:由运放的 "虚短" 可知其负输入端的电位等于接地电位, <span
+class="math inline">\(R_2\)</span> 上的电流为 <span
+class="math inline">\(\frac{V_{\texttt{in}}}{R_2}\)</span>.由 "虚断"
+可知负输入端的流入电流为零,故 <span class="math inline">\(R_3\)</span>
+上的电流大小等于 <span class="math inline">\(R_2\)</span> 上的电流,
+<span class="math inline">\(R_1,R_3,R_4\)</span> 连接点的电位为 <span
+class="math inline">\(-\frac{R_3}{R_2}V_{\texttt{in}}\)</span>, <span
+class="math inline">\(R_4\)</span> 上的电流为 <span
+class="math inline">\(-\frac{R_3}{R_2}\frac{V_{\texttt{in}}}{R_4}\)</span>,对连接点使用
+KCL 可得 <span class="math inline">\(R_1\)</span> 上的电流为 <span
+class="math inline">\(\frac{R_3+R_4}{R_2R_4}V_{\texttt{in}}\)</span>.由此输出电压
+<span
+class="math inline">\(V_{\texttt{out}}=-\frac{R_3}{R_2}V_{\texttt{in}}-R_1
+\frac{R_3+R_4}{R_2R_4}V_{\texttt{in}}\)</span>.闭环增益 <span
+class="math inline">\(-\frac{R_3}{R_2}-R_1
+\frac{R_3+R_4}{R_2R_4}\)</span>,当 <span
+class="math inline">\(R_1\rightarrow 0\)</span> 时增益趋于 <span
+class="math inline">\(-\frac{R_3}{R_2}\)</span>, <span
+class="math inline">\(R_3\rightarrow 0\)</span> 时增益趋于 <span
+class="math inline">\(-\frac{R_1}{R_2}\)</span> 符合预期.</p>
+<h1 id="section-1">8.46</h1>
+<p>计算如图输入电压对应的输出电压:</p>
+<figure>
+<img src="./figures/homework_12_figure_02.png" style="width:50.0%" />
+</figure>
+<p>解:与上题同理可知 <span class="math inline">\(M_1\)</span>
+上方支路电流为 <span
+class="math inline">\(\frac{V_{\texttt{in}}}{R_1}\)</span>
+且为接地电位,故此时 MOSFET 导通,输出电压 <span
+class="math inline">\(V_{\texttt{out}}=-\frac{R_{M_1}}{R_1}V_{\texttt{in}}\)</span>.</p>

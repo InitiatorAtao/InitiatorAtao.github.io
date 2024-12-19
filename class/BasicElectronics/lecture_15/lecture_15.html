@@ -1,0 +1,36 @@
+<h1 id="ad-转换">AD 转换</h1>
+<p>转换过程: 采样,保持,量化,编码.</p>
+<div class="definition">
+<p>(信噪比, SNR) 信号最大功率与量化噪声平均功率的比值.</p>
+</div>
+<div class="theorem">
+<p>(信噪比, SNR) SNR <span class="math inline">\(=6.02n+1.76 \
+\mathrm{dB}\)</span>,其中 <span class="math inline">\(n\)</span> 为 AD
+位数.</p>
+</div>
+<div class="definition">
+<p>(信噪失真比, SNDR)
+信号最大功率与量化噪声平均功率与谐波失真功率之和的比值.</p>
+</div>
+<div class="definition">
+<p>(有效位数, ENOB) SNDR <span class="math inline">\(=6.02\)</span> ENOB
+<span class="math inline">\(+1.76 \ \mathrm{dB}\)</span>.</p>
+</div>
+<p>AD 的失调, DNL, INL 等参数同 DA.</p>
+<div class="theorem">
+<p>(采样定理) 为从采样数据还原原始数据,采样频率 <span
+class="math inline">\(f_{s}\)</span> 应为信号最大频率 <span
+class="math inline">\(f_{\texttt{max}}\)</span> 的 2 倍以上.</p>
+</div>
+<p>保持过程可以使用接地电容维持电压,使用运放输出电压.</p>
+<p>常用 AD 电路:</p>
+<ul>
+<li><p>flash: 使用多个比较器并行比较,温度计码输出.</p>
+<p>速度快 (<span class="math inline">\(\mathrm{GHz}\)</span>
+量级),电路复杂,精度较低.</p></li>
+<li><p>逐次逼近型 (Successive Approximation Register, SAR):</p>
+<p>使用一个 DA ,比较器和逻辑控制,从高位到低位二分比较得到当前位值.</p>
+<p>精度高,电路较简单,速度较慢 (一般为 <span
+class="math inline">\(\mathrm{kHz}\sim{}\mathrm{MHz}\)</span>
+级别).</p></li>
+</ul>

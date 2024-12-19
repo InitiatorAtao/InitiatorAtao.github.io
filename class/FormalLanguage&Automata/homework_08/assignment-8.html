@@ -1,0 +1,125 @@
+<div class="problem">
+<p>(Exercise 6.3.2) Convert the grammar <span
+class="math display">\[\begin{aligned}
+    S &amp; \rightarrow aAA\\
+    A &amp; \rightarrow aS \,|\, bS \,|\, a
+  
+\end{aligned}\]</span> to a PDA that accepts the same language by empty
+stack.</p>
+</div>
+<div class="solution">
+<p>Answer PDA like: <span class="math display">\[\begin{aligned}
+        P=&amp;\left( \{q\},\{a,b\},\{S,A\},\delta,q,S,\emptyset \right)
+\nonumber
+    
+\end{aligned}\]</span> where:</p>
+<ol>
+<li><p><span class="math inline">\(\delta\left( q,a,S \right) =\{\left(
+q,AA \right) \}\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( q,a,A \right) =\{\left(
+q,S \right) ,\left( q,\epsilon \right) \}\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( q,b,A \right) =\{\left(
+q,S \right) \}\)</span></p></li>
+</ol>
+</div>
+<div class="problem">
+<p>(Exercise 6.3.4) Consider the PDA <span class="math display">\[P =
+\bigl( \{q, p\}, \{0, 1\}, \{Z_{0}, X\}, \delta, q, Z_{0}, \{p\}
+\bigr)\]</span> having the following transition function:</p>
+<ol>
+<li><p><span class="math inline">\(\delta(q, 0, Z_{0}) = \{(q,
+XZ_{0})\}\)</span>.</p></li>
+<li><p><span class="math inline">\(\delta(q, 0, X) = \{(q,
+XX)\}\)</span>.</p></li>
+<li><p><span class="math inline">\(\delta(q, 1, X) = \{(q,
+X)\}\)</span>.</p></li>
+<li><p><span class="math inline">\(\delta(q, \epsilon, X) = \{(p,
+\epsilon)\}\)</span>.</p></li>
+<li><p><span class="math inline">\(\delta(p, \epsilon, X) = \{(p,
+\epsilon)\}\)</span>.</p></li>
+<li><p><span class="math inline">\(\delta(p, 1, X) = \{(p,
+XX)\}\)</span>.</p></li>
+<li><p><span class="math inline">\(\delta(p, 1, Z_{0}) = \{(p,
+\epsilon)\}\)</span>.</p></li>
+</ol>
+<p>Convert the PDA to a context-free grammar.</p>
+</div>
+<div class="solution">
+<p>Answer CFG like: <span class="math display">\[\begin{aligned}
+        G=&amp;\left( \{P,Q\},\{0,1\},A,P \right) \nonumber
+    
+\end{aligned}\]</span> where: <span
+class="math display">\[\begin{aligned}
+        A:\{P\rightarrow&amp; 0Q\nonumber\\
+        Q\rightarrow &amp;1Q\ |\ 0Q\ |\ \epsilon\}\nonumber
+    
+\end{aligned}\]</span></p>
+</div>
+<div class="problem">
+<p>(Exercise 6.3.5 (c)) Devise a PDA that accepts the language <span
+class="math inline">\(\{0^{n}1^{m} \mid n \le m \le 2n \}\)</span> by
+empty stack. You may, if you wish, first construct a grammar for the
+language, and then convert to a PDA.</p>
+</div>
+<div class="solution">
+<p>CFG have transition like <span class="math inline">\(P\rightarrow 0P
+1\ |\ 0P 11\ |\ \epsilon\)</span>. So the answer PDA like: <span
+class="math display">\[\begin{aligned}
+        P=&amp;\left( \{q,p\},\{0,1\},\{Z_0,X\},\delta,q,Z_0,\emptyset
+\right) \nonumber
+    
+\end{aligned}\]</span> where:</p>
+<ol>
+<li><p><span class="math inline">\(\delta\left( q,0,Z_0 \right)
+=\{\left( q,XZ_0 \right),\left( q,XXZ_0 \right)  \}\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( q,0,X \right) =\{\left(
+q,XX \right) ,\left( q,XXX \right) \}\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( q,\epsilon,X \right)
+=\{\left( p,X \right) \}\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( q,\epsilon,Z_0 \right)
+=\{\left( p,Z_0 \right) \}\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( p,1,X \right) =\{\left(
+p,\epsilon \right) \}\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( p,\epsilon,Z_0 \right)
+=\{\left( p,\epsilon \right) \}\)</span></p></li>
+</ol>
+</div>
+<div class="problem">
+<p>(Exercise 6.4.2 (c)) Give a deterministic pushdown automaton to
+accept the following language <span
+class="math display">\[\{0^{n}1^{m}0^{n} \mid n \text{ and } m \text{
+are arbitrary}\}.\]</span></p>
+</div>
+<div class="solution">
+<p>Answer DPDA like: <span class="math display">\[\begin{aligned}
+        P=&amp;\left( \{q,m,p,a\},\{0,1\},\{Z_0,X\},\delta,q,Z_0,\{a\}
+\right) \nonumber
+    
+\end{aligned}\]</span> where:</p>
+<ol>
+<li><p><span class="math inline">\(\delta\left( q,0,Z_0 \right) =\left(
+q,XZ_0 \right)\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( q,0,X \right) =\left(
+q,XX \right)\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( q,1,Z_0 \right) =\left(
+a,Z_0 \right)\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( q,1,X \right) =\left(
+m,X \right)\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( m,1,X \right) =\left(
+m,X \right)\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( m,0,X \right)=\left(
+p,\epsilon \right)\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( p,1,X \right) =\left(
+p,\epsilon \right)\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( p,\epsilon,Z_0 \right)
+=\left( a,\epsilon \right)\)</span></p></li>
+<li><p><span class="math inline">\(\delta\left( a,1,Z_0 \right) =\left(
+a,Z_0 \right)\)</span></p></li>
+</ol>
+</div>
+<div class="problem">
+<p>(Exercise 6.4.3) We can prove Theorem 6.19 in three parts:</p>
+</div>
+<div class="solution">
+
+</div>

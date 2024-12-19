@@ -1,0 +1,172 @@
+<div class="problem">
+<p>(Exercise 7.1.2) Begin with the grammar <span
+class="math display">\[\begin{aligned}
+    S &amp; \rightarrow ASB \,|\, \epsilon\\
+    A &amp; \rightarrow aAS \,|\, a\\
+    B &amp; \rightarrow SbS \,|\, A \,|\, bb
+  
+\end{aligned}\]</span></p>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>(Exercise 7.1.9 (b)) Provide the inductive proof needed to complete
+the proof of both directions of Theorem 7.6. That is, the algorithm for
+finding reachable symbols of <span class="math inline">\(G\)</span>
+derived from the following induction works correctly.</p>
+<blockquote>
+<p>Basis: <span class="math inline">\(S\)</span> is surely
+reachable.</p>
+<p>Induction: Suppose we have discovered that some variable <span
+class="math inline">\(A\)</span> is reachable. Then for all productions
+with <span class="math inline">\(A\)</span> in the head, all the symbols
+of the bodies of those productions are also reachable.</p>
+</blockquote>
+</div>
+<div class="solution">
+<p>First proof all derived symbols are reachable:</p>
+<p>Basis: <span class="math inline">\(S\)</span> is reachable because
+the production starts with <span class="math inline">\(S\)</span>.</p>
+<p>Induction: If derived <span class="math inline">\(A\)</span> is
+reachable, or <span class="math inline">\(S\Rightarrow ^{*}\alpha A
+\beta\)</span> (<span class="math inline">\(\alpha,\beta\)</span> may be
+<span class="math inline">\(\epsilon\)</span>), then for all <span
+class="math inline">\(A\rightarrow \gamma\)</span>, there is <span
+class="math inline">\(S\Rightarrow ^{*}\alpha\gamma\beta\)</span>. So
+all variables in <span class="math inline">\(\gamma\)</span> are derived
+and reachable.</p>
+<p>Then proof all reachable symbols can be derived:</p>
+<p>Basis: Reachable <span class="math inline">\(S\)</span> is derived at
+first.</p>
+<p>Induction: If <span class="math inline">\(A\)</span> is derived and
+reachable, <span class="math inline">\(S\Rightarrow ^{*}\alpha
+A\beta\)</span>, so for all <span class="math inline">\(A\rightarrow
+\gamma\)</span>, <span class="math inline">\(S\Rightarrow
+^{*}\alpha\gamma\beta\)</span>, so all variables in <span
+class="math inline">\(\gamma\)</span> are derived and reachable.</p>
+</div>
+<div class="problem">
+<p>Use the CFL pumping lemma to show each of these languages not to be
+context-free.</p>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>(Exercise 7.3.1 (b)) Show that the CFL’s are closed under the
+operation <span class="math inline">\(L/a\)</span> considered in
+Homework 4. If <span class="math inline">\(L\)</span> is a language, and
+<span class="math inline">\(a\)</span> is a symbol, then <span
+class="math inline">\(L/a\)</span>, the quotient of <span
+class="math inline">\(L\)</span> and <span
+class="math inline">\(a\)</span>, is the set of strings <span
+class="math inline">\(w\)</span> such that <span
+class="math inline">\(wa\)</span> is in <span
+class="math inline">\(L\)</span>.</p>
+</div>
+<div class="solution">
+<p>To proof <span class="math inline">\(L/a\)</span> is closed, we need
+to proof forall CFG <span class="math inline">\(L\)</span>, <span
+class="math inline">\(L / a\)</span> is also CFG. To proof that,
+construct a Chomsky Normal Form of <span
+class="math inline">\(L-\{\epsilon\}\)</span>. Then construct <span
+class="math inline">\(a\)</span>-ended variable by induction:</p>
+<p>Basis: If <span class="math inline">\(A\rightarrow a\)</span>,
+construct <span class="math inline">\(A&#39;\rightarrow
+\epsilon\)</span> is <span class="math inline">\(a\)</span>-ended.</p>
+<p>Induction: If <span class="math inline">\(B\rightarrow CA\)</span>,
+construct <span class="math inline">\(B&#39;\rightarrow CA&#39;\)</span>
+is <span class="math inline">\(a\)</span>-ended.</p>
+<p>Set <span class="math inline">\(S&#39;\)</span> as the new start
+variable. Then proof the new grammar has language <span
+class="math inline">\(L / a\)</span>.</p>
+<p>If <span class="math inline">\(wa\in L\)</span>, there is a variable
+<span class="math inline">\(A\rightarrow a\)</span> at the rightmost of
+generating. In the new grammar there is <span
+class="math inline">\(A&#39;\rightarrow \epsilon\)</span>, so <span
+class="math inline">\(w\in L / a\)</span> in new grammar.</p>
+<p>If <span class="math inline">\(w\)</span> in new grammar, which means
+<span class="math inline">\(S&#39;\Rightarrow^{*} \alpha A&#39;\)</span>
+generating <span class="math inline">\(w\)</span>, then in origin CFG we
+have <span class="math inline">\(S\Rightarrow ^{*}A\)</span> generating
+<span class="math inline">\(wa\)</span>, so <span
+class="math inline">\(wa\in L,w\in L / a\)</span>.</p>
+<p>So <span class="math inline">\(L / a\)</span> is CFG.</p>
+</div>
+<div class="problem">
+<p>(Exercise 7.4.3 (c)) Using the grammar <span
+class="math inline">\(G\)</span> of Example 7.34, use the CYK algorithm
+to determine whether string <span class="math inline">\(aabab\)</span>
+is in <span class="math inline">\(L(G)\)</span>. <span
+class="math display">\[\begin{aligned}
+    S &amp; \rightarrow AB \,|\, BC\\
+    A &amp; \rightarrow BA \,|\, a\\
+    B &amp; \rightarrow CC \,|\, b\\
+    C &amp; \rightarrow AB \,|\, a
+  
+\end{aligned}\]</span></p>
+</div>
+<div class="solution">
+<p>Answer like:</p>
+<figure>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(\{A,C\}\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(\{A,C\}\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(\{B\}\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(\{A,C\}\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(\{B\}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(\{B\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{S,C\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{S,A\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{S,C\}\)</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(\{S,A,B\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{S\}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(\{S,A\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{B\}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(\{S\}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</figure>
+<p>So <span class="math inline">\(aabab\in L\left( G
+\right)\)</span>.</p>
+</div>

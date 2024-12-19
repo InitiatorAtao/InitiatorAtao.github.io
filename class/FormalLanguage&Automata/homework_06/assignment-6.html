@@ -1,0 +1,66 @@
+<div class="problem">
+<p>Design context-free grammars for the following languages:</p>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>(Exercise 5.1.8) Consider the CFG <span
+class="math inline">\(G\)</span> defined by productions: <span
+class="math display">\[S \rightarrow aSbS \;|\; bSaS \;|\;
+\epsilon\]</span> Prove that <span class="math inline">\(L(G)\)</span>
+is the set of all strings with an equal number of a’s and b’s.</p>
+</div>
+<div class="solution">
+<p>Use structural induction to proof all <span
+class="math inline">\(S\)</span> derivated string have the same a’s and
+b’s:</p>
+<p>Base: <span class="math inline">\(S\rightarrow \epsilon\)</span> has
+the equal number (zero) of a’s and b’s.</p>
+<p>Induction: If <span class="math inline">\(S_0,S_1\)</span> has the
+equal number of a’s and b’s (let the numbers are <span
+class="math inline">\(a_0=b_0,a_1=b_1\)</span>), then <span
+class="math inline">\(S\rightarrow aS_0bS_1\)</span> has <span
+class="math inline">\(a_0+a_1+1\)</span> of a’s and <span
+class="math inline">\(b_0+b_1+1\)</span> of b’s, and <span
+class="math inline">\(a_0+a_1+1=b_0+b_1+1\)</span> for <span
+class="math inline">\(S\)</span>. For <span
+class="math inline">\(S\rightarrow bSaS\)</span> that is the same.</p>
+<p>Then proof all string <span class="math inline">\(s\)</span> with the
+same a’s and b’s can be derivated by <span
+class="math inline">\(S\)</span> :</p>
+<p>Base: If <span class="math inline">\(s=\epsilon\)</span>, use <span
+class="math inline">\(S\rightarrow \epsilon\)</span> to derivate <span
+class="math inline">\(s\)</span>.</p>
+<p>Induction: Else there is at lease a pair of a and b in <span
+class="math inline">\(s\)</span>. If the first letter of <span
+class="math inline">\(s\)</span> is a, choose the shortest prefix of
+<span class="math inline">\(s\)</span> with the same a’s and b’s, the
+prefix must end with b (because <span class="math inline">\(s\)</span>
+starts with a, if the prefix ends with a then there must be enough b for
+a shorter correct prefix). Choose the prefix as <span
+class="math inline">\(aS_0b\)</span> then use <span
+class="math inline">\(S\rightarrow aS_0bS_1\)</span> can derivate the
+string. Using the same method,strings begin with b can be derivated by
+<span class="math inline">\(S\rightarrow bS_0aS_1\)</span>.</p>
+<p>So, <span class="math inline">\(L(G)\)</span> is the set of all
+strings with equal a’s and b’s.</p>
+</div>
+<div class="problem">
+<p>(Exercise 5.4.7) The following grammar generates prefix expressions
+with operands <span class="math inline">\(x\)</span> and <span
+class="math inline">\(y\)</span> and binary operators <span
+class="math inline">\({+}, {-}\)</span> and <span
+class="math inline">\(*\)</span>: <span class="math display">\[E
+\rightarrow {+}EE \;|\; {*}EE \;|\; {-}EE \;|\; x \;|\; y.\]</span></p>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>Give both an ambiguous and unambiguous CFG for <span
+class="math inline">\(\{a^{m}b^{n} \mid m \ge 2n \ge 0\}\)</span>.</p>
+</div>
+<div class="solution">
+
+</div>

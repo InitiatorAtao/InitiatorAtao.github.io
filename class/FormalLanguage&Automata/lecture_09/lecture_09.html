@@ -1,0 +1,138 @@
+<h1 id="pushdown-automata">Pushdown Automata</h1>
+<p>Pushdown Automata can be seen as <span
+class="math inline">\(\epsilon\)</span>-NFA plus a stack.</p>
+<div class="definition">
+<p>(Pushdown Automata) A pushdown automata is a seven tuple: <span
+class="math display">\[\begin{aligned}
+                P=&amp;(Q,\Sigma,\Gamma,\delta,q_0,Z_0,F)\nonumber
+            
+\end{aligned}\]</span> with:</p>
+<ul>
+<li><p><span class="math inline">\(Q\)</span> :state</p></li>
+<li><p><span class="math inline">\(\Sigma\)</span> :alphabet</p></li>
+<li><p><span class="math inline">\(\Gamma\)</span> :stack
+symbols</p></li>
+<li><p><span class="math inline">\(\delta:Q\times
+(\Sigma\cup\{\epsilon\})\times \Gamma\rightarrow 2^{Q\times
+\Sigma^{*}}\)</span> :transition function</p></li>
+<li><p><span class="math inline">\(q_0\in Q\)</span> :start
+state</p></li>
+<li><p><span class="math inline">\(Z_0\in \Gamma\)</span> :initial
+symbol in stack</p></li>
+<li><p><span class="math inline">\(F\subseteq Q\)</span> :accepting
+state</p></li>
+</ul>
+<p>Where <span class="math inline">\(\delta(q,a,x)\)</span> receives a
+state <span class="math inline">\(q\)</span>, a letter <span
+class="math inline">\(a\)</span> (may be <span
+class="math inline">\(\epsilon\)</span>) and now stack top <span
+class="math inline">\(x\in \Gamma\)</span>, outputs a set of pairs <span
+class="math inline">\((p,\gamma)\)</span>. <span
+class="math inline">\(p\)</span> is the new state, <span
+class="math inline">\(\gamma\in \Gamma^{*}\)</span> is the string
+replacing <span class="math inline">\(x\)</span> .</p>
+<p>To make transition, start in <span class="math inline">\(q_0\)</span>
+and consume letters and run according to <span
+class="math inline">\(\delta\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="example:Pushdown Automata"
+data-label="example:Pushdown Automata"></span> (Pushdown Automata) To
+build PA for <span class="math inline">\(L_{wwr}=\{ww^{R}\ |\ w\in
+\{0,1\}^{*}\}\)</span>. Just push all letters in the first state, do
+<span class="math inline">\(\epsilon\)</span> move to the second state
+and pop them all (only accept the poped letter now). Then if the stack
+is empty do <span class="math inline">\(\epsilon\)</span> move to the
+final state which is accepted.</p>
+</div>
+<div class="definition">
+<p>(Instantaneous description,ID of PDA) A three tuple <span
+class="math inline">\((q,w,\gamma)\)</span> refers to current state,
+remaining input and stack symbols.(also called configuration) Suppose
+<span class="math inline">\(\delta(q,a,x)\)</span> contains <span
+class="math inline">\(p,\alpha\)</span>. Then for all string <span
+class="math inline">\(w\in \Sigma^{*}\)</span> and <span
+class="math inline">\(\beta\in \Gamma^{*}\)</span>, we write: <span
+class="math display">\[\begin{aligned}
+                (q,aw,x\beta)\vdash(p,w,\alpha\beta)\nonumber
+            
+\end{aligned}\]</span> Also <span
+class="math inline">\(\vdash^{*}\)</span> means multi steps of <span
+class="math inline">\(\vdash\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(Instantaneous description of PDA) Two important principles for a
+legal sequence ID’s of a PDA <span class="math inline">\(P\)</span> like
+<span
+class="math inline">\((q_0,w_0,\gamma_0)\vdash^{*}(q_1,w_1,\gamma_1)\)</span>:</p>
+<ol>
+<li><p>Adding or removing suffixes of input <span
+class="math inline">\(w\)</span> keep the sequence legal. Or: <span
+class="math display">\[\begin{aligned}
+                        (q_0,w_0,\gamma_0)\vdash^{*}(q_1,w_1,\gamma_1)\Leftrightarrow(q_0,w_0w,\gamma_0)\vdash^{*}(q_1,w_1w,\gamma_1)\nonumber
+                    
+\end{aligned}\]</span></p></li>
+<li><p>Adding suffixes of stack <span
+class="math inline">\(\gamma\)</span> keep the sequence legal. Or: <span
+class="math display">\[\begin{aligned}
+                        (q_0,w_0,\gamma_0)\vdash^{*}(q_1,w_1,\gamma_1)\Rightarrow(q_0,w_0,\gamma_0\gamma)\vdash^{*}(q_1,w_1w,\gamma_1\gamma)\nonumber
+                    
+\end{aligned}\]</span></p></li>
+</ol>
+</div>
+<div class="definition">
+<p>(The language of PDA) All strings can be accepted by the final state
+or the empty stack.</p>
+<p>For final state: <span class="math display">\[\begin{aligned}
+                L(P)=&amp;\{w\in \Sigma^{*}\ |\
+(q_0,w,Z_0)\vdash^{*}(q,\epsilon,\alpha),q\in F\}\nonumber
+            
+\end{aligned}\]</span></p>
+<p>For empty stack: <span class="math display">\[\begin{aligned}
+                N(P)=&amp;\{w\in \Sigma^{*}\ |\
+(q_0,w,Z_0)\vdash^{*}(q,\epsilon,\epsilon)\}\nonumber
+            
+\end{aligned}\]</span></p>
+</div>
+<div class="example">
+<p>(The language of PDA) In example <a href="#example:Pushdown Automata"
+data-reference-type="ref"
+data-reference="example:Pushdown Automata">[example:Pushdown
+Automata]</a>, if there is non-empty <span
+class="math inline">\(Z_0\)</span>, the PDA has <span
+class="math inline">\(L(P)=L_{wwr},N(P)=\emptyset\)</span>. If <span
+class="math inline">\(Z_0=\emptyset\)</span>, then <span
+class="math inline">\(L(P)=N(P)=L_{wwr}\)</span>.</p>
+</div>
+<div class="theorem">
+<p>(The language of PDA) For all PDA <span
+class="math inline">\(P\)</span>, exists PDAs <span
+class="math inline">\(P&#39;,P&#39;&#39;\)</span>, <span
+class="math inline">\(N(P)=L(P&#39;),L(P)=N(P&#39;&#39;)\)</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> (The language of PDA) Main purpose is using <span
+class="math inline">\(X_0\)</span> to control whether the stack is
+empty:</p>
+<ul>
+<li><p>For from <span class="math inline">\(N\)</span> to <span
+class="math inline">\(L\)</span> PDA <span
+class="math inline">\(P&#39;\)</span>, just add a new stack suffix <span
+class="math inline">\(X_0\)</span> below <span
+class="math inline">\(Z_0\)</span>. Then add <span
+class="math inline">\(\epsilon\)</span> move with stack top <span
+class="math inline">\(X_0\)</span> from origin states to a new final
+state <span class="math inline">\(f\)</span>. (remove all origin final
+states)</p></li>
+<li><p>For from <span class="math inline">\(L\)</span> to <span
+class="math inline">\(N\)</span> PDA <span
+class="math inline">\(P&#39;&#39;\)</span>, just add a new stack suffix
+<span class="math inline">\(X_0\)</span> below <span
+class="math inline">\(Z_0\)</span>. Then add <span
+class="math inline">\(\epsilon\)</span> move poping stack top from all
+origin final state to a new state with a self <span
+class="math inline">\(\epsilon\)</span> loop removing stack
+top.</p></li>
+</ul>
+<p> ◻</p>
+</div>

@@ -1,0 +1,192 @@
+<h1 id="实验内容">实验内容</h1>
+<h2 id="加法器">加法器</h2>
+<p>使用如图所示的电路实现一个加法器,将 <span
+class="math inline">\(u_1\)</span> 设置为正弦波,频率 <span
+class="math inline">\(100 \ \mathrm{Hz}\)</span>,幅值为 <span
+class="math inline">\(5 \ \mathrm{V}\)</span>. <span
+class="math inline">\(u_2\)</span> 设置为 <span class="math inline">\(5
+\ \mathrm{V}\)</span> 直流源, <span
+class="math inline">\(R_{f},R_1,R_2\)</span> 的值在 <span
+class="math inline">\(\ \mathrm{k\Omega}\)</span>
+级别,根据需要设置.用示波器同时显示 <span
+class="math inline">\(u_1\)</span> 和 <span
+class="math inline">\(u_0\)</span>
+的波形并记录.使用两组不同的电阻值,观察结果的变化.</p>
+<figure>
+<embed src="./figures/homework_04_figure_01.pdf" style="width:70.0%" />
+</figure>
+<h2 id="电流源">电流源</h2>
+<p>使用如图所示的电路实现一个压控电流源,其中 <span
+class="math inline">\(u_1\)</span> 为正弦波,频率 <span
+class="math inline">\(100 \ \mathrm{Hz}\)</span>.根据输入电压 <span
+class="math inline">\(u_{i}\)</span> 和电阻 <span
+class="math inline">\(R_1\)</span>,理论计算使输出呈现电流源特性的电阻
+<span class="math inline">\(R_{L}\)</span>
+的变化范围.分别调节并记录输入电压 <span
+class="math inline">\(u_{i}\)</span> 及 <span
+class="math inline">\(R_{L}\)</span> 变化时,对输出电流的影响.调节 <span
+class="math inline">\(R_{L}\)</span>
+使运放进入饱和区,记录输出电流的变化.</p>
+<figure>
+<embed src="./figures/homework_04_figure_02.pdf" style="width:50.0%" />
+</figure>
+<h1 id="原始数据">原始数据</h1>
+<h2 id="加法器-1">加法器</h2>
+<p>固定 <span class="math inline">\(u_{1}\)</span> 为 <span
+class="math inline">\(100 \ \mathrm{Hz}\)</span> 的 <span
+class="math inline">\(5 \ \mathrm{V}\)</span> 正弦波, <span
+class="math inline">\(u_2\)</span> 为 <span class="math inline">\(5 \
+\mathrm{V}\)</span> 直流,选取两组不同的 <span
+class="math inline">\(R_{f},R_1,R_2\)</span> 值绘图如下:</p>
+<ul>
+<li><p><span class="math inline">\(R_{f}=1 \ \mathrm{k\Omega},R_1=1 \
+\mathrm{k\Omega},R_2=5 \ \mathrm{k\Omega}\)</span>,绘制波形如下:</p>
+<figure>
+
+</figure></li>
+<li><p><span class="math inline">\(R_{f}=1 \ \mathrm{k\Omega},R_1=5 \
+\mathrm{k\Omega},R_2=1 \ \mathrm{k\Omega}\)</span>,绘制波形如下:</p>
+<figure>
+
+</figure></li>
+</ul>
+<h2 id="电流源-1">电流源</h2>
+<p>测量基准数据,取 <span class="math inline">\(u_{i}\)</span> 为 <span
+class="math inline">\(1 \ \mathrm{V},100 \ \mathrm{Hz}\)</span> 正弦波,
+<span class="math inline">\(R_{i}=1 \ \mathrm{k\Omega},R_{L}=5 \
+\mathrm{k\Omega},R_{1}=1 \
+\mathrm{k\Omega}\)</span>,测量并计算得到输出电流 <span
+class="math inline">\(i\)</span> 与输入电压 <span
+class="math inline">\(u_{i}\)</span> 的波形:</p>
+<figure>
+
+</figure>
+<p>调整 <span class="math inline">\(u_{i}\)</span> 并分析变化.将 <span
+class="math inline">\(u_{i}\)</span> 重设为 <span
+class="math inline">\(2 \ \mathrm{V}\)</span>,频率不变,电阻阻值不变
+<span class="math inline">\(R_{i}=1 \ \mathrm{k\Omega},R_{L}=5 \
+\mathrm{k\Omega},R_{1}=1 \
+\mathrm{k\Omega}\)</span>,测量并计算得到输出电流 <span
+class="math inline">\(i\)</span> 与输入电压 <span
+class="math inline">\(u_{i}\)</span> 的波形:</p>
+<figure>
+
+</figure>
+<p>继续调整 <span class="math inline">\(R_{L}=1 \
+\mathrm{k\Omega}\)</span>,其他参数不变 <span
+class="math inline">\(u_{i}=2 \ \mathrm{V},R_{i}=1 \
+\mathrm{k\Omega},R_1=1 \
+\mathrm{k\Omega}\)</span>,同理绘制电压-电流波形如下:</p>
+<figure>
+
+</figure>
+<h1 id="数据分析">数据分析</h1>
+<h2 id="加法器-2">加法器</h2>
+<p>对于第一次测量, <span class="math inline">\(R_{f}=1 \
+\mathrm{k\Omega},R_1=1 \ \mathrm{k\Omega},R_2=5 \
+\mathrm{k\Omega}\)</span>,观察波形可见 <span
+class="math inline">\(u_0\)</span> 接近于 <span
+class="math inline">\(u_1\)</span> 的反相,但还有约 <span
+class="math inline">\(-1 \ \mathrm{V}\)</span> 的直流偏移,由于电源中只有
+<span class="math inline">\(u_2\)</span> 为直流源,可推测该偏移即为 <span
+class="math inline">\(u_2\)</span> 产生,但相对于 <span
+class="math inline">\(u_2\)</span> 的 <span class="math inline">\(5 \
+\mathrm{V}\)</span> 电压减小到原来的 <span
+class="math inline">\(\frac{1}{5}\)</span>.</p>
+<p>对于第二次测量, <span class="math inline">\(R_{f}=1 \
+\mathrm{k\Omega},R_1=5 \ \mathrm{k\Omega},R_2=1 \
+\mathrm{k\Omega}\)</span>, <span class="math inline">\(u_0\)</span>
+的振幅相对于 <span class="math inline">\(u_1\)</span> 减小到约 <span
+class="math inline">\(\frac{1}{5}\)</span> ,而直流偏移量约为 <span
+class="math inline">\(-5 \ \mathrm{V}\)</span> 与 <span
+class="math inline">\(u_2\)</span> 基本相同.</p>
+<p>由此可以推测, <span class="math inline">\(u_0\)</span> 为关于 <span
+class="math inline">\(u_1,u_2,R_1,R_2\)</span>
+的函数,且由电路接线结构以及初步实验数据可推测, <span
+class="math inline">\(u_1,R_2\)</span> 之间, <span
+class="math inline">\(u_2,R_1\)</span> 之间互不影响,可得到初步关系式
+<span class="math inline">\(u_0=-\left(
+\frac{c_1}{R_1}u_1+\frac{c_2}{R_2}u_2
+\right)\)</span>.实际上,由量纲关系可猜测常数 <span
+class="math inline">\(c_1,c_2\)</span> 也应当与某一电阻有关,改变 <span
+class="math inline">\(R_{f}\)</span> 进一步实验可知 <span
+class="math inline">\(c_1=c_2=R_{f}\)</span>,于是可以得到加法器的电压关系
+<span class="math inline">\(u_0=-\left(
+\frac{R_{f}}{R_1}u_1+\frac{R_{f}}{R_2}u_2 \right)\)</span>.</p>
+<p>理论分析方面,使用运放的 "虚短" 即正负输入端间电压为 <span
+class="math inline">\(0\)</span>,以及 "虚断" 即正负输入端电流为 <span
+class="math inline">\(0\)</span>,可得到负输入端上的 KCL 方程 <span
+class="math inline">\(\frac{u_1}{R_1}+\frac{u_2}{R_2}+\frac{u_0}{R_{f}}=0\)</span>.
+此即实验所得关系式的变形形式,符合实验结果.</p>
+<h2 id="电流源-2">电流源</h2>
+<p>对基准数据 <span class="math inline">\(u_{i}=1 \ \mathrm{V},R_i=1 \
+\mathrm{k\Omega},R_{L}=5 \ \mathrm{k\Omega}, R_1=1 \
+\mathrm{k\Omega}\)</span>,波形图上以伏特为单位的 <span
+class="math inline">\(u_{i}\)</span> 与以毫安为单位的 <span
+class="math inline">\(i\)</span> 几乎重合,故等效电路为 <span
+class="math inline">\(u_{i}\)</span> 激励的一个 <span
+class="math inline">\(R=1 \ \mathrm{k\Omega}\)</span>
+的电阻,观察此时使用的电阻数值,等效电阻阻值可能与 <span
+class="math inline">\(R_{i}\)</span> 或 <span
+class="math inline">\(R_{1}\)</span> 有较大关系.</p>
+<p>将 <span class="math inline">\(u_{i}\)</span> 重设为 <span
+class="math inline">\(2 \ \mathrm{V}\)</span>
+后,电压-电流波形图大部分仍然重合,但在峰值附近, <span
+class="math inline">\(i\)</span> 未能达到 <span
+class="math inline">\(u_{i}\)</span> 峰值对应的电流,而是出现了与 <span
+class="math inline">\(x\)</span>
+轴平行的极值线段.计算此时输出端上的电压约为 <span
+class="math inline">\(1.8 \ \mathrm{mA}\times 6 \ \mathrm{k\Omega}=10.8
+\ \mathrm{V}\)</span> 接近于运放的驱动电压单侧峰值 <span
+class="math inline">\(12 \
+\mathrm{V}\)</span>,因此推测运放到达饱和.从未饱和的部分可知,电流响应与激励
+<span class="math inline">\(u_{i}\)</span> 成正比,由基准数据 (设为 <span
+class="math inline">\(u_{i_0}\)</span> 和 <span
+class="math inline">\(i_0\)</span>) 可推测此时的理想电流响应应当为 <span
+class="math inline">\(i=\frac{u_{i}}{u_{i_0}}i_{0}=2 \
+\mathrm{mA}\)</span>,对应的输出电压 <span class="math inline">\(u=12 \
+\mathrm{V}\)</span>
+是运放的理想最大输出电压,但实际运放出现饱和,即实际运放在驱动电压的利用上存在损耗.</p>
+<p>在上述基础上,将 <span class="math inline">\(R_{L}\)</span> 重设为
+<span class="math inline">\(1 \
+\mathrm{k\Omega}\)</span>,得到的波形相比于上述波形未见明显变化,但运放饱和现象消失,电流响应达到预定理想值,因此可推测在运放未饱和时,响应电流与
+<span class="math inline">\(R_{L}\)</span> 无关,运放在 <span
+class="math inline">\(R_{L}\)</span>
+支路上起到了等效电流源的效果.由电路接线的支路关系,可推测响应 <span
+class="math inline">\(i=\frac{u_{i}}{R_1}\)</span>
+(未饱和时),进一步实验也证实了该推测,该关系式与 <span
+class="math inline">\(R_{L}\)</span>
+亦即输出端电压无关,该电路结构成功实现了电流源.</p>
+<p>理论分析方面,使用 "虚短" 与 "虚断" 条件,可以得到负输入端的电压等于
+<span class="math inline">\(u_{i}\)</span> 且电流为 <span
+class="math inline">\(0\)</span>,于是 <span
+class="math inline">\(R_1\)</span> 支路的电流 <span
+class="math inline">\(i_1=\frac{u_{i}}{R_1}\)</span> 也等于 <span
+class="math inline">\(R_{L}\)</span> 支路的电流,此即实验得出的响应电流
+<span class="math inline">\(i\)</span> 的关系式,符合实验结果.</p>
+<h1 id="思考题">思考题</h1>
+<ol>
+<li><p>如果要实现一个将输入信号放大 <span
+class="math inline">\(10000\)</span>
+倍的电路,设计电路时应该考虑哪些因素?</p>
+<p>放大信号倍数极大,首先要考虑输入信号的干扰问题,因为干扰可能随信号一同放大,微弱的稳恒干扰可能被放大到能够覆盖信号变化的程度,因此需要使用差分输入等手段消除此类干扰.</p>
+<p>同时,较强的输出信号产生的电磁效应可能会影响到输入信号,因此需要做好输入输出信号间的隔离,这也可以有效防止放大器出现故障时强电流流入输入端导致的元器件损坏.</p>
+<p>在实现方面,单个放大器难以达到如此大倍数的增益,输入输出端的信号强度差异会引起一系列的问题,使用多个放大器逐级放大可以减小出现这些问题的可能性,在多级放大过程中还可以插入一些滤波和抗干扰手段以提升放大质量.</p></li>
+<li><p>电流源的接线中电阻 <span class="math inline">\(R_{i}\)</span>
+的作用是什么,其选值受什么因素制约.</p>
+<p><span class="math inline">\(R_{i}\)</span>
+并不直接参与电路响应,其主要作用可能是保护电路,因为其支路上单个电源 <span
+class="math inline">\(u_{i}\)</span>
+在电路故障时有短路的风险,串联一个电阻可以控制短路发生时电源不致烧坏.由此
+<span class="math inline">\(R_{i}\)</span> 应足够大使得其单独串联 <span
+class="math inline">\(u_{i}\)</span> 时电流在合理区间 (<span
+class="math inline">\(\ \mathrm{mA}\)</span>级别) ,同时 <span
+class="math inline">\(R_{i}\)</span>
+不能过大以免在正常使用时分压破坏实际运放的近似 "虚断" 性质.</p></li>
+</ol>
+<h1 id="结论">结论</h1>
+<p>本实验通过使用运放构建加法器和模拟电流源,计算和分析了运放的基本电路性质,同时介绍了对运放分析的
+"虚短" 和 "虚断"
+性质,得出了运放在实际电路中的作用和基本使用方法,还强调了一些运放使用过程中的注意事项及其原因.</p>
+<p>完整数据及图表可从<a
+href="https://cloud.tsinghua.edu.cn/d/14cb134a3c584fa28f73/">此处</a>下载.</p>

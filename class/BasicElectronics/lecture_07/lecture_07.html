@@ -1,0 +1,72 @@
+<h1 id="正弦量的基本概念">正弦量的基本概念</h1>
+<h2 id="正弦量的三要素">正弦量的三要素</h2>
+<p><span class="math inline">\(i(t)=I_m \sin(\omega
+t+\psi)\)</span>.</p>
+<p>幅值 <span class="math inline">\(I_m\)</span>,角频率 <span
+class="math inline">\(\omega\)</span>,初相位 <span
+class="math inline">\(\psi\)</span>.(相位 <span
+class="math inline">\(\omega t+\psi\)</span>,相位差 <span
+class="math inline">\(\phi=\psi_{u}-\psi_{i}\)</span>,相位差为正称 <span
+class="math inline">\(u\)</span> 领先 <span
+class="math inline">\(i\)</span>)</p>
+<h2 id="有效值">有效值</h2>
+<p><span class="math display">\[\begin{aligned}
+                I=&amp;\sqrt{\frac{1}{T}\int_{0}^{T}i^{2}(t)\mathrm{d}t}\\
+                U=&amp;\sqrt{\frac{1}{T}\int_{0}^{T}u^{2}(t)\mathrm{d}t}
+            
+\end{aligned}\]</span> 有效值又称均方根值 (root-mean-square,rms).
+对于正弦量: <span class="math display">\[\begin{aligned}
+                I_m=&amp;\sqrt{2}I\\
+                U_m=&amp;\sqrt{2}U
+            
+\end{aligned}\]</span></p>
+<h2 id="正弦量的相量表示">正弦量的相量表示</h2>
+<p><span class="math display">\[\begin{aligned}
+            A(t)=&amp;\sqrt{2}Ie^{j(\omega t+\psi)}\nonumber\\
+            =&amp;\sqrt{2}I\cos{(\omega t+\psi)}+j\sqrt{2}I\sin{(\omega
+t+\psi)}
+        
+\end{aligned}\]</span> 取虚部 <span
+class="math inline">\(\operatorname{Im}[A(t)]=\sqrt{2}I\sin{(\omega
+t+\psi)}\leftrightarrow A(t)=\sqrt{2}Ie^{j\psi}e^{j\omega
+t}=\sqrt{2}\dot{I}e^{j\omega t}\)</span>,称 <span
+class="math inline">\(\dot{I}=Ie^{j\psi}=I\angle \psi\)</span> 为正弦量
+<span class="math inline">\(i(t)\)</span>
+对应的相量.相量的模表示正弦量的有效值,辐角表示正弦量的初相位.</p>
+<p>相量图,即绘制相量对应的向量.</p>
+<p>相量运算,同频率加减直接做复数加减,微积分等于乘除 <span
+class="math inline">\(j\omega\)</span>: <span
+class="math display">\[\begin{aligned}
+            \frac{\mathrm{d}i}{\mathrm{d}t}\leftrightarrow&amp;j\omega\dot{I}\\\int
+i\mathrm{d}t\leftrightarrow&amp;\frac{\dot{I}}{j\omega}
+        
+\end{aligned}\]</span></p>
+<p>相量法只适用于激励为同频正弦量的非时变线性电路.</p>
+<h2 id="rlc-元件上电压电流的相量关系"> RLC 元件上电压电流的相量关系</h2>
+<h3 id="电阻">电阻</h3>
+<p>有效值 <span class="math inline">\(U=IR\)</span>,相位相同.</p>
+<h3 id="电感">电感</h3>
+<p>有效值 <span class="math inline">\(U=\omega LI\)</span>,相位 <span
+class="math inline">\(u\)</span> 超前 <span
+class="math inline">\(90^{\circ}\)</span>.感抗 <span
+class="math inline">\(X_L=\omega L\)</span>,单位为 <span
+class="math inline">\(\Omega\)</span>,由此可以计算 <span
+class="math inline">\(\dot{U}=j X_L \dot{I}\)</span>.感纳 <span
+class="math inline">\(B_L=-\frac{1}{\omega L},\dot{I}=jB_L
+\dot{U}\)</span>,单位为 <span class="math inline">\(S\)</span>.</p>
+<h3 id="电容">电容</h3>
+<p>有效值 <span class="math inline">\(I=\omega C U\)</span>,相位 <span
+class="math inline">\(i\)</span> 超前 <span
+class="math inline">\(90^{\circ}\)</span>.容抗 <span
+class="math inline">\(X_C=-\frac{1}{\omega C}\)</span>,单位为 <span
+class="math inline">\(\Omega\)</span>,容纳 <span
+class="math inline">\(B_C=\omega C\)</span>,单位为 <span
+class="math inline">\(S\)</span>.其他计算同理.</p>
+<h2 id="复阻抗与复导纳">复阻抗与复导纳</h2>
+<p>复阻抗:正弦激励下 <span
+class="math inline">\(Z=\frac{\dot{U}}{\dot{I}}\)</span>,单位为 <span
+class="math inline">\(\Omega\)</span>,
+其模长和辐角分别称阻抗模和阻抗角.实部称电阻,虚部称电抗.</p>
+<p>复导纳: <span
+class="math inline">\(Z=\frac{\dot{I}}{\dot{U}}\)</span>,单位为 <span
+class="math inline">\(S\)</span>,模长辐角称导纳模/角.实部称电导,虚部称电抗.</p>

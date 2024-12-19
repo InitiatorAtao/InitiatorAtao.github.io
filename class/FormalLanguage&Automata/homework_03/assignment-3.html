@@ -1,0 +1,236 @@
+<div class="problem">
+<p>(Exercise 2.3.4 (c)) Convert regular expression <span
+class="math inline">\(00{(0+1)}^{*}\)</span> to an NFA with <span
+class="math inline">\(\epsilon\)</span>-transitions using Thompson’s
+method.</p>
+</div>
+<div class="solution">
+<p>Answer like:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"></th>
+<th style="text-align: center;"><span
+class="math inline">\(\epsilon\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(0\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><span class="math inline">\(\rightarrow
+1\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{2\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{3\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{4\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{5\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(5\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{6\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(6\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{7,8\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(7\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{9\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(8\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{10\}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(9\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{11\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(10\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{11\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(11\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{6,12\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(*12\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\emptyset\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="problem">
+<p>(Exercise 2.3.6) Let <span class="math inline">\(A = (Q, \Sigma,
+\delta, q_{0}, \{q_{f}\})\)</span> be an <span
+class="math inline">\(\epsilon\)</span>-NFA such that there are no
+transitions into <span class="math inline">\(q_{0}\)</span> and no
+transitions out of <span class="math inline">\(q_{f}\)</span>. Describe
+the language accepted by each of the following modifications of <span
+class="math inline">\(A\)</span>, in terms of <span
+class="math inline">\(L = L(A)\)</span>:</p>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>(Exercise 3.2.3) Convert the following DFA to a regular expression,
+using the state-elimination technique of Section 3.2.2.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"></th>
+<th style="text-align: center;"><span
+class="math inline">\(0\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><span class="math inline">\(\rightarrow *
+p\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(s\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(p\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(q\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(p\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(s\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(r\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(r\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(q\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(s\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(q\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(r\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="solution">
+<p>First eliminate <span class="math inline">\(r\)</span>, which turns
+into <span class="math inline">\(10^{*}1\)</span> from <span
+class="math inline">\(s\)</span> to <span
+class="math inline">\(q\)</span>. Then eliminate <span
+class="math inline">\(p,s\)</span> into self loop <span
+class="math inline">\(0(0+10^{*}1)(1(0+10^{*}1))^{*}0\)</span> in <span
+class="math inline">\(q\)</span>. So for <span
+class="math inline">\(q\)</span> the final RE is <span
+class="math inline">\((1+0(0+10^{*}1)(1(0+10^{*}1))^{*})^{*}\)</span></p>
+</div>
+<div class="problem">
+<p>Prove or disprove each of the following statements about regular
+expressions.</p>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>Construct a DFA for each of the regular languages below:</p>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>Give a regular expression for each of the regular language below:</p>
+</div>
+<div class="solution">
+
+</div>

@@ -1,0 +1,274 @@
+<div class="problem">
+<p>Lazy evaluation in subset state construction when converting an NFA
+to a DFA can often be more efficient than using the straightforward
+subset state conversion method. One notable example is the keyword
+search problem discussed in textbooks, where the resulting DFA has no
+more states than the original NFA. Perform the lazy evaluation variant
+of the subset state method to convert the following NFA for keyword
+<em>fa</em> and <em>dfa</em> to an equivalent DFA with the same number
+of states. In the diagram, <span class="math inline">\(\Sigma =
+\{a,b,\ldots, z\}\)</span> is the alphabet.</p>
+<div class="center">
+
+</div>
+</div>
+<div class="solution">
+<p>The table below shows the subset founded in lazy evaluation in
+order:</p>
+<figure>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span
+class="math inline">\(d\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(f\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(a\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(\rightarrow
+\{1\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,4\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,2\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1\}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,4\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,4\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,2,5\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1\}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,2\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,4\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,2\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,3\}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,2,5\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,4\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,2\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,3,6\}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(*\{1,3\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,4\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,2\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1\}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(*\{1,3,6\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,4\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1,2\}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\{1\}\)</span></td>
+</tr>
+</tbody>
+</table>
+</figure>
+</div>
+<div class="problem">
+<p>We can use closure properties to help prove certain languages are not
+regular. Starting with the fact that the language <span
+class="math display">\[L_{0n1n} = \{ 0^{n}1^{n} \mid n \ge 0 \}\]</span>
+is not a regular set, prove the following languages are not regular by
+transforming them, using operations known to preserve regularity:</p>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>(Exercise 4.3.2) Give an algorithm to tell whether a regular language
+<span class="math inline">\(L\)</span> contains at least <span
+class="math inline">\(100\)</span> strings.</p>
+</div>
+<div class="solution">
+<p>Calculate by induction:</p>
+<p>Basis: <span class="math inline">\(\epsilon\)</span> and all letters
+in <span class="math inline">\(\Sigma\)</span> contains only one string,
+<span class="math inline">\(\phi\)</span> contains no string.</p>
+<p>Induction: if <span class="math inline">\(E\)</span> and <span
+class="math inline">\(F\)</span> are RE contain strings <span
+class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span>,then:</p>
+<ul>
+<li><p><span class="math inline">\(E+F\)</span> contains <span
+class="math inline">\(a+b\)</span> strings.</p></li>
+<li><p><span class="math inline">\(EF\)</span> contains <span
+class="math inline">\(a\times b\)</span> strings.</p></li>
+<li><p><span class="math inline">\(E^{*}\)</span> contains infinity
+strings.</p></li>
+</ul>
+<p>From algorithm above, we can directly calculate the number of strings
+from RE of the RL. Then just simply compare that with 100 we can get the
+answer.</p>
+</div>
+<div class="problem">
+<p>A finite automaton is given as the following transition table:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"></th>
+<th style="text-align: center;"><span
+class="math inline">\(0\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><span class="math inline">\(\rightarrow
+A\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(B\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(E\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(B\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(C\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(F\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(*C\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(D\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(H\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(D\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(E\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(H\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(E\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(F\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(I\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(*F\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(G\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(B\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(G\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(H\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(B\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(H\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(I\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(C\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="math inline">\(*I\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(A\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(E\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="solution">
+
+</div>
+<div class="problem">
+<p>Define map <span class="math inline">\(h: \{0, 1\} \rightarrow {\{a,
+b\}}^*\)</span> as <span class="math inline">\(h(0) = ab\)</span> and
+<span class="math inline">\(h(1) = ba\)</span>. Given an automata <span
+class="math inline">\(A\)</span> as in the figure. Construct DFA B over
+<span class="math inline">\(\{0,1\}\)</span>, such that <span
+class="math inline">\(L(B) = h^{-1}(L(A))\)</span>.</p>
+<figure>
+
+</figure>
+</div>
+<div class="solution">
+<p>Use the definition <span
+class="math inline">\(\delta_1(q_1,0)=\delta(\delta(q,a),b)\)</span> and
+<span
+class="math inline">\(\delta_1(q_1,1)=\delta(\delta(q,b),a)\)</span> to
+shrink the DFA like:</p>
+<figure>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span
+class="math inline">\(0\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(\rightarrow
+A\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(A\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(B\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(*B\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(A\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(B\)</span></td>
+</tr>
+</tbody>
+</table>
+</figure>
+<p>Notice that the node in the right down side of problem graph is
+unreachable under <span class="math inline">\(h\)</span> so it does not
+appear.</p>
+</div>

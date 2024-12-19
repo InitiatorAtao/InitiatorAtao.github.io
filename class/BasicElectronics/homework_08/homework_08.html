@@ -1,0 +1,106 @@
+<h1 id="section">11-8</h1>
+<p>求题图 11-8 所示各电路的入端阻抗 <span
+class="math inline">\(Z_{ab}\)</span>.</p>
+<figure>
+<img src="./figures/homework_08_figure_01.png" />
+</figure>
+<ol>
+<li><p>由串并联电路的阻抗关系,最右侧支路的阻抗 <span
+class="math inline">\(Z_1=R+jX_{C}\)</span>,其与 <span
+class="math inline">\(jX_{C}\)</span> 并联后阻抗 <span
+class="math inline">\(Z_2=\frac{jRX_{C}-X_{C}^2}{R+2jX_{C}}\)</span>.同理可知进一步串联后
+<span
+class="math inline">\(Z_3=\frac{R^2+3jRX_{C}-X_{C}^2}{R+2jX_{C}}\)</span>,最终阻抗
+<span class="math inline">\(Z_{ab}=R + \frac{X_{C} \left(j R^{2} - 3 R
+X_{C} - j X_{C}^{2}\right)}{R^{2} + 4 j R X_{C} - 3
+X_{C}^{2}}\)</span></p></li>
+<li><p>右侧支路的阻抗 <span class="math inline">\(Z_1=1-j0.25 \
+\mathrm{\Omega}\)</span>,若 a,b 之间电压为 <span
+class="math inline">\(\dot{U}_{ab}\)</span>,则 <span
+class="math inline">\(\dot{U}_{1}=\frac{\dot{U}_{ab}}{1-j0.25}\)</span>,左侧支路电阻上的电压
+<span class="math inline">\(\dot{U}_{2}=U_{ab}+0.5\dot{U}_{1}=(1.47 +
+j0.11)U_{ab}\)</span>,电流 <span
+class="math inline">\(\dot{I}=\frac{\dot{U}_{2}}{R}\approx (1.47 +
+j0.11)U_{ab}\)</span>. 故总电流 <span
+class="math inline">\(\dot{I}\approx (2.41 +
+j0.35)\dot{U}_{ab}\)</span>,由此计算阻抗 <span
+class="math inline">\(Z_{ab}=\frac{\dot{U}_{ab}}{\dot{I}_{ab}}\approx
+0.406 - j0.0594 \ \mathrm{\Omega}\)</span>.</p></li>
+<li><p>右上方两电阻并联阻抗 <span class="math inline">\(0.5 \
+\mathrm{\Omega}\)</span> 且电流相等,求和为 <span
+class="math inline">\(0.5\dot{I}_1\)</span>,故各自电流为 <span
+class="math inline">\(0.25 \dot{I}_1\)</span>.故流过电感的电流 <span
+class="math inline">\(\dot{I}_2=0.75 \dot{I}_1\)</span>,总电流 <span
+class="math inline">\(\dot{I}=1.25I_1\)</span>.总电压即右侧支路电压
+<span class="math inline">\(\dot{U}_1=j 3 \dot{I}_{1}\)</span>
+和串联电阻上的电压 <span class="math inline">\(\dot{U}_{2}=1.25
+\dot{I}_{1}\)</span> 之和 <span class="math inline">\(\dot{U}=(1.25+j
+3)\dot{I}_{1}\)</span>.由此计算阻抗 <span
+class="math inline">\(Z_{ab}=\frac{\dot{U}}{\dot{I}}=1+j 2.4 \
+\mathrm{\Omega}\)</span>.</p></li>
+</ol>
+<h1 id="section-1">11-23</h1>
+<p>题图 11.23 所示电路为一种移相电路.用相量分析说明改变电阻可电压 <span
+class="math inline">\(\dot{U}_{ab}\)</span> 相位变化而大小不变.若 <span
+class="math inline">\(U=2 \ \mathrm{V},f=200 \ \mathrm{Hz},R_1=4 \
+\mathrm{\Omega}, C=0.01 \ \mathrm{\mu F}\)</span>,<span
+class="math inline">\(R_2\)</span> 由 <span class="math inline">\(30 \
+\mathrm{k\Omega}\)</span> 变至 <span class="math inline">\(140 \
+\mathrm{k \Omega}\)</span>,求 <span
+class="math inline">\(\dot{U}_{ab}\)</span> 的相位变化.</p>
+<figure>
+<img src="./figures/homework_08_figure_02.png" style="width:50.0%" />
+</figure>
+<p>相量分析如下图所示,其中 <span
+class="math inline">\(\dot{U}_{1}=\dot{U}_{2}\)</span>
+为左侧支路上两电阻 <span class="math inline">\(R_1\)</span>
+上的电压,<span class="math inline">\(\dot{U}_{R}\perp
+\dot{U}_{C}\)</span> 分别为 <span class="math inline">\(R_2\)</span>
+上的电压和电容上的电压,<span
+class="math inline">\(\dot{I}_{C}=\dot{I}_{2}\)</span>,由串并联电路的阻抗关系可知
+<span
+class="math inline">\(\dot{U}_{1}+\dot{U}_{2}=\dot{U}_{R}+\dot{U}_{C}=\dot{U}\)</span>.于是
+<span class="math inline">\(\dot{U}_{R},\dot{U}_{C}\)</span>
+在图中的交点在以 <span class="math inline">\(\dot{U}\)</span>
+为直径的圆上运动,又由 <span
+class="math inline">\(\dot{U}_{1}+\dot{U}_{ab}=\dot{U}_{R}\)</span>,于是
+<span class="math inline">\(U_{ab}\)</span> 等于圆的半径长,保持不变.</p>
+<figure>
+<embed src="./figures/homework_08_figure_03.pdf" style="width:45.0%" />
+</figure>
+<p>电容 <span class="math inline">\(X_{C}=-j\frac{1}{\omega
+C}=-j\frac{1}{2\pi f C}\approx -j7.958\times 10^{4} \
+\mathrm{\Omega}\)</span>.<span
+class="math inline">\(\dot{U}_{ab}\)</span> 的相位 <span
+class="math inline">\(\theta=\arctan{(\frac{U_{R}}{U_{C}})}=\arctan{(\frac{R_2}{|X_{C}|}})\)</span>.因此,<span
+class="math inline">\(R_2=30 \ \mathrm{k\Omega}\)</span> 时 <span
+class="math inline">\(\theta\approx -0.36\approx
+-41.3^{\circ}\)</span>,<span class="math inline">\(R_2=140 \
+\mathrm{k\Omega}\)</span> 时 <span class="math inline">\(\theta\approx
+-1.05\approx -120.8^{\circ}\)</span>.</p>
+<h1 id="section-2">11-28</h1>
+<p>分别用回路法和节点法列写题图 11-28 所示电路的相量方程.</p>
+<figure>
+
+</figure>
+<p>回路法: <span class="math display">\[\begin{aligned}
+        \dot{I}_{1}=&amp;\dot{I}_{S}\nonumber\\
+        -\dot{U}_{S 1}+\dot{U}_{S
+2}=&amp;\dot{I}_{2}(R_1+R_2+R_5+jX_1+jX_2+jX_5)+\dot{I}_{1}(R_5+jX_5)-\dot{I}_{2}(R_2+jX_2)\nonumber\\
+        -\dot{U}_{S 2}+\dot{U}_{S
+3}=&amp;\dot{I}_{3}(R_2+R_3+R_6+jX_2+jX_3)+\dot{I}_{1}R_6-\dot{I}_{2}(R_2+jX_2)\nonumber
+    
+\end{aligned}\]</span> 节点法: <span
+class="math display">\[\begin{aligned}
+        \frac{\dot{U}_1-\dot{U}_{S
+1}-\dot{U}_0}{R_1+jX_1}+\frac{\dot{U}_{3}-\dot{U}_{S
+2}-U_{0}}{R_2+jX_2}+\frac{\dot{U}_{2}-\dot{U}_{S
+3}-U_0}{R_3+jX_3}=&amp;0\nonumber\\
+        \frac{\dot{U}_1-\dot{U}_{S
+1}-\dot{U}_0}{R_1+jX_1}+\dot{I}_{S}+\frac{\dot{U}_{1}-\dot{U}_{3}}{R_5+jX_5}=&amp;0\nonumber\\
+        \frac{\dot{U}_{3}-\dot{U}_{S
+2}-U_{0}}{R_2+jX_2}+\frac{\dot{U}_{3}-\dot{U}_{1}}{R_5+jX_5}+\frac{\dot{U}_{3}-\dot{U}_{2}}{R_6}=&amp;0\nonumber\\
+        \frac{\dot{U}_{2}-\dot{U}_{S
+3}-U_0}{R_3+jX_3}-\dot{I}_{S}-\frac{\dot{U}_{3}-\dot{U}_{2}}{R_6}=&amp;0\nonumber
+    
+\end{aligned}\]</span></p>

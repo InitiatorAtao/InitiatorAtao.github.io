@@ -1,0 +1,89 @@
+<h1 id="运算放大器与应用电路">运算放大器与应用电路</h1>
+<h2 id="集成运放的基本特性">集成运放的基本特性</h2>
+<p>两输入端 <span class="math inline">\(V_{P},V_{N}\)</span>,线性放大
+<span class="math inline">\(V_{O}=A_{V}\left( V_{P}-V_{N}
+\right)\)</span>, <span class="math inline">\(A_{V}\)</span>
+称增益,放大输出有上限 <span class="math inline">\(V_{OH}\)</span> 及下限
+<span class="math inline">\(V_{OL}\)</span>.</p>
+<h3 id="输入失调指标">输入失调指标</h3>
+<ul>
+<li><p>输入失调电压 <span class="math inline">\(V_{OS}\)</span>
+:运放的两个输入端电压相等时输出电压的 <span
+class="math inline">\(\frac{1}{A_{V}}\)</span>,表征电路的对称性,越小越好.</p></li>
+<li><p>输入电流 <span class="math inline">\(I_{IB}\)</span>
+:两输入端流入电流的平均值,表征正常工作时输入端所需电流,越小越好.</p></li>
+<li><p>温漂 <span
+class="math inline">\(\frac{\mathrm{d}V_{OS}}{\mathrm{d}T}\)</span>
+:反映输入失调电压随温度变化.</p></li>
+</ul>
+<h3 id="特性指标">特性指标</h3>
+<ul>
+<li><p>电压增益 <span class="math inline">\(A_{V}\)</span>.</p></li>
+<li><p>输入电阻 <span
+class="math inline">\(R_{id}=\frac{v_{P}-v_{N}}{i_{P}-i_{N}}\)</span>.</p></li>
+<li><p>带宽 <span class="math inline">\(f_{H}\)</span> ( <span
+class="math inline">\(3 \ \mathrm{dB}\)</span> 带宽) 选学.</p></li>
+<li><p>单位增益带宽 GBW 选学.</p></li>
+</ul>
+<h2 id="应用分类及输入方式">应用分类及输入方式</h2>
+<h3 id="应用分类">应用分类</h3>
+<ul>
+<li><p>线性应用,可以使用虚短和虚断分析.</p></li>
+<li><p>非线性应用</p></li>
+</ul>
+<h3 id="输入方式">输入方式</h3>
+<p>接入输入端的支路均带一定电阻.但输出电阻接近于 0 (理想).</p>
+<ul>
+<li><p>反相输入:一输入端接地,另一输入端接输出端和输入电压.</p>
+<p>增益为 <span
+class="math inline">\(-\frac{R_{O}}{R_{I}}\)</span>.</p></li>
+<li><p>同相输入:一输入端接输入电压,另一输入端接地和输出端.</p>
+<p>增益为 <span
+class="math inline">\(1+\frac{R_{O}}{R_{I}}\)</span>.</p></li>
+<li><p>差分输入:两输入端接不同的输入电压,一输入端接输出端,一输入端接地.</p>
+<p>接输出端的增益为 <span
+class="math inline">\(-\frac{R_{O}}{R_{I}}\)</span>,接地端的增益为 <span
+class="math inline">\(1+\frac{R_{O}}{R_{I}}\)</span>
+(相对于输入端的实际电压而言,接地会带来分压损耗)</p></li>
+</ul>
+<h2 id="模拟运算电路">模拟运算电路</h2>
+<p>需要运放工作在线性区.</p>
+<ul>
+<li><p>加法运算电路:两输入电压和输出端接到同一个输入端,另一输入端接地.</p></li>
+<li><p>减法运算电路:直接使用差分输入.</p></li>
+<li><p>积分运算电路:单输入电压,输出端经电容接入同一输入端. <span
+class="math display">\[\begin{aligned}
+                    V_{O}\left( t \right)
+=&amp;-\frac{1}{RC}\int_{0}^{t}V_{I}\left( t \right)
+\mathrm{d}t+V_{O}\left( 0 \right) \nonumber
+                
+\end{aligned}\]</span></p></li>
+<li><p>微分运算电路:单输入电压经电容接入,输出端接入同一输入端. <span
+class="math display">\[\begin{aligned}
+                    V_{O}=&amp;-RC
+\frac{\mathrm{d}V_{I}}{\mathrm{d}t}\nonumber
+                
+\end{aligned}\]</span></p></li>
+</ul>
+<h2 id="电压比较器">电压比较器</h2>
+<p>一输入端接参考电压 <span
+class="math inline">\(V_{\texttt{REF}}\)</span>,一输入端接比较电压 <span
+class="math inline">\(V_{I}\)</span>: <span
+class="math display">\[\begin{aligned}
+            V_{O}=\begin{cases}
+                    V_{OH}&amp;,V_{I}&gt;V_{\texttt{REF}}\\
+                    V_{OL}&amp;,V_{I}&lt;V_{\texttt{REF}}\\
+                \end{cases}\nonumber
+        
+\end{aligned}\]</span></p>
+<h3 id="电压比较器的应用电路">电压比较器的应用电路</h3>
+<ul>
+<li><p>过零比较器,用于方波整形等.</p></li>
+<li><p>施密特比较器:不接地的差分输入非线性运放,输出端和参考电压接同一端.</p>
+<p>将输出端设为 <span
+class="math inline">\(V_{OH},V_{OL}\)</span>,对应的参考输入端实际电压为阈值,
+<span class="math inline">\(V_{I}\)</span>
+变化时遇到更远的阈值才翻转.</p>
+<p>增加噪声容限以抗干扰.</p></li>
+<li><p>窗口比较器,由两个比较器并联而成,有两个参考电压,在其构成的区间内输出不同.</p></li>
+</ul>

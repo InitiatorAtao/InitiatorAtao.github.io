@@ -1,0 +1,40 @@
+<h1 id="adda">AD/DA</h1>
+<h2 id="da-转换">DA 转换</h2>
+<div class="definition">
+<p>(Least Significant Bit, LSB) 最小量化间隔,输出的最小变化单元.</p>
+</div>
+<div class="definition">
+<p>(DA 转换速度) 数字输入 <span class="math inline">\(D\)</span> 从全 0
+到全 1,输出从 0 到基准电压 <span
+class="math inline">\(V_{\texttt{REF}}\pm
+\frac{V_{\texttt{LSB}}}{2}\)</span>
+所用时间.即完成一次转换需要的时间.</p>
+</div>
+<p>数字量的编码方式:</p>
+<ul>
+<li><p>十进制码</p></li>
+<li><p>二进制码</p></li>
+<li><p>温度计码</p>
+<p>从低位到高位置 1.</p></li>
+<li><p><span class="math inline">\(\frac{1}{N}\)</span> 码</p>
+<p>从低位到高位置 1, 但只有一个 1 位置.</p></li>
+</ul>
+<p>DA 的非理想特性参数:</p>
+<ul>
+<li><p>失调 (Offset):传输起点与原点的偏移.</p></li>
+<li><p>差分非线性 (Differential Nonlinearity, DNL):最大变化单元与 LSB
+之差.</p></li>
+<li><p>积分非线性 (Integral Nonlinearity):
+实际传输量与理想值的最大偏移量.</p></li>
+</ul>
+<p>DA 转换器电路:</p>
+<ul>
+<li><p>电阻串联型 (Resistor Ladder)</p>
+<p>基准电压源 <span class="math inline">\(V_{REF}\)</span>
+连接一串电阻和并联支路开关,使用 <span
+class="math inline">\(\frac{1}{N}\)</span>
+码输入,将对应的电压经运放电压缓冲或放大后输出.模拟开关电容对转换速度有影响.</p></li>
+<li><p>权电流型 (Current Steering)</p>
+<p>使用多个 <span class="math inline">\(2^{-k}\)</span>
+倍的电流,二进制码叠加经运放缓冲或放大为电压.</p></li>
+</ul>
