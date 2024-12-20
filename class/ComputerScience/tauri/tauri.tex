@@ -14,5 +14,17 @@
         \item 构建 Android apk 包: \texttt{cargo tauri android build --apk}
 
             构建的包是没有签名的版本,需要生成电子签名后才能安装.
+
+            \texttt{jarsigner -keystore [.jks] -signedjar [signed.apk] [unsigned.apk] [keyname]}
+
+            签名后需要进行对齐:
+
+            \texttt{zipalign -p 4 [signed.apk] [aligned.apk]}
+
+            其中 \texttt{zipalign} 是 Android SDK 的一个组件,位于类似
+            
+            \texttt{C:/Users/[username]/AppData/Local/Android/Sdk/build-tools/[version]}
+
+            的目录下.
     \end{enumerate}
 \end{document}
