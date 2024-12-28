@@ -182,18 +182,6 @@ int n,m,t[N];
 
 int main() {
     scanf("%d%d",&n,&m);
-    /*
-    while(m--) {
-        int u=0,v=0;
-        scanf("%d%d",&u,&v);
-        e[u].push_back(pair<int,int>(v,1));
-        e[v].push_back(pair<int,int>(u,1));
-    }
-    dijkstra(1);
-    for(int i=1;i<=n;++i) {
-        printf("%d\n",count[i]);
-    }
-    */
     for(int i=1;i<=n;++i) {
         scanf("%d",&t[i]);
     }

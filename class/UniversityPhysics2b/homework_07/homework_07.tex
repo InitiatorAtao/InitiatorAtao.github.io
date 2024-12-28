@@ -1,0 +1,73 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{大学物理-第七次作业}
+
+\begin{document}
+    \maketitle
+    \section{26.6} 宇宙大爆炸遗留在宇宙空间的均匀各向同性的背景热辐射相当于 $3K$ 黑体辐射.
+    \begin{enumerate}
+        \item 此辐射的光谱辐射出射度 $M_{\nu}$ 在何频率处有极大值?
+
+            由维恩位移率,出射度最大的光的频率为 $\nu_{\texttt{m}}=C_{\nu}T=1.764\times 10^{11} \ \mathrm{Hz}$.
+        \item 地球表面接收此辐射的功率是多大?
+
+            由斯特藩-玻尔兹曼定律 $M=\sigma T^{4}$,故辐射接收功率 $P=SM=S\sigma T^{4}$,代入地球表面积 $S \approx 5.1\times 10^{14} \ \mathrm{m^2}$ 得到 $P\approx 2.342\times 10^{9} \ \mathrm{W}$.
+    \end{enumerate}
+    \section{26.11} 铝的逸出功是 $4.2 \ \mathrm{eV}$,今用波长为 $200 \ \mathrm{nm}$ 的光照射铝表面,求:
+    \begin{enumerate}
+        \item 光电子的最大动能 $W=h\nu-A=2.0 \ \mathrm{eV}$.
+        \item 截止电压 $U=\frac{W}{e}=2.0 \ \mathrm{V}$.
+        \item 铝的红限波长 $\lambda_0=\frac{c}{\nu_0}=\frac{ch}{A}\approx 293 \ \mathrm{nm}$.
+    \end{enumerate}
+    \section{26.15} 入射的 X 射线光子的能量为 $0.60 \ \mathrm{MeV}$ ,被自由电子散射后波长变化了 $20\%$.求反冲电子的动能.
+
+    由能量守恒, $E_{e}=h\Delta\nu=\frac{hc}{\lambda_0}-\frac{hc}{\lambda}=\frac{hc}{4\lambda_0}=\frac{1}{6}E_{\nu}=0.10 \ \mathrm{MeV}$.
+    \section{26.22} 试重复德布罗意的运算.将式 26.23 和式 26.24 中的质量用相对论质量 $\left( m=m_0 / \sqrt{1-\frac{v^2}{c^2}} \right) $ 代入,然后利用公式 $v_{g}=\frac{\mathrm{d}\omega}{\mathrm{d}k}=\frac{\mathrm{d}\nu}{\mathrm{d}\left( 1 / \lambda \right) }$ 证明:德布罗意波的群速度 $v_{g}$ 等于粒子的运动速度 $v$.
+    
+    证明: $v_{g}=\frac{\mathrm{d}\nu}{\mathrm{d}\left( 1 / \lambda \right) }=\frac{\mathrm{d}\nu}{\mathrm{d}v} / \frac{\mathrm{d}\left( 1 / \lambda \right) }{\mathrm{d}v}=\frac{m_{0} v}{h \left(1 - \frac{v^{2}}{c^{2}}\right)^{1.5}} /\frac{m_{0}}{h \left(1 - \frac{v^{2}}{c^2}\right)^{1.5}}=v$
+    \section{26.30} 证明:一个质量为 $m$ 的粒子在边长为 $a$ 的正立方盒子内运动时,它的最小可能能量 (零点能) 为:
+    \begin{align}
+        E_{\texttt{min}}=&\frac{3\hbar^2}{8ma^2}\nonumber
+    \end{align}
+    
+    在无外界势能的情况下, $E=\frac{1}{2}mv^2=\frac{\left( \Delta p \right) ^2}{2m}$,在 $x,y,z$ 三个方向上均有 $\Delta x\Delta p\ge \frac{\hbar}{2}$ 即 $\Delta p\ge \frac{\hbar}{2\Delta x}\ge\frac{\hbar}{2a}$,全部取等号时和动量即 $\sum_{}^{}\Delta p=\sqrt{3}\Delta p$,此时即有 $E_{\texttt{min}}=\frac{3\hbar^2}{8ma^2}$.
+    \section{27.2} 一个氧分子被封闭在一个盒子内.按一维无限深方势阱计算,并设势阱宽度为 $10 \ \mathrm{cm}$
+    \begin{enumerate}
+        \item 该氧分子的基态能量是多大?
+
+            基态能量即 $E_1=\frac{\pi^2\hbar^2}{2ma^2}1^2\approx 1.03\times 10^{-40} \ \mathrm{J}$.
+        \item 设该分子的能量等于 $T=300 \ \mathrm{K}$ 时的平均热运动能量 $\frac{3}{2}kT$,相应的量子数 $n$ 的值是多少?这第 $n$ 激发态和第 $n+1$ 激发态的能量差是多少?
+
+            对应的量子数即 $n=\sqrt{\frac{2ma^2E_{n}}{\pi^2\hbar^2}}\approx 7.75\times 10^{9}$,此时的能量差即 $\frac{\pi^2\hbar^2}{2ma^2}\left[\left( n+1 \right) ^2-n^2\right]=\frac{\pi^2\hbar^2}{2ma^2}\left( 2n+1 \right) \approx 1.60\times 10^{-30} \ \mathrm{J}$.
+    \end{enumerate}
+    \section{27.3} 在如图 27.14 所示的无限深斜底势阱中有一粒子.试出它处于 $n=5$ 的激发态时的波函数曲线.
+
+    解:如图所示:
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\linewidth]{./figures/homework_01_figure_01.pdf}
+    \end{figure}
+    \section{27.6} 证明:如果 $\Psi_{m}\left( x,t \right) $ 和 $\Psi_{n}\left( x,t \right) $ 为一维无限深方势阱中粒子的两个不同能态的波函数,则:
+    \begin{align}
+        \int_{0}^{a}\Psi_{m}^{*}\left( x,t \right) \Psi_{n}\left( x,t \right) \mathrm{d}x=&0\nonumber
+    \end{align}
+
+    此结果称为波函数的正交性.它对任何量子力学系统的任何两个能量本征波函数都是成立的.
+
+    证明:由无限深方势阱中的波函数 $\psi_{n}=\sqrt{\frac{2}{a}}\sin \frac{n\pi}{a}x$ 可知:
+    \begin{align}
+        &\int_{0}^{a}\Psi_{m}^{*}\left( x,t \right) \Psi_{n}\left( x,t \right) \mathrm{d}x\nonumber\\
+        =&\int_{0}^{a}\frac{2}{a}x^2\sin \frac{m\pi}{a}\sin \frac{nx}{a}\mathrm{d}x\nonumber\\
+        =&\frac{2}{a}\int_{0}^{a}x^2\left[\cos \frac{\left( m-n \right) \pi x}{a}-\cos \frac{\left( m+n \right) \pi x}{a} \right]\mathrm{d}x\nonumber
+    \end{align}
+    由于 $n\ne m$,方括号内的两个三角函数的最小正周期均为 $a$ 的倍数,在 $[0,a]$ 上积分为零,故原积分也为零.
+    \section{27.8} 一维无限深方势阱中的粒子的波函数在边界处为零.这种定态物质波相当于两端固定的弦中的驻波,因而势阱宽度 $a$ 必须等于德布罗意波的半波长的整数倍.试由此求出粒子能量的本征值为:
+    \begin{align}
+        E_{n}=&\frac{\pi^2 \hbar^2}{2ma^2}n^2\nonumber
+    \end{align}
+    
+    解:将驻波公式在 $x=a$ 时的 $A\sin\left( ka+\phi \right) =0$ 给出的 $ka=n\pi$ 代入 $k=\sqrt{2mE} / \hbar$ 即可得到 $E_{n}=\frac{k^2\hbar^2}{2m}=\frac{\pi^2\hbar^2}{2ma^2}n^2$
+    \section{27.11} $H_{2}$ 分子中原子的振动相当于一个谐振子,其等效劲度系数为 $k=1.13\times 10^{3} \ \mathrm{N / m}$,质量为 $m=1.67\times 10^{-27} \ \mathrm{kg}$.此分子的能量本征值 (以 $\mathrm{eV}$ 为单位) 为何?当此谐振子由某一激发态跃迁到相邻的下一激发态时,所放出的光子的能量和波长各是多少?
+
+    解:该谐振子角频率 $\omega=\sqrt{\frac{k}{m}}\approx 8.23\times 10^{14} \ \mathrm{s^{-1}}$,对应的能级间隔即 $\Delta E=\hbar \omega\approx 0.54 \ \mathrm{eV}$,故能量本征值为 $\left( n+\frac{1}{2} \right) \times 0.54 \ \mathrm{eV}$,跃迁时放出的光子能量即能级间隔 $\Delta E=0.54 \ \mathrm{eV}$,对应的波长为 $\lambda=\frac{c}{\nu}=\frac{ch}{\Delta E}\approx 2.29\times 10^{-6} \ \mathrm{m}=229 \ \mathrm{\mu m}$.
+\end{document}

@@ -1,0 +1,45 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{NP problem}
+    P problem, like Shortest Path, Min-Cut, Linear Programming, Prime testing, Matrix multiplication and 2-SAT, are easy to solve. But opposite hard problems like Longest Path, Max-Cut, Integer Programming, Factoring, Tensor Problems and 3-SAT need very long time to calculate.
+    \begin{definition}
+        (NTM Time Complexity) For any input $w$ of length $n$ and all branches\mn{notice than NTM can make itself halt in particular steps} of Non-deterministic TM halts in $T\left( n \right) $ steps, then $T\left( n \right) $ called the time complexity of the NTM.
+    \end{definition}
+    \begin{definition}
+        (Non-deterministic Polynomial Time Problem, NP) The set of NP problems is $\cup_{c\ge 0}\{L\ |\ L \text{ has NTM time complexity } n^{c}\}$.
+    \end{definition}
+    \subsection{Proof system and computation}
+    \begin{definition}
+        (Verifier) A Verifier of a problem A is an algorithm (TM) such that $A=\{x\ |\ V\text{ accepts }\left( x,w \right) \text{ for some string } w\}$. Where $w$ is called the proof, which is short enough\mn{about $\operatorname{poly}\left( |x| \right) $} to be calculated and accepted by $V$.
+    \end{definition}
+    \begin{definition}
+        (NP Complete Problems, NP-C) A problem $A$ is NP-C if:
+        \begin{enumerate}
+            \item $A\in$ NP.
+            \item Every $B\in$ NP is poly-time reducible to $A$.\mn{if $A\notin$ NP, it is called NP-Hard}
+        \end{enumerate}
+    \end{definition}
+    \begin{definition}
+        (SAT problem) Given CNF formula $\wedge_{j=1}^{m}C_{j}$,$C_{j}=\vee_{k=1}^{n}\left( x_{j_{k}}\text{ or }\lnot x_{j_{k}}\right) $, find an assignment of $x_1,x_2,\ldots,x_{n}$ to true/false such that the formula evaluates to true.\mn{called $n$-SAT problem}
+    \end{definition}
+    
+    \begin{theorem}
+        (Cook-Levin) SAT is NP-C
+    \end{theorem}
+    \begin{proof}
+        (Cook-Levin) It is easy to proof SAT in NP because NTM can easily find assignment of $x_{i}$.
+
+        For all $A\in$ NP, proof  $A\le_{\texttt{P}}$ SAT by construct a 2-track TM with a normal track and a state-zip track, then state transitions can be expressed by a CNF. Use that to simulate NTM runs we can determine final state in $T\left( n \right) $ steps.
+    \end{proof}
+    \begin{definition}
+        (Vector-Cover Problem) Given a graph $G=\left( V,E \right) $ and constant $k$, is there a cover of at most $k$ nodes, which means every edge has at least chosen end node?
+    \end{definition}
+    \begin{theorem}
+        (Vector-Cover Problem) Vector-Cover Problem is NP-C.
+    \end{theorem}
+    \begin{proof}
+        (Vector-Cover Problem) NP is trival, NP-C can be proofed by reduce SAT problem to it.
+    \end{proof}
+\end{document}

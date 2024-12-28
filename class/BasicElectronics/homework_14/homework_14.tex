@@ -1,0 +1,18 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{电子学基础-第十四次作业}
+
+\begin{document}
+    \maketitle
+    \section{分析课件中逐次逼近型(Successive Approximation Register, SAR)A/D转换器的工作原理，并简述其特点.}
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\linewidth]{./figures/homework_14_figure_01.png}
+    \end{figure}
+    
+    SAR 使用一个比较器,逻辑控制器,寄存器和 D/A 转换器进行工作,每次采样时,先将寄存器清零,然后从高位到低位置 1 并将当前寄存器值输入 D/A 转换器,将 D/A 输出的值与采样值进行比较,比较结果输入逻辑控制,如果采样值较大则保留当前位的 1 否则将当前位设为 0.
+
+    SAR 在输出范围内模拟一个二分查找过程,每次取当前范围的中点与采样值进行比较,结果通过逻辑控制写入寄存器的当前位.总共需要等同于位数 $n$ 的 D/A 转换和比较次数,元件数量较少.
+
+    由此可以得到 SAR 的特点是转换速度较慢 (需要逐次比较),但电路较简单,精度较高.
+\end{document}

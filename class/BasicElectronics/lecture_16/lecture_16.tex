@@ -1,0 +1,67 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\usepackage[margin=5pt]{geometry}
+\setlength{\parindent}{0pt}
+\title{电子学基础-期末复习}
+
+\begin{document}
+以箭头表示的电动势值为箭头末端电位减去起始电位.
+
+星三角变换: $R_{12}=R_1+R_2+\frac{R_1R_2}{R_3},R_1=\frac{R_{12}R_{31}}{R_{12}+R_{23}+R_{31}}$.电阻全相等时外大内小,三角电阻是星的三倍.
+
+直流电路最大功率传输定理:电压源外电阻和内电阻相等时对外输出功率最大.
+
+支路电流法选 $n-1$ 个独立节点和 $b-n+1$ 个独立回路,回路电流法选 $b-n+1$ 个独立回路,节点电压法选 $n-1$ 个独立节点.
+
+叠加定理:线性电路中独立电源产生的影响独立叠加.
+
+齐性原理:单独立源电路响应与激励成正比.
+
+替代定理:已知响应支路等效于对应源,需要电路有唯一解.
+
+戴维南定理和诺顿定理:线性一端口等效于带内阻的源.两等效内阻相等,电压源比电流源等于内阻.
+
+特勒根定理:同拓扑结构的电路电压和电流的交错积求和为 $0$.
+
+互易定理:二端口线性电阻网络的源和响应 (一个电流一个电压) 可以关联互换 (含受控源一般不成立).
+
+相量模为有效值幅角为初相,相量法只适用于激励为同频正弦量的线性电路,电感电压领先电流 $90^{\circ}$,$\dot{U}=j\omega L\dot{I}$,电容电流领先电压 $90^{\circ}$,$\dot{I}=j\omega C \dot{U}$.对应的容/感抗表示电流和电压相量比值的虚部,容/感纳表示电压和电流相量比值的虚部,抗纳为负倒数关系.阻抗为电压相量比电流相量 $Z=R+jX$,导纳为其倒数 $Y=G+jB$.电容的阻抗 $Z=-\frac{1}{\omega C}$,电感的阻抗 $Z=j\omega L$.
+
+电路平均功率 $P=UI\cos\phi$,视在功率 $S=UI$,复功率 $\overline{S}=UI\cos\phi+jUI\sin\phi$,无功功率 $Q=UI\sin\phi$.最大功率传输在内外电路阻抗互为共轭时取得最大 $P_{\texttt{max}}=\frac{U_{S}^2}{4R}$.
+
+单位阶跃函数 $\epsilon\left( t \right) =\left[t>0\right]$,单位冲激函数 $\delta\left( t \right)$ 在 $t\ne0$ 时等于 $0$,且 $\int_{-\infty}^{\infty}\delta\left( t \right) \mathrm{d}t=1$ 为单位阶跃函数的导数.
+
+换路定律:换路前后带电阻的电容电压,仍联通的电感电流都不变.
+
+一阶电路求解:使用 $f\left( t \right) =f\left( \infty \right) +Ae^{-\frac{t}{\tau}}$ 和已知的 $f\left( 0^{+} \right) $ 求解.对于电容/感电路, $\tau=RC=\frac{L}{R}$,电阻可以等效.全响应也等于零状态响应 (电容感不储能) 加上零输入响应 (无源).
+
+二极管: $I=I_{S}\left( \exp\left( \frac{qV}{kT} \right) -1 \right) $,其中 $T$ 为温度 $I_{S}$ 为逆向截止电流.理想即单向导通,实际需要约 $0.7 \ \mathrm{V}$ 正向电压导通.
+
+NMOS: 箭头在 S 端朝外, $V_{GS}<V_{th},I=0$,$V_{GS}>V_{th},V_{GD}>V_{th},I=k\left[2\left( V_{GS}-V_{th} \right) -V_{DS}^2\right]$,$V_{GS}>V_{th},V_{GD}<V_{th},I=k\left( V_{GS}-V_{th} \right) ^2$.
+
+PMOS: 箭头在 S 端朝里, $V_{GS}>V_{th},I=0$,$V_{GS}<V_{th},V_{GD}<V_{th},I=-k\left[2\left( V_{GS}-V_{th} \right)V_{DS}-V_{DS}^2 \right]$,$V_{GS}<V_{th},V_{GD}>V_{th},I=-k\left( V_{GS}-V_{th} \right) ^2$.
+
+实际 MOSFET 在饱和区会有 $I=\pm k\left( V_{GS}-V_{th} \right) ^2\left( 1+\lambda V_{DS} \right) $ 的增益,称沟道长度调制效应.
+
+运放输入失调电压 $V_{OS}$ 等于输入短接输出电压的 $\frac{1}{A_{V}}$,输入电流等于两输入端的平均流入电流.温漂 $\frac{\mathrm{d}V_{OS}}{\mathrm{d}T}$. $A_{V}$ 称电压增益.
+
+加法电路 $V_{O}=-\left( V_1 \frac{R_{f}}{R_1}+V_2 \frac{R_{f}}{R_2} \right) $.积分电路  $V_{O}\left( t \right) =-\frac{1}{RC}\int_{0}^{t}V\left( t \right) \mathrm{d}t+V_{O}\left( 0 \right) $,微分电路 $V_{O}=-RC \frac{\mathrm{d}V}{\mathrm{d}t}$.
+
+比较器:根据正负输入端的电压大小关系输出 $V_{OH}$ 或 $V_{OL}$.滞回比较器添加一个 $R_3$ 链接输出和参考输入,阈值为 $V_{thH / L}=\frac{R_3}{R_2+R_3}V_{\texttt{REF}}+\frac{R_2}{R_2+R_3}V_{OH / L}$.窗口比较器并联两个比较器,输入一正一负,输出取最大/小值,在一个窗口内取 $V_{OL}/V_{OH}$.
+
+(信噪比, SNR) 信号最大功率与量化噪声平均功率的比值.SNR $=6.02n+1.76 \ \mathrm{dB}$,其中 $n$ 为 AD 位数.
+
+(信噪失真比, SNDR) 信号最大功率与量化噪声平均功率与谐波失真功率之和的比值.
+
+(有效位数, ENOB) SNDR $=6.02$ ENOB $+1.76 \ \mathrm{dB}$.
+
+AD 的失调, DNL, INL 等参数同 DA.
+
+(采样定理) 为从采样数据还原原始数据,采样频率 $f_{s}$ 应为信号最大频率 $f_{\texttt{max}}$ 的 2 倍以上.一般取 $f_{s}=\left( 2.5\sim{}3 \right) f_{\texttt{max}}$.
+
+保持过程可以使用接地电容维持电压,使用运放输出电压.
+
+常用 AD 电路:flash: 使用多个比较器并行比较,温度计码输出.速度快 ($\mathrm{GHz}$ 量级),电路复杂,精度较低.
+
+逐次逼近型 (Successive Approximation Register, SAR): 使用一个 DA ,比较器和逻辑控制,从高位到低位二分比较得到当前位值.精度高,电路较简单,速度较慢 (一般为 $\mathrm{kHz}\sim{}\mathrm{MHz}$ 级别).
+\end{document}
