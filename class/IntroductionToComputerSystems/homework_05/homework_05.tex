@@ -1,0 +1,62 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{计算机系统概论-第五次作业}
+
+\begin{document}
+    \maketitle
+    \section{\texttt{fork()}}   
+    \subsection{程序会输出多少行？（空行不计算在内）}
+    10 行,分别为 2 行 \texttt{counter = 1} 和 8 行 \texttt{counter = 2}.
+    \subsection{程序的全部输出中，第一行和最后一行分别会是什么？}
+    第一行为 \texttt{counter = 1},最后一行为 \texttt{counter = 2}.
+    \subsection{根据系统对进程的调度情况，程序一共有多少种可能的输出结果？（注：如果同一时间有若干进程在同时运行，他们运行的先后顺序的不同可能导致输出结果不同）}
+    第一行必定为 \texttt{counter = 1},剩余一行 \texttt{counter = 1} 可能在 2-6 行出现,故总共可能有 5 种可能输出结果.
+    \section{文件读写}
+    \subsection{当执行 ./program1 后，文件 file1.txt 的内容是什么？}
+    \texttt{ddccbbaa}
+    \subsection{ 从以下几点解释一下为什么是这个结果（言之有理即可，简短作答）：}
+    \begin{itemize}
+        \item  \texttt{./program2} 做了什么？
+
+            从当前的标准输入读取两个字节到 \texttt{buf2} 再将其写入当前标准输出.
+        \item \texttt{./program1} 在 \texttt{fork()} 之前做了什么，相应的 \texttt{buf} 的内容如何变化？
+
+            从 \texttt{fd\_x} 读取两个字节到 \texttt{buf},再从 \texttt{fd\_y} 读取四个字符到 \texttt{buf+2}. (都是从 \texttt{file1.txt} 的起始位置开始读,故 \texttt{buf} 写入 \texttt{aaaabb})
+
+        \item \texttt{./program1} 调用 \texttt{fork()} 了以后，子进程在干什么？
+
+            子进程将标准输出重定向到 \texttt{fd\_x},将标准输入重定向到 \texttt{fd\_y} 并转到 \texttt{program2} 运行,也就是从 \texttt{fd\_y} 读取两个字符 (\texttt{cc}) 写入 \texttt{fd\_x} (替换了文件中的 \texttt{bb}).
+        \item 子进程返回后，\texttt{./program1} 又做了什么，相应的 \texttt{buf} 的内容如何变化？
+
+            从 \texttt{fd\_y} 再向 \texttt{buf+6} 读入两个字节 (\texttt{dd}),此时 \texttt{buf=aaaabbdd}.
+
+            从 \texttt{buf+6} 向 \texttt{fd\_z} 写入两个字节 (\texttt{dd},替换了文件中的 \texttt{aa}).
+
+            从 \texttt{buf+4} 向 \texttt{fd\_x} 写入两个字节 (\texttt{bb},替换了文件中的 \texttt{cc}).
+
+            从 \texttt{buf+2} 向 \texttt{fd\_x} 写入两个字节 (\texttt{aa},替换了文件中的 \texttt{dd})
+    \end{itemize}
+    综上,文件内容被替换为 \texttt{ddccbbaa}
+    \section{信号量}
+    \texttt{1 0 0}
+
+    \texttt{P(board) V(physics) V(chemistry)}
+
+    \texttt{physics board}
+
+    \texttt{chemistry board}
+    \section{线程与子线程}
+    \subsection{}\texttt{a=1}
+    \subsection{}\texttt{a=1}
+
+    \texttt{a=1}
+    \subsection{}\texttt{a=2}
+
+    \texttt{a=1}
+
+    \texttt{a=1}
+
+    以上三行的输出顺序任意
+    \section{信号处理}
+    ACDE
+\end{document}
