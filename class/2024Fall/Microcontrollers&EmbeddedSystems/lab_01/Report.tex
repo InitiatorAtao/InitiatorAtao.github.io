@@ -1,0 +1,27 @@
+\input{../../homeworks_preamble.tex}
+\usepackage{../../homeworks_preamble}
+\title{单片机与嵌入式系统项目-手写输入屏}
+
+\begin{document}
+    \maketitle
+    \section{项目背景}
+    电脑的键盘输入在大部分时候足以支持工作,但在输入复杂 latex 公式等情况下可能遇到输入缓慢的问题,我希望能够使用一块可手写的副屏将手写公式快速转换为对应的文本或 latex 代码.其主要功能包括:
+    \begin{enumerate}
+        \item 接受屏幕手写输入,实时显示笔迹和文本预览.
+        \item 保存笔记和文本,将文本通过 USB 口输出到电脑.
+        \item 使用屏幕虚拟摁钮和少量的实体摁钮进行交互.
+    \end{enumerate}
+    \section{项目系统结构}
+        \subsection{主控}
+            主控选用 Arduino Uno,主要用于控制屏幕显示,处理笔迹数据,以及向计算机进行通信.
+        \subsection{显示模块}
+            显示模块采用 2.8 寸 TFT 彩色屏幕 (ILI9341),通过 SPI 接口和 GPIO 输入输出控制.
+        \subsection{通信模块}
+            通信模块采用 Arduino Uno 的外接 USB 接口模拟键盘输入 (暂定).
+        \subsection{电源模块}
+            由于系统设计为在 PC 上即插即用,预计可以使用 USB 接口为主控以及显示模块进行供电.
+        \subsection{系统整体工作流程}
+            ILI9341 采集手写输入数据,通过 SPI 回传给主控,主控处理笔迹显示和文本预览,通过 SPI 发送给 ILI9341 在屏幕上进行显示.当摁下虚拟摁键或实体摁键时,主控接收到中断,通过 USB 向 PC 发送模拟键盘击键,将文本输入到 PC.
+    \section{项目效果}
+        使用杜邦线连接 Arduino Uno 及触控板,使用 USB 串口线连接 Arduino Uno 与计算机,初步完成了预定目标,实现了触控板和计算机之间的笔迹同步,笔迹处理与文字识别程序过大无法在单片机上运行,故选择在计算机上进行处理. PCB 板因临时更换单片机无法正常工作,故选择直接封装杜邦线连接的版本.
+\end{document}

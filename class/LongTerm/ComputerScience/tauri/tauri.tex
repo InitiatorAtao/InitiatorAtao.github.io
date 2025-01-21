@@ -1,0 +1,40 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{Tauri 的使用}
+        \subsection{配置和依赖处理}
+        \subsection{TypeScript 的使用}
+        \subsection{Rust 的使用}
+        \subsection{生成与导出}
+            支持生成 \texttt{.msi} 和 \texttt{.exe} 格式的 Windows 安装包,也可以生成 Android apk 包.
+
+            \begin{enumerate}
+                \item 构建发布版本: \texttt{cargo tauri build}
+                \item 构建 Android apk 包: \texttt{cargo tauri android build --apk}
+
+                    构建的包是没有签名的版本,需要生成电子签名后才能安装.
+
+                    \texttt{jarsigner -keystore [.jks] -signedjar [signed.apk] [unsigned.apk] [keyname]}
+
+                    签名后需要进行对齐:
+
+                    \texttt{zipalign -p 4 [signed.apk] [aligned.apk]}
+
+                    其中 \texttt{zipalign} 是 Android SDK 的一个组件,位于类似
+                    
+                    \texttt{C:/Users/[username]/AppData/Local/Android/Sdk/build-tools/[version]}
+
+                    的目录下.
+            \end{enumerate}
+    \section{实际项目工程}
+        \subsection{创建项目}
+            使用 \texttt{create-tauri-app} 按照官方模板创建:
+        \texttt{\\cargo install create-tauri-app ---locked\\cargo create-tauri-app .\\选择您的前端语言：TypeScript / JavaScript\\
+选择您的包管理器：npm\\
+选择您的UI模板：Vanilla\\
+选择您的UI风格：TypeScript}
+
+            注意 \texttt{cargo create-tauri-app .} 指定在当前目录下创建工程,否则会询问项目名并创建一个以其命名的新文件夹.
+
+\end{document}

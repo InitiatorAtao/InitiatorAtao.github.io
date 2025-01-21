@@ -1,0 +1,78 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+\section{习题}
+\subsubsection{求 $\max_{|z|\le r}|z^{n}+\alpha|,\alpha\in \mathbb{C},n\in \mathbb{N}$ 并给出取最大模时 $z$ 的取值范围及像 $z'=z^{n}+\alpha$ 的表达式.}
+
+解:
+\begin{enumerate}
+    \item 当 $\alpha=0$ 时, $\max|z^{n}+\alpha|=\max|z^{n}|=[\max|z|]^{n}=r^{n}$,这时 $z=re^{i\theta},\theta\in [0,2\pi),z'=z^{n}=r^{n}e^{in \theta},\theta\in [0,2\pi)$.
+    \item 当 $\alpha\ne 0$ 时, $|z^{n}+\alpha|\le |z^{n}|+|\alpha|\le r^{n}+|\alpha|$,第一个等号成立 $\Leftrightarrow z^{n}$ 与 $\alpha$ 同向,即 $\exists \lambda>0$ 使得 $z^{n}=\lambda \alpha$,第二个等号成立 $\Leftrightarrow |z|=r,z=re^{i\theta}$,由上两式得到 $r^{n}=\lambda |\alpha|\Rightarrow \lambda=\frac{r^{n}}{|\alpha|}$,代入前式可得 $z^{n}=\frac{r^{n}}{|\alpha|}\alpha=\frac{r^{n}}{|\alpha|}|\alpha|e^{i\theta_{\alpha}}=r^{n}e^{i\theta_{\alpha}}=r^{n}e^{i\left( \theta_{\alpha}+2\left( k-1 \right) \pi \right) },\theta_{\alpha}=\arg \alpha\in [0,2\pi),k=1,2,\ldots,n$.两边开 $n$ 次方得到 $z=z_{k}=re^{\frac{i\left( \theta_{\alpha}+2\left( k-1 \right) \pi \right) }{n}},z'=z_{k}^{n}+\alpha=r^{n}e^{i\theta_{\alpha}}+\alpha=[r^{n}+|\alpha|]e^{i\theta_{\alpha}}$,此时 $|z'|=r^{n}+|\alpha|$.
+\end{enumerate}
+
+\subsubsection{求 $\min_{|z|\le r}|z^{n}+\alpha|$ 并给出取得最小模时 $z$ 的表达式及像的表达式 $z'=z^{n}+\alpha$.}
+
+解:
+\begin{enumerate}
+    \item $\alpha=0$ 时 $\min_{|z|\le r}|z^{n}|=0,z=0,z'=0$.
+    \item $\alpha\ne 0$ 时:
+        \begin{enumerate}
+            \item $|\alpha|\le r^{n}\Rightarrow $ 求 $z^{n}+\alpha=0,|z|\le r$, $z^{n}=-\alpha=e^{\pi i}|\alpha|e^{i\theta_{\alpha}}=|\alpha|e^{i\left( \pi+\theta_{\alpha} \right) }=|\alpha|e^{i\left( \pi+2\left( k-1 \right) \pi+\theta_{\alpha} \right) },k=1,2,\ldots,n$.此时 $z'=0\Rightarrow \min_{|z|\le r}|z^{n}+\alpha|=0$.
+            \item $|\alpha|>r^{n}$,此时 $|z^{n}+\alpha|=|\alpha-\left( -z^{n} \right) |\ge |\alpha|-|z^{n}|\ge |\alpha|-r^{n}>0$,第一个等式成立 $\Leftrightarrow \alpha$ 与 $z^{n}$ 方向相反 $\Leftrightarrow z^{n}=-\lambda \alpha,\lambda >0$,第二个等式成立 $\Leftrightarrow |z|=r$,由上两式得到 $r^{n}=\lambda|\alpha|\Rightarrow \lambda=\frac{r^{n}}{|\alpha|},z^{n}=-\lambda \alpha=-\frac{r^{n}}{|\alpha|}|\alpha |e^{i \theta_{\alpha }}=-r^{n}e^{i \theta_{\alpha }}$,此时的 $z^{n}=r^{n}e^{\pi i+i \theta_{\alpha }}=r^{n}e^{\left( \pi +2\left( k-1 \right) \pi +\theta_{\alpha } \right) i}=r^{n}e^{\left[ \left( 2k-1 \right) \pi +\theta_{\alpha } \right]i}$.上式两边开 $n$ 次方可得 $z=z_{k}=re^{\frac{i\left[ \left( 2k-1 \right) \pi+\theta_{\alpha } \right]}{n}},k=1,2,\ldots,n$,$z_{k}^{n}=r^{n}e^{(\pi+\theta_{\alpha })i}=-r^{n}e^{i \theta_{\alpha }},z'=z_{k}^{n}+\alpha =\left[ -r^{n}+|\alpha | \right]e^{i \theta_{\alpha }}$, $\min |z^{n}+\alpha |=|\alpha |-r^{n}$.
+        \end{enumerate}
+\end{enumerate}
+
+\subsubsection{求 $\cos \left( x+iy \right) ,\sin \left( x+iy \right) $ 的实虚部并由此证明 $\cos \left( x+iy \right) =A+Bi,A,B\in \mathbb{R}$ 有无穷多解}
+
+解:由
+\begin{align}
+    \cos z=&\frac{e^{iz}+e^{-iz}}{2}\nonumber\\
+    =&\frac{e^{\left( x+iy \right) }+e^{-i\left( x+iy \right) }}{2}=\frac{e^{-y}e^{ix}+e^{y}e^{-ix}}{2}\nonumber\\
+    =&\frac{e^{-y}}{2} \left( \cos x+i \sin x \right) +\frac{e^{y}}{2}\left( \cos x-i\sin x \right)  \nonumber\\
+    =&\frac{e^{-y}+e^{y}}{2}\cos x+i \frac{e^{-y}-e^{y}}{2}\sin x\nonumber\\
+    \Rightarrow & \Re \left( \cos \left( x+iy \right)  \right) =\frac{e^{-y}+e^{y}}{2}\cos x=A\nonumber\\
+                &\Im \left( \cos \left( x+iy \right)  \right) =\frac{e^{-y}-e^{y}}{2}\sin x= B\nonumber
+\end{align}
+下证上两式有无穷多解 $\left( x_{k},y_{k} \right) $:
+\begin{enumerate}
+    \item $B=0\Rightarrow y=0$ 或 $\sin x=0$:
+        \begin{enumerate}
+            \item $|A|\le 1$,令 $y=0$ 代入上面的方程, $\cos x=A\Rightarrow x=x_{k}=\arccos A+2k\pi,k\in \mathbb{Z}$,此时 $z=z_{k}=x_{k},k\in \mathbb{Z}$.
+            \item $|A|>1$,令 $\sin x=0\Rightarrow \cos x=\pm 1$ 代入上面的方程有 $\frac{e^{-y}+e^{y}}{2}\left( \pm 1 \right) =A$,当 $A>0$ 取正号否则取负号 $\Rightarrow \frac{e^{-y}+e^{y}}{2}=|A|>1$,令 $f\left( y \right) =\frac{e^{-y}+e^{y}}{2}$,求证存在 $y_1$ 使得 $f\left( y \right) =|A|$,首先 $f\left( 0 \right) =1<|A|,\lim _{y\rightarrow +\infty}f\left( y \right) =+\infty,f'\left( y \right) =\frac{e^{y}-e^{-y}}{2}>0\left( y>0 \right) $,故 $\exists y_{1}>0$ 使得 $f\left( \pm y_1 \right) =|A|>1$,此时 $\cos \left( x_{k}+y_1 i\right) =A,z_{k}=x_{k}\pm y_1 i,k\in \mathbb{Z}$.
+        \end{enumerate}
+    \item $B\ne 0\Leftrightarrow \cos x=\frac{2A}{e^{-y}+e^{y}},\sin x=\frac{2B}{e^{-y}-e^{y}}$,有 $1=\cos ^2x +\sin ^2 x=\frac{4A^{2}}{\left( e^{-y}+e^{y} \right) ^2}+\frac{4B^2}{\left( e^{-y}-e^{y} \right) ^2}=g\left( y \right) $,即求 $y$ 使得 $g\left( y \right) =1$,由于偶函数 $g\left( -y \right) =g\left( y \right) $,不妨设 $y>0$.有 $\lim _{y\rightarrow 0^{+}}g\left( y \right) =+\infty,\lim_{y\rightarrow +\infty}g\left( y \right) =0$,故 $\exists y_2>0$ 使得 $g\left( \pm y_2 \right) =1$,再令 $y=\pm y_2$, $\sin x=\frac{2B}{e^{-y_2}-e^{y_2}}\Rightarrow x=x_{k}=\arcsin \frac{2B}{e^{-y_2}-e^{y_2}}+2k\pi,k\in \mathbb{Z}$,此时 $z_{k}=x_{k}\pm iy_2,k\in \mathbb{Z}$.
+\end{enumerate}
+
+\subsubsection{一些关于 $\ln$ 的定义}
+\begin{align}
+    \ln z=&\ln |z|+i\arg z,z\ne 0\nonumber\\
+    \operatorname{Ln} z=&\ln z+2k\pi i,k\in \mathbb{Z}\nonumber
+\end{align}
+例子:
+\begin{align}
+    \ln \left( -1 \right) =&\ln\left( -1 \right) +i\pi =\pi i\nonumber\\
+    \ln \left( -x \right) =&\ln\left( -1 \right) +\ln x=\pi +\ln x,x>0\nonumber\\
+    a^{b}=&e^{b\operatorname{Ln} a}=e^{b\left( \ln a+2k\pi i \right) }=e^{b\left( \ln |a|+i\arg a+2k\pi i \right) },k\in \mathbb {Z}\nonumber\\
+    1^{\frac{1}{n}}=&e^{\frac{1}{n}\operatorname{Ln} 1}=e^{\frac{1}{n}\left( \ln 1+2k\pi i \right) }=e^{\frac{2k\pi i}{n}},k=0,1,\ldots,n-1\nonumber\\
+    =&\cos \frac{2k\pi}{n}+i\sin \frac{2k\pi }{n}\nonumber\\
+    k=&0,1^{\frac{1}{n}}=1\nonumber\\
+    z^{n}=&1\Leftrightarrow z=1^{\frac{1}{n}}\nonumber
+\end{align}
+\subsubsection{Cauchy 高阶导数公式}
+\begin{align}
+    f ^{\left( n \right) }\left( z_0 \right) =&\frac{n!}{2\pi i}\oint_{|z-z_0|=r>0}^{}\frac{f\left( z \right) }{\left( z-z_0 \right) ^{n+1}}\mathrm{d}z\nonumber\\
+    \Leftrightarrow \frac{f ^{\left( n \right) }\left( z_0 \right) 2\pi i}{n!}=&\oint_{|z-z_0|=r}^{}\frac{f\left( z \right) }{\left( z-z_0 \right) ^{n+1}}\mathrm{d}z\nonumber
+\end{align}
+令 $n= 0\Rightarrow f\left( z_0 \right) =\frac{1}{2\pi}\int_{0}^{2\pi}f\left( z_0+re^{i \theta} \right) \mathrm{d}\theta$,对于 $r>0$ 都成立,可推出 $|f\left( z_0 \right) |\le \frac{1}{2\pi}\int_{0}^{2\pi}|f\left( z_0+re^{i \theta} \right) |\mathrm{d}\theta$.
+\subsubsection{最大模原理:若 $f\left( z \right) \ne $ 常数且 $f\left( z \right) $ 在有界区域 $D$ 内处处可导,则 $f\left( z \right) $ 必在 $\partial D$ ($D$ 的边界线) 上取得最大模.}
+
+若 $|f\left( z_0 \right) |=\max_{z\in D\cup \partial D} |f\left( z \right) |$由上式得到 $|f\left( z_0 \right) |\le \frac{1}{2\pi}\int_{0}^{2\pi}|f\left( z_0+re^{i \theta} \right) |\mathrm{d}\theta\le \frac{1}{2\pi }\int_{0}^{2\pi}|f\left( z_0 \right) |\mathrm{d}\theta=|f\left( z_0 \right) |$,取等号意味着 $|f\left( z_0+re^{i \theta} \right) |\equiv |f\left( z_0 \right) |,\forall \theta\in \left[ 0,2\pi  \right)$.又由 $r$ 任意,存在某个 $r_0$ 使得 $\forall \theta,z_0+r_0e^{i \theta}\in D$ 且 $\exists \theta_0,z_0+re^{i \theta_0}\in \partial D$,有 $\forall 0\le r\le r_0,|f\left( z \right) |=|f\left( z_0 \right) |$,对于该圆盘上的点重复该过程可得到 $\forall z\in D\cup \partial D,|f\left( z \right) |=|f\left( z_0 \right) |$.
+
+接下来要证明若 $f\left( z \right) $ 处处可导且 $|f\left( z \right) |=C$ 为常数则 $f\left( z \right) =C$ 也为常数.
+
+\subsubsection{Liouville 定理:有界的整函数是常数}
+
+
+
+\end{document}

@@ -1,0 +1,219 @@
+\input{../../lectures_preamble.tex}
+\usepackage{../../lectures_preamble}
+
+\begin{document}
+    \section{寄存器一览}
+        \subsection{数据寄存器}
+        \begin{figure}[htbp]
+            \centering
+            \begin{tabular}{c||c|c|c|c}
+                名称 & 64 位版本 & 32 位版本 & 16 位版本\mn{括号内表示 16 位拆成的高 8 位和低 8 位虚拟寄存器, \texttt{r8\~{}r15} 不支持直接访问低 16 位的高 8 位} & 用途\\\hline\hline
+                \texttt{a} & \texttt{\%rax} & \texttt{\%eax} & \texttt{\%ax(\%ah|\%al)} & 返回值\\\hline
+                \texttt{b} & \texttt{\%rbx} & \texttt{\%ebx} & \texttt{\%bx(\%bh|\%bl)} & 加长返回值\\\hline
+                \texttt{c} & \texttt{\%rcx} & \texttt{\%ecx} & \texttt{\%cx(\%ch|\%cl)} & 第四个参数\\\hline
+                \texttt{d} & \texttt{\%rdx} & \texttt{\%edx} & \texttt{\%dx(\%dh|\%dl)} & 第三个参数\\\hline
+                \texttt{di} & \texttt{\%rdi} & \texttt{\%edi} & \texttt{\%di(\%dih|\%dil)} & 第一个参数\\\hline
+                \texttt{si} & \texttt{\%rsi} & \texttt{\%esi} & \texttt{\%si(\%sih|\%sil)} & 第二个参数\\\hline
+                \texttt{sp} & \texttt{\%rsp} & \texttt{\%esp} & \texttt{\%sp(\%sph|\%spl)} & 栈顶地址\\\hline
+            \texttt{bp} & \texttt{\%rbp} & \texttt{\%ebp} & \texttt{\%bp(\%bph|\%bpl)} & 栈帧起始\mn{可选,如使用\texttt{\%rbp}到\texttt{\%rsp}之间为当前栈帧}\\\hline
+                \texttt{r8} & \texttt{\%r8} & \texttt{\%r8d} & \texttt{\%r8w(|\%r8b)} & 第五个参数\\\hline
+                \texttt{r9} & \texttt{\%r9} & \texttt{\%r9d} & \texttt{\%r8w(|\%r9b)} & 第六个参数\mn{大于 6 个的参数使用栈传递,从右往左压栈}\\\hline
+                \texttt{r10\~{}15} & \texttt{\%r10\~{}15} & \texttt{\%r10\~{}15d} & \texttt{\%r10\~{}15w(|\%r10\~{}15b)} &\\\hline
+                \texttt{ip} & \texttt{\%rip} & & & 当前指令地址\\
+            \end{tabular}
+        \end{figure}
+        函数调用时,\texttt{r10},\texttt{r11} 以及返回值  \texttt{a} 和所有的参数寄存器  \texttt{di,si,d,c,r8,r9} 由调用者保存,其余无特殊用途的寄存器由被调用者保存.
+        \subsection{条件码}
+        条件码在执行运算指令时根据计算结果自动设置,在执行控制指令中包含运算的部分时也会被设置,但此时计算结果通常被丢弃.
+        \begin{figure}[htbp]
+            \centering
+            \begin{tabular}{c||c}
+                名称 & 用途\\\hline\hline
+                \texttt{CF} & 进/借位标志\\\hline
+                \texttt{SF} & 负标志\\\hline
+                \texttt{ZF} & 零标志\\\hline
+                \texttt{OF} & 溢出标志\\
+            \end{tabular}
+        \end{figure}
+    \section{指令一览}
+        指令需要加上后缀\texttt{B,W,L,Q}分别表示 1,2,4,8 字节,即 8 位到 64 位的长度,称字节,字,双字,四字.
+
+        地址表达式\texttt{(\%a)}表示一个由一个或多个寄存器与常数值表达的内存地址,完整形式为\texttt{b(\%x,\%y,a)}\sn{这里的立即数不需加 \texttt{\$}},寻址位置为\texttt{x+a*y+b},参数可从后向前省略,\texttt{b}的默认值为 1, \texttt{a}的默认值为 0.也可以省略一个寄存器,此时形如 \texttt{b(,\%x,a)} 寻址 \texttt{x*a+b}.\sn{除了在 \texttt{leaq} 指令的 \texttt{s} 位置以外,地址表达式表示对应内存位置的值,而非计算出的值}
+        \subsection{运算指令}
+        \begin{itemize}
+            \item \texttt{lea   s,d} 地址计算
+
+                计算地址表达式 s 并将结果存入 d\sn{不会产生内存访存,也可以用于数据计算}
+            \item \texttt{add   s,d} 加法
+
+                \texttt{d+=s}
+            \item \texttt{sub   s,d} 减法
+
+                \texttt{d-=s}
+            \item \texttt{imul   s,d} 乘法
+
+                \texttt{d*=s}
+            \item \texttt{sal    s,d} 位左移
+
+                \texttt{d<<=s}
+            \item \texttt{sar    s,d} 位右移
+
+                \texttt{d>>=s} ,算数右移
+            \item \texttt{shr    s,d} 位右移
+
+                \texttt{d>>=s},逻辑右移
+            \item \texttt{xor   s,d} 位异或
+
+                \texttt{d\^{}=s}
+            \item \texttt{and   s,d} 按位与
+
+                \texttt{d\&=s}
+            \item \texttt{or    s,d} 按位或
+
+                \texttt{d|=s}
+            \item \texttt{inc    d} 自增
+
+                \texttt{d+=1}
+            \item \texttt{dec   d} 自减
+
+                \texttt{d-=1}
+            \item \texttt{neg   d} 取负
+
+                \texttt{d=-d}
+            \item \texttt{not   d} 位取反
+
+                \texttt{d=\~{}d}
+        \end{itemize}
+        \subsection{控制指令}
+        \begin{itemize}
+            \item \texttt{mov   s,d} 赋值
+
+                在内存,寄存器,立即数之间将数据 s 赋给 d\sn{立即数不能接收数据,不能在内存间移动数据}
+            \item \texttt{cmp   a,b} 比较
+
+                计算 \texttt{b-a}\sn{注意参数顺序,这与条件跳转指令中的意义相反} 并根据计算结果设置标志位,计算结果被丢弃.
+            \item \texttt{test  a,b} 测试
+
+                计算 \texttt{b\&a} 并根据计算结果设置标志位\sn{注意按位与不会产生进/借位和溢出,因此运行后 \texttt{CF,OF} 一定为 0},计算结果被丢弃.
+            \item \texttt{set(e,ne,s,ns,g,ge,l,le,a,b)   d} 条件码读取
+
+                读取当前条件码(组合),并存入目的 8 位寄存器 \texttt{d} \sn{8 位寄存器也称为字节寄存器}.后缀意义如下:
+                \begin{figure}[htbp]
+                    \centering
+                    \label{tabular:control suffix}
+                    \begin{tabular}{c||c|c}
+                        后缀 & 条件码组合 & 意义\\\hline\hline
+                        \texttt{e} & \texttt{ZF} & 等于/为 0\\\hline
+                        \texttt{ne} & \texttt{\~{}ZF} & 不等于/不为 0\\\hline
+                        \texttt{s} & \texttt{SF} & 为负\\\hline
+                        \texttt{ns} & \texttt{\~{}SF} & 非负\\\hline
+                        \texttt{g} & \texttt{\~{}(SF\^{}OF)\&\~{}ZF} & 有符号数大于\\\hline
+                        \texttt{ge} & \texttt{\~{}(SF\^{}OF)} & 有符号数大于等于\\\hline
+                        \texttt{l} & \texttt{(SF\^{}OF)|ZF} & 有符号数小于\\\hline
+                        \texttt{le} & \texttt{(SF\^{}OF)} & 有符号数小于等于\\\hline
+                        \texttt{a} & \texttt{\~{}CF\&\~{}ZF} & 无符号数大于\\\hline
+                        \texttt{b} & \texttt{CF} & 无符号数小于\\\hline
+                        \texttt{ae} & \texttt{\~{}CF} & 无符号数大于等于\\\hline
+                        \texttt{be} & \texttt{CF|ZF} & 无符号数小于
+                    \end{tabular}
+                \end{figure}
+            \item \texttt{j(mp,e,ne,s,ns,g,ge,l,le,a,b,ae,be)   d} 条件跳转
+
+                读取当前条件码(组合),如果结果为真则跳转到标志 \texttt{d}.
+                
+                \texttt{jmp} 为无条件跳转,其余后缀的含义同 \texttt{set}.
+            \item \texttt{cmov(e,ne,s,ns,g,ge,l,le,a,b)   s,d} 条件移动\sn{1995 年之后的  \texttt{x86} 处理器提供支持, GCC 编译器在确保 "安全" 的前提下使用.其目的是为了消除条件跳转对多级流水线结构造成的分支预测失败引起性能降低}
+
+                读取当前条件码(组合),如果结果为真则执行 \texttt{mov}.
+            \item \texttt{push  s} 数据压栈
+
+                从 \texttt{s} 读取数据,栈顶指针向下移动 \texttt{\%rsp-=8}, 数据写入栈顶地址 \texttt{\%rsp}.
+            \item \texttt{pop   d} 数据出栈
+
+                从栈顶 \texttt{\%rsp} 读取操作数,将其写入 \texttt{d}, 栈顶指针向上移动 \texttt{\%rsp+=8}.
+            \item \texttt{call  label} 函数调用
+
+                将返回地址(\texttt{call} 指令的下一条指令地址)压入栈,跳转至 \texttt{label}.
+            \item \texttt{ret} 函数返回
+
+                跳转至栈顶的返回地址,并将其弹出.
+        \end{itemize}
+    \section{操作流程}
+        \subsection{浮点表示及运算 (IEEE 754 规范)}
+        浮点数被表示为 $\left( -1 \right) ^{s}\times M\times 2^{E}$ 形式,其中 $s$ 为符号位, $M$ 为尾数\sn{在规格化数中为 $1.$ 接尾数位,非规格化数为 $0.$ 接尾数位}, $E$ 为阶码减去相当于其最高位少 $1$ 的偏置.
+        \begin{figure}[htbp]
+            \centering
+            \begin{tabular}{c||c|c|c|c}
+                表示值 & 符号位 & 阶码 & 尾数 & 表示范围\mn{使用与对应位数相等的有符号二进制表示}\\\hline\hline
+                \texttt{NaN} & \texttt{1} & 全 \texttt{1} & 非 \texttt{0}\\\hline
+                \texttt{-inf} & \texttt{1} & 全 \texttt{1} & 全 \texttt{0}\\\hline
+                负规格化数 & \texttt{1} & 非 \texttt{0} & 任意 & $-1.1\ldots ^{10\ldots}\sim-1.0\ldots ^{-01\ldots0}$\\\hline
+                负非规格化数 & \texttt{1} & 全 \texttt{0} & 任意 & $-0.1\ldots ^{-01\ldots 0}\sim-0.0\ldots1^{-01\ldots 0}$\\\hline
+                \texttt{0} & \texttt{0/1} & 全 \texttt{0} & 全 \texttt{0} & $\pm 0$\\\hline
+                正非规格化数 & \texttt{0} & 全 \texttt{0} & 任意 & $0.0\ldots1^{-01\ldots 0}\sim 0.1\ldots ^{-01\ldots 0}$\\\hline
+                正规格化数 & \texttt{0} & 非 \texttt{0} & 任意 & $1.0\ldots ^{-01\ldots 0}\sim 1.1\ldots ^{10\ldots}$\\\hline
+                \texttt{inf} & \texttt{0} & 全 \texttt{1} & 全 \texttt{0}\\\hline
+                \texttt{NaN} & \texttt{0} & 全 \texttt{1} & 非 \texttt{0}\\\hline
+            \end{tabular}
+        \end{figure}
+        
+        \subsection{函数调用}
+            \subsubsection{不需开栈的 \texttt{x86-64}}
+                \begin{enumerate}
+                    \item 调用者保存寄存器 (如果使用了 \texttt{\%r10},\texttt{\%r11}) 并准备参数 (到参数寄存器或入栈).
+                    \item 调用 \texttt{call fun},返回地址入栈,被调用者开始运行.
+                    \item 被调用者分配局部变量,可以直接使用栈顶指针 \texttt{\%rsp} 下方的 Red Zone\sn{超出 \texttt{\%rsp} 指向位置的 128 字节区域被保留,不会被中断修改,如不调用新函数,可以在不实际分配栈帧的情况下直接通过 \texttt{\%rsp} 偏移使用}.
+                    \item 如被调用者需要使用由自己保存的寄存器,先将原值入栈,返回前将原值出栈到原寄存器.
+                \end{enumerate}
+            \subsubsection{\texttt{x86-32} 或需要开栈的 \texttt{x86-64}}
+                \begin{enumerate}
+                    \item 调用者保存寄存器并准备参数 (从右向左入栈).
+                    \item 调用 \texttt{call},返回地址入栈,被调用者开始运行.
+                    \item 被调用者建立栈帧:
+
+                        \texttt{push \%ebp\\mov \%esp,\%ebp}
+
+                        如果需要使用被调用者保存的寄存器 (如 \texttt{\%ebx}):
+
+                        \texttt{push \%ebx}
+
+                        此时的函数返回地址: \texttt{(\%ebp)}, \texttt{x86-32} 的第一个参数: \texttt{0x4(\%ebp)} (\texttt{x86-64} 是 \texttt{0x8(\%ebp)}),第二个参数往后根据对齐要求向 \texttt{(\%ebp)} 添加偏置,如果需要调用函数,从右至左将参数压栈.
+                    \item 被调用者退出,如果使用了被调用者保存的寄存器则恢复:
+
+                        \texttt{movl -4(\%ebp),\%ebx}
+
+                        释放栈帧:
+
+                        \texttt{movl \%ebp,\%esp\\popl \%ebp}
+
+                        调用 \texttt{ret},返回地址出栈,调用者继续运行.
+                \end{enumerate}
+        \subsection{全局变量寻址}
+            \subsubsection{\texttt{x86-64}}
+                \begin{enumerate}
+                    \item 使用基于 \texttt{\%rip} 的相对寻址直接访问全局变量地址.\sn{对于 \texttt{static} 全局变量,由于其仅对当前文件可见,在不同文件中可能有不同的地址,需要使用 \texttt{var\_name@GOTPCREL(\%rip)} 计算}
+                \end{enumerate}
+            \subsubsection{\texttt{x86-32}}
+                \begin{enumerate}
+                    \item 调用 \texttt{\_\_x86.get\_pc\_thunk.ax} 将调用后的栈顶地址 (即调用前下一条指令的位置) 放入 \texttt{\%eax}.
+                    \item 向 \texttt{\%eax} 添加一个固定的偏移量\sn{偏移量为编译器计算出的常数,表示当前指令到 GOT 的距离},获取全局偏移表 (global offset table, GOT) 的起始地址
+                    \item 向 GOT 起始地址继续添加偏移量获取全局变量的地址.
+                \end{enumerate}
+        \subsection{编译与链接}
+        \begin{enumerate}
+            \item 源文件编译生成可重定位对象文件 (\texttt{.o})
+                \begin{enumerate}
+                    \item 程序定义及引用一系列符号 (symbols, 包括变量和函数)
+
+                        非静态函数和全局变量可以被外部引用\sn{未初始化的非静态全局变量可能被外部覆盖}
+                    \item 编译器将符号定义存储在符号表 (symbol table) 中
+                \end{enumerate}
+            \item 完全链接后产生可执行对象文件
+                \begin{enumerate}
+                    \item 将多个文件的数据和代码段集成
+                    \item 链接器将每一个符号引用 (reference) 与符号定义联系起来
+                    \item 将 \texttt{.o} 文件中的符号解析为绝对地址
+                    \item 将符号引用更新为新地址
+                \end{enumerate}
+        \end{enumerate}
+\end{document}
