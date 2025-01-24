@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "es2020",
+    "lib": ["es2020","dom"]
+    },
+    "externals": {
+      "./main": "main" // 假设 'main' 是在运行时提供的全局变量
+    },
+    "include": [
+        "./*.ts"
+    ],
+    "exclude": [
+        "@tauri-apps/plugin-http",
+        "./main"
+    ]
+}

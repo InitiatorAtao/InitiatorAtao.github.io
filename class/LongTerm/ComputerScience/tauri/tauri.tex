@@ -5,6 +5,12 @@
     \section{Tauri 的使用}
         \subsection{配置和依赖处理}
         \subsection{TypeScript 的使用}
+        \subsubsection{TS 到 JS 的编译}
+        如果通过网络分发 TS 文件, \texttt{.ts} 后缀名可能被服务器识别为视频文件从而返回错误的响应头,为此可以使用 \texttt{tsc} 将其编译为 JS 文件:
+
+        \texttt{tsc ---module es2015 ---target es5 yourfile.ts}
+
+        指定模块为 \texttt{es2015} 即 ES6,目标为 \texttt{es5} 以适配旧版浏览器.
         \subsection{Rust 的使用}
         \subsection{生成与导出}
             支持生成 \texttt{.msi} 和 \texttt{.exe} 格式的 Windows 安装包,也可以生成 Android apk 包.
@@ -36,5 +42,21 @@
 选择您的UI风格：TypeScript}
 
             注意 \texttt{cargo create-tauri-app .} 指定在当前目录下创建工程,否则会询问项目名并创建一个以其命名的新文件夹.
+        \subsection{前端基础配置}
+            在项目文件夹下的 \texttt{index.html} 内进行基础设置:
 
+            中文页面: \texttt{<html lang="zh">}
+
+            UTF-8 编码: \texttt{<meta charset="UTF-8"/>}
+
+            内容安全策略 ( Content Security Policy, CSP ) 配置:
+
+            \texttt{\\<meta http-equiv="Content-Security-Policy"\\
+            content="default-src 'self';\\
+            img-src data:;\\
+            connect-src 'self' http://ipc.localhost"\\}
+
+            可以类似设置 \texttt{script-src}, \texttt{font-src} 等内容源.
+
+            导入模块: \texttt{<script type="module" src="/src/main.ts" defer></script>}
 \end{document}
